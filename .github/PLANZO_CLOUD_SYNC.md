@@ -6,12 +6,10 @@ On each run it exports the existing [Figma Make project](https://www.figma.com/m
 
 ## One-time setup
 
-1. Create a revocable Figma browser session for this specific Make file on a trusted computer. Install Python 3.12 and run:
+1. Create a revocable Figma browser session for this specific Make file on this Mac. From the repository folder, run:
 
    ```sh
-   python3 -m pip install playwright
-   python3 -m playwright install chromium
-   python3 scripts/capture_figma_session.py
+   node scripts/capture_figma_session.cjs
    ```
 
    Sign in yourself in the browser opened by the script. The script verifies that the Planzo Make file and its Publish button are accessible, then writes an encoded session to `~/.config/planzo-cloud-sync/figma-session-secret.txt`. Do not commit or share that file.

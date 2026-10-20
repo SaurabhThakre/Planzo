@@ -43,7 +43,7 @@ def managed(path: str) -> bool:
     parts = PurePosixPath(path).parts
     if not parts or path == "README.md":
         return False
-    if path in {"scripts/planzo_cloud_sync.py", "scripts/capture_figma_session.py"}:
+    if path in {"scripts/planzo_cloud_sync.py", "scripts/capture_figma_session.cjs"}:
         return False
     if parts[0] in {".git", ".github", "node_modules", "dist", "coverage"}:
         return False
