@@ -177,8 +177,8 @@ def download_code(page, destination: Path) -> None:
     if files_tab.count() == 0:
         page.get_by_role("button", name="Add workspace tab").click()
         page.get_by_test_id("menu-v2-scroll").get_by_text("Files", exact=True).click()
-        files_tab.wait_for(timeout=30_000)
-    if not files_tab.is_checked():
+        page.get_by_role("button", name="File actions").wait_for(timeout=30_000)
+    elif not files_tab.is_checked():
         files_tab.click()
     page.get_by_role("button", name="File actions").click()
     with page.expect_download(timeout=120_000) as event:
