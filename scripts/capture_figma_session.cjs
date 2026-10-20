@@ -30,14 +30,16 @@ async function main() {
     const page = await context.newPage();
     await page.goto(makeUrl, { waitUntil: "domcontentloaded", timeout: 120000 });
     await prompt.question("Sign in to Figma in the Chrome window. Once Planzo Make is open, press Return here. ");
-    await page.getByRole("button", { name: "Publish", exact: true }).waitFor({ timeout: 30000 });
+    const verifiedPage = await context.newPage();
+    await verifiedPage.goto(makeUrl, { waitUntil: "domcontentloaded", timeout: 120000 });
+    await verifiedPage.getByRole("button", { name: "Publish", exact: true }).waitFor({ timeout: 120000 });
     const state = await context.storageState({ indexedDB: true });
 
     const check = await browser.newContext({ storageState: state });
     try {
       const checkPage = await check.newPage();
       await checkPage.goto(makeUrl, { waitUntil: "domcontentloaded", timeout: 120000 });
-      await checkPage.getByRole("button", { name: "Publish", exact: true }).waitFor({ timeout: 30000 });
+      await checkPage.getByRole("button", { name: "Publish", exact: true }).waitFor({ timeout: 120000 });
     } finally {
       await check.close();
     }
