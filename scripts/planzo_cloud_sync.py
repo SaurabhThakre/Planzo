@@ -309,8 +309,10 @@ def open_publish_dialog(page) -> None:
     page.get_by_role("button", name="Publish", exact=True).click()
     page.get_by_role("heading", name="Publish", exact=True).wait_for(timeout=30_000)
     page.get_by_role("link", name=SITE_HOST).wait_for(timeout=15_000)
-    if page.get_by_text("No issues", exact=True).count() == 0:
-        raise RuntimeError("Figma reports publishing issues; refusing to update")
+    try:
+        page.get_by_text("No issues", exact=True).wait_for(timeout=30_000)
+    except Exception as exc:
+        raise RuntimeError("Figma did not confirm that the site has no publishing issues") from exc
     if not page.get_by_role("button", name="Update", exact=True).is_enabled():
         raise RuntimeError("Figma Update button is disabled")
 
