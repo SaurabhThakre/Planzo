@@ -1,0 +1,21 @@
+{
+  "date": "2026-10-16",
+  "project": "ewysgpuwvufbklesdhuj",
+  "function_body_md5": {
+    "planzo_private.booking_providers": "6759d2eaad79c79b5457964b03ef9164",
+    "planzo_private.booking_milestones": "883519be4154ba7177dadcd5fb8238b8",
+    "planzo_private.record_booking_milestones": "f9f1865f05f8cfffe00048db69b92559",
+    "planzo_private.booking_state": "ddfb151f44e1554ccc2f00f8941fe5c6",
+    "planzo_private.booking_api": "d5c0598614c4d9df4790763661aab05e",
+    "public.planzo_booking": "dd53b566e20c122789d110a0bfc48607"
+  },
+  "matched": 6,
+  "unchanged_dependencies": {
+    "planning_state": "eb0ddf4f12cbeda2215fe485e96fa0cb",
+    "evaluate_plan": "f4e158dd22828d21ad771c3375b73a5c"
+  },
+  "method": "Reviewed UTF-8 function bodies compared with hosted pg_proc readback",
+  "empty_search_path": 6,
+  "public_endpoint": "SECURITY INVOKER; authenticated only",
+  "client_execution": "Only checked booking boundary; helpers denied"
+}

@@ -1,0 +1,57 @@
+{
+  "date": "2026-10-17T15:11:28.227Z",
+  "project": "ewysgpuwvufbklesdhuj",
+  "protectedTrips": 13,
+  "protectedFunctions": 45,
+  "checks": [
+    {
+      "scope": "trips",
+      "result": "pass"
+    },
+    {
+      "scope": "functions",
+      "result": "pass"
+    },
+    {
+      "scope": "flow_locks",
+      "result": "pass"
+    },
+    {
+      "scope": "flow_plans",
+      "result": "pass"
+    },
+    {
+      "scope": "flow_inputs",
+      "result": "pass"
+    },
+    {
+      "scope": "flow_reviews",
+      "result": "pass"
+    },
+    {
+      "scope": "legacy_plans",
+      "result": "pass"
+    },
+    {
+      "scope": "legacy_tasks",
+      "result": "pass"
+    },
+    {
+      "scope": "journey_tasks",
+      "result": "pass"
+    },
+    {
+      "scope": "journey_reviews",
+      "result": "pass"
+    },
+    {
+      "scope": "journey_reserves",
+      "result": "pass"
+    }
+  ],
+  "excluded": "Only fixtures created after the beginning of this audit; the query is restricted to the 13 baseline trip IDs.",
+  "summary": {
+    "passed": 11,
+    "failed": 0
+  }
+}

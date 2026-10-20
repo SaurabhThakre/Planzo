@@ -1,0 +1,27 @@
+{
+  "date": "2026-10-16",
+  "scope": "Read-only status and counts only; no raw briefs, costs, notes, invitations or credentials read.",
+  "test_trip": {
+    "id": "2d6a875a-51c6-4153-880b-731309a65655",
+    "stage": "postponed",
+    "members": 4,
+    "revision": 16,
+    "versions": 3,
+    "latest_version": 3,
+    "latest_responses": 0,
+    "active_invitations": 0,
+    "open_or_unresolved_item_polls": 0
+  },
+  "original_trip": {
+    "id": "a5c044b5-812d-4f2a-8cc7-b0718ce1f767",
+    "ready": 4,
+    "stage": "agreed",
+    "members": 4,
+    "revision": 19,
+    "versions": 1,
+    "item_drafts": 0,
+    "agreement_events": 1
+  },
+  "temporary_checker_tab_closed": true,
+  "temporary_server_stopped": true
+}

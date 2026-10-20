@@ -1,0 +1,14 @@
+{
+  "date": "2026-10-17T13:11:18.183Z",
+  "allExistingRowsAndVersionsUnchanged": true,
+  "existingFunctionsUnchanged": true,
+  "previousFunctionCount": 40,
+  "addedFunctions": [
+    "planzo_journey(text,jsonb)",
+    "planzo_private.journey_api(text,jsonb)",
+    "planzo_private.journey_budget(uuid,uuid)",
+    "planzo_private.journey_sources(text,text,text)",
+    "planzo_private.journey_state(uuid,uuid)"
+  ],
+  "tripCount": 12
+}

@@ -1,0 +1,14 @@
+{
+  "date": "2026-10-15",
+  "make_file": "4tPr5AkQO1g0L1esRvGRjz",
+  "files": {
+    "docs/PLANNING_SLICE_HANDOFF.md": "e7688ab6bb80a023dc99793127889c856054904d8eead1d765c7902fe1e73e88",
+    "docs/backend/PLANNING_DEPLOYMENT.json": "475bdf54f63dc65308df68bf4094beaed08c773c4184644011249281c8fc63fa",
+    "docs/backend/MAKE_VERIFICATION.json": "1dcab2782f2f30590698ee9e2c72a423727aa7b7b76aa29c6b4287fbda22c249",
+    "docs/HOSTED_QA_2026-10-15.md": "83c2c2b1d0571a7c2dae9ff31dea40caa262095779e5b588ced4f75294121b17",
+    "docs/backend/planning-live-preview.png": "d2a98e06f39c73fca3f67ad3eb0b60919c1efdc2bcd06a1662a29452aa00320d",
+    "docs/backend/planning-open-poll.png": "1022875c9e2c992626327b854f4da1db2aa59f2409e0b0cb0d8554e88ed3787c",
+    "docs/backend/planning-review-v1.png": "4986747b86bf59ed691404df14cfd556b9b214392fb10e4ec6435e264c986535",
+    "docs/backend/planning-agreed.png": "41b1d67e442d395f612ee887f36b5cea49f1079292809449e6cb67a808e6f371"
+  }
+}

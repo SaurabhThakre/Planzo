@@ -1,0 +1,74 @@
+{
+  "date": "2026-10-18",
+  "scope": "Desktop web itinerary item icons",
+  "changes": [
+    "Shared labelled SVG category badges: meal/cutlery, free time/sun, activity/pin, stay/bed, transport/plane",
+    "Current and historical workflow-2 timelines, final journey including private transport and legacy manual itinerary",
+    "Decoration hidden from assistive technology; visible category words; neutral fallback for unknown future kinds"
+  ],
+  "checks": {
+    "typecheck": true,
+    "appTestsPassed": 85,
+    "appTestsFailed": 0,
+    "build": true,
+    "fixture": {
+      "client": 1585,
+      "icons": [
+        {
+          "color": "rgb(134, 82, 30)",
+          "height": 15.995999336242676,
+          "hidden": "true",
+          "label": "Meal",
+          "width": 15.995999336242676
+        },
+        {
+          "color": "rgb(82, 98, 136)",
+          "height": 15.995999336242676,
+          "hidden": "true",
+          "label": "Free time",
+          "width": 15.995999336242676
+        },
+        {
+          "color": "rgb(35, 90, 77)",
+          "height": 15.995999336242676,
+          "hidden": "true",
+          "label": "Activity",
+          "width": 15.995999336242676
+        },
+        {
+          "color": "rgb(117, 83, 115)",
+          "height": 15.995999336242676,
+          "hidden": "true",
+          "label": "Stay",
+          "width": 15.995999336242676
+        },
+        {
+          "color": "rgb(62, 101, 127)",
+          "height": 15.995999336242676,
+          "hidden": "true",
+          "label": "Transport",
+          "width": 15.995999336242676
+        },
+        {
+          "color": "rgb(62, 101, 127)",
+          "height": 15.995999336242676,
+          "hidden": "true",
+          "label": "Private transport",
+          "width": 15.995999336242676
+        },
+        {
+          "color": "rgb(35, 90, 77)",
+          "height": 15.995999336242676,
+          "hidden": "true",
+          "label": "Item",
+          "width": 15.995999336242676
+        }
+      ],
+      "scroll": 1585
+    }
+  },
+  "backendSourceHashesUnchanged": 64,
+  "tripWrites": 0,
+  "providerCalls": 0,
+  "liveMakeVerification": "pending installation"
+}

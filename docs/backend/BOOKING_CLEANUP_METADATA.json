@@ -1,0 +1,62 @@
+{
+  "date": "2026-10-16",
+  "project": "ewysgpuwvufbklesdhuj",
+  "run_id": "be3c2d84-6f4f-48ef-b415-e9fb7cec6732",
+  "method": "Read-only counts and safe milestone statuses after ordinary organiser UI postponement; no raw briefs, private reasons or other members' costs read",
+  "trips": [
+    {
+      "id": "14314506-10fe-4fd7-bec8-d6e393fd1807",
+      "revision": 12,
+      "stage": "postponed",
+      "members": 4,
+      "versions": 2,
+      "ready_rows": 8,
+      "handoffs": 2,
+      "task_revisions": 39,
+      "reports": 5,
+      "active_invites": 0,
+      "latest_milestones": [
+        {
+          "id": "inputs",
+          "label": "Inputs received",
+          "status": "complete"
+        },
+        {
+          "id": "feasible",
+          "label": "Itinerary feasible",
+          "status": "needs_review"
+        },
+        {
+          "id": "choices",
+          "label": "Shared choices resolved",
+          "status": "needs_review"
+        },
+        {
+          "id": "decision",
+          "label": "Decision recorded",
+          "status": "complete"
+        },
+        {
+          "id": "handoff",
+          "label": "Booking handoff prepared",
+          "status": "not_applicable"
+        }
+      ]
+    },
+    {
+      "id": "a5c044b5-812d-4f2a-8cc7-b0718ce1f767",
+      "revision": 19,
+      "stage": "agreed",
+      "members": 4,
+      "versions": 1,
+      "ready_rows": 4,
+      "handoffs": 0,
+      "task_revisions": 0,
+      "reports": 0,
+      "active_invites": 2,
+      "latest_milestones": null
+    }
+  ],
+  "records_deleted": 0,
+  "new_auth_identities_created": 0
+}

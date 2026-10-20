@@ -1,0 +1,134 @@
+{
+  "run_id": "b5e033bb-346b-4d6b-b817-b919f6ccb6e5",
+  "date": "2026-10-16T04:31:30.789Z",
+  "project": "ewysgpuwvufbklesdhuj",
+  "method": "Four distinct ordinary verified sessions; public client key; no administrative credentials",
+  "checks": [
+    {
+      "name": "Four real members reconstruct one complete eight-item itinerary",
+      "result": "pass"
+    },
+    {
+      "name": "Member receives own cost only and no raw group briefs",
+      "result": "pass"
+    },
+    {
+      "name": "Ordinary member cannot edit group itinerary",
+      "result": "pass",
+      "error_code": "42501",
+      "http_status": 403
+    },
+    {
+      "name": "Missing Night 2 is saved and prevents review publication",
+      "result": "pass",
+      "error_code": "P0001",
+      "http_status": 400
+    },
+    {
+      "name": "Item poll snapshots two feasible replacements for the missing night",
+      "result": "pass"
+    },
+    {
+      "name": "Forged ballot actor rejected",
+      "result": "pass",
+      "error_code": "P0001",
+      "http_status": 400
+    },
+    {
+      "name": "Four saved ballots remain private while poll is open",
+      "result": "pass"
+    },
+    {
+      "name": "Stale ballot overwrite denied",
+      "result": "pass",
+      "error_code": "P0001",
+      "http_status": 400
+    },
+    {
+      "name": "Closed item vote fills Night 2 without final readiness",
+      "result": "pass"
+    },
+    {
+      "name": "Immutable review version starts with no inherited approvals",
+      "result": "pass"
+    },
+    {
+      "name": "Agreement denied before all individual responses",
+      "result": "pass",
+      "error_code": "P0001",
+      "http_status": 400
+    },
+    {
+      "name": "Four exact-version Ready responses allow organiser agreement",
+      "result": "pass"
+    },
+    {
+      "name": "Item edit makes earlier agreement historical",
+      "result": "pass"
+    },
+    {
+      "name": "Next version has fresh responses and saved structured items",
+      "result": "pass"
+    },
+    {
+      "name": "Valid older-version readiness replay is denied",
+      "result": "pass",
+      "error_code": "P0001",
+      "http_status": 400
+    },
+    {
+      "name": "Returning ordinary member reads persisted missing-step state",
+      "result": "pass"
+    }
+  ],
+  "fixtures": [
+    {
+      "trip_id": "2d6a875a-51c6-4153-880b-731309a65655",
+      "cleanup": "pending interface check; postpone afterward",
+      "invitation": "revoked"
+    }
+  ],
+  "actors": [
+    {
+      "role": "Organiser A",
+      "user_fingerprint": "9432f19b74c3b059"
+    },
+    {
+      "role": "Member B",
+      "user_fingerprint": "f56cbbb4bbfd2f7c"
+    },
+    {
+      "role": "Member C",
+      "user_fingerprint": "c9d146dab5814329"
+    },
+    {
+      "role": "Member D",
+      "user_fingerprint": "ba581e5a523bb22e"
+    }
+  ],
+  "credentials_recorded": false,
+  "existing_agreed_trip_mutated": false,
+  "signout_requests": [
+    {
+      "role": "Organiser A",
+      "result": "accepted"
+    },
+    {
+      "role": "Member B",
+      "result": "accepted"
+    },
+    {
+      "role": "Member C",
+      "result": "accepted"
+    },
+    {
+      "role": "Member D",
+      "result": "accepted"
+    }
+  ],
+  "summary": {
+    "passed": 16,
+    "failed": 0,
+    "total": 16
+  }
+}

@@ -1,0 +1,102 @@
+// Disposable PostgreSQL actor tests only. Never creates hosted Auth identities.
+import { readFile,writeFile,mkdtemp } from 'node:fs/promises';
+import { tmpdir } from 'node:os';
+import { join } from 'node:path';
+import { pathToFileURL } from 'node:url';
+import { randomUUID } from 'node:crypto';
+import assert from 'node:assert/strict';
+const runtime=process.env.PLANZO_TEST_RUNTIME||'/private/tmp/intern-casa-test-runtime/node_modules';
+const {default:EmbeddedPostgres}=await import(pathToFileURL(join(runtime,'embedded-postgres/dist/index.js')));
+const root=await mkdtemp(join(tmpdir(),'planzo-itinerary-test-'));
+const pg=new EmbeddedPostgres({databaseDir:join(root,'db'),user:'postgres',password:randomUUID(),port:55482,persistent:false,onLog:()=>{},onError:()=>{}});
+let db;const extraClients=[];const evidence=[];const pass=name=>{evidence.push({name,result:'pass'});console.log('PASS',name);};
+try{
+ await pg.initialise();await pg.start();db=pg.getPgClient();await db.connect();
+ await db.query(`create role anon;create role authenticated;create schema auth;create schema extensions;grant usage on schema auth to anon,authenticated;
+ create table auth.users(id uuid primary key,email_confirmed_at timestamptz,is_anonymous boolean default false,banned_until timestamptz);
+ create function auth.uid() returns uuid language sql stable as $$select nullif(current_setting('request.jwt.claim.sub',true),'')::uuid$$;
+ create function public.rls_auto_enable() returns event_trigger language plpgsql as $$begin end$$;`);
+ await db.query(await readFile(new URL('../supabase/changes/planzo_core.sql',import.meta.url),'utf8'));
+ await db.query(await readFile(new URL('../supabase/changes/planzo_planning.sql',import.meta.url),'utf8'));
+ await db.query(await readFile(new URL('../supabase/changes/planzo_invite_lookup_index.sql',import.meta.url),'utf8'));
+ await db.query(await readFile(new URL('../supabase/changes/planzo_response_withdrawal.sql',import.meta.url),'utf8'));
+pass('Complete migration chain applies from an empty database');
+ const people=Array.from({length:5},()=>randomUUID()),[a,b,c,d,outsider]=people;const window=randomUUID(),window2=randomUUID();
+ for(const id of people)await db.query('insert into auth.users(id,email_confirmed_at) values($1,now())',[id]);
+ const actor=async id=>{await db.query('reset role');await db.query("select set_config('request.jwt.claim.sub',$1,false)",[id||'']);await db.query('set role '+(id?'authenticated':'anon'));};
+ const call=async(endpoint,action,payload={})=>(await db.query('select public.'+endpoint+'($1,$2::jsonb) as data',[action,JSON.stringify(payload)])).rows[0].data;
+ const core=(action,payload)=>call('planzo_api',action,payload),old=(action,payload)=>call('planzo_planning',action,payload),rpc=(action,payload)=>call('planzo_itinerary',action,payload);
+ const no=async(name,fn,re)=>{await assert.rejects(fn,re);pass(name);};
+ await actor(a);await core('profile',{name:'Organiser A'});
+ const {trip_id:trip}=await core('create_trip',{request_id:randomUUID(),name:'Disposable item itinerary QA',destination:'Goa',minimum:4,deadline:'2099-10-22T18:29:00Z',windows:[{id:window,start:'2099-11-13T00:30:00Z',end:'2099-11-15T16:30:00Z'},{id:window2,start:'2099-11-20T00:30:00Z',end:'2099-11-22T16:30:00Z'}]});
+ const invite=await core('create_invite',{trip_id:trip});
+ for(const [i,id] of people.slice(1,4).entries()){await actor(id);await core('join',{token:invite.token,name:'Member '+i});}
+ const briefs=people.slice(0,4).map((id,i)=>({origin:'Bengaluru',ceiling_paise:2000000,windows:[window],vegetarian:true,step_free:false,stars:{Food:1,Relaxation:2},text:'PRIVATE ITEM CANARY '+i,boat:i===1}));
+ const save=async(i,changes={})=>{await actor(people[i]);const w=await core('workspace',{trip_id:trip});briefs[i]={...briefs[i],...changes};await core('save_brief',{trip_id:trip,request_id:randomUUID(),expected_revision:w.own_brief?.revision||0,brief:briefs[i],confirm:true,acknowledged:true});};
+ for(let i=0;i<4;i++)await save(i);
+ const legacyGet=()=>old('get',{trip_id:trip});
+ const legacy=async(action,payload={})=>old(action,{trip_id:trip,request_id:randomUUID(),expected_revision:(await legacyGet()).revision,...payload});
+ await actor(a);await legacy('prepare',{window_id:window});await legacy('select',{option_id:'easy'});await legacy('publish_plan');const legacyPlan=(await legacyGet()).plan;
+ for(const id of people.slice(0,4)){await actor(id);await legacy('respond',{plan_id:legacyPlan.id,status:'ready',private_reason:'PRIVATE NOTE',acknowledged:true,expected_response_revision:0});}
+ await actor(a);await legacy('close_round',{plan_id:legacyPlan.id});const before=await legacyGet();
+ await db.query('reset role');await db.query(await readFile(new URL('../supabase/changes/planzo_itinerary.sql',import.meta.url),'utf8'));await actor(a);
+ assert.deepEqual(await legacyGet(),before);pass('Additive migration preserves existing agreed legacy version, costs and all responses');
+ const get=()=>rpc('get',{trip_id:trip});
+ const mutate=async(action,payload={})=>rpc(action,{trip_id:trip,request_id:randomUUID(),expected_revision:(await get()).revision,...payload});
+ await actor(null);await no('Signed-out itinerary read denied',get,/permission denied/);
+ await actor(outsider);await no('Outside-trip read denied',get,/do not have access/);
+ await no('Outside-trip mutation denied',()=>rpc('prepare',{trip_id:trip,window_id:window}),/do not have access/);
+ await actor(b);await no('Member cannot manage the itinerary',()=>mutate('prepare',{window_id:window}),/Only the organiser/);
+ await no('Private item table read denied',()=>db.query('select * from planzo_private.itinerary_drafts'),/permission denied/);
+ await no('Private evaluator invocation denied',()=>db.query('select planzo_private.evaluate_itinerary($1,$2,$3)',[trip,window,'{}']),/permission denied/);
+ await actor(a);await no('Forged actor and client prices rejected',()=>mutate('prepare',{window_id:window,user_id:b,price:0}),/Unsupported request field/);
+ await no('Foreign window rejected',()=>mutate('prepare',{window_id:randomUUID()}),/belonging to this trip/);
+ const prepare={trip_id:trip,request_id:randomUUID(),expected_revision:(await get()).revision,window_id:window};await rpc('prepare',prepare);const first=await get();await rpc('prepare',prepare);assert.equal((await get()).revision,first.revision);pass('Retrying itinerary start is idempotent');
+ assert.equal((await legacyGet()).plan.current,false);assert.equal((await legacyGet()).plan.id,legacyPlan.id);pass('Starting a revised itinerary retains the historical agreed version');
+ let state=await get();assert.equal(state.draft.gaps.length,0);assert.equal(state.draft.blockers.length,0);assert.equal(Object.keys(state.draft.items).length,8);assert.deepEqual(state.draft.own_cost.total,[896500,1138500]);pass('Complete itinerary prices eight items, both nights, fees and contingency exactly');
+ assert(!JSON.stringify(state).includes('PRIVATE ITEM CANARY'));assert(!JSON.stringify(state).includes('ceiling_paise'));assert(!('costs' in state.draft));pass('State contains caller costs and safe blockers only');
+ await actor(b);assert.deepEqual((await get()).draft.own_cost.total,[984500,1248500]);pass('Only the optional attendee pays boat and its contingency');await actor(a);
+ await no('Foreign-slot choice rejected',()=>mutate('set_item',{slot_id:'stay_1',choice:'heritage'}),/does not belong/);
+ await no('Unknown slot rejected',()=>mutate('set_item',{slot_id:'invented',choice:'beach'}),/supported itinerary slot/);
+ await mutate('set_item',{slot_id:'stay_2',choice:null});state=await get();assert.deepEqual(state.draft.gaps.map(g=>g.slot_id),['stay_2']);assert.equal(state.draft.own_cost,null);pass('Missing Night 2 is explicit; incomplete cost stays unavailable');
+ await no('Missing night blocks publication',()=>mutate('publish_plan'),/missing steps/);
+ await mutate('set_item',{slot_id:'return',choice:null});await no('Item vote cannot bypass another missing step',()=>mutate('open_poll',{slot_id:'stay_2',choice_a:'twin_hotel',choice_b:'shared_villa',deadline:'2099-10-21T12:00:00Z'}),/complete itinerary/);
+ await mutate('set_item',{slot_id:'return',choice:'return_allowance'});
+ await mutate('open_poll',{slot_id:'stay_2',choice_a:'twin_hotel',choice_b:'shared_villa',deadline:'2099-10-21T12:00:00Z'});state=await get();let poll=state.poll;assert.equal(poll.slot_id,'stay_2');assert.equal(poll.options.length,2);pass('Missing night supports two feasible complete alternatives');
+ assert.equal(poll.result,null);assert(poll.options.every(o=>!('costs' in o)&&o.own_cost));pass('Open item poll hides totals and other travellers costs');
+ await no('One poll per trip enforced',()=>mutate('open_poll',{slot_id:'activity_1',choice_a:'beach',choice_b:'heritage',deadline:'2099-10-21T12:00:00Z'}),/Resolve or end/);
+ await no('Open poll blocks manual edits',()=>mutate('set_item',{slot_id:'food',choice:'regular_food'}),/Resolve or end/);
+ await no('Open poll blocks publication',()=>mutate('publish_plan'),/Resolve or end/);
+ await no('Early closure with missing ballots rejected',()=>mutate('close_poll',{poll_id:poll.id}),/Wait for every ballot/);
+ await no('Foreign poll rejected',()=>mutate('vote',{poll_id:randomUUID(),choice:'twin_hotel',expected_ballot_revision:0}),/another trip/);
+ await no('Foreign item option cannot be voted',()=>mutate('vote',{poll_id:poll.id,choice:'heritage',expected_ballot_revision:0}),/option from this item/);
+ for(let i=0;i<4;i++){await actor(people[i]);await mutate('vote',{poll_id:poll.id,choice:i<2?'twin_hotel':'shared_villa',expected_ballot_revision:0});}
+ await actor(b);await no('Stale ballot revision rejected',()=>mutate('vote',{poll_id:poll.id,choice:'shared_villa',expected_ballot_revision:0}),/another tab/);
+ await mutate('vote',{poll_id:poll.id,choice:'twin_hotel',expected_ballot_revision:1});await actor(a);await mutate('close_poll',{poll_id:poll.id});state=await get();assert.equal(state.poll.result.winner,'twin_hotel');assert.equal(state.draft.items.stay_2,'twin_hotel');assert.equal(state.stage,'planning');assert.equal(state.draft.gaps.length,0);pass('Tie chooses lower complete core cost, filling only Night 2 without readiness');
+ const clients=[];for(let i=0;i<2;i++){const client=pg.getPgClient();await client.connect();extraClients.push(client);await client.query("select set_config('request.jwt.claim.sub',$1,false)",[a]);await client.query('set role authenticated');clients.push(client);}
+ const onClient=async(client,action,payload)=>(await client.query('select public.planzo_itinerary($1,$2::jsonb) as data',[action,JSON.stringify(payload)])).rows[0].data;
+ const pub={trip_id:trip,request_id:randomUUID(),expected_revision:state.revision};const concurrent=await Promise.all(clients.map((client,i)=>onClient(client,'publish_plan',{...pub,request_id:randomUUID()})));assert.equal(concurrent[0].plan_id,concurrent[1].plan_id);pass('Concurrent item publication on independent connections creates one canonical version');
+ const shared=await rpc('publish_plan',pub);await rpc('publish_plan',pub);let plan=(await legacyGet()).plan;assert.equal(plan.id,shared.plan_id);assert.equal(plan.version,2);assert.equal(plan.current,true);assert.equal(plan.responses.length,0);assert.equal(plan.content.structured_items.length,8);pass('Publication creates one immutable next version with zero inherited approvals');
+ await no('Old version readiness rejected',()=>legacy('respond',{plan_id:legacyPlan.id,status:'ready',acknowledged:true,expected_response_revision:1}),/current plan version/);
+ await no('Forged response actor rejected',()=>legacy('respond',{plan_id:plan.id,user_id:b,status:'ready',acknowledged:true,expected_response_revision:0}),/Unsupported request field/);
+ await no('Agreement requires all responses',()=>legacy('close_round',{plan_id:plan.id}),/Every included traveller/);
+ for(const id of people.slice(0,4)){await actor(id);await legacy('respond',{plan_id:plan.id,status:'ready',acknowledged:true,private_reason:'PRIVATE ITEM RESPONSE',expected_response_revision:0});}
+ await actor(a);await legacy('close_round',{plan_id:plan.id});assert.equal((await get()).stage,'agreed');pass('Every included member explicitly reviews the item plan before agreement');
+ await mutate('set_item',{slot_id:'activity_1',choice:'heritage'});assert.equal((await legacyGet()).plan.current,false);await no('Item edit invalidates prior agreement',()=>legacy('close_round',{plan_id:plan.id}),/current plan version/);
+ await mutate('publish_plan');assert.equal((await legacyGet()).plan.responses.length,0);pass('Revised itinerary requires fresh responses; history retained');
+ await mutate('open_poll',{slot_id:'activity_2',choice_a:'beach',choice_b:'heritage',deadline:'2099-10-21T12:00:00Z'});poll=(await get()).poll;
+ for(let i=0;i<4;i++){await actor(people[i]);await mutate('vote',{poll_id:poll.id,choice:i===0?'different':'abstain',expected_ballot_revision:0});}
+ await actor(a);await mutate('close_poll',{poll_id:poll.id});assert.equal((await get()).poll.status,'unresolved');await no('Different-option result remains unresolved and blocks publication',()=>mutate('publish_plan'),/Resolve or end/);await mutate('cancel_poll',{poll_id:poll.id});
+ await mutate('open_poll',{slot_id:'activity_2',choice_a:'beach',choice_b:'heritage',deadline:'2099-10-21T12:00:00Z'});poll=(await get()).poll;
+ for(const id of people.slice(0,4)){await actor(id);await mutate('vote',{poll_id:poll.id,choice:'abstain',expected_ballot_revision:0});}await actor(a);await mutate('close_poll',{poll_id:poll.id});assert.equal((await get()).poll.result.winner,null);pass('All abstentions leave the item unresolved');await mutate('cancel_poll',{poll_id:poll.id});
+ const editRevision=(await get()).revision;const edits=await Promise.allSettled(clients.map((client,i)=>onClient(client,'set_item',{trip_id:trip,request_id:randomUUID(),expected_revision:editRevision,slot_id:'food',choice:i?'local_thali':'regular_food'})));assert.equal(edits.filter(x=>x.status==='fulfilled').length,1);assert.equal(edits.filter(x=>x.status==='rejected').length,1);pass('Concurrent item edits serialize and reject the stale overwrite');
+ await mutate('open_poll',{slot_id:'activity_2',choice_a:'beach',choice_b:'heritage',deadline:'2099-10-21T12:00:00Z'});poll=(await get()).poll;await mutate('vote',{poll_id:poll.id,choice:'beach',expected_ballot_revision:0});await db.query('reset role');await db.query("update planzo_private.itinerary_polls set deadline=now()-interval '1 minute' where id=$1",[poll.id]);await actor(b);await no('Expired item poll rejects late ballot',()=>mutate('vote',{poll_id:poll.id,choice:'heritage',expected_ballot_revision:0}),/deadline passed/);await actor(a);await mutate('close_poll',{poll_id:poll.id});assert.equal((await get()).poll.result.missing,3);assert.equal((await get()).stage,'planning');pass('Deadline result counts missing ballots separately and never grants readiness');
+ await mutate('open_poll',{slot_id:'activity_1',choice_a:'beach',choice_b:'heritage',deadline:'2099-10-21T12:00:00Z'});poll=(await get()).poll;await save(1,{ceiling_paise:500000});await actor(a);assert.equal((await get()).poll.status,'stale');await no('Private input change makes the item ballot stale',()=>mutate('vote',{poll_id:poll.id,choice:'beach',expected_ballot_revision:0}),/stale/);await mutate('prepare',{window_id:window});
+ assert((await get()).draft.blockers.some(x=>x.includes('private limits')));await no('Whole-trip budget failure blocks item voting',()=>mutate('open_poll',{slot_id:'activity_1',choice_a:'beach',choice_b:'heritage',deadline:'2099-10-21T12:00:00Z'}),/complete itinerary/);
+ await save(1,{ceiling_paise:2000000,windows:[window2]});await actor(a);await mutate('prepare',{window_id:window});assert((await get()).draft.blockers.some(x=>x.includes('window')));pass('Unavailable member blocks the complete travel window');
+ await save(1,{windows:[window],step_free:true});await actor(a);await mutate('prepare',{window_id:window});assert((await get()).draft.blockers.some(x=>x.includes('accessibility')));pass('Unknown accessibility blocks review');
+ await save(1,{step_free:false});await actor(a);await mutate('prepare',{window_id:window});
+ await db.query('reset role');await db.query("update planzo_private.planning_catalogues set content=jsonb_set(content,'{choices,twin_hotel,price,1}','null') where id='goa-items-v1'");await actor(a);assert.equal((await get()).draft.current,false);assert.equal((await get()).draft.own_cost,null);await no('Unknown price cannot silently become zero',()=>mutate('publish_plan'),/stale/);
+ await db.query('reset role');const tables=(await db.query("select count(*)::int n,count(*) filter(where c.relrowsecurity)::int protected from pg_class c join pg_namespace n on c.relnamespace=n.oid where c.relkind='r' and (n.nspname='planzo_private' or c.relname like 'planzo_%')")).rows[0];assert.equal(tables.n,20);assert.equal(tables.protected,20);pass('All 20 tables have RLS');
+ await writeFile(new URL('../docs/backend/ITINERARY_DATABASE_TESTS.json',import.meta.url),JSON.stringify({environment:'Disposable PostgreSQL with local Auth stand-in; not hosted JWT/email sessions',tests:evidence},null,2)+'\n');console.log(evidence.length+' itinerary checks passed.');
+}finally{for(const c of extraClients)await c.end();if(db)await db.end();await pg.stop();}

@@ -1,0 +1,103 @@
+{
+  "date": "2026-10-17T15:12:50.289Z",
+  "fixture": "0afd69f3-3d51-4f83-9974-d6dc429d54e7",
+  "checks": [
+    {
+      "name": "Trip creation is disabled while a date/time edit is open",
+      "result": "pass"
+    },
+    {
+      "name": "Apply commits a precise departure time",
+      "result": "pass"
+    },
+    {
+      "name": "Additional tentative date options can be added and removed",
+      "result": "pass"
+    },
+    {
+      "name": "Editable minimum seven, tentative duration five and exact IST times persist",
+      "result": "pass"
+    },
+    {
+      "name": "Draft deletion requires explicit acknowledgement",
+      "result": "pass"
+    },
+    {
+      "name": "Deleted unused draft moves to a recoverable Deleted drafts list",
+      "result": "pass"
+    },
+    {
+      "name": "Restored draft returns to Active trips",
+      "result": "pass"
+    },
+    {
+      "name": "Archived labelled draft remains readable and offers restoration",
+      "result": "pass"
+    },
+    {
+      "name": "Archived private-input fields are disabled",
+      "result": "pass"
+    },
+    {
+      "name": "Private guide blocks empty city and missing travel allowances",
+      "result": "pass"
+    },
+    {
+      "name": "Private date edits disable Continue until Apply or Cancel",
+      "result": "pass"
+    },
+    {
+      "name": "Private guide rejects travel allowance equal to whole-trip ceiling",
+      "result": "pass"
+    },
+    {
+      "name": "Interests screen contains no priority stars",
+      "result": "pass"
+    },
+    {
+      "name": "Must-haves use a guided answer and require an explicit response",
+      "result": "pass"
+    },
+    {
+      "name": "Summary classifies and exposes editable must-have and flexible shareable requests",
+      "result": "pass"
+    },
+    {
+      "name": "Confirm summary waits for both review acknowledgements",
+      "result": "pass"
+    },
+    {
+      "name": "Unconfirmed answers are discarded after leaving the private guide",
+      "result": "pass"
+    },
+    {
+      "name": "One History link is present in the private guide",
+      "result": "pass"
+    },
+    {
+      "name": "Mobile private guide fits at 385px preview width including scrollbar",
+      "result": "pass"
+    },
+    {
+      "name": "Mobile overview and navigation fit without horizontal overflow",
+      "result": "pass"
+    },
+    {
+      "name": "Archived fixture history remains available through the single History link",
+      "result": "pass"
+    }
+  ],
+  "summary": {
+    "passed": 21,
+    "failed": 0
+  },
+  "mobile": {
+    "previewWidth": 385,
+    "documentClientWidth": 363,
+    "documentScrollWidth": 363
+  },
+  "desktopAfter": {
+    "documentClientWidth": 861,
+    "documentScrollWidth": 861
+  }
+}

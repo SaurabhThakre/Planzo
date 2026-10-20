@@ -1,0 +1,163 @@
+{
+  "date": "2026-10-18",
+  "project": "ewysgpuwvufbklesdhuj",
+  "migration": {
+    "version": "20261018152118",
+    "name": "planning_refinement_and_host_edits"
+  },
+  "canonicalFile": "supabase/migrations/20261018152118_planning_refinement_and_host_edits.sql",
+  "edgeFunctions": [
+    {
+      "name": "planzo-planning",
+      "version": 3,
+      "status": "ACTIVE",
+      "verify_jwt": true,
+      "returnedSourcesMatched": 5
+    },
+    {
+      "name": "planzo-ai-preferences",
+      "version": 6,
+      "status": "ACTIVE",
+      "verify_jwt": true,
+      "returnedSourcesMatched": 4
+    }
+  ],
+  "functions": [
+    {
+      "schema": "planzo_private",
+      "name": "ai_api",
+      "body_md5": "8a2ddead0c513bf05cb822bc9e627c07",
+      "prosecdef": true,
+      "acl": "{postgres=X/postgres,authenticated=X/postgres}",
+      "proconfig": [
+        "search_path=\"\""
+      ]
+    },
+    {
+      "schema": "planzo_private",
+      "name": "api",
+      "body_md5": "32a62e73be8fe17722ab6707137802e1",
+      "prosecdef": true,
+      "acl": "{postgres=X/postgres,authenticated=X/postgres}",
+      "proconfig": [
+        "search_path=\"\""
+      ]
+    },
+    {
+      "schema": "planzo_private",
+      "name": "flow_api",
+      "body_md5": "d7383b8cf0ef48325fe961c24096bbd7",
+      "prosecdef": true,
+      "acl": "{postgres=X/postgres,authenticated=X/postgres}",
+      "proconfig": [
+        "search_path=\"\""
+      ]
+    },
+    {
+      "schema": "planzo_private",
+      "name": "flow_legacy_state",
+      "body_md5": "060dbb1d5b05e839cbf7ebceda33bc17",
+      "prosecdef": false,
+      "acl": "{postgres=X/postgres}",
+      "proconfig": [
+        "search_path=\"\""
+      ]
+    },
+    {
+      "schema": "planzo_private",
+      "name": "invite_preview",
+      "body_md5": "c422f72f34eeec35f59ac96f38f2308a",
+      "prosecdef": true,
+      "acl": "{postgres=X/postgres,anon=X/postgres,authenticated=X/postgres}",
+      "proconfig": [
+        "search_path=\"\""
+      ]
+    },
+    {
+      "schema": "planzo_private",
+      "name": "refine_api",
+      "body_md5": "8d7b0acf95dbb42cf96423a1f1f11114",
+      "prosecdef": true,
+      "acl": "{postgres=X/postgres,authenticated=X/postgres}",
+      "proconfig": [
+        "search_path=\"\""
+      ]
+    },
+    {
+      "schema": "public",
+      "name": "planzo_refine",
+      "body_md5": "609eb90ab991ed6f519499c2c6f9c399",
+      "prosecdef": false,
+      "acl": "{postgres=X/postgres,service_role=X/postgres,authenticated=X/postgres}",
+      "proconfig": [
+        "search_path=\"\""
+      ]
+    }
+  ],
+  "existingDataBefore": {
+    "locks": 5,
+    "plans": 16,
+    "polls": 7,
+    "trips": 22,
+    "ballots": 10,
+    "reviews": 11,
+    "plan_state": "dd6d4f0b2f2efa07d2a78255ff58ed51",
+    "trip_state": "f29184f44d7c7bf51754a94e61085b85",
+    "input_versions": 31
+  },
+  "existingDataAfter": {
+    "locks": 5,
+    "plans": 16,
+    "polls": 7,
+    "trips": 22,
+    "ballots": 10,
+    "reviews": 11,
+    "plan_state": "dd6d4f0b2f2efa07d2a78255ff58ed51",
+    "trip_state": "f29184f44d7c7bf51754a94e61085b85",
+    "input_versions": 31
+  },
+  "existingDataUnchanged": true,
+  "tests": {
+    "appPassed": 88,
+    "isolatedDatabasePassed": 27,
+    "desktopFixturePassed": 8
+  },
+  "advisors": [
+    {
+      "name": "rls_enabled_no_policy",
+      "level": "INFO",
+      "count": 31,
+      "remediation": "https://supabase.com/docs/guides/database/database-linter?lint=0008_rls_enabled_no_policy"
+    },
+    {
+      "name": "auth_leaked_password_protection",
+      "level": "WARN",
+      "count": 1,
+      "remediation": "https://supabase.com/docs/guides/auth/password-security#password-strength-and-leaked-password-protection"
+    }
+  ],
+  "providerCalls": 0,
+  "sitePublished": false,
+  "makeInstallation": "pending",
+  "hostedFunctionBodiesMatched": 7,
+  "signedOutProbes": [
+    {
+      "path": "/rest/v1/rpc/planzo_refine",
+      "status": 401,
+      "mutation": false,
+      "providerCall": false
+    },
+    {
+      "path": "/functions/v1/planzo-planning",
+      "status": 401,
+      "mutation": false,
+      "providerCall": false
+    },
+    {
+      "path": "/functions/v1/planzo-ai-preferences",
+      "status": 401,
+      "mutation": false,
+      "providerCall": false
+    }
+  ]
+}

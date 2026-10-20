@@ -1,0 +1,104 @@
+{
+  "date": "2026-10-19",
+  "environment": "Disposable database; Auth stand-ins and fictional model output; no hosted/provider calls",
+  "passed": 24,
+  "failed": 0,
+  "checks": [
+    {
+      "name": "Forward route change preserves every byte of the prior priced plan",
+      "passed": true
+    },
+    {
+      "name": "Only two dispatchers and the guarded host route-reference adapter change; all permissions and other gates unchanged",
+      "passed": true
+    },
+    {
+      "name": "Provider context contains no raw private answers, origin or ceiling",
+      "passed": true
+    },
+    {
+      "name": "Walking within a neighbourhood is accepted without weakening inter-area transfer checks",
+      "passed": true
+    },
+    {
+      "name": "All seven days retain model-authored independent visits, local meals, six overnight bases and explicit transfers",
+      "passed": true
+    },
+    {
+      "name": "Per-journey costs and ten-percent contingency counted once with no daily transport double charge",
+      "passed": true
+    },
+    {
+      "name": "Rejects missing later days before saving",
+      "passed": true
+    },
+    {
+      "name": "Rejects missing transfer before saving",
+      "passed": true
+    },
+    {
+      "name": "Rejects short transfer before saving",
+      "passed": true
+    },
+    {
+      "name": "Rejects wrong time nightlife before saving",
+      "passed": true
+    },
+    {
+      "name": "Rejects missing destination area before saving",
+      "passed": true
+    },
+    {
+      "name": "Rejects double transport charge before saving",
+      "passed": true
+    },
+    {
+      "name": "Rejects false ending base before saving",
+      "passed": true
+    },
+    {
+      "name": "Rejects missing sleep before saving",
+      "passed": true
+    },
+    {
+      "name": "Rejects invalid null category before saving",
+      "passed": true
+    },
+    {
+      "name": "All route helpers stay private invokers without client execution",
+      "passed": true
+    },
+    {
+      "name": "Private budget pruning removes visits with explicit outcomes while preserving mandatory transfers",
+      "passed": true
+    },
+    {
+      "name": "Impossible route-and-stay budgets fail without saving a broken route",
+      "passed": true
+    },
+    {
+      "name": "Outside actors cannot read a routed itinerary",
+      "passed": true
+    },
+    {
+      "name": "A majority concern can replace a visit with same-area rest and create a fresh priced version",
+      "passed": true
+    },
+    {
+      "name": "Every included exact-version review still gates organiser lock",
+      "passed": true
+    },
+    {
+      "name": "Organiser edits keep exact local meal references, label host price overrides and reset reviews",
+      "passed": true
+    },
+    {
+      "name": "Host cannot delete an essential transfer and teleport the itinerary",
+      "passed": true
+    },
+    {
+      "name": "Original plan and all earlier versions remain unchanged after route votes and host edits",
+      "passed": true
+    }
+  ]
+}

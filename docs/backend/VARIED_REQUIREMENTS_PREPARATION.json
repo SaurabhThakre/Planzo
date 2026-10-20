@@ -1,0 +1,33 @@
+{
+  "date": "2026-10-17T17:49:21.604Z",
+  "status": "local preparation complete; human four-account sign-ins pending",
+  "applicationChanges": 0,
+  "edgeChanges": 0,
+  "databaseChanges": 0,
+  "hostedWrites": 0,
+  "realProviderCalls": 0,
+  "baselineExistingTrips": 18,
+  "baselineFunctions": 45,
+  "sourceChecks": {
+    "SOURCE_HASHES": {
+      "files": 38,
+      "allMatch": true,
+      "manifest_sha256": "a53c92cac962bcaa3a0dbc06936d5588644966fe8a26c5bb8cc1de80f8bdd0a1"
+    },
+    "SUPABASE_SOURCE_HASHES": {
+      "files": 64,
+      "allMatch": true,
+      "manifest_sha256": "0734b56387bbe74042fbee0e4ce5124d3971ceeb588b9c22546af7a1b05e241a"
+    }
+  },
+  "localCheckpointPreflight": {
+    "passed": 26,
+    "failed": 0,
+    "provider": "stubbed"
+  },
+  "diagnostics": {
+    "failed": 2,
+    "notImplemented": 2
+  },
+  "makeInstallation": "new test tools and records not uploaded yet; installed application/backend source remains the previous verified baseline"
+}

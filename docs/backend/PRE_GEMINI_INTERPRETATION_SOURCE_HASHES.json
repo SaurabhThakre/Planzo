@@ -1,0 +1,28 @@
+{
+  "date": "2026-10-16",
+  "make_file": "4tPr5AkQO1g0L1esRvGRjz",
+  "files": {
+    "src/LiveApp.tsx": "f03b03acf0456d39c3343477f86aa9817d55d9d5fd202596483359e56de4c723",
+    "src/backend.ts": "1a8df62559e24cfceb47e4507ebe116697a6a84ccb170e86373ecf5e61282d5f",
+    "src/main.tsx": "e72b8b43ed3084724656ea7a0d34ffe26099a9c9469c3c07cf6dfaeda9503af0",
+    "src/preferences.tsx": "2138b74fb3bbd4ac615db534adfd410bd562dc49e740bf9d101dcf8ed10b3f3d",
+    "src/index.css": "9db13f32fb4adebf0e3c21b9df2c8a18e48e7731377e2ee3beeb4ed3c2eb2de9",
+    "src/entry.tsx": "1296ee46eee380c93d2e05f5ed8bf3d6c0aebcc68ae3354cc80a84610c3449a7",
+    "src/planning.tsx": "23cbec94a4f588af5202cf1268e5fd02d920db646bd77789ffc57e2a3f58e4ab",
+    "package.json": "178cf4f3048281103d8286a747de7c4469e822c3f40ea7f26c252aa24e03e859",
+    "pnpm-lock.yaml": "db89ee5bd3fb677273418ec48694cc67b24f34bcbd22de74acd2352223e87de0",
+    "pnpm-workspace.yaml": "2f5c289dc1c87aae4bf362ba34447b6112efdba0283c9198c16ba0f69573ff21",
+    "src/authReturn.ts": "1a5ad114803c10209c0e19679674a07205c2775592e16aea33d07e71eca1a109",
+    "tests/auth-return.test.mjs": "b6373c21410f3f1261c34efe5d97cc116228855bb507ad71832ffd533076344d",
+    "src/LivePlanning.tsx": "685e8d8ddf7af8b57de2a64172f0e3d38c3ce80a8b3dc15b38cb42efa9afb490",
+    "src/planningBackend.ts": "0233127c8c2cbd01f0763325e47e929f5f4b3e61ba33b461eba8c565141676db",
+    "src/LiveItinerary.tsx": "c5eab9e0cf6ef726fd0e8f28ceb67a42692975393fab288eb9a3701974be2bfe",
+    "src/itineraryBackend.ts": "73eb66e0a73158dc6ae383aebb08f8025c82230f51caebd4b237d9f353a3f97c",
+    "src/bookingBackend.ts": "7ac6c4cb440288def01b4ba0151b42fb562dafef8c52d364c8a3816f7f4b2b18",
+    "src/LiveBookings.tsx": "f49de571331d12040c7dc52149d6a2e3cbb5d4c203e4316e5464b67bfba47286",
+    "src/AiPreferencePreview.tsx": "fa9471b27a677ca63ee7f7c408ed9eed7d42753ecc2ad46cb4c0cad55f202f1f",
+    "src/aiBackend.ts": "d91117ca57b9d9be98eea128964239811673422a8be2dbea21e03ef8a6f69891",
+    "src/aiProtocol.ts": "b1c1034b9912f188d68b4bb4f9bf3b2438f191a8450a9568e108c11ba05fe6f2",
+    "tests/ai-preferences.test.mjs": "e4e21358b85690f718d1574c3fec244c794d2dc31d9fb62727ada7ef6382ca2c"
+  }
+}

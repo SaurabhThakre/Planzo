@@ -1,0 +1,92 @@
+{
+  "date": "2026-10-18",
+  "coverage": "Exact production components with labelled fictional data and non-persisting callbacks. No Auth/API/provider calls or real email; existing sign-in session untouched.",
+  "checks": [
+    {
+      "name": "Duration auto-fills inclusive end; native manual date edits remain editable and survive start edits; three controls align",
+      "passed": true,
+      "measurement": {
+        "aligned": true,
+        "controls": [
+          {
+            "height": 63.995994567871094,
+            "y": 174.85198974609375
+          },
+          {
+            "height": 63.995994567871094,
+            "y": 174.85198974609375
+          },
+          {
+            "height": 63.995994567871094,
+            "y": 174.85198974609375
+          }
+        ],
+        "equalHeight": true,
+        "autoEnd": "24 Nov 2026, 10:00 pm IST\n⌄",
+        "manualEnd": "25 Nov 2026, 10:00 pm IST\n⌄",
+        "afterStartEdit": "25 Nov 2026, 10:00 pm IST\n⌄"
+      },
+      "toolNote": "Browser date fill changed only DOM value; native ArrowUp correctly exercised React change and Apply."
+    },
+    {
+      "name": "Guide uses destination availability without outbound/return duration controls",
+      "passed": true,
+      "measurement": {
+        "buffers": false,
+        "destination": true
+      }
+    },
+    {
+      "name": "Budget step asks only whole-trip ceiling and explains later unallocated allowance",
+      "passed": true,
+      "measurement": {
+        "numberInputs": 1
+      }
+    },
+    {
+      "name": "New destination summary confirms version 3 with zero buffers/reserve and explicit Gemini consent on an ordinary trip name",
+      "passed": true,
+      "measurement": {
+        "fixtureCallback": "TEST · confirm_input · version 3 · buffers 0/0 · reserve 0 · consent true · No data saved."
+      }
+    },
+    {
+      "name": "Master edit fixes group boundaries and updates adjacent steps together",
+      "passed": true,
+      "measurement": {
+        "groupStartLocked": true,
+        "nextStart": "13 Nov 2099, 11:00 am IST\n⌄"
+      }
+    },
+    {
+      "name": "Master editor can add a zero-cost shared activity and split a step; save creates only a fixture draft callback",
+      "passed": true,
+      "measurement": {
+        "status": "TEST · Master draft has 4 steps · first custom · No data saved."
+      }
+    },
+    {
+      "name": "Email confirmation requires a code and exposes explicit verify/resend actions without issuing fixture emails",
+      "passed": true,
+      "measurement": {
+        "emptyCodeDisabled": true,
+        "verify": "TEST · Confirmation callback only. No email sent or account created.",
+        "resend": "TEST · Resend callback only. No email sent."
+      }
+    },
+    {
+      "name": "Finalized journey ends planning, derives remaining allowance and labels booking Phase 2 without booking controls",
+      "passed": true,
+      "measurement": {
+        "allowance": "₹13,955",
+        "bookingButtons": 0,
+        "client": 1265,
+        "finalized": true,
+        "phase2": true,
+        "scroll": 1265
+      }
+    }
+  ],
+  "passed": 8,
+  "failed": 0
+}

@@ -1,0 +1,101 @@
+{
+  "date": "2026-10-17T17:47:23.500Z",
+  "environment": "Disposable local PostgreSQL; latest migration chain; direct deterministic document construction; no hosted writes or provider calls",
+  "cases": [
+    {
+      "name": "Contradictory food must-haves must not both be marked included",
+      "result": "fail",
+      "expected": "Explicit contradiction or at least one disclosed unmet requirement",
+      "observed": "Both incompatible requirements marked included on the same generic entries",
+      "outcomes": [
+        {
+          "ref": "ref_1",
+          "steps": [
+            "step_2",
+            "step_4",
+            "step_6",
+            "step_8",
+            "step_10",
+            "step_12",
+            "step_14",
+            "step_16",
+            "step_18"
+          ],
+          "reason": "scheduled",
+          "status": "included",
+          "title": "Every group meal must be vegetarian-only"
+        },
+        {
+          "ref": "ref_2",
+          "steps": [
+            "step_2",
+            "step_4",
+            "step_6",
+            "step_8",
+            "step_10",
+            "step_12",
+            "step_14",
+            "step_16",
+            "step_18"
+          ],
+          "reason": "scheduled",
+          "status": "included",
+          "title": "Every group meal must be non-vegetarian-only"
+        }
+      ],
+      "provider_calls": 0
+    },
+    {
+      "name": "Contradictory stay must-haves must not both be marked included",
+      "result": "fail",
+      "expected": "Explicit contradiction or at least one disclosed unmet requirement",
+      "observed": "Both incompatible requirements marked included on the same generic entries",
+      "outcomes": [
+        {
+          "ref": "ref_1",
+          "steps": [
+            "step_1",
+            "step_7",
+            "step_13"
+          ],
+          "reason": "scheduled",
+          "status": "included",
+          "title": "All group accommodation must be in North Goa only"
+        },
+        {
+          "ref": "ref_2",
+          "steps": [
+            "step_1",
+            "step_7",
+            "step_13"
+          ],
+          "reason": "scheduled",
+          "status": "included",
+          "title": "All group accommodation must be in South Goa only"
+        }
+      ],
+      "provider_calls": 0
+    }
+  ],
+  "capabilities": [
+    {
+      "name": "Gemini is the source of every detailed itinerary entry",
+      "result": "not_implemented",
+      "evidence": "The Edge handler asks Gemini for sequence and activity alternative pairs. SQL constructs fixed meal/stay/activity slots and fictional reference costs.",
+      "source": "supabase/functions/planzo-planning/handler.ts",
+      "sha256": "62cd23cb6be940a3a7bf3f202555fcf5032946a9cc03d68acd28fb5ac5599518"
+    },
+    {
+      "name": "Entry-level free-text questions or discussion",
+      "result": "not_implemented",
+      "evidence": "Current concerns select a supported replacement and use accept/reject/abstain ballots. This is not a free-text question thread.",
+      "source": "src/privatePlanning.ts",
+      "sha256": "0d03126dc3179ffa99e1a81fdfb88f8c92b86ef62c7862485ecd4f30c761fa73"
+    }
+  ],
+  "summary": {
+    "passed": 0,
+    "failed": 2,
+    "not_implemented": 2
+  }
+}

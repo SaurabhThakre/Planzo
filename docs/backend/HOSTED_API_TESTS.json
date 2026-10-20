@@ -1,0 +1,47 @@
+{
+  "project": "ewysgpuwvufbklesdhuj",
+  "emailAutoconfirm": false,
+  "tests": [
+    {
+      "name": "Email authentication endpoint is reachable",
+      "status": 200,
+      "result": "pass"
+    },
+    {
+      "name": "Signed-out workspace API is denied",
+      "status": 401,
+      "result": "pass"
+    },
+    {
+      "name": "Invalid invitation returns no shared records",
+      "status": 400,
+      "result": "pass"
+    },
+    {
+      "name": "Signed-out trip enumeration is denied",
+      "status": 401,
+      "result": "pass"
+    },
+    {
+      "name": "Fabricated credentials cannot sign in",
+      "status": 400,
+      "result": "pass"
+    },
+    {
+      "name": "Signed-out planning RPC is denied",
+      "status": 401,
+      "result": "pass"
+    },
+    {
+      "name": "Private plan snapshots are not exposed in REST",
+      "status": 404,
+      "result": "pass"
+    },
+    {
+      "name": "Internal group evaluator is not exposed as a public RPC",
+      "status": 404,
+      "result": "pass"
+    }
+  ],
+  "limits": "No real mailbox, verified-user session or cross-device live positive path was tested."
+}

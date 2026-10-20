@@ -1,0 +1,31 @@
+{
+  "date": "2026-10-18",
+  "makeFile": "4tPr5AkQO1g0L1esRvGRjz",
+  "project": "ewysgpuwvufbklesdhuj",
+  "method": "Actual updated Make runtime, not the earlier cached display; public screens only so far",
+  "checks": [
+    {
+      "name": "Updated runtime displays Planzo home header from the new component",
+      "result": "pass"
+    },
+    {
+      "name": "Public home layout and entry controls render after the verified source installation",
+      "result": "pass"
+    },
+    {
+      "name": "Header Sign in opens the ordinary password sign-in screen",
+      "result": "pass"
+    },
+    {
+      "name": "Email-code alternative opens the ordinary email-code screen",
+      "result": "pass"
+    }
+  ],
+  "summary": {
+    "passed": 4,
+    "failed": 0
+  },
+  "pending": "Human sign-in for read-only review of saved test-trip overview, private guide, itinerary, step decisions, booking handoff, journey and History on desktop/mobile",
+  "tripWrites": 0,
+  "realProviderCalls": 0
+}

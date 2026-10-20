@@ -1,0 +1,135 @@
+{
+  "run_id": "dd622477-192d-4649-98df-310173f4bbef",
+  "project": "ewysgpuwvufbklesdhuj",
+  "date": "2026-10-16T03:58:04.302Z",
+  "method": "Ordinary verified Supabase client sessions; publishable key; no administrator credentials",
+  "actors": [
+    {
+      "role": "Organiser A",
+      "user_fingerprint": "9432f19b74c3b059"
+    },
+    {
+      "role": "Member B",
+      "user_fingerprint": "f56cbbb4bbfd2f7c"
+    },
+    {
+      "role": "Other-trip C",
+      "user_fingerprint": "c9d146dab5814329"
+    }
+  ],
+  "checks": [
+    {
+      "name": "A valid invitation preview omits members and private input",
+      "result": "pass",
+      "http_status": 200
+    },
+    {
+      "name": "Repeated joining creates one membership",
+      "result": "pass"
+    },
+    {
+      "name": "A forged owner cannot change another person’s private brief",
+      "result": "pass"
+    },
+    {
+      "name": "Organiser workspace returns only the organiser’s raw input",
+      "result": "pass"
+    },
+    {
+      "name": "Member workspace returns only that member’s raw input",
+      "result": "pass"
+    },
+    {
+      "name": "Other-trip user cannot read the workspace RPC",
+      "result": "pass",
+      "error_code": "42501",
+      "http_status": 403
+    },
+    {
+      "name": "Other-trip user cannot read the planning RPC",
+      "result": "pass",
+      "error_code": "42501",
+      "http_status": 403
+    },
+    {
+      "name": "Row security hides the trip from an outsider’s table query",
+      "result": "pass",
+      "http_status": 200,
+      "rows": 0
+    },
+    {
+      "name": "Member cannot read another person’s profile directly",
+      "result": "pass",
+      "http_status": 200,
+      "rows": 0
+    },
+    {
+      "name": "Private schema is unavailable through the Data API",
+      "result": "pass",
+      "error_code": "PGRST106",
+      "http_status": 406
+    },
+    {
+      "name": "Member cannot promote their membership role directly",
+      "result": "pass",
+      "error_code": "42501",
+      "http_status": 403
+    },
+    {
+      "name": "Forged role and actor fields cannot grant organiser actions",
+      "result": "pass",
+      "error_code": "42501",
+      "http_status": 403
+    },
+    {
+      "name": "Forged actor field is rejected by the response API before writing",
+      "result": "pass",
+      "error_code": "P0001",
+      "http_status": 400,
+      "scope": "Actor whitelist rejection; no valid plan was mutated."
+    },
+    {
+      "name": "Signed-out caller cannot read the workspace RPC",
+      "result": "pass",
+      "error_code": "42501",
+      "http_status": 401
+    },
+    {
+      "name": "Signed-out caller cannot read planning",
+      "result": "pass",
+      "error_code": "42501",
+      "http_status": 401
+    },
+    {
+      "name": "Revoked invitation gives no anonymous preview",
+      "result": "pass",
+      "error_code": "22023",
+      "http_status": 400
+    },
+    {
+      "name": "Revoked invitation cannot add the outsider",
+      "result": "pass",
+      "error_code": "22023",
+      "http_status": 400
+    }
+  ],
+  "fixtures": [
+    {
+      "trip_id": "324a2697-0163-47bc-bd8c-c2c2d3ac990f",
+      "owner": "A",
+      "cleanup": "postponed; history retained"
+    },
+    {
+      "trip_id": "a740425a-c2fc-4a11-a34e-091816905a77",
+      "owner": "C",
+      "cleanup": "postponed; history retained"
+    }
+  ],
+  "credentials_recorded": false,
+  "existing_agreed_trip_mutated": false,
+  "summary": {
+    "passed": 17,
+    "failed": 0,
+    "total": 17
+  }
+}

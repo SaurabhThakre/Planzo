@@ -1,0 +1,58 @@
+{
+  "date": "2026-10-16T04:38:15.646Z",
+  "make_file": "4tPr5AkQO1g0L1esRvGRjz",
+  "project": "ewysgpuwvufbklesdhuj",
+  "fixture": "2d6a875a-51c6-4153-880b-731309a65655",
+  "method": "Observed signed-in organiser UI in existing Make preview; fictional fixture only",
+  "checks": [
+    {
+      "name": "Persisted Night 2 gap visible",
+      "result": "pass"
+    },
+    {
+      "name": "Gap disables sharing for budget review",
+      "result": "pass"
+    },
+    {
+      "name": "Native selection and Save item clear Night 2 gap",
+      "result": "pass"
+    },
+    {
+      "name": "Complete itinerary enables sharing",
+      "result": "pass"
+    },
+    {
+      "name": "Sharing creates Plan v3 with zero of four Ready",
+      "result": "pass"
+    },
+    {
+      "name": "Agreement remains disabled without all Ready",
+      "result": "pass"
+    },
+    {
+      "name": "Leaving and reopening itinerary restores twin_hotel",
+      "result": "pass"
+    },
+    {
+      "name": "Earlier poll is labelled historical",
+      "result": "pass"
+    },
+    {
+      "name": "Itinerary at 390px has document width 390px",
+      "result": "pass"
+    },
+    {
+      "name": "Item voting at 390px has no horizontal overflow",
+      "result": "pass"
+    },
+    {
+      "name": "Review at 390px has no horizontal overflow",
+      "result": "pass"
+    },
+    {
+      "name": "Original 1068px preview width restored",
+      "result": "pass"
+    }
+  ],
+  "limits": "This records preview layout/navigation and saved-state checks, not a new four-account fresh-login test or published-origin verification."
+}

@@ -1,0 +1,201 @@
+{
+  "environment": "Disposable PostgreSQL with local Auth stand-in; not hosted JWT/email sessions",
+  "tests": [
+    {
+      "name": "Complete migration chain applies from an empty database",
+      "result": "pass"
+    },
+    {
+      "name": "Additive migration preserves existing agreed legacy version, costs and all responses",
+      "result": "pass"
+    },
+    {
+      "name": "Signed-out itinerary read denied",
+      "result": "pass"
+    },
+    {
+      "name": "Outside-trip read denied",
+      "result": "pass"
+    },
+    {
+      "name": "Outside-trip mutation denied",
+      "result": "pass"
+    },
+    {
+      "name": "Member cannot manage the itinerary",
+      "result": "pass"
+    },
+    {
+      "name": "Private item table read denied",
+      "result": "pass"
+    },
+    {
+      "name": "Private evaluator invocation denied",
+      "result": "pass"
+    },
+    {
+      "name": "Forged actor and client prices rejected",
+      "result": "pass"
+    },
+    {
+      "name": "Foreign window rejected",
+      "result": "pass"
+    },
+    {
+      "name": "Retrying itinerary start is idempotent",
+      "result": "pass"
+    },
+    {
+      "name": "Starting a revised itinerary retains the historical agreed version",
+      "result": "pass"
+    },
+    {
+      "name": "Complete itinerary prices eight items, both nights, fees and contingency exactly",
+      "result": "pass"
+    },
+    {
+      "name": "State contains caller costs and safe blockers only",
+      "result": "pass"
+    },
+    {
+      "name": "Only the optional attendee pays boat and its contingency",
+      "result": "pass"
+    },
+    {
+      "name": "Foreign-slot choice rejected",
+      "result": "pass"
+    },
+    {
+      "name": "Unknown slot rejected",
+      "result": "pass"
+    },
+    {
+      "name": "Missing Night 2 is explicit; incomplete cost stays unavailable",
+      "result": "pass"
+    },
+    {
+      "name": "Missing night blocks publication",
+      "result": "pass"
+    },
+    {
+      "name": "Item vote cannot bypass another missing step",
+      "result": "pass"
+    },
+    {
+      "name": "Missing night supports two feasible complete alternatives",
+      "result": "pass"
+    },
+    {
+      "name": "Open item poll hides totals and other travellers costs",
+      "result": "pass"
+    },
+    {
+      "name": "One poll per trip enforced",
+      "result": "pass"
+    },
+    {
+      "name": "Open poll blocks manual edits",
+      "result": "pass"
+    },
+    {
+      "name": "Open poll blocks publication",
+      "result": "pass"
+    },
+    {
+      "name": "Early closure with missing ballots rejected",
+      "result": "pass"
+    },
+    {
+      "name": "Foreign poll rejected",
+      "result": "pass"
+    },
+    {
+      "name": "Foreign item option cannot be voted",
+      "result": "pass"
+    },
+    {
+      "name": "Stale ballot revision rejected",
+      "result": "pass"
+    },
+    {
+      "name": "Tie chooses lower complete core cost, filling only Night 2 without readiness",
+      "result": "pass"
+    },
+    {
+      "name": "Concurrent item publication on independent connections creates one canonical version",
+      "result": "pass"
+    },
+    {
+      "name": "Publication creates one immutable next version with zero inherited approvals",
+      "result": "pass"
+    },
+    {
+      "name": "Old version readiness rejected",
+      "result": "pass"
+    },
+    {
+      "name": "Forged response actor rejected",
+      "result": "pass"
+    },
+    {
+      "name": "Agreement requires all responses",
+      "result": "pass"
+    },
+    {
+      "name": "Every included member explicitly reviews the item plan before agreement",
+      "result": "pass"
+    },
+    {
+      "name": "Item edit invalidates prior agreement",
+      "result": "pass"
+    },
+    {
+      "name": "Revised itinerary requires fresh responses; history retained",
+      "result": "pass"
+    },
+    {
+      "name": "Different-option result remains unresolved and blocks publication",
+      "result": "pass"
+    },
+    {
+      "name": "All abstentions leave the item unresolved",
+      "result": "pass"
+    },
+    {
+      "name": "Concurrent item edits serialize and reject the stale overwrite",
+      "result": "pass"
+    },
+    {
+      "name": "Expired item poll rejects late ballot",
+      "result": "pass"
+    },
+    {
+      "name": "Deadline result counts missing ballots separately and never grants readiness",
+      "result": "pass"
+    },
+    {
+      "name": "Private input change makes the item ballot stale",
+      "result": "pass"
+    },
+    {
+      "name": "Whole-trip budget failure blocks item voting",
+      "result": "pass"
+    },
+    {
+      "name": "Unavailable member blocks the complete travel window",
+      "result": "pass"
+    },
+    {
+      "name": "Unknown accessibility blocks review",
+      "result": "pass"
+    },
+    {
+      "name": "Unknown price cannot silently become zero",
+      "result": "pass"
+    },
+    {
+      "name": "All 20 tables have RLS",
+      "result": "pass"
+    }
+  ]
+}

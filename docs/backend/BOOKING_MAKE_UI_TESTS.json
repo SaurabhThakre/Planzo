@@ -1,0 +1,98 @@
+{
+  "date": "2026-10-16",
+  "make_file": "4tPr5AkQO1g0L1esRvGRjz",
+  "fixture": "14314506-10fe-4fd7-bec8-d6e393fd1807",
+  "method": "Observed ordinary organiser Make UI interactions; no browser auth/session storage inspection",
+  "checks": [
+    {
+      "name": "Overview shows four earned milestones and pending booking handoff for fresh Plan v2",
+      "result": "pass"
+    },
+    {
+      "name": "Booking handoff restores four shared tasks plus only the organiser's two personal tasks",
+      "result": "pass"
+    },
+    {
+      "name": "Organiser saves the included shared owner and generic Booking.com handoff method",
+      "result": "pass"
+    },
+    {
+      "name": "Native keyboard date/time entry saves a future due time and displays it in IST",
+      "result": "pass"
+    },
+    {
+      "name": "Leaving the handoff for Overview and returning restores owner, due time and provider",
+      "result": "pass"
+    },
+    {
+      "name": "Activating the provider link leaves the task pending; refresh preserves pending status",
+      "result": "pass"
+    },
+    {
+      "name": "Booking reported status cannot be saved before the owner acknowledgement",
+      "result": "pass"
+    },
+    {
+      "name": "Acknowledged fixture report saves with self-reported label, timestamp and exact version",
+      "result": "pass"
+    },
+    {
+      "name": "Earlier Plan v1 reports remain explicitly labelled Historical context",
+      "result": "pass"
+    },
+    {
+      "name": "Reassigning a task labels the earlier report as from an older task revision and leaves current status pending",
+      "result": "pass"
+    },
+    {
+      "name": "Former owner's report controls disappear while organiser assignment remains available",
+      "result": "pass"
+    },
+    {
+      "name": "Phone preview has no horizontal overflow, including expanded report history",
+      "result": "pass"
+    },
+    {
+      "name": "Desktop width setting is restored to 1068 after the phone check",
+      "result": "pass"
+    },
+    {
+      "name": "Review still shows four Ready responses and current agreement after booking-only changes",
+      "result": "pass"
+    },
+    {
+      "name": "Ordinary organiser postpones only the exact labelled fixture",
+      "result": "pass"
+    },
+    {
+      "name": "Postponed handoff shows historical tasks, disabled updates and no applicable booking milestone",
+      "result": "pass"
+    }
+  ],
+  "passed": 16,
+  "failed": 0,
+  "phone": {
+    "make_width_setting": 390,
+    "observed_inner_width": 389,
+    "document_client_width": 367,
+    "document_scroll_width": 367,
+    "horizontal_overflow": false
+  },
+  "desktop": {
+    "make_width_setting": 1068,
+    "observed_inner_width": 1068,
+    "document_client_width": 1034,
+    "document_scroll_width": 1034,
+    "horizontal_overflow": false
+  },
+  "screenshots": [
+    "booking-mobile.jpg",
+    "booking-postponed-desktop.jpg"
+  ],
+  "limits": [
+    "Provider link activation was observed and pending state restored; the provider destination page did not appear as a separate tracked browser tab, so provider-page loading is not claimed verified.",
+    "A separate preview origin required its own sign-in; no second authenticated UI context was obtained. Hosted stale-request timeout remains inconclusive. Local independent-connection stale/concurrent checks passed.",
+    "Native datetime-local programmatic fill changed DOM without committing React state in this automation. Native keyboard segment entry was used and the saved IST due time was verified. No product date-control defect was inferred.",
+    "No full sign-out/fresh-login restoration or immediate JWT invalidation was asserted."
+  ]
+}

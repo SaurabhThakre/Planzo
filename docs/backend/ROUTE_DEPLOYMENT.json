@@ -1,0 +1,125 @@
+{
+  "date": "2026-10-20",
+  "project": "ewysgpuwvufbklesdhuj",
+  "makeFile": "4tPr5AkQO1g0L1esRvGRjz",
+  "migrations": [
+    {
+      "version": "20261019140130",
+      "name": "routed_planning",
+      "prepared": "20261019135049"
+    },
+    {
+      "version": "20261019141707",
+      "name": "route_mobility_contract",
+      "prepared": "20261019141402"
+    },
+    {
+      "version": "20261019142245",
+      "name": "route_transfer_timing",
+      "prepared": "20261019142108"
+    }
+  ],
+  "appliedOnce": true,
+  "functions": [
+    {
+      "acl": "{postgres=X/postgres}",
+      "name": "flow_document",
+      "config": [
+        "search_path=\"\""
+      ],
+      "body_md5": "9b79bc8bccd293dc32bdd9df65a11047",
+      "volatility": "s",
+      "security_definer": false
+    },
+    {
+      "acl": "{postgres=X/postgres}",
+      "name": "flow_reconcile_document",
+      "config": [
+        "search_path=\"\""
+      ],
+      "body_md5": "3ea98d8212f2be4813ee89c4de1a5fab",
+      "volatility": "i",
+      "security_definer": false
+    },
+    {
+      "acl": "{postgres=X/postgres,authenticated=X/postgres}",
+      "name": "refine_api",
+      "config": [
+        "search_path=\"\""
+      ],
+      "body_md5": "349e5b4f34610e6d8ec69236c506cebb",
+      "volatility": "v",
+      "security_definer": true
+    },
+    {
+      "acl": "{postgres=X/postgres}",
+      "name": "route_document",
+      "config": [
+        "search_path=\"\""
+      ],
+      "body_md5": "02cffd15760a81b0d7f81e34b48fc4ce",
+      "volatility": "s",
+      "security_definer": false
+    },
+    {
+      "acl": "{postgres=X/postgres}",
+      "name": "route_minutes",
+      "config": [
+        "search_path=\"\""
+      ],
+      "body_md5": "f5ce5b3293cdb170664ccc53f4004b17",
+      "volatility": "i",
+      "security_definer": false
+    },
+    {
+      "acl": "{postgres=X/postgres}",
+      "name": "route_reconcile_document",
+      "config": [
+        "search_path=\"\""
+      ],
+      "body_md5": "4e3fff50e02bb82290a354077faeafbc",
+      "volatility": "i",
+      "security_definer": false
+    }
+  ],
+  "edge": {
+    "version": 14,
+    "status": "ACTIVE",
+    "verify_jwt": true,
+    "returnedSourcesMatched": 6
+  },
+  "existingDataUnchanged": true,
+  "baseline": {
+    "trips": 28,
+    "plans": 27,
+    "inputs": 40,
+    "locks": 11,
+    "reviews": 17,
+    "polls": 8,
+    "ballots": 11,
+    "trip_hash": "134d1c617f08cc1b29b2490d831aa333",
+    "plan_hash": "b32f0e7d6abb908f79960ba23d61933f",
+    "input_hash": "55fe67edf68db20acd6ddfa1d4586157"
+  },
+  "afterExcludingOnlyNewFixture": {
+    "trips": 28,
+    "plans": 27,
+    "inputs": 40,
+    "locks": 11,
+    "reviews": 17,
+    "polls": 8,
+    "ballots": 11,
+    "trip_hash": "134d1c617f08cc1b29b2490d831aa333",
+    "plan_hash": "b32f0e7d6abb908f79960ba23d61933f",
+    "input_hash": "55fe67edf68db20acd6ddfa1d4586157",
+    "fixture_admissions": 7,
+    "fixture_used_admissions": 0,
+    "fixture_plans": 0
+  },
+  "securityAdvisors": {
+    "INFO:rls_enabled_no_policy": 1,
+    "WARN:auth_leaked_password_protection": 1
+  },
+  "liveQualityStatus": "Not validated: six observed model drafts rejected, no fixture plan saved",
+  "continuationSQLChanges": 0
+}

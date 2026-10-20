@@ -1,0 +1,71 @@
+{
+  "date": "2026-10-16T08:17:03.835Z",
+  "makeFile": "4tPr5AkQO1g0L1esRvGRjz",
+  "fixture": "TEST · AI preference check 2026-10-16",
+  "actors": "Existing verified organiser account only; no new invitation",
+  "summary": {
+    "passed": 12,
+    "failed": 0
+  },
+  "providerRequests": {
+    "admitted": 4,
+    "successfulPreviews": 3,
+    "rejectedBeforeCorrection": 1,
+    "automaticRetries": 0
+  },
+  "qualityObservations": {
+    "unsupportedFactsObserved": 0,
+    "omittedHardFieldsObserved": 1,
+    "detail": "The final otherwise valid preview omitted the explicitly requested vegetarian field. Existing manual checkbox stayed checked; no field was overwritten. Human review is required. Three examples do not establish reliability or task improvement."
+  },
+  "checks": [
+    {
+      "name": "Separate Google consent required despite saved text and earlier OpenAI consent",
+      "result": "pass"
+    },
+    {
+      "name": "Provider rejection preserves fictional text and empty structured fields",
+      "result": "pass"
+    },
+    {
+      "name": "Live Gemini structured extraction returns evidenced suggestions with no automatic form change or selection",
+      "result": "pass"
+    },
+    {
+      "name": "Only selected fields apply; unselected date stays empty and final review/AI consent are not inferred",
+      "result": "pass"
+    },
+    {
+      "name": "Applying a suggestion does not save or confirm; earlier saved draft restores after leaving the form",
+      "result": "pass"
+    },
+    {
+      "name": "Editing text resets separate consent and removes earlier suggestions",
+      "result": "pass"
+    },
+    {
+      "name": "Conflicting amounts and weekday-only dates remain unresolved in live model preview",
+      "result": "pass"
+    },
+    {
+      "name": "Rule-override attempt remains unsupported and cannot mark readiness or agreement",
+      "result": "pass"
+    },
+    {
+      "name": "Final deployed/source-matched preview renders valid section markup with no fresh console errors",
+      "result": "pass"
+    },
+    {
+      "name": "Distinct fictional ceiling applies only after selection and remains an unconfirmed draft",
+      "result": "pass"
+    },
+    {
+      "name": "Saved fictional draft restores with new ceiling/text, remains unconfirmed and requires fresh AI consent",
+      "result": "pass"
+    },
+    {
+      "name": "Completed labelled fixture postponed through ordinary organiser UI; no plan or readiness created",
+      "result": "pass"
+    }
+  ]
+}

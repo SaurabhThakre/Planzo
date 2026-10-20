@@ -1,0 +1,162 @@
+{
+  "date": "2026-10-19",
+  "makeFile": "4tPr5AkQO1g0L1esRvGRjz",
+  "project": "ewysgpuwvufbklesdhuj",
+  "fixture": "47273221-88c6-486f-976d-bc24669feb75",
+  "label": "TEST · Gemini pricing 2026-10-19",
+  "edge": {
+    "version": 8,
+    "status": "ACTIVE",
+    "verify_jwt": true,
+    "returnedSourcesMatched": 5
+  },
+  "providerCalls": 1,
+  "automaticRetries": 0,
+  "checks": [
+    {
+      "name": "New labelled three-day, one-person fictional trip and four reviewed activity/activity/stay/food requests confirmed with consent",
+      "passed": true
+    },
+    {
+      "name": "One Gemini pricing request produced and saved version 1",
+      "passed": true
+    },
+    {
+      "name": "Paid parasailing has INR800–1500 range with seasonal inclusions",
+      "passed": true
+    },
+    {
+      "name": "Independent Fontainhas walk has explicit INR0 self-guided assumption",
+      "passed": true
+    },
+    {
+      "name": "Nine meal blocks use INR400–1200 per meal; two nights use INR800–2000 per night",
+      "passed": true
+    },
+    {
+      "name": "Final partial evening is free time rather than a third charged night",
+      "passed": true
+    },
+    {
+      "name": "Local travel INR300–1000 per day times three and other fees INR0–200 disclosed",
+      "passed": true
+    },
+    {
+      "name": "INR6900–19500 subtotal plus ten percent equals INR7590–21450 per person",
+      "passed": true
+    },
+    {
+      "name": "Private fictional ceiling INR25000 minus upper estimate INR21450 equals INR3550 unallocated",
+      "passed": true
+    },
+    {
+      "name": "Exact-version personal review saved then organiser lock succeeds",
+      "passed": true
+    },
+    {
+      "name": "History readback displays original ranges and assumptions",
+      "passed": true
+    },
+    {
+      "name": "Final journey displays shared range, per-step estimates and Phase 2 booking boundary",
+      "passed": true
+    },
+    {
+      "name": "All 25 pre-existing trips and full-row trip/input/plan hashes and decision counts preserved",
+      "passed": true
+    }
+  ],
+  "fixtureMetadata": {
+    "id": "847361c5-8b05-4101-9be0-ca297eddfef9",
+    "version": 1,
+    "pricing_version": "1",
+    "low_paise": "759000",
+    "high_paise": "2145000",
+    "pricing": {
+      "days": 3,
+      "fees": {
+        "source": "gemini",
+        "low_paise": 0,
+        "high_paise": 20000,
+        "assumptions": "Nominal miscellaneous local entry or tourism fees for the trip."
+      },
+      "meal": {
+        "source": "gemini",
+        "low_paise": 40000,
+        "high_paise": 120000,
+        "assumptions": "Standard fallback per person per meal for casual dining."
+      },
+      "stay": {
+        "source": "gemini",
+        "low_paise": 80000,
+        "high_paise": 200000,
+        "assumptions": "Standard fallback per person per night for hostel accommodation."
+      },
+      "model": "gemini-3.5-flash-lite",
+      "currency": "INR",
+      "estimated_at": "2026-10-19T04:57:40.40188+00:00",
+      "local_travel": {
+        "source": "gemini",
+        "low_paise": 30000,
+        "high_paise": 100000,
+        "assumptions": "Per person per destination day for local scooter rental or auto-rickshaws."
+      }
+    },
+    "nights": 2,
+    "meals": 9,
+    "activities": [
+      {
+        "kind": "activity",
+        "estimate": {
+          "source": "gemini",
+          "low_paise": 80000,
+          "high_paise": 150000,
+          "assumptions": "Per person per visit, includes safety gear and boat ride. Peak season November rates."
+        }
+      },
+      {
+        "kind": "activity",
+        "estimate": {
+          "source": "gemini",
+          "low_paise": 0,
+          "high_paise": 0,
+          "assumptions": "Free self-guided walking tour of public streets and architectural sights."
+        }
+      }
+    ],
+    "admissions": 1,
+    "used_admissions": 1,
+    "reviews": 1,
+    "locks": 1
+  },
+  "existingDataUnchanged": true,
+  "existingDataAfter": {
+    "trips": 25,
+    "plans": 24,
+    "inputs": 36,
+    "locks": 10,
+    "reviews": 16,
+    "polls": 8,
+    "ballots": 11,
+    "trip_hash": "e507e90bc578140d3147cc321855db68",
+    "plan_hash": "fd3a2fc400f71b5c6d99d92fcd749ff6",
+    "input_hash": "b6192394b343f0340e799101a50394e4"
+  },
+  "localValidation": {
+    "testsPassed": 106,
+    "testsFailed": 0,
+    "typecheck": true,
+    "build": true,
+    "isolatedDatabaseChecks": 24
+  },
+  "validationExecutedInMake": false,
+  "makeSourceVerification": "PRICING_MAKE_SOURCE_VERIFICATION.json",
+  "evidence": "PRICING_LIVE_DESKTOP.jpg",
+  "limits": [
+    "Unverified general-knowledge Gemini estimates, not live or search-grounded prices",
+    "Server still allocates fixed time blocks; not a fully model-authored timetable",
+    "Arrival/return transport and real booking prices remain Phase 2",
+    "Existing plans retain original prices; new generation required to adopt estimates",
+    "Host override and multi-account pricing/vote cases verified locally, not repeated live"
+  ]
+}

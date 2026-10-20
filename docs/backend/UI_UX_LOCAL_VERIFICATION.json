@@ -1,0 +1,84 @@
+{
+  "date": "2026-10-18",
+  "makeFile": "4tPr5AkQO1g0L1esRvGRjz",
+  "project": "ewysgpuwvufbklesdhuj",
+  "method": "Manual DOM measurements and screenshots in local browser. Pure labelled fixtures for signed-in header/setup/cards; real signed-out LiveApp for auth screens. No fabricated authenticated hosted checks.",
+  "typecheck": true,
+  "appTests": {
+    "passed": 85,
+    "failed": 0
+  },
+  "productionBuild": true,
+  "checks": [
+    {
+      "name": "Desktop header: logo, long profile and sign-out share centre line",
+      "result": "pass"
+    },
+    {
+      "name": "Long profile name truncates inside chip without displacing sign-out",
+      "result": "pass"
+    },
+    {
+      "name": "375px phone layout: client width and scroll width both360",
+      "result": "pass"
+    },
+    {
+      "name": "320px narrow layout: fixed old body minimum; client/scroll both305",
+      "result": "pass"
+    },
+    {
+      "name": "768px tablet layout: client/scroll both753",
+      "result": "pass"
+    },
+    {
+      "name": "500px intermediate layout: client/scroll both485",
+      "result": "pass"
+    },
+    {
+      "name": "Mobile trip navigation fits as labelled two-column controls",
+      "result": "pass"
+    },
+    {
+      "name": "Mobile trip actions and long trip name stay within card",
+      "result": "pass"
+    },
+    {
+      "name": "Date picker exposes expanded state and focuses its date field",
+      "result": "pass"
+    },
+    {
+      "name": "Apply changes departure summary to07:30 without saving a trip",
+      "result": "pass"
+    },
+    {
+      "name": "Apply closes editor and returns focus to Choose Departure1",
+      "result": "pass"
+    },
+    {
+      "name": "Create trip remains disabled while date editor is open",
+      "result": "pass"
+    },
+    {
+      "name": "Real email-code screen at375px: client/scroll both360; no code requested",
+      "result": "pass"
+    },
+    {
+      "name": "Desktop sign-in controls have at least44px target height",
+      "result": "pass"
+    }
+  ],
+  "sourceScope": {
+    "changedExisting": [
+      "src/LiveApp.tsx",
+      "src/index.css",
+      "src/DateTimeField.tsx",
+      "src/LivePrivatePlanning.tsx"
+    ],
+    "added": "src/AppHeader.tsx",
+    "applicationHashes": 39,
+    "previousBackendHashesUnchanged": 64
+  },
+  "limitations": "Final Make installation and authenticated read-only screen review pending. Prior semantic contradiction and full-Gemini-planner gaps remain unchanged.",
+  "tripWrites": 0,
+  "realProviderCalls": 0
+}

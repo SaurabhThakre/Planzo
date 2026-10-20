@@ -1,0 +1,12 @@
+{
+  "makeFile": "4tPr5AkQO1g0L1esRvGRjz",
+  "project": "ewysgpuwvufbklesdhuj",
+  "recordsMatched": 6,
+  "beforeGuardsMatched": 4,
+  "applicationHashesMatched": 40,
+  "backendHashesMatched": 64,
+  "fixtureHashesMatched": 2,
+  "runtimeSourceChanged": false,
+  "liveChecksFromReport": 3,
+  "unexpectedPaths": []
+}

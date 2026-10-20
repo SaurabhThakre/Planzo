@@ -1,0 +1,377 @@
+{
+  "date": "2026-10-17T17:43:15.275Z",
+  "environment": "Disposable local PostgreSQL with local Auth stand-ins and stubbed AI; PostgREST exception envelope parsed by the local adapter",
+  "changedFunctions": [
+    "planzo_flow(text,jsonb)",
+    "planzo_journey(text,jsonb)"
+  ],
+  "unchangedFunctions": 43,
+  "grantsAndSecurityConfigUnchanged": true,
+  "httpMappings": [],
+  "report": {
+    "run_id": "a988a006-0800-40e9-9389-8ab7d85b9057",
+    "date": "2026-10-17T17:43:14.595Z",
+    "project": "ewysgpuwvufbklesdhuj",
+    "method": "Four ordinary verified accounts; new fictional fixture; one bounded real Gemini request; checkpoint continuation without exporting sessions",
+    "checks": [
+      {
+        "name": "Correct four verified actors are used without exporting credentials",
+        "result": "pass"
+      },
+      {
+        "name": "New four-person fixture preserves all previously saved trips",
+        "result": "pass"
+      },
+      {
+        "name": "Four different reviewed request sets and private limits are confirmed",
+        "result": "pass"
+      },
+      {
+        "name": "Common availability uses the latest personal arrival and earliest return",
+        "result": "pass"
+      },
+      {
+        "name": "Other members cannot read another person’s origin, ceilings or private reasons",
+        "result": "pass"
+      },
+      {
+        "name": "One actual Gemini request uses the distinct shared requests",
+        "result": "pass"
+      },
+      {
+        "name": "Provider-created alternatives are resolved using ordinary ballots",
+        "result": "pass"
+      },
+      {
+        "name": "Every traveller receives outcomes for their own distinct must-haves",
+        "result": "pass"
+      },
+      {
+        "name": "Compatible hard activities all fit without silent exclusion",
+        "result": "pass"
+      },
+      {
+        "name": "An unverified access condition is disclosed and cannot be accepted silently",
+        "result": "pass",
+        "error_code": "P0001",
+        "http_status": 400
+      },
+      {
+        "name": "The common schedule contains activities, meals, stays and rest with no gaps",
+        "result": "pass"
+      },
+      {
+        "name": "A saved personal review cannot permit early organiser lock",
+        "result": "pass",
+        "error_code": "P0001",
+        "http_status": 400
+      },
+      {
+        "name": "Activity, meal, stay and rest concerns can be open simultaneously",
+        "result": "pass"
+      },
+      {
+        "name": "A second unresolved concern on the same entry is rejected",
+        "result": "pass",
+        "error_code": "P0001",
+        "http_status": 400
+      },
+      {
+        "name": "Missing ballots and simultaneous concerns block closing, review and lock",
+        "result": "pass",
+        "error_code": "P0001",
+        "http_status": 400
+      },
+      {
+        "name": "All four entry types accept independent ordinary-account ballots",
+        "result": "pass"
+      },
+      {
+        "name": "A two-two must-have concern keeps the entry and still requires its author’s review",
+        "result": "pass"
+      },
+      {
+        "name": "A rejected stay proposal leaves the stay entry unchanged",
+        "result": "pass"
+      },
+      {
+        "name": "Four abstentions do not approve a rest-entry change",
+        "result": "pass"
+      },
+      {
+        "name": "A three-one activity majority changes only its step and clears previous reviews",
+        "result": "pass"
+      },
+      {
+        "name": "A displaced must-have is disclosed specifically to the affected traveller",
+        "result": "pass"
+      },
+      {
+        "name": "Only the must-have concern author can resolve their private review",
+        "result": "pass"
+      },
+      {
+        "name": "The affected traveller cannot approve an excluded must-have without acknowledgement",
+        "result": "pass",
+        "error_code": "P0001",
+        "http_status": 400
+      },
+      {
+        "name": "All four travellers review the current version after disclosed exclusions",
+        "result": "pass"
+      },
+      {
+        "name": "The organiser alone locks the resolved exact version",
+        "result": "pass"
+      },
+      {
+        "name": "Locked entries reject new concerns and earlier itinerary history remains intact",
+        "result": "pass"
+      }
+    ],
+    "failed_attempts": [],
+    "fixtures": [
+      {
+        "trip_id": "b9145b2f-898d-49d0-bd2b-34c7ddef2636",
+        "label": "TEST · AI varied requirements a988a006",
+        "purpose": "Distinct must-haves and simultaneous concerns",
+        "final_state": "agreed; all four reviewed; no booking handoff or reservations created"
+      }
+    ],
+    "actors": [
+      {
+        "role": "TEST 0",
+        "user_fingerprint": "028f2d22d7fb2c3c"
+      },
+      {
+        "role": "TEST 1",
+        "user_fingerprint": "0274e8a96dee33e1"
+      },
+      {
+        "role": "TEST 2",
+        "user_fingerprint": "657a2d198b42954b"
+      },
+      {
+        "role": "TEST 3",
+        "user_fingerprint": "426ec4094d57e969"
+      }
+    ],
+    "ai_requests": 1,
+    "phase": "complete",
+    "next_check": 26,
+    "observations": {
+      "reviewed_requests": [
+        {
+          "role": "TEST 0",
+          "requests": [
+            {
+              "title": "Scuba diving",
+              "kind": "activity",
+              "priority": "hard"
+            },
+            {
+              "title": "Non-vegetarian meal options available",
+              "kind": "food",
+              "priority": "hard"
+            },
+            {
+              "title": "Sailing",
+              "kind": "activity",
+              "priority": "soft"
+            }
+          ]
+        },
+        {
+          "role": "TEST 1",
+          "requests": [
+            {
+              "title": "Surfing",
+              "kind": "activity",
+              "priority": "hard"
+            },
+            {
+              "title": "Vegetarian meal options available",
+              "kind": "food",
+              "priority": "hard"
+            }
+          ]
+        },
+        {
+          "role": "TEST 2",
+          "requests": [
+            {
+              "title": "Beach",
+              "kind": "activity",
+              "priority": "hard"
+            },
+            {
+              "title": "Quiet accommodation",
+              "kind": "stay",
+              "priority": "hard"
+            }
+          ]
+        },
+        {
+          "role": "TEST 3",
+          "requests": [
+            {
+              "title": "Culture",
+              "kind": "activity",
+              "priority": "hard"
+            },
+            {
+              "title": "Step-free access must be verified before booking",
+              "kind": "rule",
+              "priority": "hard"
+            }
+          ]
+        }
+      ],
+      "gemini_role": "Real ordering/conflict response; server supplies fixed timetable blocks and fictional allowances, not a fully free-form detailed Gemini plan",
+      "provider_alternatives": 0,
+      "initial_outcomes": [
+        {
+          "role": "TEST 0",
+          "outcomes": [
+            {
+              "kind": "activity",
+              "steps": [
+                "step_9"
+              ],
+              "title": "Scuba diving",
+              "reason": "scheduled",
+              "status": "included",
+              "priority": "hard"
+            },
+            {
+              "kind": "food",
+              "steps": [
+                "step_2",
+                "step_4",
+                "step_6",
+                "step_8",
+                "step_10",
+                "step_12",
+                "step_14",
+                "step_16",
+                "step_18"
+              ],
+              "title": "Non-vegetarian meal options available",
+              "reason": "scheduled",
+              "status": "included",
+              "priority": "hard"
+            },
+            {
+              "kind": "activity",
+              "steps": [
+                "step_15"
+              ],
+              "title": "Sailing",
+              "reason": "scheduled",
+              "status": "included",
+              "priority": "soft"
+            }
+          ]
+        },
+        {
+          "role": "TEST 1",
+          "outcomes": [
+            {
+              "kind": "activity",
+              "steps": [
+                "step_11"
+              ],
+              "title": "Surfing",
+              "reason": "scheduled",
+              "status": "included",
+              "priority": "hard"
+            },
+            {
+              "kind": "food",
+              "steps": [
+                "step_2",
+                "step_4",
+                "step_6",
+                "step_8",
+                "step_10",
+                "step_12",
+                "step_14",
+                "step_16",
+                "step_18"
+              ],
+              "title": "Vegetarian meal options available",
+              "reason": "scheduled",
+              "status": "included",
+              "priority": "hard"
+            }
+          ]
+        },
+        {
+          "role": "TEST 2",
+          "outcomes": [
+            {
+              "kind": "activity",
+              "steps": [
+                "step_3"
+              ],
+              "title": "Beach",
+              "reason": "scheduled",
+              "status": "included",
+              "priority": "hard"
+            },
+            {
+              "kind": "stay",
+              "steps": [
+                "step_1",
+                "step_7",
+                "step_13"
+              ],
+              "title": "Quiet accommodation",
+              "reason": "scheduled",
+              "status": "included",
+              "priority": "hard"
+            }
+          ]
+        },
+        {
+          "role": "TEST 3",
+          "outcomes": [
+            {
+              "kind": "activity",
+              "steps": [
+                "step_5"
+              ],
+              "title": "Culture",
+              "reason": "scheduled",
+              "status": "included",
+              "priority": "hard"
+            },
+            {
+              "kind": "rule",
+              "steps": [],
+              "title": "Step-free access must be verified before booking",
+              "reason": "unverified",
+              "status": "excluded",
+              "priority": "hard"
+            }
+          ]
+        }
+      ],
+      "displaced_requirement": {
+        "kind": "activity",
+        "steps": [],
+        "title": "Scuba diving",
+        "reason": "group_decision",
+        "status": "excluded",
+        "priority": "hard"
+      },
+      "final_version": 2
+    },
+    "credentials_recorded": false,
+    "summary": {
+      "passed": 26,
+      "failed": 0,
+      "failed_attempts": 0
+    }
+  }
+}

@@ -1,0 +1,13 @@
+minimumReleaseAgeExclude:
+  - '@supabase/auth-js@2.118.0'
+  - '@supabase/functions-js@2.118.0'
+  - '@supabase/postgrest-js@2.118.0'
+  - '@supabase/realtime-js@2.118.0'
+  - '@supabase/storage-js@2.118.0'
+  - '@supabase/supabase-js@2.118.0'
+
+# Security patches for the existing build dependency chains; see docs/PRELAUNCH_REVIEW_2026-10-15.md.
+overrides:
+  postcss@8: 8.5.23
+  nanoid@3: 3.3.18
+  source-map-js@1: 1.2.2

@@ -1,0 +1,53 @@
+{
+  "date": "2026-10-17T15:11:52.354Z",
+  "project": "ewysgpuwvufbklesdhuj",
+  "tableSecurity": [
+    {
+      "schema": "planzo_private",
+      "tables": 31,
+      "rls_enabled": 31,
+      "anon_any_access": 0,
+      "private_authenticated_any_access": 0
+    },
+    {
+      "schema": "public",
+      "tables": 5,
+      "rls_enabled": 5,
+      "anon_any_access": 0,
+      "private_authenticated_any_access": 0
+    }
+  ],
+  "security": [
+    {
+      "name": "rls_enabled_no_policy",
+      "level": "INFO",
+      "count": 1,
+      "remediation": "https://supabase.com/docs/guides/database/database-linter?lint=0008_rls_enabled_no_policy"
+    },
+    {
+      "name": "auth_leaked_password_protection",
+      "level": "WARN",
+      "count": 1,
+      "remediation": "https://supabase.com/docs/guides/auth/password-security#password-strength-and-leaked-password-protection"
+    }
+  ],
+  "performance": [
+    {
+      "name": "unindexed_foreign_keys",
+      "level": "INFO",
+      "count": 1,
+      "remediation": "https://supabase.com/docs/guides/database/database-linter?lint=0001_unindexed_foreign_keys"
+    },
+    {
+      "name": "unused_index",
+      "level": "INFO",
+      "count": 1,
+      "remediation": "https://supabase.com/docs/guides/database/database-linter?lint=0005_unused_index"
+    }
+  ],
+  "notes": [
+    "RLS enabled with no private client policy is intentional default-deny; verified RPCs provide access.",
+    "Leaked-password protection is the previously recorded Auth configuration warning; no Auth setting changed.",
+    "Foreign-key and unused-index notices are advisory; no schema/index change made during verification."
+  ]
+}

@@ -1,0 +1,86 @@
+{
+  "date": "2026-10-16T09:26:58.440Z",
+  "fileKey": "4tPr5AkQO1g0L1esRvGRjz",
+  "project": "ewysgpuwvufbklesdhuj",
+  "sourceCopy": {
+    "attachmentsMatched": 9,
+    "jsonParsed": 5,
+    "canonicalSqlEqual": true,
+    "appHashesMatched": 22,
+    "backendHashesMatched": 32,
+    "typecheck": "passed",
+    "testsPassed": 42,
+    "build": "passed; existing chunk-size advisory",
+    "unexpectedPaths": []
+  },
+  "ui": {
+    "checksPassed": 6,
+    "checks": [
+      "Exact visible and accessible Allow Gemini label",
+      "Consent initially off and preview disabled",
+      "Separate consent enables fictional preview",
+      "Removing consent disables preview",
+      "Associated fictional-data and privacy disclosure",
+      "Visible fictional form text carried over without alteration"
+    ],
+    "newTripName": "TEST · AI Gemini playground",
+    "newTripId": "e6092e37-e176-4d16-8be0-045befad4990",
+    "leftActive": true,
+    "formUnsaved": true,
+    "formUnconfirmed": true,
+    "consentLeftUnchecked": true,
+    "noPreviewClicked": true
+  },
+  "hostedMetadata": [
+    {
+      "id": "a5c044b5-812d-4f2a-8cc7-b0718ce1f767",
+      "stage": "agreed",
+      "revision": 19,
+      "members": 4,
+      "confirmed_briefs": 4,
+      "invites": 3,
+      "versions": 1,
+      "handoffs": 0,
+      "tasks": 0,
+      "reports": 0
+    },
+    {
+      "id": "e6092e37-e176-4d16-8be0-045befad4990",
+      "stage": "collecting",
+      "revision": 1,
+      "members": 1,
+      "confirmed_briefs": 0,
+      "invites": 0,
+      "versions": 0,
+      "handoffs": 0,
+      "tasks": 0,
+      "reports": 0
+    },
+    {
+      "id": "f2512dce-a355-47ef-8a99-4e3a3b6e46d2",
+      "stage": "postponed",
+      "revision": 4,
+      "members": 1,
+      "confirmed_briefs": 0,
+      "invites": 0,
+      "versions": 0,
+      "handoffs": 0,
+      "tasks": 0,
+      "reports": 0
+    }
+  ],
+  "admittedAiAttempts": [
+    {
+      "action": "ai:gemini",
+      "admitted_attempts": 4
+    },
+    {
+      "action": "ai:parse",
+      "admitted_attempts": 1
+    }
+  ],
+  "providerCallsDuringChange": 0,
+  "websitePublished": false,
+  "billingChanged": false,
+  "scope": "Metadata counts only; no raw private briefs, model output, tokens or credentials."
+}

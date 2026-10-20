@@ -1,0 +1,104 @@
+{
+  "date": "2026-10-19",
+  "environment": "Disposable database with Auth stand-ins and stubbed Gemini output; no hosted/provider calls",
+  "passed": 24,
+  "failed": 0,
+  "checks": [
+    {
+      "name": "Forward pricing migration preserves the original locked document byte-for-byte",
+      "passed": true
+    },
+    {
+      "name": "Only two dispatchers change; all existing gate bodies and permissions remain intact",
+      "passed": true
+    },
+    {
+      "name": "New pricing helpers are invoker-only and inaccessible directly to client roles",
+      "passed": true
+    },
+    {
+      "name": "Generation context excludes private city, reasons and ceilings",
+      "passed": true
+    },
+    {
+      "name": "Rejects missing item price without a fixed-price fallback",
+      "passed": true
+    },
+    {
+      "name": "Rejects missing essential without a fixed-price fallback",
+      "passed": true
+    },
+    {
+      "name": "Rejects foreign currency without a fixed-price fallback",
+      "passed": true
+    },
+    {
+      "name": "Rejects reversed bounds without a fixed-price fallback",
+      "passed": true
+    },
+    {
+      "name": "Rejects negative amount without a fixed-price fallback",
+      "passed": true
+    },
+    {
+      "name": "Rejects fractional rupees without a fixed-price fallback",
+      "passed": true
+    },
+    {
+      "name": "Rejects excessive amount without a fixed-price fallback",
+      "passed": true
+    },
+    {
+      "name": "Rejects empty assumptions without a fixed-price fallback",
+      "passed": true
+    },
+    {
+      "name": "Rejects free unknown essentials without a fixed-price fallback",
+      "passed": true
+    },
+    {
+      "name": "Upper estimates exclude unaffordable activities before scheduling; free walks remain possible",
+      "passed": true
+    },
+    {
+      "name": "Saved INR range uses Gemini meals, two nights, local travel, fees and10% contingency exactly once",
+      "passed": true
+    },
+    {
+      "name": "Specific activity prices replace550-rupee placeholders; unpriced rules do not become free promises",
+      "passed": true
+    },
+    {
+      "name": "Outsiders cannot read the priced plan",
+      "passed": true
+    },
+    {
+      "name": "Concern majority recalculates both price totals without repricing or changing the original estimate date",
+      "passed": true
+    },
+    {
+      "name": "A personal concern cannot be acknowledged without the current exact plan",
+      "passed": true
+    },
+    {
+      "name": "Affected-person acknowledgement and exact-version reviews still gate lock",
+      "passed": true
+    },
+    {
+      "name": "Host meal overrides are labelled separately; other model ranges survive and reviews reset",
+      "passed": true
+    },
+    {
+      "name": "Host overrides cannot exceed any included private ceiling",
+      "passed": true
+    },
+    {
+      "name": "New host activities support explicit zero cost and never masquerade as Gemini prices",
+      "passed": true
+    },
+    {
+      "name": "Changed arrangements discard stale host overrides and all original history remains unchanged",
+      "passed": true
+    }
+  ]
+}

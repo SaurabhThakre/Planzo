@@ -1,0 +1,137 @@
+{
+  "date": "2026-10-16T13:41:55.570Z",
+  "makeFile": "4tPr5AkQO1g0L1esRvGRjz",
+  "project": "ewysgpuwvufbklesdhuj",
+  "passed": 22,
+  "failed": 0,
+  "checks": [
+    {
+      "name": "Setup cannot submit an unapplied date/time edit",
+      "result": "pass"
+    },
+    {
+      "name": "Cancel discards the date change",
+      "result": "pass"
+    },
+    {
+      "name": "Apply commits departure/return calendar selections and times",
+      "result": "pass"
+    },
+    {
+      "name": "Editable duration, minimum and changed dates persist after creation",
+      "result": "pass"
+    },
+    {
+      "name": "One central History link is present",
+      "result": "pass"
+    },
+    {
+      "name": "Delete requires explicit confirmation",
+      "result": "pass"
+    },
+    {
+      "name": "Cancel leaves the collecting test trip unchanged",
+      "result": "pass"
+    },
+    {
+      "name": "Deleted draft appears in its recoverable list",
+      "result": "pass"
+    },
+    {
+      "name": "Deleted draft restores to the active list",
+      "result": "pass"
+    },
+    {
+      "name": "Priority-star controls and the nonfunctional live voice preview are removed",
+      "result": "pass"
+    },
+    {
+      "name": "History retains removal/restoration decisions without copying the private draft",
+      "result": "pass"
+    },
+    {
+      "name": "Planning has a page instruction and no repeated decision-history card",
+      "result": "pass"
+    },
+    {
+      "name": "Booking page has instructions and centralised report/progress history",
+      "result": "pass"
+    },
+    {
+      "name": "Used trip offers Archive, not unused-draft deletion",
+      "result": "pass"
+    },
+    {
+      "name": "Archived used trip appears in Archived with recovery",
+      "result": "pass"
+    },
+    {
+      "name": "Archived private draft is retained and read-only",
+      "result": "pass"
+    },
+    {
+      "name": "Restoring retains the private draft and enables manual input",
+      "result": "pass"
+    },
+    {
+      "name": "Setup fits a 390-pixel viewport without horizontal overflow",
+      "result": "pass"
+    },
+    {
+      "name": "Apply/Cancel date editor fits a 390-pixel viewport",
+      "result": "pass"
+    },
+    {
+      "name": "Archived page explains read-only access and offers View saved input",
+      "result": "pass"
+    },
+    {
+      "name": "Restoration returns Home without an invalid-trip alert",
+      "result": "pass"
+    },
+    {
+      "name": "Archive navigation returns Home without an invalid-trip alert",
+      "result": "pass"
+    }
+  ],
+  "fixture": {
+    "name": "TEST · Setup interface 2026-10-16",
+    "id": "a838f4f8-44f7-491f-a1d6-5f4674b27c26",
+    "finalStage": "archived",
+    "finalRevision": 9,
+    "removalKind": "archived",
+    "tentativeDays": 5,
+    "minimumTravellers": 2,
+    "members": 1,
+    "invitations": 0,
+    "ownPrivateDraftRevision": 1,
+    "privateDraftConfirmed": false,
+    "plans": 0,
+    "readyRows": 0,
+    "handoffs": 0
+  },
+  "mobile": {
+    "viewportWidth": 390,
+    "documentClientWidth": 368,
+    "documentScrollWidth": 368,
+    "horizontalOverflow": false,
+    "originalViewportRestored": true
+  },
+  "protectedOriginal": {
+    "id": "a5c044b5-812d-4f2a-8cc7-b0718ce1f767",
+    "stage": "agreed",
+    "revision": 19,
+    "members": 4,
+    "versions": 1,
+    "readyRows": 4,
+    "handoffs": 0,
+    "removalKind": null
+  },
+  "screenshots": [
+    "docs/backend/setup-mobile.png",
+    "docs/backend/setup-final-preview.png"
+  ],
+  "PlanzoProviderCalls": 0,
+  "emailsSent": 0,
+  "websitePublished": false
+}

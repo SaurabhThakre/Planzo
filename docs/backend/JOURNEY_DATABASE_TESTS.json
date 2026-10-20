@@ -1,0 +1,166 @@
+{
+  "date": "2026-10-17T13:10:08.901Z",
+  "environment": "Disposable isolated PostgreSQL; labelled fictional fixtures and Auth stand-ins; no hosted mutations or provider calls",
+  "summary": {
+    "passed": 39,
+    "failed": 0
+  },
+  "checks": [
+    {
+      "name": "Every pre-existing function body and permission is unchanged",
+      "result": "pass"
+    },
+    {
+      "name": "Anonymous RPC denied",
+      "result": "pass"
+    },
+    {
+      "name": "Unverified RPC denied",
+      "result": "pass"
+    },
+    {
+      "name": "Outsider cannot read or prepare",
+      "result": "pass"
+    },
+    {
+      "name": "No handoff before exact-version lock",
+      "result": "pass"
+    },
+    {
+      "name": "Member cannot prepare group handoff",
+      "result": "pass"
+    },
+    {
+      "name": "Locked itinerary produces stay, exact activity, local and two private transport tasks",
+      "result": "pass"
+    },
+    {
+      "name": "Initial ledger exactly reallocates locked estimate plus personal allowance without double counting or odd-paise loss",
+      "result": "pass"
+    },
+    {
+      "name": "Other personal routes, raw requirements, ceilings and private reserves never enter shared state",
+      "result": "pass"
+    },
+    {
+      "name": "Forged actor rejected",
+      "result": "pass"
+    },
+    {
+      "name": "Other person’s private task cannot be read for write",
+      "result": "pass"
+    },
+    {
+      "name": "Only assigned owner records shared quote",
+      "result": "pass"
+    },
+    {
+      "name": "Review blocked by unknown critical prices and unsaved reserve",
+      "result": "pass"
+    },
+    {
+      "name": "Reserve cannot consume protected meal fees contingency",
+      "result": "pass"
+    },
+    {
+      "name": "Known eight-hour provider excursion cannot fit short locked activity",
+      "result": "pass"
+    },
+    {
+      "name": "Stay cannot silently be removed at booking",
+      "result": "pass"
+    },
+    {
+      "name": "Invented source IDs rejected",
+      "result": "pass"
+    },
+    {
+      "name": "Quote acknowledgement required",
+      "result": "pass"
+    },
+    {
+      "name": "Old quote rejected",
+      "result": "pass"
+    },
+    {
+      "name": "Owner assignment outside included roster rejected",
+      "result": "pass"
+    },
+    {
+      "name": "Organiser assigns shared owner and due date with fresh-check reset",
+      "result": "pass"
+    },
+    {
+      "name": "Per-person checked quotes replace stay, both activities and both private legs; reserve is counted once",
+      "result": "pass"
+    },
+    {
+      "name": "Handoff ready only after all included exact-revision private reviews",
+      "result": "pass"
+    },
+    {
+      "name": "Elapsed seven-day unbooked quote expiry removes readiness and restores a pending estimate",
+      "result": "pass"
+    },
+    {
+      "name": "Exact retries return one immutable task revision",
+      "result": "pass"
+    },
+    {
+      "name": "Request identifier cannot be reused with different data",
+      "result": "pass"
+    },
+    {
+      "name": "Material booking change invalidates every previous handoff review",
+      "result": "pass"
+    },
+    {
+      "name": "Stale handoff write rejected",
+      "result": "pass"
+    },
+    {
+      "name": "Concurrent stale writes serialize on the trip lock; exactly one wins",
+      "result": "pass"
+    },
+    {
+      "name": "Over-ceiling personal ledger cannot be approved",
+      "result": "pass"
+    },
+    {
+      "name": "Another member cannot discover the over-ceiling quote or private total",
+      "result": "pass"
+    },
+    {
+      "name": "Task history is immutable",
+      "result": "pass"
+    },
+    {
+      "name": "Private reserves are immutable",
+      "result": "pass"
+    },
+    {
+      "name": "Handoff reviews immutable",
+      "result": "pass"
+    },
+    {
+      "name": "Authenticated direct tables denied",
+      "result": "pass"
+    },
+    {
+      "name": "Internal budget helper denied",
+      "result": "pass"
+    },
+    {
+      "name": "Stale locked itinerary cannot receive booking writes",
+      "result": "pass"
+    },
+    {
+      "name": "Reopened input invalidates current handoff while all prior locked plans, tasks and history survive",
+      "result": "pass"
+    },
+    {
+      "name": "All four additive tables have default-deny RLS and no client table grants",
+      "result": "pass"
+    }
+  ]
+}

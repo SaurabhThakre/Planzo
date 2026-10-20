@@ -1,0 +1,176 @@
+{
+  "date": "2026-10-15",
+  "project": "ewysgpuwvufbklesdhuj",
+  "make_file": "4tPr5AkQO1g0L1esRvGRjz",
+  "applied_migrations": [
+    "20261015170744_planzo_planning_voting_confirmation",
+    "20261015170844_planzo_invitation_membership_index",
+    "20261015171734_planzo_allow_deadline_withdrawal"
+  ],
+  "hosted_structure": {
+    "application_tables": 17,
+    "rls_tables": 17,
+    "private_client_table_grants": 0,
+    "real_members_preserved": 2,
+    "seeded_auth_users": 0,
+    "seeded_plan_versions": 0,
+    "illustrative_catalogue_rows": 1,
+    "public_planning_endpoint": "SECURITY INVOKER; authenticated execute only",
+    "private_evaluator": "no client execute grant",
+    "private_boundary": "verified Auth and protected trip membership; only caller's own costs and notes returned"
+  },
+  "local_tests": {
+    "planning_postgresql": 55,
+    "application_tests": 22,
+    "typecheck": "passed",
+    "production_build": "passed",
+    "identity_postgresql_complete_chain": 26
+  },
+  "security_advisors": {
+    "status": "fulfilled",
+    "value": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"result\":{\"lints\":[{\"name\":\"rls_enabled_no_policy\",\"title\":\"RLS Enabled No Policy\",\"level\":\"INFO\",\"facing\":\"EXTERNAL\",\"categories\":[\"SECURITY\"],\"description\":\"Detects cases where row level security (RLS) has been enabled on a table but no RLS policies have been created.\",\"remediation\":\"https://supabase.com/docs/guides/database/database-linter?lint=0008_rls_enabled_no_policy\",\"count\":12,\"findings\":[{\"detail\":\"Table \\\\`planzo_private.member_brief_drafts\\\\` has RLS enabled, but no policies exist\",\"metadata\":{\"name\":\"member_brief_drafts\",\"type\":\"table\",\"schema\":\"planzo_private\"},\"observed_at\":\"2026-10-15T17:07:55.541Z\"},{\"detail\":\"Table \\\\`planzo_private.member_brief_revisions\\\\` has RLS enabled, but no policies exist\",\"metadata\":{\"name\":\"member_brief_revisions\",\"type\":\"table\",\"schema\":\"planzo_private\"},\"observed_at\":\"2026-10-15T17:07:55.541Z\"},{\"detail\":\"Table \\\\`planzo_private.operation_receipts\\\\` has RLS enabled, but no policies exist\",\"metadata\":{\"name\":\"operation_receipts\",\"type\":\"table\",\"schema\":\"planzo_private\"},\"observed_at\":\"2026-10-15T17:07:55.541Z\"},{\"detail\":\"Table \\\\`planzo_private.plan_costs\\\\` has RLS enabled, but no policies exist\",\"metadata\":{\"name\":\"plan_costs\",\"type\":\"table\",\"schema\":\"planzo_private\"},\"observed_at\":\"2026-10-15T17:07:55.541Z\"},{\"detail\":\"Table \\\\`planzo_private.plan_polls\\\\` has RLS enabled, but no policies exist\",\"metadata\":{\"name\":\"plan_polls\",\"type\":\"table\",\"schema\":\"planzo_private\"},\"observed_at\":\"2026-10-15T17:07:55.541Z\"},{\"detail\":\"Table \\\\`planzo_private.plan_responses\\\\` has RLS enabled, but no policies exist\",\"metadata\":{\"name\":\"plan_responses\",\"type\":\"table\",\"schema\":\"planzo_private\"},\"observed_at\":\"2026-10-15T17:07:55.541Z\"},{\"detail\":\"Table \\\\`planzo_private.plan_versions\\\\` has RLS enabled, but no policies exist\",\"metadata\":{\"name\":\"plan_versions\",\"type\":\"table\",\"schema\":\"planzo_private\"},\"observed_at\":\"2026-10-15T17:07:55.541Z\"},{\"detail\":\"Table \\\\`planzo_private.planning_catalogues\\\\` has RLS enabled, but no policies exist\",\"metadata\":{\"name\":\"planning_catalogues\",\"type\":\"table\",\"schema\":\"planzo_private\"},\"observed_at\":\"2026-10-15T17:07:55.541Z\"},{\"detail\":\"Table \\\\`planzo_private.planning_drafts\\\\` has RLS enabled, but no policies exist\",\"metadata\":{\"name\":\"planning_drafts\",\"type\":\"table\",\"schema\":\"planzo_private\"},\"observed_at\":\"2026-10-15T17:07:55.541Z\"},{\"detail\":\"Table \\\\`planzo_private.planning_events\\\\` has RLS enabled, but no policies exist\",\"metadata\":{\"name\":\"planning_events\",\"type\":\"table\",\"schema\":\"planzo_private\"},\"observed_at\":\"2026-10-15T17:07:55.541Z\"},{\"detail\":\"Table \\\\`planzo_private.poll_ballots\\\\` has RLS enabled, but no policies exist\",\"metadata\":{\"name\":\"poll_ballots\",\"type\":\"table\",\"schema\":\"planzo_private\"},\"observed_at\":\"2026-10-15T17:07:55.541Z\"},{\"detail\":\"Table \\\\`planzo_private.trip_invites\\\\` has RLS enabled, but no policies exist\",\"metadata\":{\"name\":\"trip_invites\",\"type\":\"table\",\"schema\":\"planzo_private\"},\"observed_at\":\"2026-10-15T17:07:55.541Z\"}]},{\"name\":\"auth_leaked_password_protection\",\"title\":\"Leaked Password Protection Disabled\",\"level\":\"WARN\",\"facing\":\"EXTERNAL\",\"categories\":[\"SECURITY\"],\"description\":\"Leaked password protection is currently disabled.\",\"remediation\":\"https://supabase.com/docs/guides/auth/password-security#password-strength-and-leaked-password-protection\",\"count\":1,\"findings\":[{\"detail\":\"Supabase Auth prevents the use of compromised passwords by checking against HaveIBeenPwned.org. Enable this feature to enhance security.\",\"metadata\":{\"type\":\"auth\",\"entity\":\"Auth\"}}]}]}}"
+        }
+      ],
+      "isError": false
+    }
+  },
+  "performance_advisors_after_index": {
+    "status": "fulfilled",
+    "value": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"result\":{\"lints\":[{\"name\":\"unused_index\",\"title\":\"Unused Index\",\"level\":\"INFO\",\"facing\":\"EXTERNAL\",\"categories\":[\"PERFORMANCE\"],\"description\":\"Detects if an index has never been used and may be a candidate for removal.\",\"remediation\":\"https://supabase.com/docs/guides/database/database-linter?lint=0005_unused_index\",\"count\":12,\"findings\":[{\"detail\":\"Index \\\\`planzo_responses_member_idx\\\\` on table \\\\`planzo_private.plan_responses\\\\` has not been used\",\"metadata\":{\"name\":\"plan_responses\",\"type\":\"table\",\"schema\":\"planzo_private\"},\"observed_at\":\"2026-10-15T17:09:19.644Z\"},{\"detail\":\"Index \\\\`planzo_polls_trip_idx\\\\` on table \\\\`planzo_private.plan_polls\\\\` has not been used\",\"metadata\":{\"name\":\"plan_polls\",\"type\":\"table\",\"schema\":\"planzo_private\"},\"observed_at\":\"2026-10-15T17:09:19.644Z\"},{\"detail\":\"Index \\\\`planzo_ballots_member_idx\\\\` on table \\\\`planzo_private.poll_ballots\\\\` has not been used\",\"metadata\":{\"name\":\"poll_ballots\",\"type\":\"table\",\"schema\":\"planzo_private\"},\"observed_at\":\"2026-10-15T17:09:19.644Z\"},{\"detail\":\"Index \\\\`planzo_trips_creator_idx\\\\` on table \\\\`public.planzo_trips\\\\` has not been used\",\"metadata\":{\"name\":\"planzo_trips\",\"type\":\"table\",\"schema\":\"public\"},\"observed_at\":\"2026-10-15T17:09:19.644Z\"},{\"detail\":\"Index \\\\`planzo_invites_creator_idx\\\\` on table \\\\`planzo_private.trip_invites\\\\` has not been used\",\"metadata\":{\"name\":\"trip_invites\",\"type\":\"table\",\"schema\":\"planzo_private\"},\"observed_at\":\"2026-10-15T17:09:19.644Z\"},{\"detail\":\"Index \\\\`planzo_costs_member_idx\\\\` on table \\\\`planzo_private.plan_costs\\\\` has not been used\",\"metadata\":{\"name\":\"plan_costs\",\"type\":\"table\",\"schema\":\"planzo_private\"},\"observed_at\":\"2026-10-15T17:09:19.644Z\"},{\"detail\":\"Index \\\\`planzo_draft_window_idx\\\\` on table \\\\`planzo_private.planning_drafts\\\\` has not been used\",\"metadata\":{\"name\":\"planning_drafts\",\"type\":\"table\",\"schema\":\"planzo_private\"},\"observed_at\":\"2026-10-15T17:09:19.644Z\"},{\"detail\":\"Index \\\\`planzo_version_window_idx\\\\` on table \\\\`planzo_private.plan_versions\\\\` has not been used\",\"metadata\":{\"name\":\"plan_versions\",\"type\":\"table\",\"schema\":\"planzo_private\"},\"observed_at\":\"2026-10-15T17:09:19.644Z\"},{\"detail\":\"Index \\\\`planzo_costs_version_idx\\\\` on table \\\\`planzo_private.plan_costs\\\\` has not been used\",\"metadata\":{\"name\":\"plan_costs\",\"type\":\"table\",\"schema\":\"planzo_private\"},\"observed_at\":\"2026-10-15T17:09:19.644Z\"},{\"detail\":\"Index \\\\`planzo_responses_version_idx\\\\` on table \\\\`planzo_private.plan_responses\\\\` has not been used\",\"metadata\":{\"name\":\"plan_responses\",\"type\":\"table\",\"schema\":\"planzo_private\"},\"observed_at\":\"2026-10-15T17:09:19.644Z\"},{\"detail\":\"Index \\\\`planzo_ballots_poll_idx\\\\` on table \\\\`planzo_private.poll_ballots\\\\` has not been used\",\"metadata\":{\"name\":\"poll_ballots\",\"type\":\"table\",\"schema\":\"planzo_private\"},\"observed_at\":\"2026-10-15T17:09:19.644Z\"},{\"detail\":\"Index \\\\`planzo_invites_membership_idx\\\\` on table \\\\`planzo_private.trip_invites\\\\` has not been used\",\"metadata\":{\"name\":\"trip_invites\",\"type\":\"table\",\"schema\":\"planzo_private\"},\"observed_at\":\"2026-10-15T17:09:19.644Z\"}]}]}}"
+        }
+      ],
+      "isError": false
+    }
+  },
+  "make_install": {
+    "attachments": "5/5 byte-equivalent",
+    "source_manifest": "14/14 hashes matched; no unexpected paths",
+    "typecheck": "passed",
+    "application_tests": "22/22 passed",
+    "production_build": "passed; existing chunk-size advisory",
+    "source_changes": [
+      "src/LiveApp.tsx",
+      "src/LivePlanning.tsx",
+      "src/planningBackend.ts",
+      "src/index.css"
+    ],
+    "manifest_sha256": "14f5f40439945b660ec4ec8b1039a04ec5bc1f4f5d6f15f9b5e3d2499e8be9cf",
+    "followup": {
+      "attachments": "4/4 exact",
+      "source_manifest": "14/14 matched",
+      "typecheck": "passed",
+      "application_tests": "22/22 passed",
+      "production_build": "passed; existing chunk-size advisory",
+      "unexpected_paths": 0
+    },
+    "backend_source_sync": {
+      "attachments": "9/9 exact (8 SQL plaintext copies plus manifest)",
+      "backend_manifest": "11/11 hashes match",
+      "application_manifest": "14/14 hashes match",
+      "mismatches": 0,
+      "unexpected_paths": 0,
+      "execution": "source copies only; no SQL executed"
+    }
+  },
+  "live_four_account_journey": "Completed: four real verified accounts, feasible options, four saved ballots, closed easy 4/common 0, Plan v1, four explicit acknowledged Ready responses, organiser agreement persisted after server refresh. Returning guest plan/own ballot/own response restoration user-confirmed.",
+  "website_published": false,
+  "limits": [
+    "Curated illustrative Goa/Bengaluru three-day, two-night reference; no live price/provider integration.",
+    "Unverified accessibility requirements block feasibility.",
+    "Booking task assignment, reservation, payment and AI are outside this slice.",
+    "No email templates or authentication settings were changed."
+  ],
+  "migration_sha256": {
+    "supabase/migrations/20261015170744_planzo_planning_voting_confirmation.sql": "72521b57c959def7fa9515bf58db0f0b932432863b51677168a8e5d7b1d48ab5",
+    "supabase/migrations/20261015170844_planzo_invitation_membership_index.sql": "cd087da3199a25dd69d501a233d4c3b8905282718fc42e73b081f520c7f831b9",
+    "supabase/migrations/20261015171734_planzo_allow_deadline_withdrawal.sql": "052fd694419b9c6208440a3b6147ebc86580cb6dfcefa8096bab95901d10e7e1"
+  },
+  "hosted_negative_checks": 8,
+  "live_preview": {
+    "organiser_signin": "user confirmed; signed-in trip list observed",
+    "planning_get": "rendered through hosted RPC",
+    "two_member_prepare": "saved via live UI; minimum/coverage/private-limit blockers visible; sharing disabled",
+    "voting_route": "live One clear choice empty state rendered",
+    "review_route": "live No plan shared for review yet rendered",
+    "invitations": "returned to Overview; creation remains enabled while collecting",
+    "screenshot": "docs/backend/planning-live-preview.png",
+    "four_member_prepare": "Passed through live UI. Both common/easy options fit all four confirmed inputs; two rooms; own estimate shown only. 13-15 November 2026 complete window.",
+    "four_account_readback": {
+      "included_members": 4,
+      "confirmed_inputs": 4,
+      "trip_revision": 16,
+      "stage": "planning",
+      "shared_plan_versions": 0,
+      "scope": "counts/status only; no raw briefs or personal costs queried"
+    },
+    "current_auth": "User signed in personally on the refreshed Make preview; organiser trip opened.",
+    "open_poll": {
+      "status": "open",
+      "roster": 4,
+      "ballots_saved": 1,
+      "deadline_ist": "2026-10-16 23:03",
+      "own_test_choice": "easy",
+      "live_totals": "hidden",
+      "proof": "docs/backend/planning-open-poll.png"
+    },
+    "poll_closure": {
+      "participation": "4/4 before closure",
+      "closed_result": {
+        "common": 0,
+        "easy": 4,
+        "abstain": 0,
+        "different": 0,
+        "missing": 0
+      },
+      "selected_option": "easy",
+      "saved_through": "authenticated organiser live UI"
+    },
+    "review_v1": {
+      "version": 1,
+      "roster_count": 4,
+      "readiness_on_creation": 0,
+      "organiser_test_ready": "saved through UI after estimate/context review",
+      "readiness_after_save": 1,
+      "agreement_enabled": false,
+      "proof": "docs/backend/planning-review-v1.png",
+      "readiness_after_all_accounts": 4,
+      "agreement_enabled_after_four": true
+    },
+    "agreement": {
+      "status": "agreed",
+      "label": "Trip agreed \u00b7 bookings pending",
+      "organiser_saved_through_live_ui": true,
+      "retained_after_server_refresh": true,
+      "reservation_or_payment": false,
+      "proof": "docs/backend/planning-agreed.png"
+    },
+    "returning_guest_planning": "User confirmed Done after explicit request to sign out/back in and verify Plan v1, own ballot and own Ready response restored; assistant did not read credentials."
+  },
+  "deadline_withdrawal": {
+    "behavior": "Change/decline remains allowed after the deadline; new readiness and agreement require an open round.",
+    "hosted_private_function_sha256": "363ee8a1c72abf1377a2ae087bec67bbf76a1f01574fca3fe512cd850b8c3cb8",
+    "matches_local_body": true,
+    "frontend_make_update": "verified exact; late Ready disabled, negative responses remain available"
+  },
+  "hosted_final_test_readback": {
+    "stage": "agreed",
+    "trip_revision": 19,
+    "plan_version": 1,
+    "plan_source_revision": 19,
+    "roster_count": 4,
+    "ready_acknowledged": 4,
+    "cost_snapshot_count": 4,
+    "closed_polls": 1,
+    "saved_ballots": 4,
+    "agreement_events": 1,
+    "scope": "counts/status only; no raw private input, note, personal cost or ceiling queried"
+  }
+}

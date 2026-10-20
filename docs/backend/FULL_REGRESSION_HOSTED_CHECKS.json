@@ -1,0 +1,110 @@
+{
+  "run_id": "387bf8f9-3b75-48a8-a2ad-8943d6ea243f",
+  "date": "2026-10-17T16:45:11.370Z",
+  "project": "ewysgpuwvufbklesdhuj",
+  "method": "Four distinct ordinary verified sessions; fictional labelled fixtures; public client configuration",
+  "checks": [
+    {
+      "name": "New trip uses workflow2 with editable minimum4 and tentative duration3",
+      "result": "pass"
+    },
+    {
+      "name": "Real verified outsider cannot read or mutate the new trip",
+      "result": "pass"
+    },
+    {
+      "name": "Signed-out planning and booking RPCs are denied",
+      "result": "pass"
+    },
+    {
+      "name": "Verified invitation joins all four existing identities",
+      "result": "pass"
+    },
+    {
+      "name": "Missing private input blocks generation without a provider call",
+      "result": "pass"
+    },
+    {
+      "name": "Personal dates outside tentative bounds are rejected",
+      "result": "pass"
+    },
+    {
+      "name": "Different personal arrival times use only their shared overlap",
+      "result": "pass"
+    },
+    {
+      "name": "Other members cannot read another private city, ceiling or raw requirements",
+      "result": "pass"
+    },
+    {
+      "name": "One missing Gemini consent blocks provider admission",
+      "result": "pass"
+    },
+    {
+      "name": "Confirmed but non-overlapping personal windows block planning",
+      "result": "pass"
+    },
+    {
+      "name": "Members cannot generate a group itinerary",
+      "result": "pass"
+    },
+    {
+      "name": "One actual Gemini request creates the current fictional itinerary",
+      "result": "pass"
+    },
+    {
+      "name": "The shared schedule is continuous, bounded, and reports every must-have outcome",
+      "result": "pass"
+    },
+    {
+      "name": "One traveller review cannot permit organiser lock before everyone responds",
+      "result": "pass"
+    },
+    {
+      "name": "Open concern blocks lock and early vote closure",
+      "result": "pass"
+    },
+    {
+      "name": "Other ballots remain private before voting closes",
+      "result": "pass"
+    },
+    {
+      "name": "Stale ballot revisions cannot overwrite a saved vote",
+      "result": "fail",
+      "detail": "Saved state did not match the expected result"
+    }
+  ],
+  "fixtures": [
+    {
+      "trip_id": "4c3ff90e-77a2-4c0f-8bba-842298c6a930",
+      "label": "TEST · AI full regression 387bf8f9",
+      "purpose": "Four-person current workflow",
+      "final_state": "in progress"
+    }
+  ],
+  "actors": [
+    {
+      "role": "Organiser A",
+      "user_fingerprint": "9432f19b74c3b059"
+    },
+    {
+      "role": "Member B",
+      "user_fingerprint": "f56cbbb4bbfd2f7c"
+    },
+    {
+      "role": "Member C",
+      "user_fingerprint": "c9d146dab5814329"
+    },
+    {
+      "role": "Member D",
+      "user_fingerprint": "ba581e5a523bb22e"
+    }
+  ],
+  "ai_requests": 1,
+  "credentials_recorded": false,
+  "existing_trips_mutated": false,
+  "summary": {
+    "passed": 16,
+    "failed": 1
+  }
+}

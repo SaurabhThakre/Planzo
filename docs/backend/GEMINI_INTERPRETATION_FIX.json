@@ -1,0 +1,73 @@
+{
+  "date": "2026-10-16",
+  "project": "ewysgpuwvufbklesdhuj",
+  "fileKey": "4tPr5AkQO1g0L1esRvGRjz",
+  "scope": "Reported fictional availability containment and explicit unsupported non-vegetarian requirement",
+  "edge": {
+    "version": 5,
+    "status": "ACTIVE",
+    "verify_jwt": true,
+    "exactFiles": 4
+  },
+  "local": {
+    "testsPassed": 53,
+    "testsFailed": 0,
+    "interpreter": 31,
+    "existingApplication": 22,
+    "newRegression": 11,
+    "appTypecheck": "pass",
+    "handlerTypecheck": "pass",
+    "build": "pass",
+    "advisories": [
+      "Existing bundle larger than 500 kB"
+    ],
+    "providerCalls": 0
+  },
+  "sqlOrMigrationsChanged": false,
+  "existingDatabaseChecksReused": true,
+  "sourceManifests": {
+    "app": 23,
+    "backend": 33
+  },
+  "makeSourceVerification": {
+    "status": "passed",
+    "originalAttachmentMatches": 10,
+    "jsonParsed": 4,
+    "appHashes": 23,
+    "backendHashes": 33,
+    "testsPassed": 53,
+    "typecheck": "passed",
+    "build": "passed",
+    "unexpectedPaths": []
+  },
+  "liveUiVerification": {
+    "status": "pending",
+    "reason": "Make preview signed out during source update; user asked to sign in for one fictional live check.",
+    "providerCallsByAgent": 0
+  },
+  "billingChanged": false,
+  "websitePublished": false,
+  "metadataBeforeLive": {
+    "trips": [
+      {
+        "id": "a5c044b5-812d-4f2a-8cc7-b0718ce1f767",
+        "stage": "agreed",
+        "members": 4,
+        "handoffs": 0,
+        "revision": 19,
+        "versions": 1,
+        "confirmed_briefs": 4
+      },
+      {
+        "id": "e6092e37-e176-4d16-8be0-045befad4990",
+        "stage": "collecting",
+        "members": 1,
+        "handoffs": 0,
+        "revision": 1,
+        "versions": 0,
+        "confirmed_briefs": 0
+      }
+    ],
+    "gemini_admitted_attempts": 7
+  }
+}

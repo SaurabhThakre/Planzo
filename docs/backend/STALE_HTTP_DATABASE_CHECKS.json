@@ -1,0 +1,207 @@
+{
+  "date": "2026-10-17T16:52:05.936Z",
+  "environment": "Disposable local PostgreSQL with local Auth stand-ins and stubbed AI; PostgREST exception envelope parsed by the local adapter",
+  "changedFunctions": [
+    "planzo_flow(text,jsonb)",
+    "planzo_journey(text,jsonb)"
+  ],
+  "unchangedFunctions": 43,
+  "grantsAndSecurityConfigUnchanged": true,
+  "httpMappings": [
+    {
+      "code": "40001",
+      "http_status": 409
+    },
+    {
+      "code": "40001",
+      "http_status": 409
+    }
+  ],
+  "report": {
+    "run_id": "0dadf4f1-d661-4654-a35d-27b3b01aa058",
+    "date": "2026-10-17T16:52:04.852Z",
+    "project": "ewysgpuwvufbklesdhuj",
+    "method": "Four distinct ordinary verified sessions; fictional labelled fixtures; public client configuration",
+    "checks": [
+      {
+        "name": "New trip uses workflow2 with editable minimum4 and tentative duration3",
+        "result": "pass"
+      },
+      {
+        "name": "Real verified outsider cannot read or mutate the new trip",
+        "result": "pass"
+      },
+      {
+        "name": "Signed-out planning and booking RPCs are denied",
+        "result": "pass"
+      },
+      {
+        "name": "Verified invitation joins all four existing identities",
+        "result": "pass"
+      },
+      {
+        "name": "Missing private input blocks generation without a provider call",
+        "result": "pass"
+      },
+      {
+        "name": "Personal dates outside tentative bounds are rejected",
+        "result": "pass"
+      },
+      {
+        "name": "Different personal arrival times use only their shared overlap",
+        "result": "pass"
+      },
+      {
+        "name": "Other members cannot read another private city, ceiling or raw requirements",
+        "result": "pass"
+      },
+      {
+        "name": "One missing Gemini consent blocks provider admission",
+        "result": "pass"
+      },
+      {
+        "name": "Confirmed but non-overlapping personal windows block planning",
+        "result": "pass"
+      },
+      {
+        "name": "Members cannot generate a group itinerary",
+        "result": "pass"
+      },
+      {
+        "name": "One actual Gemini request creates the current fictional itinerary",
+        "result": "pass"
+      },
+      {
+        "name": "The shared schedule is continuous, bounded, and reports every must-have outcome",
+        "result": "pass"
+      },
+      {
+        "name": "One traveller review cannot permit organiser lock before everyone responds",
+        "result": "pass"
+      },
+      {
+        "name": "Open concern blocks lock and early vote closure",
+        "result": "pass"
+      },
+      {
+        "name": "Other ballots remain private before voting closes",
+        "result": "pass"
+      },
+      {
+        "name": "Stale ballot revisions cannot overwrite a saved vote",
+        "result": "pass"
+      },
+      {
+        "name": "Three of four votes apply a step change and invalidate earlier reviews",
+        "result": "pass"
+      },
+      {
+        "name": "Only the concern author can resolve their private must-have review",
+        "result": "pass"
+      },
+      {
+        "name": "Only organiser locks the exact version reviewed by all four",
+        "result": "pass"
+      },
+      {
+        "name": "Locked plan cannot be silently edited or regenerated",
+        "result": "pass"
+      },
+      {
+        "name": "Members cannot prepare shared booking handoff",
+        "result": "pass"
+      },
+      {
+        "name": "Every member sees shared tasks and only their own two personal legs",
+        "result": "pass"
+      },
+      {
+        "name": "A member cannot update another personal booking or an unassigned shared task",
+        "result": "pass"
+      },
+      {
+        "name": "Unknown critical booking prices block handoff review",
+        "result": "pass"
+      },
+      {
+        "name": "Shared owner assignment is organiser-only and due dates fit the itinerary",
+        "result": "pass"
+      },
+      {
+        "name": "Shared quotes and own private quotes replace estimates without double counting",
+        "result": "pass"
+      },
+      {
+        "name": "Protected meal/fee/contingency reserve cannot be lowered away",
+        "result": "pass"
+      },
+      {
+        "name": "One person’s over-budget personal quote cannot be approved or leaked to others",
+        "result": "pass"
+      },
+      {
+        "name": "All four current handoff reviews are required for readiness",
+        "result": "pass"
+      },
+      {
+        "name": "Later private reserve changes invalidate every handoff review",
+        "result": "pass"
+      },
+      {
+        "name": "Stale booking writes fail after another member changes the handoff",
+        "result": "pass"
+      },
+      {
+        "name": "Exact retries are idempotent; altered request reuse is rejected",
+        "result": "pass"
+      },
+      {
+        "name": "Fresh four-person review restores readiness while earlier task revisions remain historical",
+        "result": "pass"
+      },
+      {
+        "name": "Recoverable unused-draft deletion and restore preserve the draft",
+        "result": "pass"
+      }
+    ],
+    "fixtures": [
+      {
+        "trip_id": "fdd94980-6695-4413-bcb6-1e4c1d68183c",
+        "label": "TEST · AI full regression 0dadf4f1",
+        "purpose": "Four-person current workflow",
+        "final_state": "agreed; current handoff reviewed by four; no reservations made"
+      },
+      {
+        "trip_id": "e52c0734-5b50-4067-9d8a-d5a48d68bb6e",
+        "label": "TEST · lifecycle regression 0dadf4f1",
+        "purpose": "Recoverable lifecycle only",
+        "final_state": "archived; recoverable"
+      }
+    ],
+    "actors": [
+      {
+        "role": "TEST 0",
+        "user_fingerprint": "9a9742036f664f49"
+      },
+      {
+        "role": "TEST 1",
+        "user_fingerprint": "b80d7a3b687095f2"
+      },
+      {
+        "role": "TEST 2",
+        "user_fingerprint": "88c8fcc137b4e3b2"
+      },
+      {
+        "role": "TEST 3",
+        "user_fingerprint": "72c8a63182a534fb"
+      }
+    ],
+    "ai_requests": 1,
+    "credentials_recorded": false,
+    "existing_trips_mutated": false,
+    "summary": {
+      "passed": 35,
+      "failed": 0
+    }
+  }
+}

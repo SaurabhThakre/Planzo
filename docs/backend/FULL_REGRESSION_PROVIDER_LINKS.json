@@ -1,0 +1,43 @@
+{
+  "date": "2026-10-17T15:12:26.160Z",
+  "method": "Read-only public web fetch; no provider form submissions, login or purchases",
+  "sources": [
+    {
+      "url": "https://www.airindia.com/en-in/book-flights/",
+      "result": "loaded booking search"
+    },
+    {
+      "url": "https://www.goindigo.in/",
+      "result": "automated fetch inconclusive"
+    },
+    {
+      "url": "https://www.irctc.co.in/",
+      "result": "automated fetch inconclusive"
+    },
+    {
+      "url": "https://www.ksrtc.in/",
+      "result": "automated fetch inconclusive"
+    },
+    {
+      "url": "https://www.booking.com/",
+      "result": "JavaScript / robot check; destination not verified by automated fetch"
+    },
+    {
+      "url": "https://goa-tourism.com/stay/",
+      "result": "loaded"
+    },
+    {
+      "url": "https://goa-tourism.com/stay/calangute-residency/",
+      "result": "loaded"
+    },
+    {
+      "url": "https://www.goamiles.com/",
+      "result": "loaded"
+    },
+    {
+      "url": "https://bookings.goa-tourism.com/",
+      "result": "loaded"
+    }
+  ],
+  "live_fares_or_availability_verified": false
+}

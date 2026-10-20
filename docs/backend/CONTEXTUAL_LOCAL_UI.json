@@ -1,0 +1,32 @@
+{
+  "date": "2026-10-18",
+  "environment": "Exact production components with synthetic fixtures and callbacks; no Auth/API/provider calls",
+  "passed": 6,
+  "failed": 0,
+  "checks": [
+    {
+      "name": "Named destination, location, description and interpretation notice render in exact journey component",
+      "passed": true
+    },
+    {
+      "name": "Concrete Goan meal title and area replace generic meal text",
+      "passed": true
+    },
+    {
+      "name": "Desktop contextual journey has no horizontal overflow",
+      "passed": true
+    },
+    {
+      "name": "An overlong request shows its exact row and145/120 character problem without changing raw answer",
+      "passed": true
+    },
+    {
+      "name": "Editing a shared request clears its stale error and resets owner acknowledgement",
+      "passed": true
+    },
+    {
+      "name": "Corrected request reaches confirmation callback with reviewed version3 input and no persisted data",
+      "passed": true
+    }
+  ]
+}

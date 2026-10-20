@@ -1,0 +1,750 @@
+{
+  "entry": [
+    {
+      "symbol": "imgIconPlane",
+      "url": "https://www.figma.com/api/mcp/asset/13b5d444-db78-4af6-b5c6-0f2f6989a120.svg",
+      "file": "entry-IconPlane.svg"
+    },
+    {
+      "symbol": "imgEditableIllustrationGoaCoast",
+      "url": "https://www.figma.com/api/mcp/asset/e1940a13-3658-45e8-ac1e-8e71e1639fb8.svg",
+      "file": "entry-EditableIllustrationGoaCoast.svg"
+    },
+    {
+      "symbol": "imgIconLock",
+      "url": "https://www.figma.com/api/mcp/asset/bf88f163-57a6-4e1d-a291-bca3a5ad84b1.svg",
+      "file": "entry-IconLock.svg"
+    },
+    {
+      "symbol": "imgIconWallet",
+      "url": "https://www.figma.com/api/mcp/asset/03f4927a-189c-4478-aed2-533b1a9a97a2.svg",
+      "file": "entry-IconWallet.svg"
+    },
+    {
+      "symbol": "imgIconPeople",
+      "url": "https://www.figma.com/api/mcp/asset/9111bba6-fc0f-488e-8b6f-46527859054b.svg",
+      "file": "entry-IconPeople.svg"
+    },
+    {
+      "symbol": "imgIconHeart",
+      "url": "https://www.figma.com/api/mcp/asset/b4109691-c325-4d9d-9cea-b6bed06ef975.svg",
+      "file": "entry-IconHeart.svg"
+    }
+  ],
+  "setup": [
+    {
+      "symbol": "imgIconPlane",
+      "url": "https://www.figma.com/api/mcp/asset/721bea63-c84e-4562-b3ea-627a851eb465.svg",
+      "file": "setup-IconPlane.svg"
+    },
+    {
+      "symbol": "imgIconHome",
+      "url": "https://www.figma.com/api/mcp/asset/5b39c480-ba3d-4752-8bb8-4608e56ad963.svg",
+      "file": "setup-IconHome.svg"
+    },
+    {
+      "symbol": "imgIconMap",
+      "url": "https://www.figma.com/api/mcp/asset/59879244-9529-4671-9ea7-968538cc5727.svg",
+      "file": "setup-IconMap.svg"
+    },
+    {
+      "symbol": "imgIconPeople",
+      "url": "https://www.figma.com/api/mcp/asset/90fd2e61-0024-4c2d-a9a9-5b46b05839eb.svg",
+      "file": "setup-IconPeople.svg"
+    },
+    {
+      "symbol": "imgIconWallet",
+      "url": "https://www.figma.com/api/mcp/asset/7059f7f3-3749-4f07-a105-d405e9c450f1.svg",
+      "file": "setup-IconWallet.svg"
+    },
+    {
+      "symbol": "imgIconLock",
+      "url": "https://www.figma.com/api/mcp/asset/d18c07a7-46f5-45c1-b96f-ca0bb23024f4.svg",
+      "file": "setup-IconLock.svg"
+    },
+    {
+      "symbol": "imgEditableIllustrationGoaCoast",
+      "url": "https://www.figma.com/api/mcp/asset/757075ed-7cb1-43a7-82b4-a7916544ca48.svg",
+      "file": "setup-EditableIllustrationGoaCoast.svg"
+    },
+    {
+      "symbol": "imgIconCalendar",
+      "url": "https://www.figma.com/api/mcp/asset/dc5dc036-b21f-46ba-b12e-265d4ebfb29f.svg",
+      "file": "setup-IconCalendar.svg"
+    }
+  ],
+  "invite": [
+    {
+      "symbol": "imgIconPlane",
+      "url": "https://www.figma.com/api/mcp/asset/704e08ed-1c95-47bf-86e2-95cd5f495100.svg",
+      "file": "invite-IconPlane.svg"
+    },
+    {
+      "symbol": "imgEditableIllustrationGoaCoast",
+      "url": "https://www.figma.com/api/mcp/asset/68f68359-b991-4892-bcbb-5fe3ab472d33.svg",
+      "file": "invite-EditableIllustrationGoaCoast.svg"
+    },
+    {
+      "symbol": "imgIconLock",
+      "url": "https://www.figma.com/api/mcp/asset/6f1d16f7-a17c-4b96-a27e-3c195cd02ca5.svg",
+      "file": "invite-IconLock.svg"
+    },
+    {
+      "symbol": "imgIconWallet",
+      "url": "https://www.figma.com/api/mcp/asset/f3f0ffd8-56b2-408d-845f-255bb1829424.svg",
+      "file": "invite-IconWallet.svg"
+    },
+    {
+      "symbol": "imgIconPeople",
+      "url": "https://www.figma.com/api/mcp/asset/ba9b7525-be8d-4992-8969-dafd3f7dc631.svg",
+      "file": "invite-IconPeople.svg"
+    },
+    {
+      "symbol": "imgIconLock1",
+      "url": "https://www.figma.com/api/mcp/asset/8a94899d-e02b-4e4b-8d05-5be615bc272f.svg",
+      "file": "invite-IconLock1.svg"
+    }
+  ],
+  "private": [
+    {
+      "symbol": "imgIconPlane",
+      "url": "https://www.figma.com/api/mcp/asset/e5edb9b2-3034-480f-8581-1d74f751c2bd.svg",
+      "file": "private-IconPlane.svg"
+    },
+    {
+      "symbol": "imgIconHome",
+      "url": "https://www.figma.com/api/mcp/asset/2496ab74-fec8-4f5c-91be-f3a8f310a386.svg",
+      "file": "private-IconHome.svg"
+    },
+    {
+      "symbol": "imgIconMap",
+      "url": "https://www.figma.com/api/mcp/asset/618ce77e-6429-49d2-830e-19d5e7bd3de5.svg",
+      "file": "private-IconMap.svg"
+    },
+    {
+      "symbol": "imgIconPeople",
+      "url": "https://www.figma.com/api/mcp/asset/0743ba81-1fcf-4eeb-b08a-867e6bb6c8de.svg",
+      "file": "private-IconPeople.svg"
+    },
+    {
+      "symbol": "imgIconWallet",
+      "url": "https://www.figma.com/api/mcp/asset/a009f98f-3645-4ee2-8a48-290cd83b588e.svg",
+      "file": "private-IconWallet.svg"
+    },
+    {
+      "symbol": "imgIconLock",
+      "url": "https://www.figma.com/api/mcp/asset/866e4584-3f7d-4f86-ad61-85f29b2e72ec.svg",
+      "file": "private-IconLock.svg"
+    },
+    {
+      "symbol": "imgIconLock1",
+      "url": "https://www.figma.com/api/mcp/asset/f6d4b077-f7ad-42c6-8f15-5be13f9c7961.svg",
+      "file": "private-IconLock1.svg"
+    },
+    {
+      "symbol": "imgIconCheck",
+      "url": "https://www.figma.com/api/mcp/asset/f6d156fa-8b3c-4874-be0c-00f65d731ca4.svg",
+      "file": "private-IconCheck.svg"
+    },
+    {
+      "symbol": "imgIconEdit",
+      "url": "https://www.figma.com/api/mcp/asset/c8b0f06c-59f1-47d3-98df-7a74f6467f00.svg",
+      "file": "private-IconEdit.svg"
+    },
+    {
+      "symbol": "imgEditableIllustrationGoaCoast",
+      "url": "https://www.figma.com/api/mcp/asset/1fbdfc20-d540-4e29-ac70-1ff5b9570aab.svg",
+      "file": "private-EditableIllustrationGoaCoast.svg"
+    }
+  ],
+  "builder": [
+    {
+      "symbol": "imgIconPlane",
+      "url": "https://www.figma.com/api/mcp/asset/ee6ac136-9d50-4065-976b-2e361ef4c553.svg",
+      "file": "builder-IconPlane.svg"
+    },
+    {
+      "symbol": "imgIconHome",
+      "url": "https://www.figma.com/api/mcp/asset/d4b59573-db15-4013-800e-e91465d2ec3f.svg",
+      "file": "builder-IconHome.svg"
+    },
+    {
+      "symbol": "imgIconMap",
+      "url": "https://www.figma.com/api/mcp/asset/f4f252c3-b371-49bf-9475-656220a73947.svg",
+      "file": "builder-IconMap.svg"
+    },
+    {
+      "symbol": "imgIconPeople",
+      "url": "https://www.figma.com/api/mcp/asset/af5a8468-1d99-4785-975d-7a63a3a2574e.svg",
+      "file": "builder-IconPeople.svg"
+    },
+    {
+      "symbol": "imgIconWallet",
+      "url": "https://www.figma.com/api/mcp/asset/4424bbc0-b9ac-4a14-9064-d12b4aa721ed.svg",
+      "file": "builder-IconWallet.svg"
+    },
+    {
+      "symbol": "imgEditableIllustrationGoaCoast",
+      "url": "https://www.figma.com/api/mcp/asset/4bc6ede7-f2fe-4ca9-9e99-f3442c543638.svg",
+      "file": "builder-EditableIllustrationGoaCoast.svg"
+    },
+    {
+      "symbol": "imgIconPlane1",
+      "url": "https://www.figma.com/api/mcp/asset/482563b6-9d5f-4f86-8e97-6fead2ff3dd3.svg",
+      "file": "builder-IconPlane1.svg"
+    },
+    {
+      "symbol": "imgIconBed",
+      "url": "https://www.figma.com/api/mcp/asset/11dd9948-57fa-43d2-935f-176c763431d5.svg",
+      "file": "builder-IconBed.svg"
+    },
+    {
+      "symbol": "imgIconSun",
+      "url": "https://www.figma.com/api/mcp/asset/88fb5871-ae9c-4806-864f-4c99b5944681.svg",
+      "file": "builder-IconSun.svg"
+    },
+    {
+      "symbol": "imgIconCoffee",
+      "url": "https://www.figma.com/api/mcp/asset/988c205a-a4fa-49e7-b35c-a7ebfca8edfc.svg",
+      "file": "builder-IconCoffee.svg"
+    }
+  ],
+  "review": [
+    {
+      "symbol": "imgIconPlane",
+      "url": "https://www.figma.com/api/mcp/asset/cbe0cb04-a03c-4ea4-8e7d-758b8fc9a557.svg",
+      "file": "review-IconPlane.svg"
+    },
+    {
+      "symbol": "imgIconHome",
+      "url": "https://www.figma.com/api/mcp/asset/49e42440-d860-42d6-9bb9-be4ade454e65.svg",
+      "file": "review-IconHome.svg"
+    },
+    {
+      "symbol": "imgIconMap",
+      "url": "https://www.figma.com/api/mcp/asset/43b3509f-3fcc-41ff-805d-0e56d464c151.svg",
+      "file": "review-IconMap.svg"
+    },
+    {
+      "symbol": "imgIconPeople",
+      "url": "https://www.figma.com/api/mcp/asset/d6bc4ce6-8390-4b01-9431-fc28a1bccacb.svg",
+      "file": "review-IconPeople.svg"
+    },
+    {
+      "symbol": "imgIconWallet",
+      "url": "https://www.figma.com/api/mcp/asset/37083c69-d190-403b-9d92-a706d99091d4.svg",
+      "file": "review-IconWallet.svg"
+    },
+    {
+      "symbol": "imgIconCalendar",
+      "url": "https://www.figma.com/api/mcp/asset/240a4710-065a-4171-be5b-9b2c583e5fd7.svg",
+      "file": "review-IconCalendar.svg"
+    },
+    {
+      "symbol": "imgIconBed",
+      "url": "https://www.figma.com/api/mcp/asset/3a1c77d6-6ced-49ce-b97d-1e44dd41afd7.svg",
+      "file": "review-IconBed.svg"
+    },
+    {
+      "symbol": "imgIconBoat",
+      "url": "https://www.figma.com/api/mcp/asset/f341332a-4ab1-4f58-a6ad-a521c31ecda8.svg",
+      "file": "review-IconBoat.svg"
+    }
+  ],
+  "bookingCompare": [
+    {
+      "symbol": "imgIconPlane",
+      "url": "https://www.figma.com/api/mcp/asset/d6f92499-87dc-4045-8a44-814a2e617646.svg",
+      "file": "bookingCompare-IconPlane.svg"
+    },
+    {
+      "symbol": "imgIconHome",
+      "url": "https://www.figma.com/api/mcp/asset/9e888e97-64a1-45cd-95ca-e066d4d81e12.svg",
+      "file": "bookingCompare-IconHome.svg"
+    },
+    {
+      "symbol": "imgIconMap",
+      "url": "https://www.figma.com/api/mcp/asset/22e0fb6d-2683-4fed-adfc-0af2da2a169e.svg",
+      "file": "bookingCompare-IconMap.svg"
+    },
+    {
+      "symbol": "imgIconPeople",
+      "url": "https://www.figma.com/api/mcp/asset/ca753c34-24ec-4ccf-8c48-babff74be6c3.svg",
+      "file": "bookingCompare-IconPeople.svg"
+    },
+    {
+      "symbol": "imgIconWallet",
+      "url": "https://www.figma.com/api/mcp/asset/de5820a0-1184-4673-8934-494013296396.svg",
+      "file": "bookingCompare-IconWallet.svg"
+    }
+  ],
+  "signup": [
+    {
+      "symbol": "imgIconPlane",
+      "url": "https://www.figma.com/api/mcp/asset/11758ec5-1bc2-400d-b715-27561be0f200.svg",
+      "file": "signup-IconPlane.svg"
+    },
+    {
+      "symbol": "imgIconLock",
+      "url": "https://www.figma.com/api/mcp/asset/963b849b-2649-457d-9942-7957f3acbd5e.svg",
+      "file": "signup-IconLock.svg"
+    },
+    {
+      "symbol": "imgEditableIllustrationGoaCoast",
+      "url": "https://www.figma.com/api/mcp/asset/f3221b3d-5bae-4bfc-9d9f-1c6dd1e0570f.svg",
+      "file": "signup-EditableIllustrationGoaCoast.svg"
+    },
+    {
+      "symbol": "imgIconPeople",
+      "url": "https://www.figma.com/api/mcp/asset/23fb105a-e508-4a89-845e-bd506b7c7a11.svg",
+      "file": "signup-IconPeople.svg"
+    },
+    {
+      "symbol": "imgIconWallet",
+      "url": "https://www.figma.com/api/mcp/asset/666bafec-c6a9-49ef-91d0-8919af11a110.svg",
+      "file": "signup-IconWallet.svg"
+    }
+  ],
+  "signin": [
+    {
+      "symbol": "imgIconPlane",
+      "url": "https://www.figma.com/api/mcp/asset/a1450f57-b05b-4504-99f8-ca2aef3b48bc.svg",
+      "file": "signin-IconPlane.svg"
+    },
+    {
+      "symbol": "imgEditableIllustrationGoaCoast",
+      "url": "https://www.figma.com/api/mcp/asset/0cb17d0d-8979-4c32-b54b-445132ac7914.svg",
+      "file": "signin-EditableIllustrationGoaCoast.svg"
+    },
+    {
+      "symbol": "imgIconLock",
+      "url": "https://www.figma.com/api/mcp/asset/6a621572-e17d-46d8-917e-dcdae09aec1b.svg",
+      "file": "signin-IconLock.svg"
+    },
+    {
+      "symbol": "imgIconWallet",
+      "url": "https://www.figma.com/api/mcp/asset/1fdc4829-67b4-42c1-b221-2a12059c01df.svg",
+      "file": "signin-IconWallet.svg"
+    },
+    {
+      "symbol": "imgIconPeople",
+      "url": "https://www.figma.com/api/mcp/asset/1e9ac93d-645a-477d-8877-83ee1f27ede6.svg",
+      "file": "signin-IconPeople.svg"
+    }
+  ],
+  "overview": [
+    {
+      "symbol": "imgIconPlane",
+      "url": "https://www.figma.com/api/mcp/asset/73a41f7d-27c2-4cfa-ae00-1a52a5946895.svg",
+      "file": "overview-IconPlane.svg"
+    },
+    {
+      "symbol": "imgIconHome",
+      "url": "https://www.figma.com/api/mcp/asset/1cb8b48f-cfe3-4e19-90f3-6e0ac3323f2e.svg",
+      "file": "overview-IconHome.svg"
+    },
+    {
+      "symbol": "imgIconMap",
+      "url": "https://www.figma.com/api/mcp/asset/70bbf365-942b-4882-a957-6f3df4d6b4d8.svg",
+      "file": "overview-IconMap.svg"
+    },
+    {
+      "symbol": "imgIconPeople",
+      "url": "https://www.figma.com/api/mcp/asset/dbabef97-fa34-408b-ae56-bd34d78cd61f.svg",
+      "file": "overview-IconPeople.svg"
+    },
+    {
+      "symbol": "imgIconWallet",
+      "url": "https://www.figma.com/api/mcp/asset/5cd67784-59d7-45b6-982f-170f615d86c8.svg",
+      "file": "overview-IconWallet.svg"
+    },
+    {
+      "symbol": "imgEditableIllustrationGoaCoast",
+      "url": "https://www.figma.com/api/mcp/asset/d4e43ff3-b4cd-436c-9ff7-416afc85d6ec.svg",
+      "file": "overview-EditableIllustrationGoaCoast.svg"
+    },
+    {
+      "symbol": "imgIconCheck",
+      "url": "https://www.figma.com/api/mcp/asset/622adcf8-7c52-4115-b654-c94c0f4b5b02.svg",
+      "file": "overview-IconCheck.svg"
+    },
+    {
+      "symbol": "imgIconClock",
+      "url": "https://www.figma.com/api/mcp/asset/0a43af68-d5f3-47bc-8ab9-5a649fbc2902.svg",
+      "file": "overview-IconClock.svg"
+    }
+  ],
+  "aiPlans": [
+    {
+      "symbol": "imgIconPlane",
+      "url": "https://www.figma.com/api/mcp/asset/6d8dac3e-47f1-4401-ac4f-36f01e1587d1.svg",
+      "file": "aiPlans-IconPlane.svg"
+    },
+    {
+      "symbol": "imgIconHome",
+      "url": "https://www.figma.com/api/mcp/asset/90b94003-511f-42da-85af-66974b2d47c3.svg",
+      "file": "aiPlans-IconHome.svg"
+    },
+    {
+      "symbol": "imgIconMap",
+      "url": "https://www.figma.com/api/mcp/asset/07b9c93e-7a2c-4bda-b59c-66cd8191cc75.svg",
+      "file": "aiPlans-IconMap.svg"
+    },
+    {
+      "symbol": "imgIconPeople",
+      "url": "https://www.figma.com/api/mcp/asset/21e5ea6b-6bbb-43b3-8ef9-c3af416f7c03.svg",
+      "file": "aiPlans-IconPeople.svg"
+    },
+    {
+      "symbol": "imgIconWallet",
+      "url": "https://www.figma.com/api/mcp/asset/a4fb4913-f194-49d2-b3ba-a55a18fed500.svg",
+      "file": "aiPlans-IconWallet.svg"
+    },
+    {
+      "symbol": "imgIconSun",
+      "url": "https://www.figma.com/api/mcp/asset/78e0c12e-24d6-42da-bc52-8a025efd1ade.svg",
+      "file": "aiPlans-IconSun.svg"
+    },
+    {
+      "symbol": "imgIconCoffee",
+      "url": "https://www.figma.com/api/mcp/asset/26b579d3-5242-47f3-809f-5fce1a92c46f.svg",
+      "file": "aiPlans-IconCoffee.svg"
+    },
+    {
+      "symbol": "imgIconMap1",
+      "url": "https://www.figma.com/api/mcp/asset/0c265156-65b5-419c-a7e5-c8682648c483.svg",
+      "file": "aiPlans-IconMap1.svg"
+    },
+    {
+      "symbol": "imgIconPeople1",
+      "url": "https://www.figma.com/api/mcp/asset/1c830e70-c7c3-4aad-8f28-0580b2047c61.svg",
+      "file": "aiPlans-IconPeople1.svg"
+    },
+    {
+      "symbol": "imgIconStar",
+      "url": "https://www.figma.com/api/mcp/asset/5089c447-932b-48b8-ad97-1397aec83cf3.svg",
+      "file": "aiPlans-IconStar.svg"
+    }
+  ],
+  "poll": [
+    {
+      "symbol": "imgIconPlane",
+      "url": "https://www.figma.com/api/mcp/asset/4d68cd56-d099-49ea-8295-1b531cb1db3c.svg",
+      "file": "poll-IconPlane.svg"
+    },
+    {
+      "symbol": "imgIconHome",
+      "url": "https://www.figma.com/api/mcp/asset/9e2fb54a-5ec8-4597-a53e-342257e6bcc0.svg",
+      "file": "poll-IconHome.svg"
+    },
+    {
+      "symbol": "imgIconMap",
+      "url": "https://www.figma.com/api/mcp/asset/0d9d4db7-f95f-4b58-b64f-ad4fa9422d49.svg",
+      "file": "poll-IconMap.svg"
+    },
+    {
+      "symbol": "imgIconPeople",
+      "url": "https://www.figma.com/api/mcp/asset/8f2a90c5-d13e-427c-bcee-d9d59a0df6e8.svg",
+      "file": "poll-IconPeople.svg"
+    },
+    {
+      "symbol": "imgIconWallet",
+      "url": "https://www.figma.com/api/mcp/asset/e9a0016a-f3af-4c21-95f6-59857bd0fb55.svg",
+      "file": "poll-IconWallet.svg"
+    },
+    {
+      "symbol": "imgIconSun",
+      "url": "https://www.figma.com/api/mcp/asset/5efe9dba-8b5e-4930-92cf-54a2f04e47d9.svg",
+      "file": "poll-IconSun.svg"
+    },
+    {
+      "symbol": "imgIconCheck",
+      "url": "https://www.figma.com/api/mcp/asset/973f3f81-9bd0-41a8-a53a-29f3e523c8fb.svg",
+      "file": "poll-IconCheck.svg"
+    }
+  ],
+  "itinerary": [
+    {
+      "symbol": "imgIconPlane",
+      "url": "https://www.figma.com/api/mcp/asset/1fe97727-57b0-440b-a091-819766c6c47c.svg",
+      "file": "itinerary-IconPlane.svg"
+    },
+    {
+      "symbol": "imgIconHome",
+      "url": "https://www.figma.com/api/mcp/asset/ee3b43b0-ee4e-46c2-9934-a63a0ff7868b.svg",
+      "file": "itinerary-IconHome.svg"
+    },
+    {
+      "symbol": "imgIconMap",
+      "url": "https://www.figma.com/api/mcp/asset/ff20468a-b50f-4ba8-8473-aa655a141b71.svg",
+      "file": "itinerary-IconMap.svg"
+    },
+    {
+      "symbol": "imgIconPeople",
+      "url": "https://www.figma.com/api/mcp/asset/ddb7b006-fa1a-49b6-bd1d-d0d73e1f3990.svg",
+      "file": "itinerary-IconPeople.svg"
+    },
+    {
+      "symbol": "imgIconWallet",
+      "url": "https://www.figma.com/api/mcp/asset/2fe70404-b03f-43b4-9f31-ce96bf7bc88a.svg",
+      "file": "itinerary-IconWallet.svg"
+    },
+    {
+      "symbol": "imgIconBoat",
+      "url": "https://www.figma.com/api/mcp/asset/5ed59f87-1413-4cce-98a3-3f105495bc1a.svg",
+      "file": "itinerary-IconBoat.svg"
+    }
+  ],
+  "costs": [
+    {
+      "symbol": "imgIconPlane",
+      "url": "https://www.figma.com/api/mcp/asset/aa81c683-5735-4117-99d3-959307bca840.svg",
+      "file": "costs-IconPlane.svg"
+    },
+    {
+      "symbol": "imgIconHome",
+      "url": "https://www.figma.com/api/mcp/asset/7f01b24b-5170-4c39-9b6a-17b2afad2f35.svg",
+      "file": "costs-IconHome.svg"
+    },
+    {
+      "symbol": "imgIconMap",
+      "url": "https://www.figma.com/api/mcp/asset/18de79e6-1c75-4341-bb57-1981b2c5f413.svg",
+      "file": "costs-IconMap.svg"
+    },
+    {
+      "symbol": "imgIconPeople",
+      "url": "https://www.figma.com/api/mcp/asset/a50d5d8c-6f6b-4fae-bf6a-d0196b956b94.svg",
+      "file": "costs-IconPeople.svg"
+    },
+    {
+      "symbol": "imgIconWallet",
+      "url": "https://www.figma.com/api/mcp/asset/4842e31b-2c1e-406f-9af9-5205f03a2368.svg",
+      "file": "costs-IconWallet.svg"
+    },
+    {
+      "symbol": "imgIconLock",
+      "url": "https://www.figma.com/api/mcp/asset/e7f03737-d4d0-49ca-a3f1-7627411663db.svg",
+      "file": "costs-IconLock.svg"
+    },
+    {
+      "symbol": "imgIconPlane1",
+      "url": "https://www.figma.com/api/mcp/asset/4ef08f56-ce8e-423c-af59-dc78c4260c70.svg",
+      "file": "costs-IconPlane1.svg"
+    },
+    {
+      "symbol": "imgIconBoat",
+      "url": "https://www.figma.com/api/mcp/asset/34748ec6-c95f-4814-b1de-573a824fe2c5.svg",
+      "file": "costs-IconBoat.svg"
+    }
+  ],
+  "pending": [
+    {
+      "symbol": "imgIconPlane",
+      "url": "https://www.figma.com/api/mcp/asset/d14be923-f4cb-4dc5-a1d3-fdb0a1589894.svg",
+      "file": "pending-IconPlane.svg"
+    },
+    {
+      "symbol": "imgIconHome",
+      "url": "https://www.figma.com/api/mcp/asset/5db8d3a7-b3a2-4da0-b9c9-8abec6159674.svg",
+      "file": "pending-IconHome.svg"
+    },
+    {
+      "symbol": "imgIconMap",
+      "url": "https://www.figma.com/api/mcp/asset/24a44af6-7fac-4222-871a-48921a4680f9.svg",
+      "file": "pending-IconMap.svg"
+    },
+    {
+      "symbol": "imgIconPeople",
+      "url": "https://www.figma.com/api/mcp/asset/45dd4788-119d-4f96-a7b6-6699da886520.svg",
+      "file": "pending-IconPeople.svg"
+    },
+    {
+      "symbol": "imgIconWallet",
+      "url": "https://www.figma.com/api/mcp/asset/aa1bb86b-0630-40cf-b2b0-3d03ddb7fbc6.svg",
+      "file": "pending-IconWallet.svg"
+    },
+    {
+      "symbol": "imgIconClock",
+      "url": "https://www.figma.com/api/mcp/asset/26c98db2-9fb9-4d45-9333-826e7d9fdc5b.svg",
+      "file": "pending-IconClock.svg"
+    },
+    {
+      "symbol": "imgIconCheck",
+      "url": "https://www.figma.com/api/mcp/asset/2d4041d0-b841-4b60-afb2-0ccf6abf9421.svg",
+      "file": "pending-IconCheck.svg"
+    },
+    {
+      "symbol": "imgIconClock1",
+      "url": "https://www.figma.com/api/mcp/asset/14069338-42b8-4c1b-9607-cf216e3db12a.svg",
+      "file": "pending-IconClock1.svg"
+    }
+  ],
+  "agreed": [
+    {
+      "symbol": "imgIconPlane",
+      "url": "https://www.figma.com/api/mcp/asset/0ffb0277-923e-442d-95b2-460018d0855f.svg",
+      "file": "agreed-IconPlane.svg"
+    },
+    {
+      "symbol": "imgIconHome",
+      "url": "https://www.figma.com/api/mcp/asset/1bf2e794-ebfd-4247-9684-1999f7e9f7a8.svg",
+      "file": "agreed-IconHome.svg"
+    },
+    {
+      "symbol": "imgIconMap",
+      "url": "https://www.figma.com/api/mcp/asset/3242cebf-da57-41e3-803a-5df08c55c301.svg",
+      "file": "agreed-IconMap.svg"
+    },
+    {
+      "symbol": "imgIconPeople",
+      "url": "https://www.figma.com/api/mcp/asset/8c18b8bc-a1a4-48ef-a14c-bb290aafd19c.svg",
+      "file": "agreed-IconPeople.svg"
+    },
+    {
+      "symbol": "imgIconWallet",
+      "url": "https://www.figma.com/api/mcp/asset/35f5be8b-431b-43dd-a1ad-af28bcd9e90f.svg",
+      "file": "agreed-IconWallet.svg"
+    },
+    {
+      "symbol": "imgIconLock",
+      "url": "https://www.figma.com/api/mcp/asset/0be2cf3c-c59d-4c88-96d5-7be7affec9bc.svg",
+      "file": "agreed-IconLock.svg"
+    },
+    {
+      "symbol": "imgIconCheck",
+      "url": "https://www.figma.com/api/mcp/asset/2489837c-9181-48c1-80c2-1ad67c4f3555.svg",
+      "file": "agreed-IconCheck.svg"
+    }
+  ],
+  "bookings": [
+    {
+      "symbol": "imgIconPlane",
+      "url": "https://www.figma.com/api/mcp/asset/06cfad42-5dc3-4c13-a383-e4e77b7664ec.svg",
+      "file": "bookings-IconPlane.svg"
+    },
+    {
+      "symbol": "imgIconHome",
+      "url": "https://www.figma.com/api/mcp/asset/6deef050-795d-4e63-8cb1-2a5be6ca0d90.svg",
+      "file": "bookings-IconHome.svg"
+    },
+    {
+      "symbol": "imgIconMap",
+      "url": "https://www.figma.com/api/mcp/asset/ad3a65c4-ab6a-4762-8241-167de5c7f4d1.svg",
+      "file": "bookings-IconMap.svg"
+    },
+    {
+      "symbol": "imgIconPeople",
+      "url": "https://www.figma.com/api/mcp/asset/89c75db5-6fff-4705-a96d-043971b53640.svg",
+      "file": "bookings-IconPeople.svg"
+    },
+    {
+      "symbol": "imgIconWallet",
+      "url": "https://www.figma.com/api/mcp/asset/ba3e1d87-5e5a-4d61-ad3f-04ba3bb972dc.svg",
+      "file": "bookings-IconWallet.svg"
+    },
+    {
+      "symbol": "imgIconBed",
+      "url": "https://www.figma.com/api/mcp/asset/ff626b2d-45be-4014-aaaa-6eb98531d48c.svg",
+      "file": "bookings-IconBed.svg"
+    },
+    {
+      "symbol": "imgIconPlane1",
+      "url": "https://www.figma.com/api/mcp/asset/b657ff54-6dc4-45a9-975a-77dc57d7760f.svg",
+      "file": "bookings-IconPlane1.svg"
+    },
+    {
+      "symbol": "imgEditableIllustrationGoaCoast",
+      "url": "https://www.figma.com/api/mcp/asset/3560d854-3c17-422c-af39-768ac78afa11.svg",
+      "file": "bookings-EditableIllustrationGoaCoast.svg"
+    }
+  ],
+  "aiConsent": [
+    {
+      "symbol": "imgIconPlane",
+      "url": "https://www.figma.com/api/mcp/asset/9afcbde8-e5c8-4843-a221-5a11b76dd89d.svg",
+      "file": "aiConsent-IconPlane.svg"
+    },
+    {
+      "symbol": "imgIconHome",
+      "url": "https://www.figma.com/api/mcp/asset/f87912a5-d232-49af-94b7-37b968da7c40.svg",
+      "file": "aiConsent-IconHome.svg"
+    },
+    {
+      "symbol": "imgIconMap",
+      "url": "https://www.figma.com/api/mcp/asset/d89f82ed-9000-4e30-bc21-345272ab521b.svg",
+      "file": "aiConsent-IconMap.svg"
+    },
+    {
+      "symbol": "imgIconPeople",
+      "url": "https://www.figma.com/api/mcp/asset/229d9fa0-55a5-44a1-b10e-3151ae0bb91c.svg",
+      "file": "aiConsent-IconPeople.svg"
+    },
+    {
+      "symbol": "imgIconWallet",
+      "url": "https://www.figma.com/api/mcp/asset/0dc06826-dd5b-494f-8818-c835bc5c4ab8.svg",
+      "file": "aiConsent-IconWallet.svg"
+    },
+    {
+      "symbol": "imgIconLock",
+      "url": "https://www.figma.com/api/mcp/asset/346636c5-f0ef-4732-bc0e-1e12d3f97e60.svg",
+      "file": "aiConsent-IconLock.svg"
+    },
+    {
+      "symbol": "imgEditableIllustrationGoaCoast",
+      "url": "https://www.figma.com/api/mcp/asset/21f65d97-33a5-4d9f-8067-14e472f376ab.svg",
+      "file": "aiConsent-EditableIllustrationGoaCoast.svg"
+    }
+  ],
+  "parsed": [
+    {
+      "symbol": "imgIconPlane",
+      "url": "https://www.figma.com/api/mcp/asset/79846e48-9d76-46c0-a6a4-44ff0417f4c3.svg",
+      "file": "parsed-IconPlane.svg"
+    },
+    {
+      "symbol": "imgIconHome",
+      "url": "https://www.figma.com/api/mcp/asset/1f73de39-1e3d-44ab-bfbd-395a489213f0.svg",
+      "file": "parsed-IconHome.svg"
+    },
+    {
+      "symbol": "imgIconMap",
+      "url": "https://www.figma.com/api/mcp/asset/f608890d-7fcc-4782-a9d0-7fb6d997911d.svg",
+      "file": "parsed-IconMap.svg"
+    },
+    {
+      "symbol": "imgIconPeople",
+      "url": "https://www.figma.com/api/mcp/asset/c7debfd2-107e-4915-ac6a-e062c0b83a0a.svg",
+      "file": "parsed-IconPeople.svg"
+    },
+    {
+      "symbol": "imgIconWallet",
+      "url": "https://www.figma.com/api/mcp/asset/78e6aedb-06c0-4c34-9f22-803faf514ad0.svg",
+      "file": "parsed-IconWallet.svg"
+    },
+    {
+      "symbol": "imgIconCalendar",
+      "url": "https://www.figma.com/api/mcp/asset/03cf4969-b97b-4c8f-8c51-73cb6812fd0b.svg",
+      "file": "parsed-IconCalendar.svg"
+    },
+    {
+      "symbol": "imgIconLeaf",
+      "url": "https://www.figma.com/api/mcp/asset/9158a9c8-edeb-4014-9fa4-c32537bce58e.svg",
+      "file": "parsed-IconLeaf.svg"
+    },
+    {
+      "symbol": "imgIconSun",
+      "url": "https://www.figma.com/api/mcp/asset/4efeee9b-3a76-4b3e-b00a-21a1045617bd.svg",
+      "file": "parsed-IconSun.svg"
+    },
+    {
+      "symbol": "imgIconLock",
+      "url": "https://www.figma.com/api/mcp/asset/b7ab01f7-7f36-46a0-a168-872f26c3c050.svg",
+      "file": "parsed-IconLock.svg"
+    },
+    {
+      "symbol": "imgEditableIllustrationGoaCoast",
+      "url": "https://www.figma.com/api/mcp/asset/786d6ce3-6dfc-4c8d-b36f-68c16d62c411.svg",
+      "file": "parsed-EditableIllustrationGoaCoast.svg"
+    }
+  ]
+}

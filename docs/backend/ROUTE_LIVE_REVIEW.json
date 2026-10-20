@@ -1,0 +1,96 @@
+{
+  "date": "2026-10-20",
+  "project": "ewysgpuwvufbklesdhuj",
+  "makeFile": "4tPr5AkQO1g0L1esRvGRjz",
+  "fixture": "10c6492e-cb08-4dc4-9b3d-d79a883a7e5f",
+  "label": "TEST · Complete Japan route 2026-10-19",
+  "status": "Live quality failed; complete-route generation is not yet reliable or certified complete",
+  "providerAttempts": 6,
+  "validatedResults": 0,
+  "savedPlans": 0,
+  "automaticRetries": 0,
+  "attempts": [
+    {
+      "edge": 9,
+      "result": "Rejected: location changes need an explicit transfer"
+    },
+    {
+      "edge": 10,
+      "result": "Rejected: transfer duration is implausibly short (catalogue minimum field)"
+    },
+    {
+      "edge": 11,
+      "result": "Rejected: stop idea_17 uses transport outside an explicit transfer (same-area activity annotation)"
+    },
+    {
+      "edge": 12,
+      "result": "Rejected: overlap, gap, or insufficient duration"
+    },
+    {
+      "edge": 13,
+      "result": "Rejected: first stop starts before arrival"
+    },
+    {
+      "edge": 14,
+      "result": "Rejected: a transfer needs a transport mode and a meaningful flight route"
+    }
+  ],
+  "finalDeployedEdge": 14,
+  "localValidation": {
+    "testsPassed": 137,
+    "testsFailed": 0,
+    "typecheck": true,
+    "build": true,
+    "isolatedDatabaseChecks": 24,
+    "additionalSQLIntegration": "A supplemental disposable-database run produced no completed results and was interrupted; pg_ctl confirmed no server running. Do not count it as passing."
+  },
+  "sourceVerification": {
+    "uniqueRuntimeFiles": 137,
+    "applicationEntries": 54,
+    "backendEntries": 85,
+    "fixtureEntries": 2,
+    "validationExecutedInMake": false,
+    "method": "137-file base archive readback plus two subsequent4-file guarded editor passes (v13,v14); no tests executed in Make"
+  },
+  "existingDataUnchanged": true,
+  "preservation": {
+    "trips": 28,
+    "plans": 27,
+    "inputs": 40,
+    "locks": 11,
+    "reviews": 17,
+    "polls": 8,
+    "ballots": 11,
+    "trip_hash": "134d1c617f08cc1b29b2490d831aa333",
+    "plan_hash": "b32f0e7d6abb908f79960ba23d61933f",
+    "input_hash": "55fe67edf68db20acd6ddfa1d4586157",
+    "fixture_admissions": 7,
+    "fixture_used_admissions": 0,
+    "fixture_plans": 0
+  },
+  "fixtureInput": {
+    "fictional": true,
+    "includedTravellers": 1,
+    "start": "2026-11-20T06:00:00+05:30",
+    "end": "2026-11-26T18:30:00+05:30",
+    "destination": "Japan",
+    "requests": [
+      "Visit Tokyo Tower.",
+      "See Mount Fuji from the lakes region.",
+      "Include timed transfers between places.",
+      "Enjoy Tokyo nightlife."
+    ]
+  },
+  "remaining": [
+    "Simplify the model contract so valid route/transport data is generated reliably",
+    "Establish a successful live complete seven-day itinerary and inspect semantic quality before certifying",
+    "Only after a valid result, review and lock the labelled fixture and verify Final journey/History"
+  ],
+  "providerAttemptsMeaning": "Six explicitly observed Gemini responses; no automatic retries. Seven reservation records are not proof of seven external calls.",
+  "providerAdmissionRecords": 7,
+  "installedTimingCorrections": [
+    "Ordinary gaps become explicitly labelled, zero-cost flexible time in the same area; no attraction, journey or sleep is invented",
+    "Only first/last visit, meal or rest may be shortened by at most60 minutes, retaining its declared minimum, same-area boundary and a visible assumption note; transport and stays are never shortened",
+    "Overlaps, missing transfers, impossible journey times, missing usable days and sleep remain rejected"
+  ]
+}

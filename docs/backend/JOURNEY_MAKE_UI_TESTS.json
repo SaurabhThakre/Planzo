@@ -1,0 +1,142 @@
+{
+  "date": "2026-10-17T14:42:22.004Z",
+  "makeFile": "4tPr5AkQO1g0L1esRvGRjz",
+  "project": "ewysgpuwvufbklesdhuj",
+  "fixture": {
+    "id": "75f98b65-5fd5-457a-8996-51da9f81df6c",
+    "name": "TEST · AI booking journey 2026-10-17",
+    "stage": "agreed",
+    "revision": 2,
+    "included": 1,
+    "plans": 1,
+    "locks": 1,
+    "aiAttempts": 1,
+    "taskRevisions": 14,
+    "reserveVersions": 3,
+    "handoffReviewVersions": 2,
+    "currentHandoffRevision": 11,
+    "selfReportedReservations": 0
+  },
+  "summary": {
+    "passed": 26,
+    "failed": 0
+  },
+  "checks": [
+    {
+      "name": "Created only TEST · AI booking journey 2026-10-17 with minimum one traveller",
+      "result": "pass"
+    },
+    {
+      "name": "Personal outbound and return allowances of three hours constrain the shared destination interval",
+      "result": "pass"
+    },
+    {
+      "name": "Edited and explicitly approved separate activity, flexible and food requests in the summary",
+      "result": "pass"
+    },
+    {
+      "name": "Generation became available after the only included traveller confirmed fictional input and Gemini consent",
+      "result": "pass"
+    },
+    {
+      "name": "One actual Gemini request produced a continuous shared itinerary",
+      "result": "pass"
+    },
+    {
+      "name": "Scuba and non-vegetarian meal requirements appeared explicitly in the proposed itinerary",
+      "result": "pass"
+    },
+    {
+      "name": "Personal review preceded exact-version organiser lock",
+      "result": "pass"
+    },
+    {
+      "name": "Locked itinerary prepared seven owner-assigned dated booking tasks, including two private legs",
+      "result": "pass"
+    },
+    {
+      "name": "Initial booking ledger exactly matched earlier complete estimate INR16595",
+      "result": "pass"
+    },
+    {
+      "name": "Official source URL is fixed HTTPS with no private query, noopener/noreferrer and no-referrer",
+      "result": "pass"
+    },
+    {
+      "name": "Known eight-hour GTDC excursion was rejected against the three-hour locked scuba step",
+      "result": "pass"
+    },
+    {
+      "name": "Unknown prices and unsaved expense reserve kept the handoff review disabled",
+      "result": "pass"
+    },
+    {
+      "name": "All seven quotes/arrangements were recorded only as labelled fictional fixtures; no reservations reported",
+      "result": "pass"
+    },
+    {
+      "name": "INR3994 reserve was rejected below the INR3995 protected meal/fee/contingency allowance",
+      "result": "pass"
+    },
+    {
+      "name": "INR5000 reserve plus INR11500 checked fictional prices produced INR16500 total and INR13500 headroom",
+      "result": "pass"
+    },
+    {
+      "name": "Current handoff became reviewed after the included traveller explicitly approved it",
+      "result": "pass"
+    },
+    {
+      "name": "Changing reserve to INR20000 invalidated the prior review and blocked over-ceiling approval at INR31500",
+      "result": "pass"
+    },
+    {
+      "name": "Restoring INR5000 required a fresh explicit handoff review",
+      "result": "pass"
+    },
+    {
+      "name": "History retained initial and checked booking task revisions plus shared decision events",
+      "result": "pass"
+    },
+    {
+      "name": "Changing a source reset the quote acknowledgement and disabled saving until freshly acknowledged",
+      "result": "pass"
+    },
+    {
+      "name": "Changing a manual provider name reset acknowledgement and disabled saving",
+      "result": "pass"
+    },
+    {
+      "name": "Journey page has correct title/instruction, timed legs/steps, owners/due dates and a read-only private budget summary",
+      "result": "pass"
+    },
+    {
+      "name": "Signed-in fullscreen preview opened only the newly labelled trip and read its current reviewed handoff",
+      "result": "pass"
+    },
+    {
+      "name": "390x844 Make mobile viewport rendered journey and opened booking controls without horizontal overflow (document client/scroll widths both 368)",
+      "result": "pass"
+    },
+    {
+      "name": "Exactly one History link remains in the trip navigation",
+      "result": "pass"
+    },
+    {
+      "name": "Final installed workflow-2 History shows one current booking-revision panel and shared decisions, with no legacy empty Booking reports or Progress history panels",
+      "result": "pass"
+    }
+  ],
+  "boundaries": [
+    "One ordinary verified account in hosted Make; multi-user isolation/concurrency verified in disposable PostgreSQL, not new hosted multi-account sessions.",
+    "All manually entered prices are fictional test values, not provider quotes. No booking or payment submitted.",
+    "Gemini planning only: no provider call for catalogue, price tracking or journey UI."
+  ],
+  "screenshots": [
+    "journey-reviewed-desktop.jpg",
+    "journey-timeline-desktop.jpg",
+    "journey-reviewed-mobile.jpg",
+    "journey-booking-mobile.jpg"
+  ],
+  "fullscreenAfterFinalVersionRefresh": "Separate compiled preview returned to signed-out home; editor preview remains signed in. No credentials or sessions were copied."
+}

@@ -1,0 +1,43 @@
+{
+  "date": "2026-10-18",
+  "makeFile": "4tPr5AkQO1g0L1esRvGRjz",
+  "project": "ewysgpuwvufbklesdhuj",
+  "complete": true,
+  "checks": [
+    {
+      "name": "Normal signed-in labelled trip Step decisions empty state and desktop layout",
+      "passed": true,
+      "measurement": {
+        "client": 1413,
+        "empty": true,
+        "headings": [
+          "Group votes",
+          "Saved step decisions",
+          "What happened to my requirements",
+          "My complete journey",
+          "Your locked itinerary",
+          "Your private whole-trip check",
+          "Lock the resolved itinerary"
+        ],
+        "scroll": 1413,
+        "signedIn": true
+      }
+    },
+    {
+      "name": "Installed source hashes bind the locally reviewed exact production card to Make",
+      "passed": true,
+      "measurement": {
+        "applicationSources": 41,
+        "backendSourcesUnchanged": 64,
+        "fixtureSources": 2,
+        "existingTestsPassed": 85
+      }
+    }
+  ],
+  "populatedDecisionCoverage": "Twelve local desktop checks use the exact production component with a non-persisting fixture callback. No populated production vote was created or submitted.",
+  "makeFixtureRoute": "The Make host serves /tools/ui-review/ through its normal SPA fallback, so no Make-hosted populated-fixture coverage is claimed.",
+  "fixture": "75f98b65-5fd5-457a-8996-51da9f81df6c",
+  "tripWrites": 0,
+  "aiCalls": 0,
+  "screenshot": "Labelled local fixture of the installed exact production card, cropped to the complete decision card."
+}

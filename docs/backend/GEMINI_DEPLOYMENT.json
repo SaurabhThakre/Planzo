@@ -1,0 +1,64 @@
+{
+  "date": "2026-10-16T08:02:03.342Z",
+  "project": "ewysgpuwvufbklesdhuj",
+  "migration": "20261016080006_planzo_gemini_fictional_preference_preview",
+  "migrationAppliedOnce": true,
+  "canonicalSourceEqualsDevelopment": true,
+  "newTables": 0,
+  "functionsChanged": [
+    "planzo_private.ai_api(text,jsonb)"
+  ],
+  "functionBodyMD5": "4b2ba839b1a27dccd0e33cdb1a83f5ea",
+  "earlierFunctionBodiesUnchanged": 25,
+  "edge": {
+    "name": "planzo-ai-preferences",
+    "version": 4,
+    "status": "ACTIVE",
+    "verify_jwt": true,
+    "sourceFilesExact": 3
+  },
+  "providerModel": "gemini-3.5-flash-lite",
+  "endpoint": "https://generativelanguage.googleapis.com/v1/interactions",
+  "tier": "User confirmed Free Tier, no linked billing; Google projects UI returned 520, so no independent UI verification",
+  "secrets": "Only GEMINI_API_KEY name observed in Trip Pact; user saved value directly. Key not read.",
+  "scope": "Labelled TEST · AI trips; fictional_input=true and separate provider-specific consent; input begins TEST FICTIONAL. No OpenAI fallback.",
+  "limits": {
+    "globalLifetimeGeminiAttempts": 8,
+    "perUser24Hours": 4,
+    "cooldownSeconds": 3,
+    "maxTextCharacters": 2000,
+    "maxOutputTokens": 1200,
+    "timeoutSeconds": 15,
+    "automaticRetries": 0
+  },
+  "privacy": "Only explicitly fictional submitted text and labelled date options go to Google. Free service may use input/output for improvement and human review. No database brief, member identities or identifiers are sent. No raw text or output in receipts. store=false does not override Google unpaid terms.",
+  "advisors": [
+    {
+      "name": "rls_enabled_no_policy",
+      "level": "INFO",
+      "count": 19
+    },
+    {
+      "name": "auth_leaked_password_protection",
+      "level": "WARN",
+      "count": 1
+    }
+  ],
+  "currentStage": "Complete fictional-data slice: exact Make sources, 42 application tests, 34 isolated database checks, 12 observed Make UI checks, fixture postponed and original agreement unchanged.",
+  "creditsPurchased": false,
+  "billingChanged": false,
+  "websitePublished": false,
+  "providerRequests": {
+    "admittedObserved": 4,
+    "successfulPreviewsObserved": 3,
+    "initialRequestRejected": 1,
+    "automaticRetries": 0
+  },
+  "corrections": [
+    "Omitted service_tier, absent from stable v1 contract",
+    "Allowlisted private provider error diagnostics",
+    "Valid section wrapper for rich preview content"
+  ],
+  "liveQualityLimitation": "One final preview omitted vegetarian suggestion; existing manual requirement stayed intact. No general reliability or task-improvement claim.",
+  "fixtureCleanup": "Postponed; zero confirmed briefs, versions, responses, invites or handoffs."
+}

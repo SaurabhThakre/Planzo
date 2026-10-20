@@ -1,0 +1,164 @@
+{
+  "run_id": "be3c2d84-6f4f-48ef-b415-e9fb7cec6732",
+  "date": "2026-10-16T06:04:45.941Z",
+  "project": "ewysgpuwvufbklesdhuj",
+  "method": "Four distinct ordinary verified sessions with public client configuration; no administrative credentials",
+  "checks": [
+    {
+      "name": "Outside-trip real member cannot read booking state",
+      "result": "pass",
+      "error_code": "42501",
+      "http_status": 403
+    },
+    {
+      "name": "Signed-out client cannot read booking state",
+      "result": "pass",
+      "error_code": "42501",
+      "http_status": 401
+    },
+    {
+      "name": "Unagreed trip cannot prepare handoff",
+      "result": "pass",
+      "error_code": "P0001",
+      "http_status": 400
+    },
+    {
+      "name": "Four explicit Ready responses permit agreement with handoff pending",
+      "result": "pass"
+    },
+    {
+      "name": "Member cannot prepare group booking tasks",
+      "result": "pass",
+      "error_code": "42501",
+      "http_status": 403
+    },
+    {
+      "name": "New shared and own personal tasks are pending and privacy-safe",
+      "result": "pass"
+    },
+    {
+      "name": "Organiser cannot read another member’s personal tasks",
+      "result": "pass"
+    },
+    {
+      "name": "Member cannot assign shared responsibilities",
+      "result": "pass",
+      "error_code": "42501",
+      "http_status": 403
+    },
+    {
+      "name": "Forged actor rejected at public booking boundary",
+      "result": "pass",
+      "error_code": "P0001",
+      "http_status": 400
+    },
+    {
+      "name": "Prepared milestone requires all shared and private handoff details",
+      "result": "pass"
+    },
+    {
+      "name": "Organiser cannot report a task assigned to another member",
+      "result": "pass",
+      "error_code": "42501",
+      "http_status": 403
+    },
+    {
+      "name": "Owner completion requires explicit acknowledgement",
+      "result": "pass",
+      "error_code": "P0001",
+      "http_status": 400
+    },
+    {
+      "name": "Owner report persists once with timestamp and exact version",
+      "result": "pass"
+    },
+    {
+      "name": "Stale report request cannot overwrite saved status",
+      "result": "inconclusive",
+      "http_status": 504,
+      "detail": "The raw checker incorrectly counted any error as denial. HTTP 504 without a database error code does not establish stale-request enforcement. Retained as inconclusive; local PostgreSQL stale checks passed."
+    },
+    {
+      "name": "Broken link leaves task pending and handoff milestone incomplete",
+      "result": "pass"
+    },
+    {
+      "name": "Changed provider terms invalidate agreement and preserve report history",
+      "result": "pass"
+    },
+    {
+      "name": "Historical booking cannot accept fresh reports",
+      "result": "pass",
+      "error_code": "P0001",
+      "http_status": 400
+    },
+    {
+      "name": "New agreement starts fresh pending tasks with earlier reports preserved",
+      "result": "pass"
+    },
+    {
+      "name": "Valid older agreed plan cannot receive a new handoff update",
+      "result": "pass",
+      "error_code": "P0001",
+      "http_status": 400
+    }
+  ],
+  "fixtures": [
+    {
+      "trip_id": "14314506-10fe-4fd7-bec8-d6e393fd1807",
+      "label": "Fictional booking handoff test",
+      "cleanup": "pending Make interface check, then postpone",
+      "invitation": "revoked"
+    }
+  ],
+  "actors": [
+    {
+      "role": "Organiser A",
+      "user_fingerprint": "9432f19b74c3b059"
+    },
+    {
+      "role": "Member B",
+      "user_fingerprint": "f56cbbb4bbfd2f7c"
+    },
+    {
+      "role": "Member C",
+      "user_fingerprint": "c9d146dab5814329"
+    },
+    {
+      "role": "Member D",
+      "user_fingerprint": "ba581e5a523bb22e"
+    }
+  ],
+  "credentials_recorded": false,
+  "existing_agreed_trip_mutated": false,
+  "signout_requests": [
+    {
+      "role": "Organiser A",
+      "result": "accepted"
+    },
+    {
+      "role": "Member B",
+      "result": "accepted"
+    },
+    {
+      "role": "Member C",
+      "result": "accepted"
+    },
+    {
+      "role": "Member D",
+      "result": "accepted"
+    }
+  ],
+  "checker_reported_summary": {
+    "passed": 19,
+    "failed": 0,
+    "total": 19
+  },
+  "reviewed_summary": {
+    "passed": 18,
+    "failed": 0,
+    "inconclusive": 1,
+    "total": 19
+  },
+  "review_note": "Corrected after reading the safe report. No immediate access-JWT invalidation or post-signout/fresh-login restoration is asserted."
+}

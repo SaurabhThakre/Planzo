@@ -1,0 +1,26 @@
+{
+  "date": "2026-10-17T13:12:22.945Z",
+  "project": "ewysgpuwvufbklesdhuj",
+  "makeFile": "4tPr5AkQO1g0L1esRvGRjz",
+  "migration": "20261017131023_planzo_booking_journey",
+  "cliPreparation": "20261017130151",
+  "appliedOnce": true,
+  "newPrivateTables": 4,
+  "newFunctions": 5,
+  "existingFunctionsChanged": 0,
+  "existingRowsChanged": 0,
+  "noProviderCalls": true,
+  "noEdgeDeployment": true,
+  "localChecks": {
+    "appTests": 85,
+    "databaseChecks": 39,
+    "typecheck": true,
+    "build": true
+  },
+  "securityAdvisor": "Expected private default-deny RLS no-policy information and previously recorded Auth leaked-password warning; no settings changed.",
+  "makeInstall": "Complete; exact closeout receipt in JOURNEY_CLOSEOUT_RECEIPT.json",
+  "uiVerification": "26 Make UI checks passed on one new labelled fictional fixture",
+  "hostedFunctionBodiesMatched": 5,
+  "hostedSignedOutProbesDenied": 2,
+  "finalEarlierTripPreservation": true
+}

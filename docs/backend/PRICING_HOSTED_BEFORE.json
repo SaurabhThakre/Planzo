@@ -1,0 +1,12 @@
+{
+  "locks": 10,
+  "plans": 24,
+  "polls": 8,
+  "trips": 25,
+  "inputs": 36,
+  "ballots": 11,
+  "reviews": 16,
+  "plan_hash": "fd3a2fc400f71b5c6d99d92fcd749ff6",
+  "trip_hash": "e507e90bc578140d3147cc321855db68",
+  "input_hash": "b6192394b343f0340e799101a50394e4"
+}

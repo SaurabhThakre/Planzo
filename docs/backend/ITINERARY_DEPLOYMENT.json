@@ -1,0 +1,481 @@
+{
+  "date": "2026-10-16",
+  "project": "ewysgpuwvufbklesdhuj",
+  "make_file": "4tPr5AkQO1g0L1esRvGRjz",
+  "migration": "20261016042325_planzo_manual_itinerary_item_voting",
+  "deployment_success": true,
+  "metadata": {
+    "tables": [
+      {
+        "rls": true,
+        "table": "itinerary_ballots",
+        "client_write": false,
+        "client_select": false
+      },
+      {
+        "rls": true,
+        "table": "itinerary_drafts",
+        "client_write": false,
+        "client_select": false
+      },
+      {
+        "rls": true,
+        "table": "itinerary_polls",
+        "client_write": false,
+        "client_select": false
+      }
+    ],
+    "functions": [
+      {
+        "name": "evaluate_itinerary",
+        "schema": "planzo_private",
+        "definer": false,
+        "settings": [
+          "search_path=\"\""
+        ],
+        "body_sha256": "8806bcdf118cb8be0074471bace996caade7de39473c7f32b6ee089d3737fbb4",
+        "anon_execute": false,
+        "authenticated_execute": false
+      },
+      {
+        "name": "evaluate_plan",
+        "schema": "planzo_private",
+        "definer": false,
+        "settings": [
+          "search_path=\"\""
+        ],
+        "body_sha256": "b3e4694c0128bd6a17a59c128840ff5044383065b79b5c4f9386ea3a533d91d3",
+        "anon_execute": false,
+        "authenticated_execute": false
+      },
+      {
+        "name": "invalidate_planning",
+        "schema": "planzo_private",
+        "definer": true,
+        "settings": [
+          "search_path=\"\""
+        ],
+        "body_sha256": "b1ef792f42040771a8e287cd6b70f8d90595429be9afa9eb81d53f590e48f551",
+        "anon_execute": false,
+        "authenticated_execute": false
+      },
+      {
+        "name": "itinerary_api",
+        "schema": "planzo_private",
+        "definer": true,
+        "settings": [
+          "search_path=\"\""
+        ],
+        "body_sha256": "56b01aaad254aaafe9ed8e5332c84806a28f4fe4608dfb901fdfcdb789db64bb",
+        "anon_execute": false,
+        "authenticated_execute": true
+      },
+      {
+        "name": "itinerary_state",
+        "schema": "planzo_private",
+        "definer": false,
+        "settings": [
+          "search_path=\"\""
+        ],
+        "body_sha256": "5ad1874980a454cc16954d775c7b683188942871e4641c1c8143f8c0ae1f53e4",
+        "anon_execute": false,
+        "authenticated_execute": false
+      },
+      {
+        "name": "planning_state",
+        "schema": "planzo_private",
+        "definer": false,
+        "settings": [
+          "search_path=\"\""
+        ],
+        "body_sha256": "ee2b51c5023e7c7a874e752f33d31e2df7f1db2e66b7078403e70645a0d9f2d9",
+        "anon_execute": false,
+        "authenticated_execute": false
+      },
+      {
+        "name": "planzo_itinerary",
+        "schema": "public",
+        "definer": false,
+        "settings": [
+          "search_path=\"\""
+        ],
+        "body_sha256": "a4fde9613a54207ab905824540dfd8a0c2a6030b2c93a9a6df99e47321027dc2",
+        "anon_execute": false,
+        "authenticated_execute": true
+      }
+    ],
+    "original_trip": {
+      "ready": 4,
+      "stage": "agreed",
+      "revision": 19,
+      "versions": 1,
+      "item_drafts": 0
+    }
+  },
+  "security_advisors": {
+    "result": {
+      "lints": [
+        {
+          "name": "rls_enabled_no_policy",
+          "title": "RLS Enabled No Policy",
+          "level": "INFO",
+          "facing": "EXTERNAL",
+          "categories": [
+            "SECURITY"
+          ],
+          "description": "Detects cases where row level security (RLS) has been enabled on a table but no RLS policies have been created.",
+          "remediation": "https://supabase.com/docs/guides/database/database-linter?lint=0008_rls_enabled_no_policy",
+          "count": 15,
+          "findings": [
+            {
+              "detail": "Table \\`planzo_private.itinerary_ballots\\` has RLS enabled, but no policies exist",
+              "metadata": {
+                "name": "itinerary_ballots",
+                "type": "table",
+                "schema": "planzo_private"
+              },
+              "observed_at": "2026-10-16T04:23:35.776Z"
+            },
+            {
+              "detail": "Table \\`planzo_private.itinerary_drafts\\` has RLS enabled, but no policies exist",
+              "metadata": {
+                "name": "itinerary_drafts",
+                "type": "table",
+                "schema": "planzo_private"
+              },
+              "observed_at": "2026-10-16T04:23:35.776Z"
+            },
+            {
+              "detail": "Table \\`planzo_private.itinerary_polls\\` has RLS enabled, but no policies exist",
+              "metadata": {
+                "name": "itinerary_polls",
+                "type": "table",
+                "schema": "planzo_private"
+              },
+              "observed_at": "2026-10-16T04:23:35.776Z"
+            },
+            {
+              "detail": "Table \\`planzo_private.member_brief_drafts\\` has RLS enabled, but no policies exist",
+              "metadata": {
+                "name": "member_brief_drafts",
+                "type": "table",
+                "schema": "planzo_private"
+              },
+              "observed_at": "2026-10-16T04:23:35.776Z"
+            },
+            {
+              "detail": "Table \\`planzo_private.member_brief_revisions\\` has RLS enabled, but no policies exist",
+              "metadata": {
+                "name": "member_brief_revisions",
+                "type": "table",
+                "schema": "planzo_private"
+              },
+              "observed_at": "2026-10-16T04:23:35.776Z"
+            },
+            {
+              "detail": "Table \\`planzo_private.operation_receipts\\` has RLS enabled, but no policies exist",
+              "metadata": {
+                "name": "operation_receipts",
+                "type": "table",
+                "schema": "planzo_private"
+              },
+              "observed_at": "2026-10-16T04:23:35.776Z"
+            },
+            {
+              "detail": "Table \\`planzo_private.plan_costs\\` has RLS enabled, but no policies exist",
+              "metadata": {
+                "name": "plan_costs",
+                "type": "table",
+                "schema": "planzo_private"
+              },
+              "observed_at": "2026-10-16T04:23:35.776Z"
+            },
+            {
+              "detail": "Table \\`planzo_private.plan_polls\\` has RLS enabled, but no policies exist",
+              "metadata": {
+                "name": "plan_polls",
+                "type": "table",
+                "schema": "planzo_private"
+              },
+              "observed_at": "2026-10-16T04:23:35.776Z"
+            },
+            {
+              "detail": "Table \\`planzo_private.plan_responses\\` has RLS enabled, but no policies exist",
+              "metadata": {
+                "name": "plan_responses",
+                "type": "table",
+                "schema": "planzo_private"
+              },
+              "observed_at": "2026-10-16T04:23:35.776Z"
+            },
+            {
+              "detail": "Table \\`planzo_private.plan_versions\\` has RLS enabled, but no policies exist",
+              "metadata": {
+                "name": "plan_versions",
+                "type": "table",
+                "schema": "planzo_private"
+              },
+              "observed_at": "2026-10-16T04:23:35.776Z"
+            },
+            {
+              "detail": "Table \\`planzo_private.planning_catalogues\\` has RLS enabled, but no policies exist",
+              "metadata": {
+                "name": "planning_catalogues",
+                "type": "table",
+                "schema": "planzo_private"
+              },
+              "observed_at": "2026-10-16T04:23:35.776Z"
+            },
+            {
+              "detail": "Table \\`planzo_private.planning_drafts\\` has RLS enabled, but no policies exist",
+              "metadata": {
+                "name": "planning_drafts",
+                "type": "table",
+                "schema": "planzo_private"
+              },
+              "observed_at": "2026-10-16T04:23:35.776Z"
+            },
+            {
+              "detail": "Table \\`planzo_private.planning_events\\` has RLS enabled, but no policies exist",
+              "metadata": {
+                "name": "planning_events",
+                "type": "table",
+                "schema": "planzo_private"
+              },
+              "observed_at": "2026-10-16T04:23:35.776Z"
+            },
+            {
+              "detail": "Table \\`planzo_private.poll_ballots\\` has RLS enabled, but no policies exist",
+              "metadata": {
+                "name": "poll_ballots",
+                "type": "table",
+                "schema": "planzo_private"
+              },
+              "observed_at": "2026-10-16T04:23:35.776Z"
+            },
+            {
+              "detail": "Table \\`planzo_private.trip_invites\\` has RLS enabled, but no policies exist",
+              "metadata": {
+                "name": "trip_invites",
+                "type": "table",
+                "schema": "planzo_private"
+              },
+              "observed_at": "2026-10-16T04:23:35.776Z"
+            }
+          ]
+        },
+        {
+          "name": "auth_leaked_password_protection",
+          "title": "Leaked Password Protection Disabled",
+          "level": "WARN",
+          "facing": "EXTERNAL",
+          "categories": [
+            "SECURITY"
+          ],
+          "description": "Leaked password protection is currently disabled.",
+          "remediation": "https://supabase.com/docs/guides/auth/password-security#password-strength-and-leaked-password-protection",
+          "count": 1,
+          "findings": [
+            {
+              "detail": "Supabase Auth prevents the use of compromised passwords by checking against HaveIBeenPwned.org. Enable this feature to enhance security.",
+              "metadata": {
+                "type": "auth",
+                "entity": "Auth"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "performance_advisors": {
+    "result": {
+      "lints": [
+        {
+          "name": "unused_index",
+          "title": "Unused Index",
+          "level": "INFO",
+          "facing": "EXTERNAL",
+          "categories": [
+            "PERFORMANCE"
+          ],
+          "description": "Detects if an index has never been used and may be a candidate for removal.",
+          "remediation": "https://supabase.com/docs/guides/database/database-linter?lint=0005_unused_index",
+          "count": 12,
+          "findings": [
+            {
+              "detail": "Index \\`planzo_responses_member_idx\\` on table \\`planzo_private.plan_responses\\` has not been used",
+              "metadata": {
+                "name": "plan_responses",
+                "type": "table",
+                "schema": "planzo_private"
+              },
+              "observed_at": "2026-10-16T04:23:35.782Z"
+            },
+            {
+              "detail": "Index \\`planzo_ballots_member_idx\\` on table \\`planzo_private.poll_ballots\\` has not been used",
+              "metadata": {
+                "name": "poll_ballots",
+                "type": "table",
+                "schema": "planzo_private"
+              },
+              "observed_at": "2026-10-16T04:23:35.782Z"
+            },
+            {
+              "detail": "Index \\`planzo_trips_creator_idx\\` on table \\`public.planzo_trips\\` has not been used",
+              "metadata": {
+                "name": "planzo_trips",
+                "type": "table",
+                "schema": "public"
+              },
+              "observed_at": "2026-10-16T04:23:35.782Z"
+            },
+            {
+              "detail": "Index \\`planzo_invites_creator_idx\\` on table \\`planzo_private.trip_invites\\` has not been used",
+              "metadata": {
+                "name": "trip_invites",
+                "type": "table",
+                "schema": "planzo_private"
+              },
+              "observed_at": "2026-10-16T04:23:35.782Z"
+            },
+            {
+              "detail": "Index \\`planzo_costs_member_idx\\` on table \\`planzo_private.plan_costs\\` has not been used",
+              "metadata": {
+                "name": "plan_costs",
+                "type": "table",
+                "schema": "planzo_private"
+              },
+              "observed_at": "2026-10-16T04:23:35.782Z"
+            },
+            {
+              "detail": "Index \\`planzo_costs_version_idx\\` on table \\`planzo_private.plan_costs\\` has not been used",
+              "metadata": {
+                "name": "plan_costs",
+                "type": "table",
+                "schema": "planzo_private"
+              },
+              "observed_at": "2026-10-16T04:23:35.782Z"
+            },
+            {
+              "detail": "Index \\`planzo_responses_version_idx\\` on table \\`planzo_private.plan_responses\\` has not been used",
+              "metadata": {
+                "name": "plan_responses",
+                "type": "table",
+                "schema": "planzo_private"
+              },
+              "observed_at": "2026-10-16T04:23:35.782Z"
+            },
+            {
+              "detail": "Index \\`planzo_invites_membership_idx\\` on table \\`planzo_private.trip_invites\\` has not been used",
+              "metadata": {
+                "name": "trip_invites",
+                "type": "table",
+                "schema": "planzo_private"
+              },
+              "observed_at": "2026-10-16T04:23:35.782Z"
+            },
+            {
+              "detail": "Index \\`planzo_itinerary_window_idx\\` on table \\`planzo_private.itinerary_drafts\\` has not been used",
+              "metadata": {
+                "name": "itinerary_drafts",
+                "type": "table",
+                "schema": "planzo_private"
+              },
+              "observed_at": "2026-10-16T04:23:35.782Z"
+            },
+            {
+              "detail": "Index \\`planzo_item_polls_trip_idx\\` on table \\`planzo_private.itinerary_polls\\` has not been used",
+              "metadata": {
+                "name": "itinerary_polls",
+                "type": "table",
+                "schema": "planzo_private"
+              },
+              "observed_at": "2026-10-16T04:23:35.782Z"
+            },
+            {
+              "detail": "Index \\`planzo_item_ballots_member_idx\\` on table \\`planzo_private.itinerary_ballots\\` has not been used",
+              "metadata": {
+                "name": "itinerary_ballots",
+                "type": "table",
+                "schema": "planzo_private"
+              },
+              "observed_at": "2026-10-16T04:23:35.782Z"
+            },
+            {
+              "detail": "Index \\`planzo_item_ballots_poll_idx\\` on table \\`planzo_private.itinerary_ballots\\` has not been used",
+              "metadata": {
+                "name": "itinerary_ballots",
+                "type": "table",
+                "schema": "planzo_private"
+              },
+              "observed_at": "2026-10-16T04:23:35.782Z"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "scope": "Manual itinerary, item voting and deterministic required-slot/night checks. No AI or website publication.",
+  "verification": {
+    "local_itinerary": 49,
+    "local_planning_regressions": 55,
+    "local_identity_regressions": 26,
+    "application_tests": 22,
+    "typecheck": "passed",
+    "build": "passed",
+    "hosted_ordinary_session": {
+      "passed": 16,
+      "failed": 0,
+      "run_id": "b5e033bb-346b-4d6b-b817-b919f6ccb6e5",
+      "evidence": "ITINERARY_ORDINARY_ACCOUNT_TESTS.json"
+    },
+    "make_ui": {
+      "passed": 12,
+      "failed": 0,
+      "mobile_viewport": 390,
+      "restored_viewport": 1068,
+      "evidence": "ITINERARY_MAKE_UI_TESTS.json"
+    }
+  },
+  "make_source_install": {
+    "initial_ui_attachments_exact": 7,
+    "backend_attachments_exact": 8,
+    "history_followup_attachments_exact": 2,
+    "app_hashes_matched": 16,
+    "backend_hashes_matched": 15,
+    "typecheck": "pass",
+    "application_tests": 22,
+    "build": "pass; existing bundle-size advisory",
+    "unexpected_changed_paths": 0
+  },
+  "cleanup": {
+    "date": "2026-10-16",
+    "scope": "Read-only status and counts only; no raw briefs, costs, notes, invitations or credentials read.",
+    "test_trip": {
+      "id": "2d6a875a-51c6-4153-880b-731309a65655",
+      "stage": "postponed",
+      "members": 4,
+      "revision": 16,
+      "versions": 3,
+      "latest_version": 3,
+      "latest_responses": 0,
+      "active_invitations": 0,
+      "open_or_unresolved_item_polls": 0
+    },
+    "original_trip": {
+      "id": "a5c044b5-812d-4f2a-8cc7-b0718ce1f767",
+      "ready": 4,
+      "stage": "agreed",
+      "members": 4,
+      "revision": 19,
+      "versions": 1,
+      "item_drafts": 0,
+      "agreement_events": 1
+    },
+    "temporary_checker_tab_closed": true,
+    "temporary_server_stopped": true
+  },
+  "no_ai_integration": true,
+  "website_published": false
+}

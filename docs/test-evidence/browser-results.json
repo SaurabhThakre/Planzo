@@ -1,0 +1,58 @@
+{
+  "date": "2026-10-15T14:25:43.711Z",
+  "results": [
+    {
+      "name": "Welcome matches the design structure and serves local Figma assets",
+      "status": "pass"
+    },
+    {
+      "name": "Readiness waits for explicit review of the current full cost",
+      "status": "pass"
+    },
+    {
+      "name": "Edited forms survive a failed save, retry and reload",
+      "status": "pass"
+    },
+    {
+      "name": "Unaffordable proposals are blocked after input changes",
+      "status": "pass"
+    },
+    {
+      "name": "Five travellers are repriced using three rooms and fixed transport",
+      "status": "pass"
+    },
+    {
+      "name": "A material edit invalidates readiness and creates a fresh review version",
+      "status": "pass"
+    },
+    {
+      "name": "Agreement requires six current explicit responses, including the organiser",
+      "status": "pass"
+    },
+    {
+      "name": "Booking reports persist and remain distinct from verified reservations",
+      "status": "pass"
+    },
+    {
+      "name": "All five provider categories work and external links keep local task state unchanged",
+      "status": "pass"
+    },
+    {
+      "name": "Item votes persist, close under the stated rule and update the actual complete cost",
+      "status": "pass"
+    },
+    {
+      "name": "New organisers create a trip; invited guests join without signup; password fields are never stored",
+      "status": "pass"
+    },
+    {
+      "name": "390px welcome, review and preference screens scroll without horizontal overflow",
+      "status": "pass"
+    },
+    {
+      "name": "No uncaught browser errors in the tested desktop and mobile journeys",
+      "status": "pass"
+    }
+  ],
+  "errors": []
+}

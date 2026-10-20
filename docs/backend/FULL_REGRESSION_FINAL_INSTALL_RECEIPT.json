@@ -1,0 +1,15 @@
+{
+  "makeFile": "4tPr5AkQO1g0L1esRvGRjz",
+  "project": "ewysgpuwvufbklesdhuj",
+  "recordsMatched": 38,
+  "beforeGuardsMatched": 7,
+  "applicationHashesMatched": 38,
+  "backendHashesMatched": 64,
+  "newSqlPairsMatched": 2,
+  "applicationSourceChanged": false,
+  "edgeSourceChanged": false,
+  "hostedChecksFromReports": 35,
+  "uiChecksFromReports": 37,
+  "realGeminiRequestsFromReports": 1,
+  "unexpectedPaths": []
+}

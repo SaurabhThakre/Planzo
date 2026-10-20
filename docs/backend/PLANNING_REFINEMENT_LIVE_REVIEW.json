@@ -1,0 +1,75 @@
+{
+  "date": "2026-10-18T15:38:58.670Z",
+  "makeFile": "4tPr5AkQO1g0L1esRvGRjz",
+  "project": "ewysgpuwvufbklesdhuj",
+  "fixtureId": "94a72f8a-8b9a-4a2c-bc9a-0b2fccd570d4",
+  "fictional": true,
+  "mutationsOnlyNewFixture": true,
+  "providerCalls": 1,
+  "provider": "Gemini Free Tier",
+  "summary": {
+    "passed": 17,
+    "failed": 0
+  },
+  "checks": [
+    "Created one labelled fictional single-person trip with a non-TEST-AI name",
+    "One-day duration auto-filled same-day end; start/end both64px tall and aligned",
+    "Host name-only trip edit saved successfully",
+    "Guide asked destination arrival/departure without redundant travel-duration controls",
+    "Guide asked only whole-trip ceiling; no upfront travel reserve",
+    "Ordinary non-TEST-FICTIONAL flexible text became an owner-reviewed shared request",
+    "All included inputs confirmed before Gemini generation became available",
+    "One actual Gemini request completed; one used planning receipt",
+    "Version1 review and organiser lock completed",
+    "Final journey showed dated icons, owner-only unallocated budget and Phase2 notice",
+    "Host edited locked master plan by splitting an activity and adding a named INR0 step",
+    "Host save created version2 draft with0 carried-over reviews; original request still included",
+    "Fresh version2 review and lock completed without another Gemini request",
+    "History displayed both locked versions and original version1 without the added activity",
+    "Desktop final journey had no horizontal overflow",
+    "Old booking route showed Phase2 placeholder; its outdated instruction was corrected in closeout",
+    "Hosted counts excluding new fixture match all seven baseline counts; zero earlier trips updated during fixture"
+  ],
+  "metadata": {
+    "preserved_counts": {
+      "locks": 5,
+      "plans": 16,
+      "polls": 7,
+      "trips": 22,
+      "ballots": 10,
+      "reviews": 11,
+      "input_versions": 31,
+      "preexisting_trips_updated_during_fixture": 0
+    },
+    "fixture": {
+      "plans": 2,
+      "stage": "agreed",
+      "reviews": 2,
+      "trip_id": "94a72f8a-8b9a-4a2c-bc9a-0b2fccd570d4",
+      "input_v3": true,
+      "labelled": true,
+      "ai_receipts": 1,
+      "locked_versions": 2,
+      "confirmed_inputs": 1,
+      "used_ai_receipts": 1,
+      "workflow_version": 2
+    }
+  },
+  "evidence": [
+    "PLANNING_REFINEMENT_FINAL_DESKTOP.jpg",
+    "PLANNING_REFINEMENT_ALLOWANCE_DESKTOP.jpg"
+  ],
+  "boundaries": {
+    "credentialsRead": false,
+    "rawPrivateDataReadBack": false,
+    "existingTripWrites": false,
+    "publishing": false,
+    "purchases": false,
+    "billingChanges": false
+  },
+  "limits": [
+    "Fresh real-inbox signup delivery was not repeated; confirmation callbacks and SDK usage were checked.",
+    "No new multi-account hosted run;27 isolated database cases cover roles, privacy, stale edits, ceilings and review/lock invariants.",
+    "This pass does not resolve the earlier recorded meal/stay semantic contradictions or make the full timetable Gemini-authored."
+  ]
+}

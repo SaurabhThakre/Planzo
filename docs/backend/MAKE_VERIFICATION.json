@@ -1,0 +1,129 @@
+{
+  "date": "2026-10-15",
+  "file_key": "4tPr5AkQO1g0L1esRvGRjz",
+  "source_update": "exact attachments installed into existing Make",
+  "first_source_verification": {
+    "install": "pnpm frozen lockfile passed",
+    "typecheck": "passed",
+    "domain_tests": 17,
+    "build": "passed"
+  },
+  "preview_repair": {
+    "supported_restart": "figma make verify-bootstrap --force",
+    "status": "ready",
+    "backend_module_http_status": 200,
+    "transformed_supabase_dependency_http_status": 200,
+    "hashes_preserved": true
+  },
+  "browser_checks": {
+    "home": "rendered",
+    "signup": "rendered",
+    "signin": "rendered",
+    "fabricated_invalid_login": "Invalid login credentials",
+    "guest_join_without_invite": "Send email code disabled"
+  },
+  "documentation_sync": {
+    "files": 9,
+    "all_exact_uploaded_bytes": true,
+    "application_hashes_matched": 12
+  },
+  "real_mailbox_test": {
+    "organiser_confirmation_and_signin": "user confirmed successful; signed-in identity observed in Make",
+    "guest_otp": "user confirmed: guest joined and saved private input using second controlled inbox; server metadata confirms member revision 1 confirmed",
+    "returning_guest": "user confirmed: signed out, signed in again with guest email code, reopened trip and saved private input was restored",
+    "password_recovery": "user confirmed successful on 2026-10-15: fresh recovery email code entered in Planzo, password updated, signed out and signed in with new password. Earlier link failures were corrected through exact preview URL settings and specifically approved code-only Recovery template."
+  },
+  "return_url_config": {
+    "date": "2026-10-15",
+    "before": "dashboard independently confirmed Site URL http://localhost:3000 and no redirect URLs",
+    "site_url": "https://app-m3why3vww3r4xrqwukti4nzf2xhumphdpdyshbxavaupaf34tf72.makeproxy-c.figma.site/",
+    "allowed_redirects": [
+      "https://app-m3why3vww3r4xrqwukti4nzf2xhumphdpdyshbxavaupaf34tf72.makeproxy-c.figma.site/?auth=confirmed",
+      "https://app-m3why3vww3r4xrqwukti4nzf2xhumphdpdyshbxavaupaf34tf72.makeproxy-c.figma.site/?auth=guest",
+      "https://app-m3why3vww3r4xrqwukti4nzf2xhumphdpdyshbxavaupaf34tf72.makeproxy-c.figma.site/?auth=recovery"
+    ],
+    "saved_state": "visibly verified; three URLs; no wildcard",
+    "recovery_template": "initial link template inspected, then changed after explicit user approval to {{ .Token }} code-only template; no clickable verification link. Canonical docs/backend/RECOVERY_EMAIL.html.",
+    "screenshot": "docs/backend/recovery-url-configuration.jpg",
+    "published_origin": "pending; replace temporary Site URL before release"
+  },
+  "published": false,
+  "final_return_login_update": {
+    "source_sha256": "e5f23287d0558814bf4dd9f37a5e8733d990299b5234d0a32964fab750ebd33b",
+    "make_typecheck": "passed",
+    "make_build": "passed; existing chunk-size advisory",
+    "manifest": "10/10 matched",
+    "browser_route": "/#/emailcode rendered successfully in separate temporary tab",
+    "user_signup_preview": "not navigated or reloaded during correction",
+    "screenshot": "docs/backend/return-login-preview.jpg"
+  },
+  "authenticated_ui_checks": {
+    "test_trip": "Planzo connection check (test)",
+    "trip_id": "a5c044b5-812d-4f2a-8cc7-b0718ce1f767",
+    "trip_creation": "passed; hosted readback: one organiser membership and two UI travel windows",
+    "invitation_creation": "passed; raw token not recorded",
+    "invitation_revocation": "passed; UI shows Revoked",
+    "private_draft": "passed; revision 1; confirmed false; one draft, zero immutable snapshots",
+    "reopen_private_draft": "passed; dummy origin and ceiling restored through own UI",
+    "confirm_private_input": "passed; revision 2; confirmed true; confirmed_revision 2; one immutable snapshot",
+    "shared_overview": "Input confirmed; no raw input displayed",
+    "admin_private_read": "metadata/counts only; no raw brief content queried",
+    "screenshot": "docs/backend/authenticated-trip-preview.jpg",
+    "two_person_hosted_privacy": "organiser overview observed with two members and both Input confirmed; no guest raw answers displayed. This checks the live UI; 26 local database boundary checks are separate evidence.",
+    "guest_test_handoff": "Guest joining/save, returning email-code sign-in with restored input, and recovery-code/password-update/new-password-sign-in are user-confirmed successful. Hosted membership/save metadata and organiser status-only view verified. Published-origin checks remain pending.",
+    "guest_membership_and_save": {
+      "member_count": 2,
+      "guest_role": "member",
+      "guest_revision": 1,
+      "guest_confirmed": true,
+      "guest_confirmed_revision": 1,
+      "guest_private_draft_saved": true,
+      "guest_confirmed_snapshots": 1,
+      "raw_guest_values_queried": false
+    }
+  },
+  "clipboard_correction": {
+    "reason": "embedded clipboard promise did not report completion",
+    "behavior": "copying does not set global saving state; three-second timeout with manual-copy guidance",
+    "local_typecheck": "passed",
+    "local_build": "passed",
+    "make_install": "verified; source hash b237852c9c749ccf7618e7e159547adc630e25ab8c956659f414a52b4201589a",
+    "make_typecheck": "passed",
+    "make_build": "passed; existing chunk-size advisory",
+    "manifest": "10/10 matched",
+    "attachments": "6/6 byte-equivalent",
+    "browser_check": "manual-copy guidance visible after timeout; Sign out and Refresh remain enabled"
+  },
+  "recovery_code_update": {
+    "approval": "User explicitly selected Approve recovery email codes, including matching Planzo screen activation",
+    "live_app_sha256": "a5bea5a15259ee9d988172bc3405611e1608f0889dd41115296dd918bb87ae2d",
+    "local_typecheck": "passed",
+    "local_tests": 22,
+    "local_auth_callback_tests": 5,
+    "local_build": "passed",
+    "make_install": "verified: 4/4 exact attachments; 12/12 manifest hashes match; no unexpected changed paths",
+    "browser_check": "standalone live /#/recovery shows Send recovery email; I already have a recovery code opens Recovery code and Verify recovery code; request-new-email toggle returns to request form. No credential entered by assistant.",
+    "real_inbox_recovery": "user confirmed successful: \u201cIt is working now\u201d in response to fresh code \u2192 new password \u2192 sign-out \u2192 sign in with new password check. Assistant did not enter or read credentials.",
+    "automatic_review": "Initial template write rejected for lack of specific authorization; no template was changed then. User subsequently explicitly approved and the same visible settings workflow was used.",
+    "make_typecheck": "passed",
+    "make_tests": 22,
+    "make_build": "passed; existing chunk-size advisory",
+    "template_saved": "reloaded Supabase Recovery settings and verified {{ .Token }} present and no ConfirmationURL link",
+    "screenshot": "docs/backend/recovery-code-preview.jpg"
+  },
+  "planning_slice": {
+    "handoff": "docs/PLANNING_SLICE_HANDOFF.md",
+    "receipt": "docs/backend/PLANNING_DEPLOYMENT.json",
+    "app_hashes": 14,
+    "backend_hashes": 11,
+    "local_database_checks": {
+      "planning": 55,
+      "identity_regression": 26
+    },
+    "application_tests": 22,
+    "hosted_negative_checks": 8,
+    "real_four_account_journey": "passed; stage agreed, Plan v1, four acknowledged Ready responses; returning guest restoration user-confirmed",
+    "website_published": false,
+    "prices": "illustrative fixture only; no live quotes or bookings"
+  }
+}

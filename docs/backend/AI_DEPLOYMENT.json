@@ -1,0 +1,73 @@
+{
+  "date": "2026-10-16",
+  "project": "ewysgpuwvufbklesdhuj",
+  "migration": "20261016065942_planzo_ai_preference_admission",
+  "migrationAppliedOnce": true,
+  "canonicalSourceEqualsDevelopment": true,
+  "newTables": 0,
+  "existingApplicationTables": 24,
+  "newFunctions": [
+    {
+      "signature": "planzo_ai(text,jsonb)",
+      "md5": "c22a55bc00ff9f98889632a550895aa5",
+      "security_definer": false,
+      "proconfig": [
+        "search_path=\"\""
+      ],
+      "anon_execute": false,
+      "authenticated_execute": true
+    },
+    {
+      "signature": "planzo_private.ai_api(text,jsonb)",
+      "md5": "57e342ebe19cce44b1ded2b333a4eed6",
+      "security_definer": true,
+      "proconfig": [
+        "search_path=\"\""
+      ],
+      "anon_execute": false,
+      "authenticated_execute": true
+    }
+  ],
+  "earlierFunctionBodiesUnchanged": 24,
+  "edge": {
+    "name": "planzo-ai-preferences",
+    "version": 1,
+    "status": "ACTIVE",
+    "verify_jwt": true,
+    "sourceFilesExact": 3,
+    "sourceFiles": [
+      "supabase/functions/planzo-ai-preferences/index.ts",
+      "supabase/functions/planzo-ai-preferences/handler.ts",
+      "src/aiProtocol.ts"
+    ]
+  },
+  "advisors": [
+    {
+      "name": "rls_enabled_no_policy",
+      "level": "INFO",
+      "count": 19
+    },
+    {
+      "name": "auth_leaked_password_protection",
+      "level": "WARN",
+      "count": 1
+    }
+  ],
+  "existingWarningRemediation": "https://supabase.com/docs/guides/auth/password-security#password-strength-and-leaked-password-protection",
+  "secrets": "User entered OPENAI_API_KEY directly in this project's Edge Function secrets. Only the saved name was observed; value never read or copied.",
+  "providerModel": "gpt-5.4-nano-2026-03-17",
+  "limits": {
+    "globalLifetimeAdmittedAttempts": 8,
+    "perUser24Hours": 4,
+    "cooldownSeconds": 3,
+    "maxTextCharacters": 2000,
+    "maxOutputTokens": 1200,
+    "providerTimeoutSeconds": 15,
+    "automaticRetries": 0
+  },
+  "privacy": "Provider receives author-supplied text and labelled trip date options only, no database briefs, group member identities, raw costs, existing ceilings, tokens or trip/request UUIDs. Raw text and extraction are not persisted in receipts.",
+  "currentStage": "Historical OpenAI checkpoint. Exact Make source installed; four ordinary preview/manual persistence checks passed. First fictional provider attempt returned HTTP 429. No successful live extraction. User cannot buy credits and requested Gemini; superseded by GEMINI_DEPLOYMENT.json.",
+  "websitePublished": false,
+  "billingChanged": false,
+  "creditsPurchased": false
+}

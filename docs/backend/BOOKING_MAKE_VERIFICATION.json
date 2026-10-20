@@ -1,0 +1,34 @@
+{
+  "date": "2026-10-16",
+  "make_file": "4tPr5AkQO1g0L1esRvGRjz",
+  "source": "Observed Make agent installation report at 11:32 AM IST",
+  "app_install": {
+    "baseline_app": "16/16 match",
+    "baseline_backend": "15/15 match",
+    "attachments": "7/7 byte-exact",
+    "final_app": "18/18 match",
+    "final_backend": "15/15 unchanged",
+    "typecheck": "pass",
+    "application_tests": "22/22 pass",
+    "production_build": "pass; existing chunk-size advisory",
+    "unexpected_paths": []
+  },
+  "backend_source_sync": {
+    "attachments": "7/7 byte-exact",
+    "baseline_app": "18/18 match",
+    "baseline_backend": "15/15 match",
+    "final_app": "18/18 match",
+    "final_backend": "20/20 match",
+    "canonical_equals_development": true,
+    "unexpected_paths": []
+  },
+  "connected_ui_checks": "16 observed checks passed; details in BOOKING_MAKE_UI_TESTS.json",
+  "published": false,
+  "ordinary_accounts": {
+    "passed": 18,
+    "failed": 0,
+    "inconclusive": 1,
+    "note": "HTTP 504 is not proof of stale-request denial"
+  },
+  "documentation_copy": "Exact documentation/evidence attachment verification is recorded in the final Make chat copy reports; this JSON records source installation and observed UI results."
+}

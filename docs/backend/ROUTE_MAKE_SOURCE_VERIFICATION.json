@@ -1,0 +1,637 @@
+{
+  "filesExpected": 137,
+  "files": {
+    "tools/hosted-smoke.mjs": {
+      "normalisedSha256": "3febec97d08090d016a0fef32e05a2ca4ebd73e7a15f8a2baa17cc11cf559d8e",
+      "sha256": "3febec97d08090d016a0fef32e05a2ca4ebd73e7a15f8a2baa17cc11cf559d8e"
+    },
+    "tools/requirement-coverage-check.mjs": {
+      "normalisedSha256": "745d47418d000f989e8dbea4431b3a2bb730eaf5d5cab2b2ac9d5adaba193a6c",
+      "sha256": "745d47418d000f989e8dbea4431b3a2bb730eaf5d5cab2b2ac9d5adaba193a6c"
+    },
+    "tools/full-regression-resume/check.js": {
+      "normalisedSha256": "997fb251b3be1af826e1c83366df3ada4d099ece3c9446a4d41d242b166c41df",
+      "sha256": "997fb251b3be1af826e1c83366df3ada4d099ece3c9446a4d41d242b166c41df"
+    },
+    "src/bookingBackend.ts": {
+      "normalisedSha256": "7ac6c4cb440288def01b4ba0151b42fb562dafef8c52d364c8a3816f7f4b2b18",
+      "sha256": "7ac6c4cb440288def01b4ba0151b42fb562dafef8c52d364c8a3816f7f4b2b18"
+    },
+    "src/planningBackend.ts": {
+      "normalisedSha256": "0233127c8c2cbd01f0763325e47e929f5f4b3e61ba33b461eba8c565141676db",
+      "sha256": "0233127c8c2cbd01f0763325e47e929f5f4b3e61ba33b461eba8c565141676db"
+    },
+    "src/StepDecisionDetails.tsx": {
+      "normalisedSha256": "53d627ce09447dac94ded812d9ada3a78d624c308717e11ca15bcf57ea173298",
+      "sha256": "53d627ce09447dac94ded812d9ada3a78d624c308717e11ca15bcf57ea173298"
+    },
+    "tools/itinerary-check.mjs": {
+      "normalisedSha256": "1f81044d637c535a21eeb50ac3f14a20db9782033e6e74631329d6ffa99c6d6d",
+      "sha256": "1f81044d637c535a21eeb50ac3f14a20db9782033e6e74631329d6ffa99c6d6d"
+    },
+    "src/flowBackend.ts": {
+      "normalisedSha256": "67531e3cc7094fe23b23ef927927a2b67ee7c0754a364cb69344086f8249c3ea",
+      "sha256": "67531e3cc7094fe23b23ef927927a2b67ee7c0754a364cb69344086f8249c3ea"
+    },
+    "tests/ai-preferences.test.mjs": {
+      "normalisedSha256": "bf16c79cb44f9f8ac8327948ed8c51bc7d4f4dd8b555d7e28441bdddc06ef6f9",
+      "sha256": "bf16c79cb44f9f8ac8327948ed8c51bc7d4f4dd8b555d7e28441bdddc06ef6f9"
+    },
+    "tools/ui-review/review.tsx": {
+      "normalisedSha256": "d6aba51070a4c4f8d229d4e8b21ec2039bba45dda7598e9db7ef5ed81a7553ce",
+      "sha256": "d6aba51070a4c4f8d229d4e8b21ec2039bba45dda7598e9db7ef5ed81a7553ce"
+    },
+    "src/AppHeader.tsx": {
+      "normalisedSha256": "72916e0a0fca4c299e37418e837802f66b98e32d3a667d76d3f31f77af736479",
+      "sha256": "72916e0a0fca4c299e37418e837802f66b98e32d3a667d76d3f31f77af736479"
+    },
+    "tools/full-regression-access/check.js": {
+      "normalisedSha256": "a4a8bc08fc3b98465c3536706a0ab3cae03cd3a15bea62f5a2e982168e3b2e73",
+      "sha256": "a4a8bc08fc3b98465c3536706a0ab3cae03cd3a15bea62f5a2e982168e3b2e73"
+    },
+    "supabase/migrations/20261017131023_planzo_booking_journey.sql": {
+      "normalisedSha256": "11f765f85d051c2e1ebe39b3222df9121a0e89ea4149518a340f84a0e93df961",
+      "sha256": "11f765f85d051c2e1ebe39b3222df9121a0e89ea4149518a340f84a0e93df961"
+    },
+    "tests/contextual-planning.test.mjs": {
+      "normalisedSha256": "7f835e00884626ab3e397a49a01e89d9548531197085a4a4f421d514cdd49b27",
+      "sha256": "7f835e00884626ab3e397a49a01e89d9548531197085a4a4f421d514cdd49b27"
+    },
+    "supabase/migrations/20261018170419_contextual_planning.sql": {
+      "normalisedSha256": "8fe2915f6b51feabd69dad86187dbf189ab6441ae7676fe6600275d6461093da",
+      "sha256": "8fe2915f6b51feabd69dad86187dbf189ab6441ae7676fe6600275d6461093da"
+    },
+    "supabase/migrations/20261017165231_planzo_stale_http_conflicts.sql": {
+      "normalisedSha256": "e9a3a496ed0796b965c91c4f58dc4fb194ebb33eb0e79b5692567fff87b539ee",
+      "sha256": "e9a3a496ed0796b965c91c4f58dc4fb194ebb33eb0e79b5692567fff87b539ee"
+    },
+    "src/main.tsx": {
+      "normalisedSha256": "e72b8b43ed3084724656ea7a0d34ffe26099a9c9469c3c07cf6dfaeda9503af0",
+      "sha256": "e72b8b43ed3084724656ea7a0d34ffe26099a9c9469c3c07cf6dfaeda9503af0"
+    },
+    "tools/backend-check.mjs": {
+      "normalisedSha256": "6ea1344b5c2bfa95a99bc25da86913f4261e9f190a48d1d42e687107f72cacb3",
+      "sha256": "6ea1344b5c2bfa95a99bc25da86913f4261e9f190a48d1d42e687107f72cacb3"
+    },
+    "tools/ui-review/index.html": {
+      "normalisedSha256": "48eb853d657f2eead70af9bbec9c529309f5779d3d1eb50428cf026b06dec9ad",
+      "sha256": "48eb853d657f2eead70af9bbec9c529309f5779d3d1eb50428cf026b06dec9ad"
+    },
+    "tools/booking-check.mjs": {
+      "normalisedSha256": "e548db698a9848951b9f6573824ef9b86459697dbe326c6a204383fda263d43d",
+      "sha256": "e548db698a9848951b9f6573824ef9b86459697dbe326c6a204383fda263d43d"
+    },
+    "src/itineraryBackend.ts": {
+      "normalisedSha256": "73eb66e0a73158dc6ae383aebb08f8025c82230f51caebd4b237d9f353a3f97c",
+      "sha256": "73eb66e0a73158dc6ae383aebb08f8025c82230f51caebd4b237d9f353a3f97c"
+    },
+    "route-planning-check.mjs": {
+      "normalisedSha256": "8bd1e5f3dc7e0e3590e09e58909161821a889200a2e73de82c8e08e42ee087ec",
+      "sha256": "8bd1e5f3dc7e0e3590e09e58909161821a889200a2e73de82c8e08e42ee087ec"
+    },
+    "supabase/changes/planzo_route_mobility_contract.sql": {
+      "normalisedSha256": "7ca6c754d229105f3219d2967818d2fa7197cebd4314159de7b50201eac9e77b",
+      "sha256": "7ca6c754d229105f3219d2967818d2fa7197cebd4314159de7b50201eac9e77b"
+    },
+    "supabase/functions/planzo-ai-preferences/index.ts": {
+      "normalisedSha256": "a3f8fee3040cbe635d506bb917f0d053ef9517c812e9fc6a1a1aa5a121d9602a",
+      "sha256": "a3f8fee3040cbe635d506bb917f0d053ef9517c812e9fc6a1a1aa5a121d9602a"
+    },
+    "supabase/changes/planzo_stale_http_conflicts.sql": {
+      "normalisedSha256": "e9a3a496ed0796b965c91c4f58dc4fb194ebb33eb0e79b5692567fff87b539ee",
+      "sha256": "e9a3a496ed0796b965c91c4f58dc4fb194ebb33eb0e79b5692567fff87b539ee"
+    },
+    "tools/full-regression-access/run-body.txt": {
+      "normalisedSha256": "a3e79a38858f80a28cb1e12acd391e38966014021dbffad585c66c6a8d41dfb4",
+      "sha256": "a3e79a38858f80a28cb1e12acd391e38966014021dbffad585c66c6a8d41dfb4"
+    },
+    "pnpm-workspace.yaml": {
+      "normalisedSha256": "2f5c289dc1c87aae4bf362ba34447b6112efdba0283c9198c16ba0f69573ff21",
+      "sha256": "2f5c289dc1c87aae4bf362ba34447b6112efdba0283c9198c16ba0f69573ff21"
+    },
+    "supabase/changes/planzo_route_transfer_timing.sql": {
+      "normalisedSha256": "4357fd8f7d1fd6285ee9665b707a44a6ce12a8f53ff6a4b816b449c02a676a08",
+      "sha256": "4357fd8f7d1fd6285ee9665b707a44a6ce12a8f53ff6a4b816b449c02a676a08"
+    },
+    "src/LiveHistory.tsx": {
+      "normalisedSha256": "4f8177eb75936a3bba4fb9dc48df1d3dc3a6ce4b2421a5ff683e8e74c6029a99",
+      "sha256": "4f8177eb75936a3bba4fb9dc48df1d3dc3a6ce4b2421a5ff683e8e74c6029a99"
+    },
+    "supabase/changes/planzo_booking.sql": {
+      "normalisedSha256": "e4126d64e93331c9e16b37947a20008e4f8bf2ed5ff899a95842d6268c306d11",
+      "sha256": "e4126d64e93331c9e16b37947a20008e4f8bf2ed5ff899a95842d6268c306d11"
+    },
+    "src/FinalJourney.tsx": {
+      "normalisedSha256": "c43faf4173205c0d4b0e3cd581ad60994f524270eedeeed65d5b422924eb6066",
+      "sha256": "c43faf4173205c0d4b0e3cd581ad60994f524270eedeeed65d5b422924eb6066"
+    },
+    "src/SignupConfirmation.tsx": {
+      "normalisedSha256": "183873da5c36e7ffbcfc48331fcf1cb8e28e656d3f7401795ef21883cff17a36",
+      "sha256": "183873da5c36e7ffbcfc48331fcf1cb8e28e656d3f7401795ef21883cff17a36"
+    },
+    "src/ContextualStepDetails.tsx": {
+      "normalisedSha256": "0aa08bc3437e3ad8e22e8f921835b57d27d293673083d42e8ebaed2508043929",
+      "sha256": "0aa08bc3437e3ad8e22e8f921835b57d27d293673083d42e8ebaed2508043929"
+    },
+    "supabase/migrations/20261015171734_planzo_allow_deadline_withdrawal.sql": {
+      "normalisedSha256": "052fd694419b9c6208440a3b6147ebc86580cb6dfcefa8096bab95901d10e7e1",
+      "sha256": "052fd694419b9c6208440a3b6147ebc86580cb6dfcefa8096bab95901d10e7e1"
+    },
+    "gemini-pricing-check.mjs": {
+      "normalisedSha256": "fbe267643259b7efe229e67d24fe49b661cd438e5e0c041429bff7890773b0b1",
+      "sha256": "fbe267643259b7efe229e67d24fe49b661cd438e5e0c041429bff7890773b0b1"
+    },
+    "supabase/changes/planzo_host_refinement.sql": {
+      "normalisedSha256": "bc36fce08d6a1dfb97a7440df6694a2ba66111bd833034b1738c283579be63f7",
+      "sha256": "bc36fce08d6a1dfb97a7440df6694a2ba66111bd833034b1738c283579be63f7"
+    },
+    "supabase/changes/planzo_private_planning.sql": {
+      "normalisedSha256": "ea46d27614abb8d4636d1a3369e61f8bf922b13f482d0f069b90c4c86c3f9ee2",
+      "sha256": "ea46d27614abb8d4636d1a3369e61f8bf922b13f482d0f069b90c4c86c3f9ee2"
+    },
+    "supabase/migrations/20261015170744_planzo_planning_voting_confirmation.sql": {
+      "normalisedSha256": "72521b57c959def7fa9515bf58db0f0b932432863b51677168a8e5d7b1d48ab5",
+      "sha256": "72521b57c959def7fa9515bf58db0f0b932432863b51677168a8e5d7b1d48ab5"
+    },
+    "tools/stale-http-resume-check.mjs": {
+      "normalisedSha256": "de759467e9d6aa8f6174e325ba3ab72a548399bacdc1c8c2a2357d85ef5af7e9",
+      "sha256": "de759467e9d6aa8f6174e325ba3ab72a548399bacdc1c8c2a2357d85ef5af7e9"
+    },
+    "src/TripSetup.tsx": {
+      "normalisedSha256": "fb4544029e7e118bbc811f0d288107f1c01bdf68c91872708dcf749ea72d85b9",
+      "sha256": "fb4544029e7e118bbc811f0d288107f1c01bdf68c91872708dcf749ea72d85b9"
+    },
+    "supabase/migrations/20261016042325_planzo_manual_itinerary_item_voting.sql": {
+      "normalisedSha256": "283b72b3c741514918c7c6d61ce4927764ccee89d1a6ae15e50616a7640b2852",
+      "sha256": "283b72b3c741514918c7c6d61ce4927764ccee89d1a6ae15e50616a7640b2852"
+    },
+    "supabase/migrations/20261016065942_planzo_ai_preference_admission.sql": {
+      "normalisedSha256": "2a081f5f80376ca29b1cea8643086df90f4865952626de288de658ff1a92ac75",
+      "sha256": "2a081f5f80376ca29b1cea8643086df90f4865952626de288de658ff1a92ac75"
+    },
+    "supabase/migrations/20261016055852_planzo_manual_booking_handoff_milestones.sql": {
+      "normalisedSha256": "e4126d64e93331c9e16b37947a20008e4f8bf2ed5ff899a95842d6268c306d11",
+      "sha256": "e4126d64e93331c9e16b37947a20008e4f8bf2ed5ff899a95842d6268c306d11"
+    },
+    "tools/itinerary-hosted-check.mjs": {
+      "normalisedSha256": "8c67562fff55560d1cd7aa796370f38690d364722db6e90b1f9b2fea61d7dce7",
+      "sha256": "8c67562fff55560d1cd7aa796370f38690d364722db6e90b1f9b2fea61d7dce7"
+    },
+    "supabase/changes/planzo_activity_change_validation.sql": {
+      "normalisedSha256": "d21193802a1db59298928f9122a351d634c76bd69ba659a6278f94e0096f0ddc",
+      "sha256": "d21193802a1db59298928f9122a351d634c76bd69ba659a6278f94e0096f0ddc"
+    },
+    "supabase/changes/planzo_response_withdrawal.sql": {
+      "normalisedSha256": "052fd694419b9c6208440a3b6147ebc86580cb6dfcefa8096bab95901d10e7e1",
+      "sha256": "052fd694419b9c6208440a3b6147ebc86580cb6dfcefa8096bab95901d10e7e1"
+    },
+    "src/DateTimeField.tsx": {
+      "normalisedSha256": "0b4b5d9e15082f7da1795514a56e3f7d6b5c950bd7db8ac699092354e2dc0c83",
+      "sha256": "0b4b5d9e15082f7da1795514a56e3f7d6b5c950bd7db8ac699092354e2dc0c83"
+    },
+    "supabase/functions/planzo-ai-preferences/handler.ts": {
+      "normalisedSha256": "2a96d4c4985e74a98fd4a4d6acf272eeda8cd3914777ee377dbb2351162b4c95",
+      "sha256": "2a96d4c4985e74a98fd4a4d6acf272eeda8cd3914777ee377dbb2351162b4c95"
+    },
+    "supabase/changes/planzo_requirement_coverage.sql": {
+      "normalisedSha256": "c9158a4253288e34b6c7ee837eb1138128c35c41ad24b31332c8de965b629da9",
+      "sha256": "c9158a4253288e34b6c7ee837eb1138128c35c41ad24b31332c8de965b629da9"
+    },
+    "tests/route-planning.test.mjs": {
+      "sha256": "13ca495755208c752f3d4a444608004a33314df5ac3802805428c44521d21e48",
+      "normalisedSha256": "13ca495755208c752f3d4a444608004a33314df5ac3802805428c44521d21e48"
+    },
+    "src/LiveApp.tsx": {
+      "normalisedSha256": "b33c3c3bce2ef025edc8251c9c953e6eb6bd2a64a5f316839f74012d3fb04930",
+      "sha256": "b33c3c3bce2ef025edc8251c9c953e6eb6bd2a64a5f316839f74012d3fb04930"
+    },
+    "supabase/changes/planzo_itinerary.sql": {
+      "normalisedSha256": "283b72b3c741514918c7c6d61ce4927764ccee89d1a6ae15e50616a7640b2852",
+      "sha256": "283b72b3c741514918c7c6d61ce4927764ccee89d1a6ae15e50616a7640b2852"
+    },
+    "src/authReturn.ts": {
+      "normalisedSha256": "1a5ad114803c10209c0e19679674a07205c2775592e16aea33d07e71eca1a109",
+      "sha256": "1a5ad114803c10209c0e19679674a07205c2775592e16aea33d07e71eca1a109"
+    },
+    "tools/setup-check.mjs": {
+      "normalisedSha256": "8408d48d9bb4f5ad78fc2ea94145d09f4ecd86c9f48ffefb5ed2886eec450282",
+      "sha256": "8408d48d9bb4f5ad78fc2ea94145d09f4ecd86c9f48ffefb5ed2886eec450282"
+    },
+    "supabase/changes/planzo_pricing_helpers.sql": {
+      "normalisedSha256": "94344311747f2dc77bd6a817ee2d63e55f7ef08b4599b8d6f1344651b62beaee",
+      "sha256": "94344311747f2dc77bd6a817ee2d63e55f7ef08b4599b8d6f1344651b62beaee"
+    },
+    "tests/private-planning.test.mjs": {
+      "normalisedSha256": "96a576fd24ccb5be62c6674149db03646e8fed1eb9bb08a2090168873bd81d57",
+      "sha256": "96a576fd24ccb5be62c6674149db03646e8fed1eb9bb08a2090168873bd81d57"
+    },
+    "tools/ai-database-check.mjs": {
+      "normalisedSha256": "08370483c458e2c68d4d3d445720f77e6cd6e05ee1fb3a8b72b372abd2fd7d62",
+      "sha256": "08370483c458e2c68d4d3d445720f77e6cd6e05ee1fb3a8b72b372abd2fd7d62"
+    },
+    "supabase/changes/planzo_core.sql": {
+      "normalisedSha256": "acbe3695bc7234d438e80d9cf1c5309f3c0890e0c958ecbfb357026fbcd60bd0",
+      "sha256": "acbe3695bc7234d438e80d9cf1c5309f3c0890e0c958ecbfb357026fbcd60bd0"
+    },
+    "supabase/changes/planzo_contextual_helpers.sql": {
+      "normalisedSha256": "272a6d3baedc386b81f176efdf0518dbe857795f9479506baa2f9d9777911941",
+      "sha256": "272a6d3baedc386b81f176efdf0518dbe857795f9479506baa2f9d9777911941"
+    },
+    "supabase/migrations/20261016091834_planzo_ai_preview_rate_controls.sql": {
+      "normalisedSha256": "1786ecbec7c7e1563477a2ec8137e647d2ae0049128922b82f72b539af10f44d",
+      "sha256": "1786ecbec7c7e1563477a2ec8137e647d2ae0049128922b82f72b539af10f44d"
+    },
+    "tools/booking-hosted-check.mjs": {
+      "normalisedSha256": "c4fc1c34c26a858e7aee09f15268c3990a15900342f1a974289cc597bb80bdd3",
+      "sha256": "c4fc1c34c26a858e7aee09f15268c3990a15900342f1a974289cc597bb80bdd3"
+    },
+    "supabase/migrations/20261017115254_planzo_requirement_coverage.sql": {
+      "normalisedSha256": "c9158a4253288e34b6c7ee837eb1138128c35c41ad24b31332c8de965b629da9",
+      "sha256": "c9158a4253288e34b6c7ee837eb1138128c35c41ad24b31332c8de965b629da9"
+    },
+    "src/aiProtocol.ts": {
+      "normalisedSha256": "fd3bb28a32c4b63bab7393b0b7d02b484489ddd08911f78903d3d38200d943ec",
+      "sha256": "fd3bb28a32c4b63bab7393b0b7d02b484489ddd08911f78903d3d38200d943ec"
+    },
+    "src/TripDetailsEditor.tsx": {
+      "normalisedSha256": "a9e119ed6ce4fb8264f0ec866f5f4e0d1df5d0f450f83819d845a946c6ce5013",
+      "sha256": "a9e119ed6ce4fb8264f0ec866f5f4e0d1df5d0f450f83819d845a946c6ce5013"
+    },
+    "src/aiAvailability.ts": {
+      "normalisedSha256": "62ee67f35e253d8412d4584c42874001a11d9a6c3e52fcf3a9655537b9c7b8e5",
+      "sha256": "62ee67f35e253d8412d4584c42874001a11d9a6c3e52fcf3a9655537b9c7b8e5"
+    },
+    "supabase/migrations/20261018152118_planning_refinement_and_host_edits.sql": {
+      "normalisedSha256": "26c6cbb581ce3e0c2f6183e1bc93ebdd6628dbb0052cabcce75b47d78ae9de6f",
+      "sha256": "26c6cbb581ce3e0c2f6183e1bc93ebdd6628dbb0052cabcce75b47d78ae9de6f"
+    },
+    "supabase/functions/planzo-planning/index.ts": {
+      "normalisedSha256": "6f083335d7e90422b0316a42e2f0658175466c156392d239ea50ccc8d6f39909",
+      "sha256": "6f083335d7e90422b0316a42e2f0658175466c156392d239ea50ccc8d6f39909"
+    },
+    "supabase/changes/planzo_planning_refinement.sql": {
+      "normalisedSha256": "26c6cbb581ce3e0c2f6183e1bc93ebdd6628dbb0052cabcce75b47d78ae9de6f",
+      "sha256": "26c6cbb581ce3e0c2f6183e1bc93ebdd6628dbb0052cabcce75b47d78ae9de6f"
+    },
+    "src/LiveItinerary.tsx": {
+      "normalisedSha256": "6b9fdfb7a9835b8b8773707408435535490ee24d83fb6d122cf21a0b587d97e0",
+      "sha256": "6b9fdfb7a9835b8b8773707408435535490ee24d83fb6d122cf21a0b587d97e0"
+    },
+    "supabase/migrations/20261019140130_routed_planning.sql": {
+      "normalisedSha256": "ffeffdd75a6b85752e7bb9f177e7ca3a27a5f503f7b603c9743e4eb2ab8f7a2c",
+      "sha256": "ffeffdd75a6b85752e7bb9f177e7ca3a27a5f503f7b603c9743e4eb2ab8f7a2c"
+    },
+    "supabase/migrations/20261016131934_planzo_trip_setup_and_lifecycle.sql": {
+      "normalisedSha256": "8948854a76c1d6cc9f4ee92f4cbc85d036409308a6e364ad6051893f032f6468",
+      "sha256": "8948854a76c1d6cc9f4ee92f4cbc85d036409308a6e364ad6051893f032f6468"
+    },
+    "src/preferences.tsx": {
+      "normalisedSha256": "a104061561864f863ed8018e995fb7d20b714f780749ee534d286b3a3c27ddef",
+      "sha256": "a104061561864f863ed8018e995fb7d20b714f780749ee534d286b3a3c27ddef"
+    },
+    "src/contextualPlanning.ts": {
+      "normalisedSha256": "9d75cef597436fb9bcfa7badef00dd89fff1ba4372369973c8202acb291fec8d",
+      "sha256": "9d75cef597436fb9bcfa7badef00dd89fff1ba4372369973c8202acb291fec8d"
+    },
+    "supabase/changes/planzo_invite_lookup_index.sql": {
+      "normalisedSha256": "cd087da3199a25dd69d501a233d4c3b8905282718fc42e73b081f520c7f831b9",
+      "sha256": "cd087da3199a25dd69d501a233d4c3b8905282718fc42e73b081f520c7f831b9"
+    },
+    "supabase/migrations/20261015154643_planzo_identity_trips_private_briefs.sql": {
+      "normalisedSha256": "acbe3695bc7234d438e80d9cf1c5309f3c0890e0c958ecbfb357026fbcd60bd0",
+      "sha256": "acbe3695bc7234d438e80d9cf1c5309f3c0890e0c958ecbfb357026fbcd60bd0"
+    },
+    "src/LivePlanning.tsx": {
+      "normalisedSha256": "798b35ab5bce45d2b8d2b4105882fed51ddfe64d5bb9512c821c28656b058246",
+      "sha256": "798b35ab5bce45d2b8d2b4105882fed51ddfe64d5bb9512c821c28656b058246"
+    },
+    "supabase/migrations/20261019043452_gemini_pricing.sql": {
+      "normalisedSha256": "968d197e70d581c5f764697928066819b781039a322c4e74ca3b86346cd286be",
+      "sha256": "968d197e70d581c5f764697928066819b781039a322c4e74ca3b86346cd286be"
+    },
+    "supabase/changes/planzo_gemini.sql": {
+      "normalisedSha256": "43d8e5165931d3b8a1bf082f1166066284e13b36aacc3ff0ce4457124ce1af70",
+      "sha256": "43d8e5165931d3b8a1bf082f1166066284e13b36aacc3ff0ce4457124ce1af70"
+    },
+    "src/domain.ts": {
+      "normalisedSha256": "85b2577c354536076619e3efe65d5dcb1a06d3155afd1f6289837695f96ff3eb",
+      "sha256": "85b2577c354536076619e3efe65d5dcb1a06d3155afd1f6289837695f96ff3eb"
+    },
+    "tests/invitations.test.mjs": {
+      "normalisedSha256": "b999161954d804379407487938fb7dd74552b798a0528e0e40765bd53411b5bf",
+      "sha256": "b999161954d804379407487938fb7dd74552b798a0528e0e40765bd53411b5bf"
+    },
+    "src/errors.ts": {
+      "normalisedSha256": "ca89c9099e0fa7847da3c0f05effabbc224a64ab0f56d937245a0cdc04fd1d33",
+      "sha256": "ca89c9099e0fa7847da3c0f05effabbc224a64ab0f56d937245a0cdc04fd1d33"
+    },
+    "supabase/functions/planzo-planning/deno.json": {
+      "normalisedSha256": "f9f4eff8685cefcca7029131e907daecb71956399c97a685a1747d578cf60a52",
+      "sha256": "f9f4eff8685cefcca7029131e907daecb71956399c97a685a1747d578cf60a52"
+    },
+    "supabase/changes/planzo_journey.sql": {
+      "normalisedSha256": "11f765f85d051c2e1ebe39b3222df9121a0e89ea4149518a340f84a0e93df961",
+      "sha256": "11f765f85d051c2e1ebe39b3222df9121a0e89ea4149518a340f84a0e93df961"
+    },
+    "src/LiveBookings.tsx": {
+      "normalisedSha256": "e2c63d0cf3a9fbad983ca534b3550bc1e55c6bad5748a2760ba1f8eab3261940",
+      "sha256": "e2c63d0cf3a9fbad983ca534b3550bc1e55c6bad5748a2760ba1f8eab3261940"
+    },
+    "pnpm-lock.yaml": {
+      "normalisedSha256": "db89ee5bd3fb677273418ec48694cc67b24f34bcbd22de74acd2352223e87de0",
+      "sha256": "db89ee5bd3fb677273418ec48694cc67b24f34bcbd22de74acd2352223e87de0"
+    },
+    "tools/full-regression-access/index.html": {
+      "normalisedSha256": "514f9a58f237bd62a877658d9e1790b0a69ee02298763b2e4f160b8f454f7614",
+      "sha256": "514f9a58f237bd62a877658d9e1790b0a69ee02298763b2e4f160b8f454f7614"
+    },
+    "src/LiveJourney.tsx": {
+      "normalisedSha256": "ba71c723e737c84cee73addebda64844d5fc7f805154bd1d19e03bc41cd316ae",
+      "sha256": "ba71c723e737c84cee73addebda64844d5fc7f805154bd1d19e03bc41cd316ae"
+    },
+    "supabase/changes/planzo_planning.sql": {
+      "normalisedSha256": "72521b57c959def7fa9515bf58db0f0b932432863b51677168a8e5d7b1d48ab5",
+      "sha256": "72521b57c959def7fa9515bf58db0f0b932432863b51677168a8e5d7b1d48ab5"
+    },
+    "package.json": {
+      "normalisedSha256": "178cf4f3048281103d8286a747de7c4469e822c3f40ea7f26c252aa24e03e859",
+      "sha256": "178cf4f3048281103d8286a747de7c4469e822c3f40ea7f26c252aa24e03e859"
+    },
+    "src/PrivateConversation.tsx": {
+      "normalisedSha256": "5a4abfcfacbe27ca95be5e067b9b83fbeb1eb115596cf0c61930356c80be6599",
+      "sha256": "5a4abfcfacbe27ca95be5e067b9b83fbeb1eb115596cf0c61930356c80be6599"
+    },
+    "src/invitations.ts": {
+      "normalisedSha256": "1a10647b212d006bd0b21c2698e4f2a45e529fabe8057bbde6e1e6b7a2bb5ebd",
+      "sha256": "1a10647b212d006bd0b21c2698e4f2a45e529fabe8057bbde6e1e6b7a2bb5ebd"
+    },
+    "src/aiBackend.ts": {
+      "normalisedSha256": "cdeee266299c0bd07a76be89d90527c191ecaae3f430c4cac3bb4858925443b8",
+      "sha256": "cdeee266299c0bd07a76be89d90527c191ecaae3f430c4cac3bb4858925443b8"
+    },
+    "supabase/migrations/20261016080006_planzo_gemini_fictional_preference_preview.sql": {
+      "normalisedSha256": "43d8e5165931d3b8a1bf082f1166066284e13b36aacc3ff0ce4457124ce1af70",
+      "sha256": "43d8e5165931d3b8a1bf082f1166066284e13b36aacc3ff0ce4457124ce1af70"
+    },
+    "src/privatePlanning.ts": {
+      "normalisedSha256": "6912f49c00056013f552fdbf23f06ab05c42b5b0b186ecb5e02bbfa2d485b4d0",
+      "sha256": "6912f49c00056013f552fdbf23f06ab05c42b5b0b186ecb5e02bbfa2d485b4d0"
+    },
+    "supabase/changes/planzo_routed_planning.sql": {
+      "normalisedSha256": "ffeffdd75a6b85752e7bb9f177e7ca3a27a5f503f7b603c9743e4eb2ab8f7a2c",
+      "sha256": "ffeffdd75a6b85752e7bb9f177e7ca3a27a5f503f7b603c9743e4eb2ab8f7a2c"
+    },
+    "supabase/migrations/20261017165915_planzo_complete_conflict_envelope.sql": {
+      "normalisedSha256": "c315a8e2763b5ab3c49b920e08e6fc07ee4b046a3cfb92a1a62d0d06b7a6c8b8",
+      "sha256": "c315a8e2763b5ab3c49b920e08e6fc07ee4b046a3cfb92a1a62d0d06b7a6c8b8"
+    },
+    "src/routePlanning.ts": {
+      "sha256": "09bc6412e607f090bec0d48ae99615beec73775b4454a51047fe643383d838ea",
+      "normalisedSha256": "09bc6412e607f090bec0d48ae99615beec73775b4454a51047fe643383d838ea"
+    },
+    "supabase/migrations/20261017121857_planzo_activity_change_validation.sql": {
+      "normalisedSha256": "d21193802a1db59298928f9122a351d634c76bd69ba659a6278f94e0096f0ddc",
+      "sha256": "d21193802a1db59298928f9122a351d634c76bd69ba659a6278f94e0096f0ddc"
+    },
+    "tools/gemini-rate-check.mjs": {
+      "normalisedSha256": "9f579ce885889654e67d3e0f13c6b3d2f9bfb0075d06a01d263a72a3b45f3dd8",
+      "sha256": "9f579ce885889654e67d3e0f13c6b3d2f9bfb0075d06a01d263a72a3b45f3dd8"
+    },
+    "src/backend.ts": {
+      "normalisedSha256": "cb71d6ab9e245f3d85313de309d12859b7e60341aac0b8b1508ca67470abb994",
+      "sha256": "cb71d6ab9e245f3d85313de309d12859b7e60341aac0b8b1508ca67470abb994"
+    },
+    "supabase/changes/planzo_contextual_planning.sql": {
+      "normalisedSha256": "8fe2915f6b51feabd69dad86187dbf189ab6441ae7676fe6600275d6461093da",
+      "sha256": "8fe2915f6b51feabd69dad86187dbf189ab6441ae7676fe6600275d6461093da"
+    },
+    "tools/journey-package.mjs": {
+      "normalisedSha256": "e22df4ad57c46b6f4f5ad9cf02738622e35df33561b8a1d4dde46f655995b6ca",
+      "sha256": "e22df4ad57c46b6f4f5ad9cf02738622e35df33561b8a1d4dde46f655995b6ca"
+    },
+    "supabase/migrations/20261019142245_route_transfer_timing.sql": {
+      "normalisedSha256": "4357fd8f7d1fd6285ee9665b707a44a6ce12a8f53ff6a4b816b449c02a676a08",
+      "sha256": "4357fd8f7d1fd6285ee9665b707a44a6ce12a8f53ff6a4b816b449c02a676a08"
+    },
+    "tools/gemini-database-check.mjs": {
+      "normalisedSha256": "aaa71563364ec476823eb8b35f7a3bd66b40089f51d679852e8f7b0987d3100c",
+      "sha256": "aaa71563364ec476823eb8b35f7a3bd66b40089f51d679852e8f7b0987d3100c"
+    },
+    "tools/booking-regressions.mjs": {
+      "normalisedSha256": "f6bec4d2f78fffc69be7920d4bbad405939e4e5e8ef0c0a220989ba12676108f",
+      "sha256": "f6bec4d2f78fffc69be7920d4bbad405939e4e5e8ef0c0a220989ba12676108f"
+    },
+    "supabase/changes/planzo_route_helpers.sql": {
+      "normalisedSha256": "494a5aed1112f39f6965e253bf29ad2d9561385f53d9e0204550133d545d4603",
+      "sha256": "494a5aed1112f39f6965e253bf29ad2d9561385f53d9e0204550133d545d4603"
+    },
+    "supabase/changes/planzo_ai_preview_rate.sql": {
+      "normalisedSha256": "1786ecbec7c7e1563477a2ec8137e647d2ae0049128922b82f72b539af10f44d",
+      "sha256": "1786ecbec7c7e1563477a2ec8137e647d2ae0049128922b82f72b539af10f44d"
+    },
+    "src/MasterPlanEditor.tsx": {
+      "normalisedSha256": "a58bf8fee0c22a4a88442bb33bbcabc892a33e81a7e53301d96d5472e45466fb",
+      "sha256": "a58bf8fee0c22a4a88442bb33bbcabc892a33e81a7e53301d96d5472e45466fb"
+    },
+    "src/LivePrivatePlanning.tsx": {
+      "normalisedSha256": "d4d9b38e51a206b56ffea9f7ed67840af69eaf7622f027b34167da262c8eef1f",
+      "sha256": "d4d9b38e51a206b56ffea9f7ed67840af69eaf7622f027b34167da262c8eef1f"
+    },
+    "supabase/migrations/20261016173645_planzo_private_inputs_and_planning_flow.sql": {
+      "normalisedSha256": "ea46d27614abb8d4636d1a3369e61f8bf922b13f482d0f069b90c4c86c3f9ee2",
+      "sha256": "ea46d27614abb8d4636d1a3369e61f8bf922b13f482d0f069b90c4c86c3f9ee2"
+    },
+    "src/ui.tsx": {
+      "normalisedSha256": "4b6792c1233da7f1dd017b7b76a23b5ac50691d541739adbdfb0241472c7bc60",
+      "sha256": "4b6792c1233da7f1dd017b7b76a23b5ac50691d541739adbdfb0241472c7bc60"
+    },
+    "supabase/changes/planzo_setup.sql": {
+      "normalisedSha256": "8948854a76c1d6cc9f4ee92f4cbc85d036409308a6e364ad6051893f032f6468",
+      "sha256": "8948854a76c1d6cc9f4ee92f4cbc85d036409308a6e364ad6051893f032f6468"
+    },
+    "tools/contextual-planning-check.mjs": {
+      "normalisedSha256": "0301d62b59a3b2088f528c63c2e713181ad0e1b02bb68fa34d0ae19f01c46ef5",
+      "sha256": "0301d62b59a3b2088f528c63c2e713181ad0e1b02bb68fa34d0ae19f01c46ef5"
+    },
+    "src/index.css": {
+      "normalisedSha256": "d833c4f2742df18d88f48f675360fc3a9584401f571f656f9d40211481a2b338",
+      "sha256": "af68c012604c67c7cff9f17a0ffcb1486fd87965d5a5ba6ca5d896cd1a3bb78c"
+    },
+    "supabase/migrations/20261015170844_planzo_invitation_membership_index.sql": {
+      "normalisedSha256": "cd087da3199a25dd69d501a233d4c3b8905282718fc42e73b081f520c7f831b9",
+      "sha256": "cd087da3199a25dd69d501a233d4c3b8905282718fc42e73b081f520c7f831b9"
+    },
+    "src/entry.tsx": {
+      "normalisedSha256": "73b363e1f68371696d7e7e47e6e89dac6f856f6e2f5995958c46a2e32eae7586",
+      "sha256": "73b363e1f68371696d7e7e47e6e89dac6f856f6e2f5995958c46a2e32eae7586"
+    },
+    "src/journeyBackend.ts": {
+      "normalisedSha256": "b8ef9d02812048a169c201a408bd9ace3640e8a7515d964d9dfd1c91a350122c",
+      "sha256": "b8ef9d02812048a169c201a408bd9ace3640e8a7515d964d9dfd1c91a350122c"
+    },
+    "tests/setup.test.mjs": {
+      "normalisedSha256": "96edb7e288d4d706a8a768eb4d0641b086b79726ea9f71157a3361a6400679b4",
+      "sha256": "96edb7e288d4d706a8a768eb4d0641b086b79726ea9f71157a3361a6400679b4"
+    },
+    "tests/journey.test.mjs": {
+      "normalisedSha256": "a8ee4a8c05c5760c72095dd078be864372a4fecfbb6e468289759a0117c316a4",
+      "sha256": "a8ee4a8c05c5760c72095dd078be864372a4fecfbb6e468289759a0117c316a4"
+    },
+    "tools/full-regression-resume/run-body.txt": {
+      "normalisedSha256": "2ade68c98721ec83740e7c8314d7b4e48c424a0ce77a60ebd8aa9176e42b201a",
+      "sha256": "2ade68c98721ec83740e7c8314d7b4e48c424a0ce77a60ebd8aa9176e42b201a"
+    },
+    "tests/route-fixture.mjs": {
+      "normalisedSha256": "ead6a2db905dd8c6f03afce27d1a386173e821fa9476b7a3587c65e369b22cca",
+      "sha256": "ead6a2db905dd8c6f03afce27d1a386173e821fa9476b7a3587c65e369b22cca"
+    },
+    "tools/planning-refinement-check.mjs": {
+      "normalisedSha256": "fba95e94be83cf5c4307f1fe7447206394640b94e363358edee780f54c948441",
+      "sha256": "fba95e94be83cf5c4307f1fe7447206394640b94e363358edee780f54c948441"
+    },
+    "tools/full-regression-resume/index.html": {
+      "normalisedSha256": "ae64136b5e38d3afa26da00ee83ba3a0799bfd8b30cdef0a1a1afd7719bf12d5",
+      "sha256": "ae64136b5e38d3afa26da00ee83ba3a0799bfd8b30cdef0a1a1afd7719bf12d5"
+    },
+    "tests/auth-return.test.mjs": {
+      "normalisedSha256": "b6373c21410f3f1261c34efe5d97cc116228855bb507ad71832ffd533076344d",
+      "sha256": "b6373c21410f3f1261c34efe5d97cc116228855bb507ad71832ffd533076344d"
+    },
+    "src/AiPreferencePreview.tsx": {
+      "normalisedSha256": "172c6c0d78fa2d5bc69edb12af7d9af356b0b5669e2f35c48d0b1b1ec8d9d889",
+      "sha256": "172c6c0d78fa2d5bc69edb12af7d9af356b0b5669e2f35c48d0b1b1ec8d9d889"
+    },
+    "supabase/changes/planzo_gemini_pricing.sql": {
+      "normalisedSha256": "968d197e70d581c5f764697928066819b781039a322c4e74ca3b86346cd286be",
+      "sha256": "968d197e70d581c5f764697928066819b781039a322c4e74ca3b86346cd286be"
+    },
+    "src/planning.tsx": {
+      "normalisedSha256": "23cbec94a4f588af5202cf1268e5fd02d920db646bd77789ffc57e2a3f58e4ab",
+      "sha256": "23cbec94a4f588af5202cf1268e5fd02d920db646bd77789ffc57e2a3f58e4ab"
+    },
+    "src/TripControls.tsx": {
+      "normalisedSha256": "22205031be2253cd44c6658122bbf4a00c3428ead7134f50861246b779ecf7a9",
+      "sha256": "22205031be2253cd44c6658122bbf4a00c3428ead7134f50861246b779ecf7a9"
+    },
+    "tools/planning-check.mjs": {
+      "normalisedSha256": "c661ec9e8353a523a9234a49ece8252790b9d13cc464fb21e66216ec3ba9b832",
+      "sha256": "c661ec9e8353a523a9234a49ece8252790b9d13cc464fb21e66216ec3ba9b832"
+    },
+    "tools/stale-http-check.mjs": {
+      "normalisedSha256": "3b20b81d5cfdaf2dc88e2f12f04a36f03ae30f3646cec2c4b66bdfaa74a11961",
+      "sha256": "3b20b81d5cfdaf2dc88e2f12f04a36f03ae30f3646cec2c4b66bdfaa74a11961"
+    },
+    "supabase/functions/planzo-planning/handler.ts": {
+      "normalisedSha256": "634292ae1160d4542277148c6ea614abab3daa83975a9a1bfd9079c7f1dda85c",
+      "sha256": "634292ae1160d4542277148c6ea614abab3daa83975a9a1bfd9079c7f1dda85c"
+    },
+    "tools/private-planning-check.mjs": {
+      "normalisedSha256": "a2e1fc174ddd3821aa8ec8715fafe9f9b110ad9a104cd3ace398b3ebcc15f6f0",
+      "sha256": "a2e1fc174ddd3821aa8ec8715fafe9f9b110ad9a104cd3ace398b3ebcc15f6f0"
+    },
+    "tools/journey-check.mjs": {
+      "normalisedSha256": "3679a3a81b5a1d6f484d21cdf2559850ffa25fd7038e1a1cc9ad68a69dbe693e",
+      "sha256": "3679a3a81b5a1d6f484d21cdf2559850ffa25fd7038e1a1cc9ad68a69dbe693e"
+    },
+    "src/setupRules.ts": {
+      "normalisedSha256": "b491995f746dcb878ede3d5255947b8af781a46f5ff3626888714772dabe67ad",
+      "sha256": "b491995f746dcb878ede3d5255947b8af781a46f5ff3626888714772dabe67ad"
+    },
+    "supabase/changes/planzo_ai.sql": {
+      "normalisedSha256": "2a081f5f80376ca29b1cea8643086df90f4865952626de288de658ff1a92ac75",
+      "sha256": "2a081f5f80376ca29b1cea8643086df90f4865952626de288de658ff1a92ac75"
+    },
+    "supabase/changes/planzo_complete_conflict_envelope.sql": {
+      "normalisedSha256": "c315a8e2763b5ab3c49b920e08e6fc07ee4b046a3cfb92a1a62d0d06b7a6c8b8",
+      "sha256": "c315a8e2763b5ab3c49b920e08e6fc07ee4b046a3cfb92a1a62d0d06b7a6c8b8"
+    },
+    "supabase/migrations/20261019141707_route_mobility_contract.sql": {
+      "normalisedSha256": "7ca6c754d229105f3219d2967818d2fa7197cebd4314159de7b50201eac9e77b",
+      "sha256": "7ca6c754d229105f3219d2967818d2fa7197cebd4314159de7b50201eac9e77b"
+    }
+  },
+  "filesMatched": 137,
+  "errors": [],
+  "date": "2026-10-20",
+  "makeFile": "4tPr5AkQO1g0L1esRvGRjz",
+  "project": "ewysgpuwvufbklesdhuj",
+  "applicationEntries": 54,
+  "backendEntries": 85,
+  "fixtureEntries": 2,
+  "initialSourceRecords": 18,
+  "correctionSourceRecords": 9,
+  "distinctChangedPaths": 22,
+  "method": "137-file base Make archive readback followed by two4-file incremental guarded editor/readback passes for v13 and v14",
+  "localValidation": {
+    "testsPassed": 137,
+    "testsFailed": 0,
+    "typecheck": true,
+    "build": true,
+    "databaseChecks": 24
+  },
+  "validationExecutedInMake": false,
+  "incrementalReadback": {
+    "passes": [
+      {
+        "stage": "flexible",
+        "records": [
+          {
+            "path": "src/routePlanning.ts",
+            "sha256": "144f67a58d2a836b27590d46ac08cf89dd4ebf1b5506a6f9a1920eaef7584360",
+            "beforeGuardMatched": true,
+            "editorReadbackMatched": true
+          },
+          {
+            "path": "tests/route-planning.test.mjs",
+            "sha256": "42ab7624cf581ffe291b0a996d4136db493578e5ee63e1b9e1328724218df046",
+            "beforeGuardMatched": true,
+            "editorReadbackMatched": true
+          },
+          {
+            "path": "docs/backend/SOURCE_HASHES.json",
+            "sha256": "3469ac6dea561e7a68da28791d5b65465fe8a7fb2f44a434e65d24a2fcedb67b",
+            "beforeGuardMatched": true,
+            "editorReadbackMatched": true
+          },
+          {
+            "path": "docs/backend/SUPABASE_SOURCE_HASHES.json",
+            "sha256": "6ec4a6981d086448ec92266f06f1d3182b0af8f52195cde9bdd7fe73c58a545a",
+            "beforeGuardMatched": true,
+            "editorReadbackMatched": true
+          }
+        ]
+      },
+      {
+        "stage": "boundary",
+        "records": [
+          {
+            "path": "src/routePlanning.ts",
+            "sha256": "09bc6412e607f090bec0d48ae99615beec73775b4454a51047fe643383d838ea",
+            "beforeGuardMatched": true,
+            "editorReadbackMatched": true
+          },
+          {
+            "path": "tests/route-planning.test.mjs",
+            "sha256": "13ca495755208c752f3d4a444608004a33314df5ac3802805428c44521d21e48",
+            "beforeGuardMatched": true,
+            "editorReadbackMatched": true
+          },
+          {
+            "path": "docs/backend/SOURCE_HASHES.json",
+            "sha256": "43aa6656311911b09bdbe6325346fb09329f226c4636749849d27b022127e58c",
+            "beforeGuardMatched": true,
+            "editorReadbackMatched": true
+          },
+          {
+            "path": "docs/backend/SUPABASE_SOURCE_HASHES.json",
+            "sha256": "6ec4a6981d086448ec92266f06f1d3182b0af8f52195cde9bdd7fe73c58a545a",
+            "beforeGuardMatched": true,
+            "editorReadbackMatched": true
+          }
+        ]
+      }
+    ],
+    "finalRuntimeFiles": 137,
+    "validationExecutedInMake": false
+  }
+}

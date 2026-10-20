@@ -1,0 +1,68 @@
+{
+  "date": "2026-10-17T16:57:36.971Z",
+  "project": "ewysgpuwvufbklesdhuj",
+  "migration": "20261017165231",
+  "name": "planzo_stale_http_conflicts",
+  "appliedOnce": true,
+  "canonicalPreparedByCli": "20261017165056",
+  "sourceChecks": [
+    {
+      "proname": "planzo_flow",
+      "prosecdef": false,
+      "proconfig": [
+        "search_path=\"\""
+      ],
+      "lanname": "plpgsql",
+      "source_matches": true
+    },
+    {
+      "proname": "planzo_journey",
+      "prosecdef": false,
+      "proconfig": [
+        "search_path=\"\""
+      ],
+      "lanname": "plpgsql",
+      "source_matches": true
+    }
+  ],
+  "edgeFunctionUnchanged": true,
+  "applicationSourceUnchanged": true,
+  "realGeminiCallsThisAudit": 1,
+  "hostedContinuation": "pending_user_sign_in",
+  "securityFindings": [
+    {
+      "name": "rls_enabled_no_policy",
+      "level": "INFO",
+      "remediation": "https://supabase.com/docs/guides/database/database-linter?lint=0008_rls_enabled_no_policy"
+    },
+    {
+      "name": "auth_leaked_password_protection",
+      "level": "WARN",
+      "remediation": "https://supabase.com/docs/guides/auth/password-security#password-strength-and-leaked-password-protection"
+    }
+  ],
+  "references": [
+    "https://docs.postgrest.org/en/v14/references/errors.html#add-http-headers-with-raise",
+    "https://supabase.com/changelog"
+  ],
+  "incident": {
+    "run": "387bf8f9-3b75-48a8-a2ad-8943d6ea243f",
+    "firstLive": {
+      "passed": 16,
+      "failed": 1
+    },
+    "failedCheckpoint": "Stale ballot revisions cannot overwrite a saved vote",
+    "apiLogs": {
+      "utcStart": "2026-10-17T16:45:00Z",
+      "utcEnd": "2026-10-17T16:49:00Z",
+      "path": "/rest/v1/rpc/planzo_flow",
+      "statuses": {
+        "200": 43,
+        "400": 7,
+        "403": 1,
+        "504": 1
+      }
+    },
+    "diagnosis": "Raw SQLSTATE40001 maps to server error by default; the stale-vote request timed out. The two public invoker wrappers now emit the documented PGRST envelope with code40001, original message and explicit HTTP409. Real HTTP verification is pending the continuation, not implied by local adapter tests."
+  }
+}

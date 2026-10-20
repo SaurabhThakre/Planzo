@@ -1,0 +1,18 @@
+{
+  "date": "2026-10-17T15:12:26.155Z",
+  "makeFile": "4tPr5AkQO1g0L1esRvGRjz",
+  "project": "ewysgpuwvufbklesdhuj",
+  "mode": "Fresh read-only source audit requested by human",
+  "applicationHashes": 38,
+  "backendHashes": 52,
+  "canonicalSqlEqualities": 14,
+  "typecheck": "pass",
+  "appTests": {
+    "passed": 85,
+    "failed": 0
+  },
+  "build": "pass",
+  "unexpectedSourcePaths": [],
+  "workingTreePaths": [],
+  "advisory": "One minified JS chunk over 500 kB; no source or dependency changes"
+}

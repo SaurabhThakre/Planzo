@@ -1,0 +1,278 @@
+{
+  "date": "2026-10-17T14:57:25.076Z",
+  "environment": "Disposable isolated PostgreSQL; fictional single-person and four-person fixtures; no hosted mutations or provider calls",
+  "summary": {
+    "passed": 67,
+    "failed": 0
+  },
+  "checks": [
+    {
+      "name": "Original agreed plan, four private responses and immutable history survive v2 migration",
+      "result": "pass"
+    },
+    {
+      "name": "Only three reviewed legacy function bodies change; every existing function permission remains",
+      "result": "pass"
+    },
+    {
+      "name": "Only newly created trips use the new planning workflow",
+      "result": "pass"
+    },
+    {
+      "name": "Signed-out users cannot access the new endpoint",
+      "result": "pass"
+    },
+    {
+      "name": "Unverified users are denied",
+      "result": "pass"
+    },
+    {
+      "name": "Cross-trip data reads and writes are denied",
+      "result": "pass"
+    },
+    {
+      "name": "Original trips cannot be silently converted to v2",
+      "result": "pass"
+    },
+    {
+      "name": "Legacy private-input endpoint cannot bypass v2",
+      "result": "pass"
+    },
+    {
+      "name": "Legacy plan endpoint cannot bypass v2 gates",
+      "result": "pass"
+    },
+    {
+      "name": "Generation waits for every included traveller",
+      "result": "pass"
+    },
+    {
+      "name": "Summary must be explicitly acknowledged",
+      "result": "pass"
+    },
+    {
+      "name": "Availability outside the tentative interval is rejected",
+      "result": "pass"
+    },
+    {
+      "name": "Forged actor fields are rejected",
+      "result": "pass"
+    },
+    {
+      "name": "Only the author receives their private city, budget and requirement text",
+      "result": "pass"
+    },
+    {
+      "name": "Personal intervals differ; generation uses their shared overlap and only shareable choices",
+      "result": "pass"
+    },
+    {
+      "name": "Outbound and return travel buffers are excluded from the shared destination itinerary",
+      "result": "pass"
+    },
+    {
+      "name": "Every included person must consent to Free Tier generation",
+      "result": "pass"
+    },
+    {
+      "name": "Only the organiser can generate or lock",
+      "result": "pass"
+    },
+    {
+      "name": "Duplicate generation ticket cannot trigger another provider call",
+      "result": "pass"
+    },
+    {
+      "name": "Malformed or invented AI references are rejected",
+      "result": "pass"
+    },
+    {
+      "name": "Server builds a complete gap-free shared timeline with meals, stays and all-in estimate",
+      "result": "pass"
+    },
+    {
+      "name": "Generation finish is idempotent without a second version",
+      "result": "pass"
+    },
+    {
+      "name": "Idempotency receipts cannot be reused with changed data",
+      "result": "pass"
+    },
+    {
+      "name": "Open step decisions block personal review and lock",
+      "result": "pass"
+    },
+    {
+      "name": "Private ballots stay hidden until closure; plurality resolves compatible step alternatives",
+      "result": "pass"
+    },
+    {
+      "name": "Organiser cannot lock while a member has not reviewed this version",
+      "result": "pass"
+    },
+    {
+      "name": "A 2–2 concern vote keeps the step; an author’s must-have concern remains blocking",
+      "result": "pass"
+    },
+    {
+      "name": "Another person cannot resolve the author’s private requirement",
+      "result": "pass"
+    },
+    {
+      "name": "Only the affected author can explicitly resolve their must-have concern",
+      "result": "pass"
+    },
+    {
+      "name": "A strict majority applies a step change and requires fresh personal review",
+      "result": "pass"
+    },
+    {
+      "name": "Organiser locks only the resolved exact version reviewed by every included traveller",
+      "result": "pass"
+    },
+    {
+      "name": "A locked itinerary cannot be edited through a step concern",
+      "result": "pass"
+    },
+    {
+      "name": "A locked itinerary cannot be silently regenerated",
+      "result": "pass"
+    },
+    {
+      "name": "Historical versions retain their original shareable reference labels and lock record",
+      "result": "pass"
+    },
+    {
+      "name": "Reopened personal input blocks old agreement and generation",
+      "result": "pass"
+    },
+    {
+      "name": "Reopening input invalidates the current view without deleting locked history",
+      "result": "pass"
+    },
+    {
+      "name": "Plan snapshots are immutable at database level",
+      "result": "pass"
+    },
+    {
+      "name": "All v2 operations leave the pre-existing agreed trip unchanged",
+      "result": "pass"
+    },
+    {
+      "name": "A complete but over-budget itinerary cannot receive personal approval",
+      "result": "pass"
+    },
+    {
+      "name": "Another confirmed member never receives the first author’s distinct private requirement",
+      "result": "pass"
+    },
+    {
+      "name": "Changed input during generation rejects the in-flight AI result",
+      "result": "pass"
+    },
+    {
+      "name": "Deadline extension requires explicit acknowledgement",
+      "result": "pass"
+    },
+    {
+      "name": "Non-overlapping availability cannot be voted or generated away",
+      "result": "pass"
+    },
+    {
+      "name": "Tied alternatives remain unresolved and block review",
+      "result": "pass"
+    },
+    {
+      "name": "Oversubscribed shareable wishes become an explicit vote; rejected options are recorded rather than silently dropped",
+      "result": "pass"
+    },
+    {
+      "name": "Client/server schedules agree across midnight, clipped activity blocks and year boundaries",
+      "result": "pass"
+    },
+    {
+      "name": "Archived private summaries are read-only",
+      "result": "pass"
+    },
+    {
+      "name": "Archive preserves the new private summaries and shared version history",
+      "result": "pass"
+    },
+    {
+      "name": "Forward requirement migration leaves every prior itinerary document and version unchanged",
+      "result": "pass"
+    },
+    {
+      "name": "Every existing function permission is preserved by the forward correction",
+      "result": "pass"
+    },
+    {
+      "name": "New confirmation requires an owner-reviewed shared request list",
+      "result": "pass"
+    },
+    {
+      "name": "A one-person trip includes surfing, scuba, sailing and meal requests when time and budget fit without any group vote",
+      "result": "pass"
+    },
+    {
+      "name": "Server prioritises hard activities even if Gemini returns flexible activities first",
+      "result": "pass"
+    },
+    {
+      "name": "Shared context contains no private prose, private ceiling or computed minimum budget",
+      "result": "pass"
+    },
+    {
+      "name": "Budget-infeasible must-haves are explicitly excluded without exceeding the private ceiling",
+      "result": "pass"
+    },
+    {
+      "name": "A traveller cannot approve exclusions without explicit acknowledgement",
+      "result": "pass"
+    },
+    {
+      "name": "A one-person itinerary with disclosed exclusions locks only after the affected owner explicitly accepts them",
+      "result": "pass"
+    },
+    {
+      "name": "Insufficient common activity slots produce a visible timing exclusion for hard requests",
+      "result": "pass"
+    },
+    {
+      "name": "An unverified travel condition is never falsely reported as satisfied",
+      "result": "pass"
+    },
+    {
+      "name": "Corrected requirement outcomes remain inaccessible to outsiders",
+      "result": "pass"
+    },
+    {
+      "name": "History retains approved requests and outcomes without the owner-private answer mapping",
+      "result": "pass"
+    },
+    {
+      "name": "After joining, a second traveller sees only their own requirement outcomes and private answers",
+      "result": "pass"
+    },
+    {
+      "name": "The organiser cannot lock a corrected plan until every included traveller reviews",
+      "result": "pass"
+    },
+    {
+      "name": "A majority step change records the displaced request as excluded and clears current reviews",
+      "result": "pass"
+    },
+    {
+      "name": "Every new private helper is denied to public, anonymous and authenticated direct callers",
+      "result": "pass"
+    },
+    {
+      "name": "Meal requests cannot be forged as replacement activities",
+      "result": "pass"
+    },
+    {
+      "name": "A rejected invalid replacement leaves the plan and existing votes unchanged",
+      "result": "pass"
+    }
+  ]
+}

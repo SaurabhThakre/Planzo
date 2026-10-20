@@ -1,0 +1,8 @@
+{
+  "date": "2026-10-18",
+  "purpose": "Pure labelled visual fixtures, no Auth/API/provider operations",
+  "files": {
+    "tools/ui-review/index.html": "48eb853d657f2eead70af9bbec9c529309f5779d3d1eb50428cf026b06dec9ad",
+    "tools/ui-review/review.tsx": "6a38ad7a31cfc7ec03488de1af9ca5cebcdcff0993fe33008387ad0a82435527"
+  }
+}

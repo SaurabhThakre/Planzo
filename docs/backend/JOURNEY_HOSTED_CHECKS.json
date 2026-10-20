@@ -1,0 +1,20 @@
+{
+  "date": "2026-10-17T13:14:21.324Z",
+  "functionBodiesMatched": 5,
+  "defaultDenyTables": 4,
+  "publicSecurityInvoker": true,
+  "probes": [
+    {
+      "action": "get",
+      "status": 401,
+      "result": "denied"
+    },
+    {
+      "action": "prepare",
+      "status": 401,
+      "result": "denied"
+    }
+  ],
+  "noCredentialsRead": true,
+  "noUserMutations": true
+}

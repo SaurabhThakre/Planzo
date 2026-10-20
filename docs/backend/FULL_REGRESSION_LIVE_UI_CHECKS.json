@@ -1,0 +1,79 @@
+{
+  "date": "2026-10-17T17:02:06.235Z",
+  "fixture": "4c3ff90e-77a2-4c0f-8bba-842298c6a930",
+  "checks": [
+    {
+      "name": "Actual Gemini itinerary visibly includes both reviewed must-haves",
+      "result": "pass"
+    },
+    {
+      "name": "Personal transport and later common shared arrival are shown separately",
+      "result": "pass"
+    },
+    {
+      "name": "Other travellers’ private cities are absent from organiser itinerary",
+      "result": "pass"
+    },
+    {
+      "name": "Open concern disables review and organiser lock",
+      "result": "pass"
+    },
+    {
+      "name": "Step voting shows deadline and blocks early closure",
+      "result": "pass"
+    },
+    {
+      "name": "Own ballot saves through the Make interface without changing the group result",
+      "result": "pass"
+    },
+    {
+      "name": "Four confirmed members and booking handoff are visible after organiser lock",
+      "result": "pass"
+    },
+    {
+      "name": "Completed handoff shows four current reviews and no reservations",
+      "result": "pass"
+    },
+    {
+      "name": "Booking ledger counts checked quotes and on-trip reserve once",
+      "result": "pass"
+    },
+    {
+      "name": "Only organiser’s own two private transport legs are visible",
+      "result": "pass"
+    },
+    {
+      "name": "Another owner’s source and provider status remain read-only",
+      "result": "pass"
+    },
+    {
+      "name": "Visual journey connects own outbound and return with timed shared steps and owners",
+      "result": "pass"
+    },
+    {
+      "name": "Visual journey has one History link and a read-only private budget",
+      "result": "pass"
+    },
+    {
+      "name": "Completed four-person journey fits mobile width without horizontal overflow",
+      "result": "pass"
+    },
+    {
+      "name": "History shows both earlier itinerary versions and current booking revisions",
+      "result": "pass"
+    },
+    {
+      "name": "History keeps one link and excludes legacy empty panels",
+      "result": "pass"
+    }
+  ],
+  "summary": {
+    "passed": 16,
+    "failed": 0
+  },
+  "mobile": {
+    "client": 363,
+    "scroll": 363
+  },
+  "nonblockingObservation": "Trip overview introductory/next-step copy stays generic after lock, although the current handoff and journey show accurate completed reviews. No interface source changed in this audit."
+}

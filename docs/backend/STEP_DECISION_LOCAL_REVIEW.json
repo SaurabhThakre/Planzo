@@ -1,0 +1,335 @@
+{
+  "date": "2026-10-18",
+  "scope": "Desktop web Step decisions clarity",
+  "changes": [
+    "Prominent IST date/time, day and current itinerary version",
+    "Side-by-side current/original arrangement and proposed change; all alternatives visible",
+    "Visible labelled radio cards; same ballot reference values, request fields and server resolution rules",
+    "Separate deadline/response count; honest generic meal/stay details and stale/missing-step guidance",
+    "Missing current step disables ballot and close controls; no backend rule changes"
+  ],
+  "checks": {
+    "typecheck": true,
+    "testsPassed": 85,
+    "testsFailed": 0,
+    "build": true,
+    "fixture": {
+      "checks": [
+        {
+          "scenario": "Activity change",
+          "passed": true,
+          "measurement": {
+            "arrangements": [
+              "Scuba diving",
+              "Free time / rest"
+            ],
+            "client": 1265,
+            "current": "",
+            "date": "Fri, 20 Nov, 2026",
+            "notice": [],
+            "radios": [
+              {
+                "checked": false,
+                "disabled": false,
+                "value": "scuba"
+              },
+              {
+                "checked": false,
+                "disabled": false,
+                "value": "rest"
+              },
+              {
+                "checked": false,
+                "disabled": false,
+                "value": "abstain"
+              }
+            ],
+            "scroll": 1265,
+            "time": "9:00 am → 12:00 pm IST"
+          }
+        },
+        {
+          "scenario": "Meal change",
+          "passed": true,
+          "measurement": {
+            "arrangements": [
+              "Meal arrangement",
+              "Alternative meal arrangement"
+            ],
+            "client": 1265,
+            "current": "",
+            "date": "Fri, 20 Nov, 2026",
+            "notice": [
+              "A different meal arrangement is requested. Menu and provider details have not been recorded."
+            ],
+            "radios": [
+              {
+                "checked": false,
+                "disabled": false,
+                "value": "food"
+              },
+              {
+                "checked": false,
+                "disabled": false,
+                "value": "food_alternative"
+              },
+              {
+                "checked": false,
+                "disabled": false,
+                "value": "abstain"
+              }
+            ],
+            "scroll": 1265,
+            "time": "9:00 am → 12:00 pm IST"
+          }
+        },
+        {
+          "scenario": "Alternative choices",
+          "passed": true,
+          "measurement": {
+            "arrangements": [
+              "Scuba diving",
+              "A relaxed beach day",
+              "Free time / rest"
+            ],
+            "client": 1265,
+            "current": "",
+            "date": "Fri, 20 Nov, 2026",
+            "notice": [],
+            "radios": [
+              {
+                "checked": false,
+                "disabled": false,
+                "value": "scuba"
+              },
+              {
+                "checked": false,
+                "disabled": false,
+                "value": "beach"
+              },
+              {
+                "checked": false,
+                "disabled": false,
+                "value": "rest"
+              },
+              {
+                "checked": false,
+                "disabled": false,
+                "value": "abstain"
+              }
+            ],
+            "scroll": 1265,
+            "time": "9:00 am → 12:00 pm IST"
+          }
+        },
+        {
+          "scenario": "Overnight stay",
+          "passed": true,
+          "measurement": {
+            "arrangements": [
+              "Stay arrangement",
+              "Alternative stay arrangement"
+            ],
+            "client": 1265,
+            "current": "",
+            "date": "Fri, 20 Nov, 2026 → Sat, 21 Nov, 2026",
+            "notice": [
+              "A different stay arrangement is requested. Property and room details have not been recorded."
+            ],
+            "radios": [
+              {
+                "checked": false,
+                "disabled": false,
+                "value": "stay"
+              },
+              {
+                "checked": false,
+                "disabled": false,
+                "value": "stay_alternative"
+              },
+              {
+                "checked": false,
+                "disabled": false,
+                "value": "abstain"
+              }
+            ],
+            "scroll": 1265,
+            "time": "9:00 pm → 6:00 am IST"
+          }
+        },
+        {
+          "scenario": "Closed decision",
+          "passed": true,
+          "measurement": {
+            "arrangements": [
+              "Scuba diving",
+              "Free time / rest"
+            ],
+            "client": 1265,
+            "current": "In the current itinerary: Free time / rest",
+            "date": "Fri, 20 Nov, 2026",
+            "notice": [],
+            "radios": [],
+            "scroll": 1265,
+            "time": "9:00 am → 12:00 pm IST"
+          }
+        },
+        {
+          "scenario": "Earlier vote",
+          "passed": true,
+          "measurement": {
+            "arrangements": [
+              "Scuba diving",
+              "Free time / rest"
+            ],
+            "client": 1265,
+            "current": "In the current itinerary: Scuba diving",
+            "date": "Fri, 20 Nov, 2026",
+            "notice": [
+              "This is an earlier vote. Its choices are shown for reference; it cannot change the current itinerary."
+            ],
+            "radios": [],
+            "scroll": 1265,
+            "time": "9:00 am → 12:00 pm IST"
+          }
+        },
+        {
+          "scenario": "Missing step",
+          "passed": true,
+          "measurement": {
+            "arrangements": [
+              "Scuba diving",
+              "Free time / rest"
+            ],
+            "client": 1265,
+            "current": "",
+            "date": "",
+            "notice": [
+              "This step is absent from the current itinerary. Read its saved version in History for its date and time. Refresh planning before voting on this step."
+            ],
+            "radios": [
+              {
+                "checked": false,
+                "disabled": true,
+                "value": "scuba"
+              },
+              {
+                "checked": false,
+                "disabled": true,
+                "value": "rest"
+              },
+              {
+                "checked": false,
+                "disabled": true,
+                "value": "abstain"
+              }
+            ],
+            "scroll": 1265,
+            "time": ""
+          }
+        },
+        {
+          "scenario": "Expired deadline",
+          "passed": true,
+          "measurement": {
+            "arrangements": [
+              "Scuba diving",
+              "Free time / rest"
+            ],
+            "client": 1265,
+            "current": "",
+            "date": "Fri, 20 Nov, 2026",
+            "notice": [],
+            "radios": [
+              {
+                "checked": false,
+                "disabled": true,
+                "value": "scuba"
+              },
+              {
+                "checked": false,
+                "disabled": true,
+                "value": "rest"
+              },
+              {
+                "checked": false,
+                "disabled": true,
+                "value": "abstain"
+              }
+            ],
+            "scroll": 1265,
+            "time": "9:00 am → 12:00 pm IST"
+          }
+        },
+        {
+          "scenario": "Saved ballot",
+          "passed": true,
+          "measurement": {
+            "arrangements": [
+              "Scuba diving",
+              "Free time / rest"
+            ],
+            "client": 1265,
+            "current": "",
+            "date": "Fri, 20 Nov, 2026",
+            "notice": [],
+            "radios": [
+              {
+                "checked": false,
+                "disabled": false,
+                "value": "scuba"
+              },
+              {
+                "checked": true,
+                "disabled": false,
+                "value": "rest"
+              },
+              {
+                "checked": false,
+                "disabled": false,
+                "value": "abstain"
+              }
+            ],
+            "scroll": 1265,
+            "time": "9:00 am → 12:00 pm IST"
+          }
+        },
+        {
+          "scenario": "Selecting the proposed change retains its reference value and reaches only the fixture callback",
+          "passed": true,
+          "measurement": {
+            "buttonEnabled": true,
+            "status": "TEST · vote · rest · No data saved."
+          }
+        },
+        {
+          "scenario": "Keyboard arrows move within the named radio group",
+          "passed": true,
+          "measurement": {
+            "checked": [
+              "rest"
+            ]
+          }
+        },
+        {
+          "scenario": "Desktop comparison keeps current and proposed arrangements side by side",
+          "passed": true,
+          "measurement": {
+            "columns": 2,
+            "sameRow": true,
+            "width": 1103.9998779296875
+          }
+        }
+      ],
+      "total": 12,
+      "tripWrites": 0,
+      "aiCalls": 0
+    }
+  },
+  "applicationHashes": 41,
+  "backendHashesUnchanged": 64,
+  "fixtureHashes": 2,
+  "tripWrites": 0,
+  "aiCalls": 0,
+  "makeInstallation": "pending"
+}

@@ -1,0 +1,118 @@
+{
+  "date": "2026-10-18T15:17:19.344Z",
+  "environment": "Disposable isolated PostgreSQL; labelled fixtures, Auth stand-ins and stubbed generation; no hosted data or provider calls",
+  "summary": {
+    "passed": 27,
+    "failed": 0
+  },
+  "checks": [
+    {
+      "name": "Forward migration applies to the complete current chain without rewriting existing trip/member/invite rows",
+      "result": "pass"
+    },
+    {
+      "name": "Only five authorised old bodies change; every existing ACL/search path and other function body is preserved",
+      "result": "pass"
+    },
+    {
+      "name": "Anonymous caller cannot invoke organiser editing",
+      "result": "pass"
+    },
+    {
+      "name": "Unverified account cannot edit",
+      "result": "pass"
+    },
+    {
+      "name": "New invitations use random UUIDs while existing 64-hex invitations remain valid",
+      "result": "pass"
+    },
+    {
+      "name": "Destination availability overlaps directly, zero reserve is accepted, and non-test-prefix real journeys can opt in to Gemini",
+      "result": "pass"
+    },
+    {
+      "name": "New destination protocol rejects hidden travel buffers",
+      "result": "pass"
+    },
+    {
+      "name": "Negative allowance remains rejected",
+      "result": "pass"
+    },
+    {
+      "name": "Gemini admission allows an ordinary trip name and sends only reviewed shared context; generation remains a local stub",
+      "result": "pass"
+    },
+    {
+      "name": "Member/outsider cannot obtain host edit access: member",
+      "result": "pass"
+    },
+    {
+      "name": "Member/outsider cannot obtain host edit access: outsider",
+      "result": "pass"
+    },
+    {
+      "name": "Stale source plan cannot be edited",
+      "result": "pass"
+    },
+    {
+      "name": "Stale organiser edits return the complete HTTP409 conflict envelope without database retry semantics",
+      "result": "pass"
+    },
+    {
+      "name": "Host cannot create gaps or overlaps",
+      "result": "pass"
+    },
+    {
+      "name": "Host cannot exceed another traveller’s private ceiling",
+      "result": "pass"
+    },
+    {
+      "name": "Host master edit creates one idempotent immutable draft, keeps original requests and discloses displaced must-haves, and requires fresh reviews",
+      "result": "pass"
+    },
+    {
+      "name": "Editing a locked plan preserves its immutable lock, previous reviews and document",
+      "result": "pass"
+    },
+    {
+      "name": "An ordinary member cannot lock the edited master plan",
+      "result": "pass"
+    },
+    {
+      "name": "Host editing exposes no other traveller’s private origin, budget or raw requirement text",
+      "result": "pass"
+    },
+    {
+      "name": "Host edits keep the affected author’s unresolved must-have check instead of overriding it",
+      "result": "pass"
+    },
+    {
+      "name": "Name-only host edits preserve confirmed inputs and the current draft",
+      "result": "pass"
+    },
+    {
+      "name": "Members cannot edit trip details",
+      "result": "pass"
+    },
+    {
+      "name": "Trip edit cannot replace a date option with another trip identifier",
+      "result": "pass"
+    },
+    {
+      "name": "Material trip edits pause the current plan, require fresh confirmations and preserve every historical version",
+      "result": "pass"
+    },
+    {
+      "name": "Interpreter still requires explicit consent",
+      "result": "pass"
+    },
+    {
+      "name": "Owner-only interpreter has no TEST name/text gate; consent, revision, digest and receipts still apply",
+      "result": "pass"
+    },
+    {
+      "name": "New public wrapper is invoker-only and callable only by authenticated users",
+      "result": "pass"
+    }
+  ]
+}

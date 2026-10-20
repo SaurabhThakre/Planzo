@@ -1,0 +1,130 @@
+{
+  "date": "2026-10-16T13:18:25.277Z",
+  "environment": "Disposable local PostgreSQL with minimal Auth stand-in; labelled fictional fixtures only",
+  "summary": {
+    "passed": 30,
+    "failed": 0
+  },
+  "checks": [
+    {
+      "name": "Existing agreed plan, costs and every readiness response survive the migration",
+      "result": "pass"
+    },
+    {
+      "name": "Only two reviewed existing function bodies change; auth and all other behavior remain",
+      "result": "pass"
+    },
+    {
+      "name": "Signed-out lifecycle endpoint is denied",
+      "result": "pass"
+    },
+    {
+      "name": "Unverified identity cannot manage trips",
+      "result": "pass"
+    },
+    {
+      "name": "Cross-trip metadata and mutations are denied",
+      "result": "pass"
+    },
+    {
+      "name": "Joined member cannot archive a shared trip",
+      "result": "pass"
+    },
+    {
+      "name": "Unknown or forged actor fields are rejected",
+      "result": "pass"
+    },
+    {
+      "name": "Explicit acknowledgement is required",
+      "result": "pass"
+    },
+    {
+      "name": "Stale trip revision cannot remove a trip",
+      "result": "pass"
+    },
+    {
+      "name": "Shared agreed trip cannot be deleted as an unused draft",
+      "result": "pass"
+    },
+    {
+      "name": "Editable 1–100 minimum and 1–365 duration values persist through workspace readback",
+      "result": "pass"
+    },
+    {
+      "name": "Database rejects unsupported or fractional setup values",
+      "result": "pass"
+    },
+    {
+      "name": "A genuinely unused organiser-only draft is deletable",
+      "result": "pass"
+    },
+    {
+      "name": "Draft deletion is recoverable and idempotent without removing records",
+      "result": "pass"
+    },
+    {
+      "name": "Changed action cannot reuse a delete receipt",
+      "result": "pass"
+    },
+    {
+      "name": "Deleted draft cannot accept new private input",
+      "result": "pass"
+    },
+    {
+      "name": "Deleted draft restores to collecting without reviving agreement",
+      "result": "pass"
+    },
+    {
+      "name": "Even an unused invitation makes the trip shared, requiring archive",
+      "result": "pass"
+    },
+    {
+      "name": "A saved private draft is preserved through archive instead of unused deletion",
+      "result": "pass"
+    },
+    {
+      "name": "Archive preserves the author’s saved private input",
+      "result": "pass"
+    },
+    {
+      "name": "Archiving preserves shared history and makes earlier agreement historical",
+      "result": "pass"
+    },
+    {
+      "name": "Members retain their own saved input and archived shared workspace",
+      "result": "pass"
+    },
+    {
+      "name": "Lifecycle metadata does not expose raw briefs or budgets",
+      "result": "pass"
+    },
+    {
+      "name": "Restored shared plan requires fresh review and cannot reuse earlier readiness as agreement",
+      "result": "pass"
+    },
+    {
+      "name": "Immutable version bytes remain unchanged through archive and restore",
+      "result": "pass"
+    },
+    {
+      "name": "No direct trip update grant is introduced",
+      "result": "pass"
+    },
+    {
+      "name": "Internal unused-trip helper is not client callable",
+      "result": "pass"
+    },
+    {
+      "name": "Group collection can exceed the earlier eight-member cap",
+      "result": "pass"
+    },
+    {
+      "name": "Concurrent lifecycle changes serialize and reject the stale action",
+      "result": "pass"
+    },
+    {
+      "name": "A supported one-person plan can publish without the old four-person table constraint",
+      "result": "pass"
+    }
+  ]
+}

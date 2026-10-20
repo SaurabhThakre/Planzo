@@ -1,0 +1,45 @@
+{
+  "date": "2026-10-16T08:15:43.364Z",
+  "makeFile": "4tPr5AkQO1g0L1esRvGRjz",
+  "evidence": "Observed Make agent outputs and source hash comparisons; live UI checks reported separately",
+  "batches": [
+    {
+      "name": "Gemini backend source",
+      "attachmentsExact": 9,
+      "preApplicationHashes": 22,
+      "preBackendHashes": 26,
+      "postBackendHashes": 29,
+      "oldApplicationFilesUnchanged": 21,
+      "protocolMatchesNewBackend": true,
+      "jsonParses": 3,
+      "unexpectedChanges": 0
+    },
+    {
+      "name": "Gemini consent interface",
+      "attachmentsExact": 4,
+      "preApplicationHashes": 22,
+      "backendHashes": 29,
+      "postApplicationHashes": 22,
+      "testsPassed": 41,
+      "typecheck": "pass",
+      "build": "pass",
+      "unexpectedChanges": 0
+    },
+    {
+      "name": "Request diagnostics and valid preview markup",
+      "attachmentsExact": 8,
+      "preApplicationHashes": 22,
+      "preBackendHashes": 29,
+      "postApplicationHashes": 22,
+      "postBackendHashes": 29,
+      "jsonParses": 4,
+      "testsPassed": 42,
+      "typecheck": "pass",
+      "build": "pass",
+      "unexpectedChanges": 0
+    }
+  ],
+  "sourceMismatches": 0,
+  "dependenciesChanged": false,
+  "websitePublished": false
+}

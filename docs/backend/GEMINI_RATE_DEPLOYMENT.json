@@ -1,0 +1,34 @@
+{
+  "date": "2026-10-16T09:21:19.316Z",
+  "project": "ewysgpuwvufbklesdhuj",
+  "migration": "20261016091834_planzo_ai_preview_rate_controls",
+  "appliedOnce": true,
+  "canonicalEqualsDevelopment": true,
+  "functionChanged": "planzo_private.ai_api(text,jsonb)",
+  "functionBodyMd5": "e90159ccc08cc03c117357f923f535cb",
+  "otherFunctionBodiesAndPermissionsUnchanged": 25,
+  "dailyPreviewCap": null,
+  "lifetimePreviewCap": null,
+  "cooldownSeconds": 3,
+  "duplicateRequestProtection": true,
+  "receiptsPreserved": true,
+  "existingConsentAndPrivacyGuardsPreserved": true,
+  "newTables": 0,
+  "edgeFunctionChanged": false,
+  "providerCallsDuringThisChange": 0,
+  "advisors": [
+    {
+      "name": "rls_enabled_no_policy",
+      "level": "INFO",
+      "count": 19
+    },
+    {
+      "name": "auth_leaked_password_protection",
+      "level": "WARN",
+      "count": 1
+    }
+  ],
+  "existingWarningRemediation": "https://supabase.com/docs/guides/auth/password-security#password-strength-and-leaked-password-protection",
+  "websitePublished": false,
+  "billingChanged": false
+}

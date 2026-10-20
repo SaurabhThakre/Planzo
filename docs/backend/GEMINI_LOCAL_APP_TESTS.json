@@ -1,0 +1,19 @@
+{
+  "date": "2026-10-16T08:06:55.061Z",
+  "environment": "Local Node.js; fake provider only. Isolated PostgreSQL reported separately.",
+  "typecheck": "pass",
+  "edgeHandlerTypecheck": "pass",
+  "applicationAndInterpreterTests": {
+    "passed": 42,
+    "failed": 0,
+    "existingTests": 22,
+    "interpreterTests": 20
+  },
+  "productionBuild": "pass",
+  "advisories": [
+    "Existing bundle larger than 500 kB"
+  ],
+  "dependenciesChanged": false,
+  "realProviderCalls": 0,
+  "followup": "Removed unsupported v1 service_tier request field; tested sanitized provider diagnostics; corrected invalid nested paragraph/fieldset preview markup."
+}

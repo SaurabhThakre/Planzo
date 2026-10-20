@@ -1,0 +1,54 @@
+{
+  "date": "2026-10-17T17:03:00.170Z",
+  "project": "ewysgpuwvufbklesdhuj",
+  "protectedTrips": 13,
+  "checks": [
+    {
+      "scope": "trips",
+      "result": "pass"
+    },
+    {
+      "scope": "flow_locks",
+      "result": "pass"
+    },
+    {
+      "scope": "flow_plans",
+      "result": "pass"
+    },
+    {
+      "scope": "flow_inputs",
+      "result": "pass"
+    },
+    {
+      "scope": "flow_reviews",
+      "result": "pass"
+    },
+    {
+      "scope": "legacy_plans",
+      "result": "pass"
+    },
+    {
+      "scope": "legacy_tasks",
+      "result": "pass"
+    },
+    {
+      "scope": "journey_tasks",
+      "result": "pass"
+    },
+    {
+      "scope": "journey_reviews",
+      "result": "pass"
+    },
+    {
+      "scope": "journey_reserves",
+      "result": "pass"
+    }
+  ],
+  "expectedChangedInvokerWrappers": [
+    "planzo_flow(text,jsonb)",
+    "planzo_journey(text,jsonb)"
+  ],
+  "unchangedFunctionBodies": 43,
+  "all45FunctionPermissionsUnchanged": true,
+  "reason": "Only two public invoker wrappers translate stale-update errors to an explicit HTTP409; all private function bodies, baseline trip rows and fingerprint scopes remain unchanged."
+}

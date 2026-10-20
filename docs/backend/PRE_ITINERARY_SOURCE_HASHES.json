@@ -1,0 +1,20 @@
+{
+  "date": "2026-10-15",
+  "make_file": "4tPr5AkQO1g0L1esRvGRjz",
+  "files": {
+    "src/LiveApp.tsx": "a7cf04d2584814aedc1e3d8a9f54e2e95cbb40d3c748583fd3e3ee9aaad21649",
+    "src/backend.ts": "1a8df62559e24cfceb47e4507ebe116697a6a84ccb170e86373ecf5e61282d5f",
+    "src/main.tsx": "e72b8b43ed3084724656ea7a0d34ffe26099a9c9469c3c07cf6dfaeda9503af0",
+    "src/preferences.tsx": "8452f5176a0e9f1d506d3c4355b95667ee3e3a14de3ab0fce99186a16b04ec47",
+    "src/index.css": "91bc511c2cec9ea9488e29ec36ece050bdf7b059cd3a1a6abcb442cb7ea41647",
+    "src/entry.tsx": "1296ee46eee380c93d2e05f5ed8bf3d6c0aebcc68ae3354cc80a84610c3449a7",
+    "src/planning.tsx": "23cbec94a4f588af5202cf1268e5fd02d920db646bd77789ffc57e2a3f58e4ab",
+    "package.json": "178cf4f3048281103d8286a747de7c4469e822c3f40ea7f26c252aa24e03e859",
+    "pnpm-lock.yaml": "db89ee5bd3fb677273418ec48694cc67b24f34bcbd22de74acd2352223e87de0",
+    "pnpm-workspace.yaml": "2f5c289dc1c87aae4bf362ba34447b6112efdba0283c9198c16ba0f69573ff21",
+    "src/authReturn.ts": "1a5ad114803c10209c0e19679674a07205c2775592e16aea33d07e71eca1a109",
+    "tests/auth-return.test.mjs": "b6373c21410f3f1261c34efe5d97cc116228855bb507ad71832ffd533076344d",
+    "src/LivePlanning.tsx": "be3af87969f74211af94bf87b94653b3960cff4f8e8dc5f7ab21bae32ee7fd93",
+    "src/planningBackend.ts": "0233127c8c2cbd01f0763325e47e929f5f4b3e61ba33b461eba8c565141676db"
+  }
+}

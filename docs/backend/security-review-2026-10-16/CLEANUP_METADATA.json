@@ -1,0 +1,32 @@
+{
+  "date": "2026-10-16",
+  "scope": "Read-only counts/status; no raw brief, cost, note, invitation token or credential read.",
+  "fixtures": [
+    {
+      "id": "324a2697-0163-47bc-bd8c-c2c2d3ac990f",
+      "stage": "postponed",
+      "members": 2,
+      "organisers": 1,
+      "plan_versions": 0,
+      "private_briefs": 2,
+      "active_invitations": 0
+    },
+    {
+      "id": "a740425a-c2fc-4a11-a34e-091816905a77",
+      "stage": "postponed",
+      "members": 1,
+      "organisers": 1,
+      "plan_versions": 0,
+      "private_briefs": 0,
+      "active_invitations": 0
+    }
+  ],
+  "existing_agreed_trip": {
+    "stage": "agreed",
+    "members": 4,
+    "revision": 19,
+    "plan_versions": 1,
+    "agreement_events": 1,
+    "ready_acknowledged": 4
+  }
+}

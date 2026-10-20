@@ -1,0 +1,151 @@
+{
+  "date": "2026-10-19",
+  "makeFile": "4tPr5AkQO1g0L1esRvGRjz",
+  "project": "ewysgpuwvufbklesdhuj",
+  "fixture": "2dca569d-85f8-4c70-b69d-ba1a29d20b77",
+  "label": "TEST · Contextual planning 2026-10-18",
+  "checks": [
+    {
+      "name": "Six fictional requests confirmed with correct activity/food/stay/rule types and hard/soft priorities",
+      "passed": true
+    },
+    {
+      "name": "Gemini inferred Fontainhas from the photo-neighbourhood description without that name in its input",
+      "passed": true
+    },
+    {
+      "name": "Specific church, water-sport, cuisine and hostel proposals render with areas and explanations",
+      "passed": true
+    },
+    {
+      "name": "Bike rental remains explicitly unverified instead of falsely promised",
+      "passed": true
+    },
+    {
+      "name": "Concern shows the actual Gemini activity, date/time and proposed rest replacement",
+      "passed": true
+    },
+    {
+      "name": "A majority concern creates version2 and retains the affected author check",
+      "passed": true
+    },
+    {
+      "name": "Removing the specific activity changes its owner request to excluded rather than leaving false coverage",
+      "passed": true
+    },
+    {
+      "name": "Contextual version2 locks only after explicit affected-person acknowledgement and exact-version review",
+      "passed": true
+    },
+    {
+      "name": "Host edit restores the interpreted activity in version3 with fresh reviews and preserved earlier lock",
+      "passed": true
+    },
+    {
+      "name": "Final version3 is locked and renders breakfast/lunch/dinner labels with meal-appropriate cuisine brief instructions",
+      "passed": true
+    },
+    {
+      "name": "Owner meal-step links display in chronological order",
+      "passed": true
+    },
+    {
+      "name": "Final desktop journey shows the locked contextual names/descriptions, Phase2 booking boundary and no horizontal overflow",
+      "passed": true
+    },
+    {
+      "name": "History preserves the original Fontainhas/water draft, separate voted-rest version2 and restored locked version3; both locks remain visible",
+      "passed": true
+    }
+  ],
+  "passed": 13,
+  "failed": 0,
+  "finalDisplayReviewed": true,
+  "provider": {
+    "realValidatedResult": true,
+    "model": "gemini-3.5-flash-lite",
+    "sourceRequestsNamedFontainhas": false,
+    "resultNamedFontainhas": true,
+    "recordedGenerationAdmissions": 4,
+    "savedResults": 1,
+    "unusedAdmissions": 3,
+    "note": "Four server admissions are recorded; only one result was validated and used. Earlier upstream failures led to simplifying the provider schema subset. Admissions are not a measurement of exact billable provider calls. No further Gemini request was made during final closeout.",
+    "successfulFunctionVersion": 6,
+    "finalDeployedFunctionVersion": 7,
+    "finalVersionVerification": "Source readback and99 tests; saved-result read-only display. No new provider request."
+  },
+  "fixtureMetadata": {
+    "locks": 2,
+    "plans": 3,
+    "polls": 1,
+    "ballots": 1,
+    "reviews": 2,
+    "ai_receipts": 4,
+    "ai_receipts_used": 1,
+    "confirmed_inputs": 1,
+    "contextual_versions": [
+      {
+        "version": 1,
+        "contextual_version": 1,
+        "source_names_fontainhas": false,
+        "concrete_names_fontainhas": true
+      },
+      {
+        "version": 2,
+        "contextual_version": 1,
+        "source_names_fontainhas": false,
+        "concrete_names_fontainhas": true
+      },
+      {
+        "version": 3,
+        "contextual_version": 1,
+        "source_names_fontainhas": false,
+        "concrete_names_fontainhas": true
+      }
+    ]
+  },
+  "originalBaseline": {
+    "locks": 8,
+    "plans": 20,
+    "polls": 7,
+    "trips": 24,
+    "inputs": 34,
+    "ballots": 10,
+    "reviews": 14,
+    "plan_hash": "16202e159f7792a778cbfde0ca3d353f",
+    "trip_hash": "3472f4cbb4db0d1d19c7929beefd8d8e",
+    "input_hash": "238be51486fd76740553b86c0112d750"
+  },
+  "allOriginalMetadataAndFingerprintsMatched": true,
+  "sourceVerification": {
+    "makeFile": "4tPr5AkQO1g0L1esRvGRjz",
+    "recordsMatched": 9,
+    "beforeGuardsMatched": 9,
+    "newPathsWritten": 0,
+    "applicationHashesMatched": 51,
+    "backendHashesMatched": 73,
+    "fixtureHashesMatched": 2,
+    "typecheck": true,
+    "testsPassed": 99,
+    "testsFailed": 0,
+    "build": true,
+    "unexpectedPaths": []
+  },
+  "screenshots": [
+    "CONTEXTUAL_FONTAINHAS_LIVE.jpg"
+  ],
+  "limits": [
+    "Provider interprets and orders concrete proposals; server still assigns time slots and illustrative reference costs.",
+    "No live venue/provider availability, opening-hour, transport-time or price verification.",
+    "Semantic correctness and compatibility remain subject to human review; this one actual fixture does not prove exhaustive contradictory-input behaviour.",
+    "Existing saved snapshots are immutable; contextual interpretation requires a newly generated draft.",
+    "Booking remains Phase 2; no purchases, billing activation or publishing."
+  ],
+  "pending": [],
+  "makeScreenshot": {
+    "path": "CONTEXTUAL_FONTAINHAS_LIVE.jpg",
+    "uploadedDirectly": true,
+    "localCopy": "docs/backend/CONTEXTUAL_FONTAINHAS_LIVE.jpg",
+    "sha256": "6b90492f5a63cb78cfc83b3398ae21c7d6036b65f894bf882e4d50b58054fb73"
+  }
+}

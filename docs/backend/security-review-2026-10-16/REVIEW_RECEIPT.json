@@ -1,0 +1,68 @@
+{
+  "date": "2026-10-16",
+  "project": "ewysgpuwvufbklesdhuj",
+  "make_file": "4tPr5AkQO1g0L1esRvGRjz",
+  "scope": "Complete setup/security review and AI implementation plan; keep unpublished.",
+  "ordinary_account_tests": {
+    "run_id": "dd622477-192d-4649-98df-310173f4bbef",
+    "timestamp_utc": "2026-10-16T03:58:04.302Z",
+    "distinct_verified_actors": 3,
+    "passed": 17,
+    "failed": 0,
+    "total": 17,
+    "evidence": "ORDINARY_ACCOUNT_TESTS.json",
+    "no_administrator_credentials": true
+  },
+  "cleanup": {
+    "metadata_evidence": "CLEANUP_METADATA.json",
+    "labelled_fixtures_postponed": 2,
+    "active_fixture_invitations": 0,
+    "original_trip_revision": 19,
+    "original_ready_acknowledged": 4,
+    "original_agreement_events": 1,
+    "original_trip_changed": false,
+    "checker_tab_closed": true,
+    "temporary_server_stopped": true,
+    "checker_signout": "Local-scope sign-out requested and actor references cleared; individual responses and immediate JWT invalidation not asserted."
+  },
+  "local_source_verification": {
+    "SOURCE_HASHES.json": {
+      "matched": 14,
+      "mismatches": 0
+    },
+    "SUPABASE_SOURCE_HASHES.json": {
+      "matched": 11,
+      "mismatches": 0
+    }
+  },
+  "no_changes_during_probes_and_closeout": [
+    "application logic",
+    "SQL/schema",
+    "dependencies",
+    "auth settings",
+    "AI provider/integration",
+    "publication"
+  ],
+  "documentation_copy": "This is the local closeout packet. Hosted exact-file and final source verification is recorded in the Make agent copy report.",
+  "remaining_verification": [
+    "Full valid-plan stale/other-version response replay",
+    "Session-revocation policy and guarantees",
+    "Other untested A01-A25 cases/endpoints",
+    "Final origin and exact auth return URLs",
+    "Final-origin confirmation, invitation, OTP and recovery",
+    "Sender DNS/deliverability, owner MFA, backup/restore",
+    "Release-candidate desktop/mobile pilot"
+  ],
+  "remaining_product": [
+    "One structured itinerary",
+    "Item-level soft-choice voting",
+    "Deterministic missing-step/night checks",
+    "Later consented AI extraction/suggestions after provider/budget decision",
+    "Connected booking handoff and milestones, or explicit narrower release scope"
+  ],
+  "known_warning": "Leaked-password protection disabled; observed Free-plan limitation remains. No paid upgrade authorized.",
+  "ai_implemented": false,
+  "ai_provider_selected": false,
+  "final_url_selected": false,
+  "website_published": false
+}

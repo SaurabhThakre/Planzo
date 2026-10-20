@@ -1,0 +1,30 @@
+{
+  "date": "2026-10-16",
+  "project": "ewysgpuwvufbklesdhuj",
+  "evidence": "Read-only metadata counts; no raw briefs, private reasons, actor identities or tokens retrieved",
+  "usage": {
+    "ai:parse": 1,
+    "ai:gemini": 4
+  },
+  "protected_original": {
+    "stage": "agreed",
+    "tasks": 0,
+    "members": 4,
+    "reports": 0,
+    "handoffs": 0,
+    "revision": 19,
+    "versions": 1,
+    "ready_rows": 4
+  },
+  "labelled_ai_fixture": {
+    "stage": "postponed",
+    "invites": 0,
+    "members": 1,
+    "handoffs": 0,
+    "revision": 4,
+    "versions": 0,
+    "responses": 0,
+    "confirmed_briefs": 0,
+    "max_brief_revision": 2
+  }
+}

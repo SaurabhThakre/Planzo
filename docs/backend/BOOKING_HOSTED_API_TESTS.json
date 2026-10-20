@@ -1,0 +1,51 @@
+{
+  "date": "2026-10-16T06:02:01.324Z",
+  "project": "ewysgpuwvufbklesdhuj",
+  "method": "signed-out public client; denial probes only",
+  "checks": [
+    {
+      "name": "Signed-out booking read denied",
+      "result": "pass",
+      "http_status": 401,
+      "error_code": "42501"
+    },
+    {
+      "name": "Signed-out booking preparation denied",
+      "result": "pass",
+      "http_status": 401,
+      "error_code": "42501"
+    },
+    {
+      "name": "Private table is not exposed: booking_handoffs",
+      "result": "pass",
+      "http_status": 406,
+      "error_code": "PGRST106"
+    },
+    {
+      "name": "Private table is not exposed: booking_tasks",
+      "result": "pass",
+      "http_status": 406,
+      "error_code": "PGRST106"
+    },
+    {
+      "name": "Private table is not exposed: booking_reports",
+      "result": "pass",
+      "http_status": 406,
+      "error_code": "PGRST106"
+    },
+    {
+      "name": "Private table is not exposed: milestone_events",
+      "result": "pass",
+      "http_status": 406,
+      "error_code": "PGRST106"
+    },
+    {
+      "name": "Milestone evaluator is not a public RPC",
+      "result": "pass",
+      "http_status": 404,
+      "error_code": "PGRST202"
+    }
+  ],
+  "passed": 7,
+  "failed": 0
+}

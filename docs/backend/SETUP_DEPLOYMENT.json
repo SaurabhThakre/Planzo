@@ -1,0 +1,119 @@
+{
+  "date": "2026-10-16T13:24:02.874Z",
+  "makeFile": "4tPr5AkQO1g0L1esRvGRjz",
+  "project": "ewysgpuwvufbklesdhuj",
+  "migration": "20261016131934_planzo_trip_setup_and_lifecycle",
+  "appliedOnce": true,
+  "canonicalSqlEqualsDevelopment": true,
+  "functionChanges": {
+    "changed": [
+      "planzo_private.api(text,jsonb)",
+      "planzo_private.evaluate_itinerary(uuid,uuid,jsonb)"
+    ],
+    "unchanged": 24,
+    "added": [
+      "planzo_manage_trip(text,jsonb)",
+      "planzo_private.manage_trip(text,jsonb)",
+      "planzo_private.unused_trip(uuid)"
+    ]
+  },
+  "existingPermissionsUnchanged": 26,
+  "publicEndpoint": "planzo_manage_trip",
+  "publicSecurityInvoker": true,
+  "anonymousDenied": true,
+  "newTables": 0,
+  "physicalDeletion": false,
+  "removalRecoverable": true,
+  "archivePreservesHistory": true,
+  "restoredPlansRequireReview": true,
+  "local": {
+    "appTypecheck": "passed",
+    "appTestsPassed": 58,
+    "appTestsFailed": 0,
+    "isolatedDatabaseChecksPassed": 30,
+    "build": "passed; existing chunk-size advisory"
+  },
+  "protectedBaseline": {
+    "stage": "agreed",
+    "revision": 19,
+    "members": 4,
+    "versions": 1,
+    "ready_rows": 4,
+    "handoffs": 0,
+    "removal_kind": null
+  },
+  "securityAdvisors": {
+    "defaultDenyInfo": 19,
+    "existingAuthWarning": 1,
+    "remediation": "https://supabase.com/docs/guides/auth/password-security#password-strength-and-leaked-password-protection",
+    "authSettingsChanged": false
+  },
+  "completedDate": "2026-10-16",
+  "makeSourceVerification": {
+    "status": "passed",
+    "initialExactFiles": 30,
+    "followupExactFiles": 3,
+    "finalAppHashes": 30,
+    "finalBackendHashes": 36,
+    "unexpectedChangedPaths": 0,
+    "report": "docs/backend/SETUP_MAKE_VERIFICATION.json"
+  },
+  "hostedUiVerification": {
+    "status": "passed",
+    "checksPassed": 22,
+    "checksFailed": 0,
+    "report": "docs/backend/SETUP_MAKE_UI_TESTS.json"
+  },
+  "finalMetadata": [
+    {
+      "id": "a5c044b5-812d-4f2a-8cc7-b0718ce1f767",
+      "stage": "agreed",
+      "revision": 19,
+      "minimum_group_size": 4,
+      "tentative_days": 3,
+      "removal_kind": null,
+      "members": 4,
+      "confirmed_briefs": 4,
+      "max_brief_revision": 3,
+      "versions": 1,
+      "ready_rows": 4,
+      "handoffs": 0,
+      "invitations": 3
+    },
+    {
+      "id": "a838f4f8-44f7-491f-a1d6-5f4674b27c26",
+      "stage": "archived",
+      "revision": 9,
+      "minimum_group_size": 2,
+      "tentative_days": 5,
+      "removal_kind": "archived",
+      "members": 1,
+      "confirmed_briefs": 0,
+      "max_brief_revision": 1,
+      "versions": 0,
+      "ready_rows": 0,
+      "handoffs": 0,
+      "invitations": 0
+    },
+    {
+      "id": "e6092e37-e176-4d16-8be0-045befad4990",
+      "stage": "collecting",
+      "revision": 3,
+      "minimum_group_size": 4,
+      "tentative_days": 3,
+      "removal_kind": null,
+      "members": 1,
+      "confirmed_briefs": 0,
+      "max_brief_revision": 0,
+      "versions": 0,
+      "ready_rows": 0,
+      "handoffs": 0,
+      "invitations": 1
+    }
+  ],
+  "fixtureCleanup": "Only newly created TEST · Setup interface 2026-10-16 is left archived; private draft unconfirmed. Existing AI playground remains active.",
+  "previousGeminiLiveCheck": "pending; no provider request in this package",
+  "aiCalls": 0,
+  "billingChanged": false,
+  "websitePublished": false
+}

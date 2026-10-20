@@ -1,0 +1,32 @@
+{
+  "date": "2026-10-17T14:42:22.014Z",
+  "makeFile": "4tPr5AkQO1g0L1esRvGRjz",
+  "preflight": {
+    "applicationHashes": 35,
+    "backendHashes": 48,
+    "earlierArchiveRecords": 29,
+    "allMatched": true
+  },
+  "initialInstallation": {
+    "exactFileDigests": 21,
+    "jsonParses": 7,
+    "applicationHashes": 38,
+    "backendHashes": 52,
+    "unexpectedPaths": 0,
+    "typecheck": true,
+    "appTestsPassed": 85,
+    "build": true
+  },
+  "interfaceRefinement": {
+    "exactFileDigests": 5,
+    "applicationHashes": 38,
+    "backendHashes": 52,
+    "unexpectedPaths": 0,
+    "typecheck": true,
+    "appTestsPassed": 85,
+    "build": true
+  },
+  "finalHistoryRefinement": "See JOURNEY_CLOSEOUT_RECEIPT.json for actual final installation checks.",
+  "noSqlOrDeployFromMake": true,
+  "noPublishing": true
+}

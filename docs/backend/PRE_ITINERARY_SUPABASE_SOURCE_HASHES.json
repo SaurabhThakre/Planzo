@@ -1,0 +1,17 @@
+{
+  "date": "2026-10-15",
+  "project": "ewysgpuwvufbklesdhuj",
+  "files": {
+    "supabase/changes/planzo_core.sql": "acbe3695bc7234d438e80d9cf1c5309f3c0890e0c958ecbfb357026fbcd60bd0",
+    "supabase/changes/planzo_invite_lookup_index.sql": "cd087da3199a25dd69d501a233d4c3b8905282718fc42e73b081f520c7f831b9",
+    "supabase/changes/planzo_planning.sql": "72521b57c959def7fa9515bf58db0f0b932432863b51677168a8e5d7b1d48ab5",
+    "supabase/changes/planzo_response_withdrawal.sql": "052fd694419b9c6208440a3b6147ebc86580cb6dfcefa8096bab95901d10e7e1",
+    "supabase/migrations/20261015154643_planzo_identity_trips_private_briefs.sql": "acbe3695bc7234d438e80d9cf1c5309f3c0890e0c958ecbfb357026fbcd60bd0",
+    "supabase/migrations/20261015170744_planzo_planning_voting_confirmation.sql": "72521b57c959def7fa9515bf58db0f0b932432863b51677168a8e5d7b1d48ab5",
+    "supabase/migrations/20261015170844_planzo_invitation_membership_index.sql": "cd087da3199a25dd69d501a233d4c3b8905282718fc42e73b081f520c7f831b9",
+    "supabase/migrations/20261015171734_planzo_allow_deadline_withdrawal.sql": "052fd694419b9c6208440a3b6147ebc86580cb6dfcefa8096bab95901d10e7e1",
+    "tools/planning-check.mjs": "041139fdf5b59a91d46e89fd381a9b2bc052f006d1db7d2a15a5ccf1b3b80fd8",
+    "tools/backend-check.mjs": "ddd30736871b082d04171d7ab34230bc083d14accb32c4b929fa26dc0a6948af",
+    "tools/hosted-smoke.mjs": "3febec97d08090d016a0fef32e05a2ca4ebd73e7a15f8a2baa17cc11cf559d8e"
+  }
+}

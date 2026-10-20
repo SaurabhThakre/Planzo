@@ -1,0 +1,55 @@
+{
+  "date": "2026-10-17T17:04:59.080Z",
+  "project": "ewysgpuwvufbklesdhuj",
+  "canonicalMigration": "20261017165915_planzo_complete_conflict_envelope",
+  "previousAppliedMigration": "20261017165231_planzo_stale_http_conflicts",
+  "appliedOnceEach": true,
+  "sourceChecks": [
+    {
+      "proname": "planzo_flow",
+      "prosecdef": false,
+      "proconfig": [
+        "search_path=\"\""
+      ],
+      "lanname": "plpgsql",
+      "source_matches": true
+    },
+    {
+      "proname": "planzo_journey",
+      "prosecdef": false,
+      "proconfig": [
+        "search_path=\"\""
+      ],
+      "lanname": "plpgsql",
+      "source_matches": true
+    }
+  ],
+  "applicationFilesUnchanged": 38,
+  "edgeFunctionVersion": 2,
+  "edgeRedeployed": false,
+  "security": [
+    {
+      "name": "rls_enabled_no_policy",
+      "level": "INFO",
+      "remediation": "https://supabase.com/docs/guides/database/database-linter?lint=0008_rls_enabled_no_policy"
+    },
+    {
+      "name": "auth_leaked_password_protection",
+      "level": "WARN",
+      "remediation": "https://supabase.com/docs/guides/auth/password-security#password-strength-and-leaked-password-protection"
+    }
+  ],
+  "realHttpStaleVote": {
+    "code": "40001",
+    "status": 409,
+    "elapsedMs": 65
+  },
+  "hostedContinuation": {
+    "passed": 20,
+    "failed": 0,
+    "aiRequests": 0
+  },
+  "references": [
+    "https://docs.postgrest.org/en/v14/references/errors.html#add-http-headers-with-raise"
+  ]
+}

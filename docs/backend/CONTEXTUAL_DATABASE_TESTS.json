@@ -1,0 +1,78 @@
+{
+  "date": "2026-10-18T16:56:54.723Z",
+  "environment": "Disposable local PostgreSQL; synthetic labelled fixtures; Auth stand-ins; no hosted or Gemini calls",
+  "summary": {
+    "passed": 17,
+    "failed": 0
+  },
+  "checks": [
+    {
+      "name": "Contextual forward SQL applies to the entire migration chain with an existing locked plan",
+      "result": "pass"
+    },
+    {
+      "name": "Only three existing bodies change; all prior permissions/search paths and the verified planning gate are preserved",
+      "result": "pass"
+    },
+    {
+      "name": "New helpers are private invoker-only, with no client direct access",
+      "result": "pass"
+    },
+    {
+      "name": "Provider admission exposes approved shared requests and common context, without private city/budget/raw answers",
+      "result": "pass"
+    },
+    {
+      "name": "Server rejects unknown source before saving or consuming the result",
+      "result": "pass"
+    },
+    {
+      "name": "Server rejects missing source before saving or consuming the result",
+      "result": "pass"
+    },
+    {
+      "name": "Server rejects unknown fields before saving or consuming the result",
+      "result": "pass"
+    },
+    {
+      "name": "Server rejects malformed item before saving or consuming the result",
+      "result": "pass"
+    },
+    {
+      "name": "Server rejects unknown alternative before saving or consuming the result",
+      "result": "pass"
+    },
+    {
+      "name": "Named activity/meal/stay proposals replace literal request paragraphs while retaining separate original sources",
+      "result": "pass"
+    },
+    {
+      "name": "Compound request coverage requires both its church visit and its concrete meal arrangement",
+      "result": "pass"
+    },
+    {
+      "name": "Ambiguous place interpretation and Phase2 rental condition are disclosed to their owner and need explicit exclusion acknowledgement",
+      "result": "pass"
+    },
+    {
+      "name": "Outsider/unverified callers cannot read contextual trip data",
+      "result": "pass"
+    },
+    {
+      "name": "Contextual version still requires each owner review before organiser lock",
+      "result": "pass"
+    },
+    {
+      "name": "Host edit preserves concrete meal details, creates a fresh draft and discloses displaced source components",
+      "result": "pass"
+    },
+    {
+      "name": "An unscheduled over-budget part prevents an entire compound request from being falsely marked included",
+      "result": "pass"
+    },
+    {
+      "name": "Old literal and new contextual locked history remain immutable and readable",
+      "result": "pass"
+    }
+  ]
+}

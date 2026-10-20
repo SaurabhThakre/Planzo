@@ -1,0 +1,82 @@
+{
+  "run_id": "9dd2bb31-8072-4810-ba92-8f4df4c96b88",
+  "date": "2026-10-17T14:59:42.449Z",
+  "project": "ewysgpuwvufbklesdhuj",
+  "method": "Four distinct ordinary verified sessions; fictional labelled fixtures; public client configuration",
+  "checks": [
+    {
+      "name": "New trip uses workflow2 with editable minimum4 and tentative duration3",
+      "result": "pass"
+    },
+    {
+      "name": "Real verified outsider cannot read or mutate the new trip",
+      "result": "pass"
+    },
+    {
+      "name": "Signed-out planning and booking RPCs are denied",
+      "result": "pass"
+    },
+    {
+      "name": "Verified invitation joins all four existing identities",
+      "result": "pass"
+    },
+    {
+      "name": "Missing private input blocks generation without a provider call",
+      "result": "pass"
+    },
+    {
+      "name": "Personal dates outside tentative bounds are rejected",
+      "result": "pass"
+    },
+    {
+      "name": "Different personal arrival times use only their shared overlap",
+      "result": "pass"
+    },
+    {
+      "name": "Other members cannot read another private city, ceiling or raw requirements",
+      "result": "pass"
+    },
+    {
+      "name": "One missing Gemini consent blocks provider admission",
+      "result": "pass"
+    },
+    {
+      "name": "Confirmed but non-overlapping personal windows block planning",
+      "result": "fail",
+      "detail": "Request failed: P0001"
+    }
+  ],
+  "fixtures": [
+    {
+      "trip_id": "4f86db86-f304-48d5-93b6-571067e7d7e7",
+      "label": "TEST · AI full regression 9dd2bb31",
+      "purpose": "Four-person current workflow",
+      "final_state": "in progress"
+    }
+  ],
+  "actors": [
+    {
+      "role": "Organiser A",
+      "user_fingerprint": "9432f19b74c3b059"
+    },
+    {
+      "role": "Member B",
+      "user_fingerprint": "f56cbbb4bbfd2f7c"
+    },
+    {
+      "role": "Member C",
+      "user_fingerprint": "c9d146dab5814329"
+    },
+    {
+      "role": "Member D",
+      "user_fingerprint": "ba581e5a523bb22e"
+    }
+  ],
+  "ai_requests": 0,
+  "credentials_recorded": false,
+  "existing_trips_mutated": false,
+  "summary": {
+    "passed": 9,
+    "failed": 1
+  }
+}

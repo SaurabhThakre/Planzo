@@ -1,0 +1,151 @@
+{
+  "date": "2026-10-17T16:54:21.664Z",
+  "environment": "Disposable local PostgreSQL with local Auth stand-ins and stubbed AI; PostgREST exception envelope parsed by the local adapter",
+  "changedFunctions": [
+    "planzo_flow(text,jsonb)",
+    "planzo_journey(text,jsonb)"
+  ],
+  "unchangedFunctions": 43,
+  "grantsAndSecurityConfigUnchanged": true,
+  "httpMappings": [
+    {
+      "code": "40001",
+      "http_status": 409
+    },
+    {
+      "code": "40001",
+      "http_status": 409
+    }
+  ],
+  "report": {
+    "run_id": "26dd2fb4-4483-4e2a-9142-e56bd10298cc",
+    "date": "2026-10-17T16:54:21.093Z",
+    "project": "ewysgpuwvufbklesdhuj",
+    "method": "Four distinct ordinary verified sessions; fictional labelled fixtures; public client configuration",
+    "checks": [
+      {
+        "name": "Continuation reuses the correct four-person fixture and its existing Gemini plan",
+        "result": "pass"
+      },
+      {
+        "name": "Stale ballot revisions cannot overwrite a saved vote",
+        "result": "pass",
+        "error_code": "40001",
+        "http_status": 409
+      },
+      {
+        "name": "Three of four votes apply a step change and invalidate earlier reviews",
+        "result": "pass"
+      },
+      {
+        "name": "Only the concern author can resolve their private must-have review",
+        "result": "pass"
+      },
+      {
+        "name": "Only organiser locks the exact version reviewed by all four",
+        "result": "pass"
+      },
+      {
+        "name": "Locked plan cannot be silently edited or regenerated",
+        "result": "pass"
+      },
+      {
+        "name": "Members cannot prepare shared booking handoff",
+        "result": "pass"
+      },
+      {
+        "name": "Every member sees shared tasks and only their own two personal legs",
+        "result": "pass"
+      },
+      {
+        "name": "A member cannot update another personal booking or an unassigned shared task",
+        "result": "pass"
+      },
+      {
+        "name": "Unknown critical booking prices block handoff review",
+        "result": "pass"
+      },
+      {
+        "name": "Shared owner assignment is organiser-only and due dates fit the itinerary",
+        "result": "pass"
+      },
+      {
+        "name": "Shared quotes and own private quotes replace estimates without double counting",
+        "result": "pass"
+      },
+      {
+        "name": "Protected meal/fee/contingency reserve cannot be lowered away",
+        "result": "pass"
+      },
+      {
+        "name": "One person’s over-budget personal quote cannot be approved or leaked to others",
+        "result": "pass"
+      },
+      {
+        "name": "All four current handoff reviews are required for readiness",
+        "result": "pass"
+      },
+      {
+        "name": "Later private reserve changes invalidate every handoff review",
+        "result": "pass"
+      },
+      {
+        "name": "Stale booking writes fail after another member changes the handoff",
+        "result": "pass"
+      },
+      {
+        "name": "Exact retries are idempotent; altered request reuse is rejected",
+        "result": "pass"
+      },
+      {
+        "name": "Fresh four-person review restores readiness while earlier task revisions remain historical",
+        "result": "pass"
+      },
+      {
+        "name": "Recoverable unused-draft deletion and restore preserve the draft",
+        "result": "pass"
+      }
+    ],
+    "fixtures": [
+      {
+        "trip_id": "63915c20-e26e-4a83-b4e4-ff9204d233f8",
+        "label": "TEST · AI full regression 377df109",
+        "purpose": "Continue existing four-person workflow",
+        "final_state": "agreed; current handoff reviewed by four; no reservations made"
+      },
+      {
+        "trip_id": "2a28b84a-eb15-4d10-88cb-ef6f082cfe84",
+        "label": "TEST · lifecycle regression 26dd2fb4",
+        "purpose": "Recoverable lifecycle only",
+        "final_state": "archived; recoverable"
+      }
+    ],
+    "actors": [
+      {
+        "role": "TEST 0",
+        "user_fingerprint": "bb0ff8d8c18131fd"
+      },
+      {
+        "role": "TEST 1",
+        "user_fingerprint": "cd515539fc608649"
+      },
+      {
+        "role": "TEST 2",
+        "user_fingerprint": "e8788d7f77a3a3e5"
+      },
+      {
+        "role": "TEST 3",
+        "user_fingerprint": "2a7cd23125573752"
+      }
+    ],
+    "ai_requests": 0,
+    "prior_ai_requests": 1,
+    "continuation_of": "387bf8f9-3b75-48a8-a2ad-8943d6ea243f",
+    "credentials_recorded": false,
+    "existing_trips_mutated": false,
+    "summary": {
+      "passed": 20,
+      "failed": 0
+    }
+  }
+}

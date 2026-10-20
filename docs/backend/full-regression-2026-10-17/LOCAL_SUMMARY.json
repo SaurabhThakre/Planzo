@@ -1,0 +1,142 @@
+{
+  "date": "2026-10-17T14:56:01.649Z",
+  "purpose": "User-requested complete regression pass; previous verification reports preserved",
+  "application": [
+    {
+      "name": "application-tests",
+      "result": "pass",
+      "exit": 0,
+      "tests": 85
+    },
+    {
+      "name": "application-typecheck",
+      "result": "pass",
+      "exit": 0
+    },
+    {
+      "name": "planning-edge-typecheck",
+      "result": "pass",
+      "exit": 0
+    },
+    {
+      "name": "production-build",
+      "result": "pass",
+      "exit": 0
+    }
+  ],
+  "database": [
+    {
+      "name": "backend-check",
+      "result": "pass",
+      "exit": 0,
+      "passed": 26,
+      "reports": [
+        "LOCAL_DATABASE_TESTS.json"
+      ]
+    },
+    {
+      "name": "planning-check",
+      "result": "pass",
+      "exit": 0,
+      "passed": 55,
+      "reports": [
+        "PLANNING_DATABASE_TESTS.json"
+      ]
+    },
+    {
+      "name": "itinerary-check",
+      "result": "pass",
+      "exit": 0,
+      "passed": 49,
+      "reports": [
+        "ITINERARY_DATABASE_TESTS.json"
+      ]
+    },
+    {
+      "name": "booking-check",
+      "result": "pass",
+      "exit": 0,
+      "passed": 52,
+      "reports": [
+        "BOOKING_DATABASE_TESTS.json"
+      ]
+    },
+    {
+      "name": "ai-database-check",
+      "result": "pass",
+      "exit": 0,
+      "passed": 29,
+      "reports": [
+        "AI_DATABASE_TESTS.json"
+      ]
+    },
+    {
+      "name": "gemini-database-check",
+      "result": "pass",
+      "exit": 0,
+      "passed": 34,
+      "reports": [
+        "GEMINI_DATABASE_TESTS.json"
+      ]
+    },
+    {
+      "name": "gemini-rate-check",
+      "result": "pass",
+      "exit": 0,
+      "passed": 34,
+      "reports": [
+        "GEMINI_RATE_DATABASE_TESTS.json"
+      ]
+    },
+    {
+      "name": "setup-check",
+      "result": "pass",
+      "exit": 0,
+      "passed": 30,
+      "reports": [
+        "SETUP_DATABASE_TESTS.json"
+      ]
+    },
+    {
+      "name": "private-planning-check",
+      "result": "pass",
+      "exit": 0,
+      "passed": 48,
+      "reports": [
+        "PRIVATE_PLANNING_DATABASE_TESTS.json"
+      ]
+    },
+    {
+      "name": "requirement-coverage-check",
+      "result": "pass",
+      "exit": 0,
+      "passed": 67,
+      "reports": [
+        "REQUIREMENT_COVERAGE_DATABASE_TESTS.json"
+      ]
+    },
+    {
+      "name": "journey-check",
+      "result": "pass",
+      "exit": 0,
+      "passed": 39,
+      "reports": [
+        "JOURNEY_DATABASE_TESTS.json"
+      ]
+    }
+  ],
+  "sourceChecks": [
+    {
+      "path": "docs/backend/SOURCE_HASHES.json",
+      "matched": 38
+    },
+    {
+      "path": "docs/backend/SUPABASE_SOURCE_HASHES.json",
+      "matched": 52
+    }
+  ],
+  "output": ".cache\\full-regression-20261017145601",
+  "completedAt": "2026-10-17T14:57:33.741Z",
+  "passedDatabaseChecks": 463,
+  "failedSuites": []
+}

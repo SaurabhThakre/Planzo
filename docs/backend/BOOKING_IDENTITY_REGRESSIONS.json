@@ -1,0 +1,109 @@
+{
+  "environment": "Disposable embedded PostgreSQL; local Auth schema stand-in, not real email/JWT issuance",
+  "tests": [
+    {
+      "name": "Complete migration chain applies from a clean PostgreSQL database",
+      "result": "pass"
+    },
+    {
+      "name": "Signed-out caller cannot access authenticated API",
+      "result": "pass"
+    },
+    {
+      "name": "Unverified email cannot create or read trips",
+      "result": "pass"
+    },
+    {
+      "name": "Trip creation is atomic and retries are idempotent",
+      "result": "pass"
+    },
+    {
+      "name": "Signed-out invite preview returns only minimal safe fields",
+      "result": "pass"
+    },
+    {
+      "name": "Invalid invite does not disclose trip details",
+      "result": "pass"
+    },
+    {
+      "name": "Email-verified identity joins exactly once",
+      "result": "pass"
+    },
+    {
+      "name": "Member cannot issue invitations",
+      "result": "pass"
+    },
+    {
+      "name": "Other-trip user cannot retrieve workspace",
+      "result": "pass"
+    },
+    {
+      "name": "RLS hides all unrelated trip records",
+      "result": "pass"
+    },
+    {
+      "name": "Private confirmation saves one immutable revision on retry",
+      "result": "pass"
+    },
+    {
+      "name": "Own brief reconstructs in a fresh database session context",
+      "result": "pass"
+    },
+    {
+      "name": "Same-trip member receives status without another raw brief or ceiling",
+      "result": "pass"
+    },
+    {
+      "name": "Direct private-table read is denied",
+      "result": "pass"
+    },
+    {
+      "name": "Client cannot promote itself to organiser",
+      "result": "pass"
+    },
+    {
+      "name": "Client cannot insert a forged trip",
+      "result": "pass"
+    },
+    {
+      "name": "Cross-trip preference save is denied",
+      "result": "pass"
+    },
+    {
+      "name": "Organiser cannot retrieve another member private input",
+      "result": "pass"
+    },
+    {
+      "name": "Stale tab cannot overwrite a newer brief",
+      "result": "pass"
+    },
+    {
+      "name": "Foreign travel-window reference is rejected",
+      "result": "pass"
+    },
+    {
+      "name": "Extra actor and role fields are rejected in a brief",
+      "result": "pass"
+    },
+    {
+      "name": "Overallocated stars are rejected on the server",
+      "result": "pass"
+    },
+    {
+      "name": "Unacknowledged confirmation is rejected",
+      "result": "pass"
+    },
+    {
+      "name": "Revoked invite cannot add a new member",
+      "result": "pass"
+    },
+    {
+      "name": "Expired invite cannot add a new member",
+      "result": "pass"
+    },
+    {
+      "name": "All 24 application tables have RLS enabled",
+      "result": "pass"
+    }
+  ]
+}

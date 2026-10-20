@@ -1,0 +1,712 @@
+{
+  "entry-IconPlane.svg": {
+    "width": "28",
+    "height": "28",
+    "bytes": 456
+  },
+  "entry-EditableIllustrationGoaCoast.svg": {
+    "width": "696",
+    "height": "370",
+    "bytes": 3033
+  },
+  "entry-IconLock.svg": {
+    "width": "20",
+    "height": "20",
+    "bytes": 858
+  },
+  "entry-IconWallet.svg": {
+    "width": "20",
+    "height": "20",
+    "bytes": 867
+  },
+  "entry-IconPeople.svg": {
+    "width": "20",
+    "height": "20",
+    "bytes": 1061
+  },
+  "entry-IconHeart.svg": {
+    "width": "22",
+    "height": "22",
+    "bytes": 775
+  },
+  "setup-IconPlane.svg": {
+    "width": "28",
+    "height": "28",
+    "bytes": 456
+  },
+  "setup-IconHome.svg": {
+    "width": "20",
+    "height": "20",
+    "bytes": 386
+  },
+  "setup-IconMap.svg": {
+    "width": "20",
+    "height": "20",
+    "bytes": 398
+  },
+  "setup-IconPeople.svg": {
+    "width": "20",
+    "height": "20",
+    "bytes": 1061
+  },
+  "setup-IconWallet.svg": {
+    "width": "20",
+    "height": "20",
+    "bytes": 867
+  },
+  "setup-IconLock.svg": {
+    "width": "22",
+    "height": "22",
+    "bytes": 873
+  },
+  "setup-EditableIllustrationGoaCoast.svg": {
+    "width": "336",
+    "height": "205",
+    "bytes": 3017
+  },
+  "setup-IconCalendar.svg": {
+    "width": "20",
+    "height": "20",
+    "bytes": 690
+  },
+  "invite-IconPlane.svg": {
+    "width": "28",
+    "height": "28",
+    "bytes": 456
+  },
+  "invite-EditableIllustrationGoaCoast.svg": {
+    "width": "696",
+    "height": "370",
+    "bytes": 3033
+  },
+  "invite-IconLock.svg": {
+    "width": "20",
+    "height": "20",
+    "bytes": 858
+  },
+  "invite-IconWallet.svg": {
+    "width": "20",
+    "height": "20",
+    "bytes": 867
+  },
+  "invite-IconPeople.svg": {
+    "width": "20",
+    "height": "20",
+    "bytes": 1061
+  },
+  "invite-IconLock1.svg": {
+    "width": "22",
+    "height": "22",
+    "bytes": 873
+  },
+  "private-IconPlane.svg": {
+    "width": "28",
+    "height": "28",
+    "bytes": 456
+  },
+  "private-IconHome.svg": {
+    "width": "20",
+    "height": "20",
+    "bytes": 386
+  },
+  "private-IconMap.svg": {
+    "width": "20",
+    "height": "20",
+    "bytes": 398
+  },
+  "private-IconPeople.svg": {
+    "width": "20",
+    "height": "20",
+    "bytes": 1061
+  },
+  "private-IconWallet.svg": {
+    "width": "20",
+    "height": "20",
+    "bytes": 867
+  },
+  "private-IconLock.svg": {
+    "width": "22",
+    "height": "22",
+    "bytes": 873
+  },
+  "private-IconLock1.svg": {
+    "width": "20",
+    "height": "20",
+    "bytes": 858
+  },
+  "private-IconCheck.svg": {
+    "width": "20",
+    "height": "20",
+    "bytes": 341
+  },
+  "private-IconEdit.svg": {
+    "width": "20",
+    "height": "20",
+    "bytes": 409
+  },
+  "private-EditableIllustrationGoaCoast.svg": {
+    "width": "336",
+    "height": "200",
+    "bytes": 2997
+  },
+  "builder-IconPlane.svg": {
+    "width": "28",
+    "height": "28",
+    "bytes": 456
+  },
+  "builder-IconHome.svg": {
+    "width": "20",
+    "height": "20",
+    "bytes": 386
+  },
+  "builder-IconMap.svg": {
+    "width": "20",
+    "height": "20",
+    "bytes": 398
+  },
+  "builder-IconPeople.svg": {
+    "width": "20",
+    "height": "20",
+    "bytes": 1061
+  },
+  "builder-IconWallet.svg": {
+    "width": "20",
+    "height": "20",
+    "bytes": 867
+  },
+  "builder-EditableIllustrationGoaCoast.svg": {
+    "width": "300",
+    "height": "154",
+    "bytes": 2874
+  },
+  "builder-IconPlane1.svg": {
+    "width": "20",
+    "height": "20",
+    "bytes": 456
+  },
+  "builder-IconBed.svg": {
+    "width": "20",
+    "height": "20",
+    "bytes": 417
+  },
+  "builder-IconSun.svg": {
+    "width": "20",
+    "height": "20",
+    "bytes": 875
+  },
+  "builder-IconCoffee.svg": {
+    "width": "20",
+    "height": "20",
+    "bytes": 761
+  },
+  "review-IconPlane.svg": {
+    "width": "28",
+    "height": "28",
+    "bytes": 456
+  },
+  "review-IconHome.svg": {
+    "width": "20",
+    "height": "20",
+    "bytes": 386
+  },
+  "review-IconMap.svg": {
+    "width": "20",
+    "height": "20",
+    "bytes": 398
+  },
+  "review-IconPeople.svg": {
+    "width": "20",
+    "height": "20",
+    "bytes": 1061
+  },
+  "review-IconWallet.svg": {
+    "width": "20",
+    "height": "20",
+    "bytes": 867
+  },
+  "review-IconCalendar.svg": {
+    "width": "20",
+    "height": "20",
+    "bytes": 690
+  },
+  "review-IconBed.svg": {
+    "width": "20",
+    "height": "20",
+    "bytes": 417
+  },
+  "review-IconBoat.svg": {
+    "width": "20",
+    "height": "20",
+    "bytes": 548
+  },
+  "bookingCompare-IconPlane.svg": {
+    "width": "28",
+    "height": "28",
+    "bytes": 456
+  },
+  "bookingCompare-IconHome.svg": {
+    "width": "20",
+    "height": "20",
+    "bytes": 386
+  },
+  "bookingCompare-IconMap.svg": {
+    "width": "20",
+    "height": "20",
+    "bytes": 398
+  },
+  "bookingCompare-IconPeople.svg": {
+    "width": "20",
+    "height": "20",
+    "bytes": 1061
+  },
+  "bookingCompare-IconWallet.svg": {
+    "width": "20",
+    "height": "20",
+    "bytes": 867
+  },
+  "signup-IconPlane.svg": {
+    "width": "28",
+    "height": "28",
+    "bytes": 456
+  },
+  "signup-IconLock.svg": {
+    "width": "22",
+    "height": "22",
+    "bytes": 873
+  },
+  "signup-EditableIllustrationGoaCoast.svg": {
+    "width": "336",
+    "height": "240",
+    "bytes": 2927
+  },
+  "signup-IconPeople.svg": {
+    "width": "20",
+    "height": "20",
+    "bytes": 1061
+  },
+  "signup-IconWallet.svg": {
+    "width": "20",
+    "height": "20",
+    "bytes": 867
+  },
+  "signin-IconPlane.svg": {
+    "width": "28",
+    "height": "28",
+    "bytes": 456
+  },
+  "signin-EditableIllustrationGoaCoast.svg": {
+    "width": "696",
+    "height": "370",
+    "bytes": 3033
+  },
+  "signin-IconLock.svg": {
+    "width": "20",
+    "height": "20",
+    "bytes": 858
+  },
+  "signin-IconWallet.svg": {
+    "width": "20",
+    "height": "20",
+    "bytes": 867
+  },
+  "signin-IconPeople.svg": {
+    "width": "20",
+    "height": "20",
+    "bytes": 1061
+  },
+  "overview-IconPlane.svg": {
+    "width": "28",
+    "height": "28",
+    "bytes": 456
+  },
+  "overview-IconHome.svg": {
+    "width": "20",
+    "height": "20",
+    "bytes": 386
+  },
+  "overview-IconMap.svg": {
+    "width": "20",
+    "height": "20",
+    "bytes": 398
+  },
+  "overview-IconPeople.svg": {
+    "width": "20",
+    "height": "20",
+    "bytes": 1061
+  },
+  "overview-IconWallet.svg": {
+    "width": "20",
+    "height": "20",
+    "bytes": 867
+  },
+  "overview-EditableIllustrationGoaCoast.svg": {
+    "width": "300",
+    "height": "154",
+    "bytes": 2874
+  },
+  "overview-IconCheck.svg": {
+    "width": "20",
+    "height": "20",
+    "bytes": 341
+  },
+  "overview-IconClock.svg": {
+    "width": "20",
+    "height": "20",
+    "bytes": 587
+  },
+  "aiPlans-IconPlane.svg": {
+    "width": "28",
+    "height": "28",
+    "bytes": 456
+  },
+  "aiPlans-IconHome.svg": {
+    "width": "20",
+    "height": "20",
+    "bytes": 386
+  },
+  "aiPlans-IconMap.svg": {
+    "width": "20",
+    "height": "20",
+    "bytes": 398
+  },
+  "aiPlans-IconPeople.svg": {
+    "width": "20",
+    "height": "20",
+    "bytes": 1061
+  },
+  "aiPlans-IconWallet.svg": {
+    "width": "20",
+    "height": "20",
+    "bytes": 867
+  },
+  "aiPlans-IconSun.svg": {
+    "width": "32",
+    "height": "32",
+    "bytes": 865
+  },
+  "aiPlans-IconCoffee.svg": {
+    "width": "32",
+    "height": "32",
+    "bytes": 746
+  },
+  "aiPlans-IconMap1.svg": {
+    "width": "32",
+    "height": "32",
+    "bytes": 370
+  },
+  "aiPlans-IconPeople1.svg": {
+    "width": "32",
+    "height": "32",
+    "bytes": 1041
+  },
+  "aiPlans-IconStar.svg": {
+    "width": "22",
+    "height": "22",
+    "bytes": 443
+  },
+  "poll-IconPlane.svg": {
+    "width": "28",
+    "height": "28",
+    "bytes": 456
+  },
+  "poll-IconHome.svg": {
+    "width": "20",
+    "height": "20",
+    "bytes": 386
+  },
+  "poll-IconMap.svg": {
+    "width": "20",
+    "height": "20",
+    "bytes": 398
+  },
+  "poll-IconPeople.svg": {
+    "width": "20",
+    "height": "20",
+    "bytes": 1061
+  },
+  "poll-IconWallet.svg": {
+    "width": "20",
+    "height": "20",
+    "bytes": 867
+  },
+  "poll-IconSun.svg": {
+    "width": "20",
+    "height": "20",
+    "bytes": 875
+  },
+  "poll-IconCheck.svg": {
+    "width": "20",
+    "height": "20",
+    "bytes": 341
+  },
+  "itinerary-IconPlane.svg": {
+    "width": "28",
+    "height": "28",
+    "bytes": 456
+  },
+  "itinerary-IconHome.svg": {
+    "width": "20",
+    "height": "20",
+    "bytes": 386
+  },
+  "itinerary-IconMap.svg": {
+    "width": "20",
+    "height": "20",
+    "bytes": 398
+  },
+  "itinerary-IconPeople.svg": {
+    "width": "20",
+    "height": "20",
+    "bytes": 1061
+  },
+  "itinerary-IconWallet.svg": {
+    "width": "20",
+    "height": "20",
+    "bytes": 867
+  },
+  "itinerary-IconBoat.svg": {
+    "width": "32",
+    "height": "32",
+    "bytes": 411
+  },
+  "costs-IconPlane.svg": {
+    "width": "28",
+    "height": "28",
+    "bytes": 456
+  },
+  "costs-IconHome.svg": {
+    "width": "20",
+    "height": "20",
+    "bytes": 386
+  },
+  "costs-IconMap.svg": {
+    "width": "20",
+    "height": "20",
+    "bytes": 398
+  },
+  "costs-IconPeople.svg": {
+    "width": "20",
+    "height": "20",
+    "bytes": 1061
+  },
+  "costs-IconWallet.svg": {
+    "width": "20",
+    "height": "20",
+    "bytes": 867
+  },
+  "costs-IconLock.svg": {
+    "width": "22",
+    "height": "22",
+    "bytes": 873
+  },
+  "costs-IconPlane1.svg": {
+    "width": "20",
+    "height": "20",
+    "bytes": 456
+  },
+  "costs-IconBoat.svg": {
+    "width": "20",
+    "height": "20",
+    "bytes": 548
+  },
+  "pending-IconPlane.svg": {
+    "width": "28",
+    "height": "28",
+    "bytes": 456
+  },
+  "pending-IconHome.svg": {
+    "width": "20",
+    "height": "20",
+    "bytes": 386
+  },
+  "pending-IconMap.svg": {
+    "width": "20",
+    "height": "20",
+    "bytes": 398
+  },
+  "pending-IconPeople.svg": {
+    "width": "20",
+    "height": "20",
+    "bytes": 1061
+  },
+  "pending-IconWallet.svg": {
+    "width": "20",
+    "height": "20",
+    "bytes": 867
+  },
+  "pending-IconClock.svg": {
+    "width": "22",
+    "height": "22",
+    "bytes": 600
+  },
+  "pending-IconCheck.svg": {
+    "width": "20",
+    "height": "20",
+    "bytes": 341
+  },
+  "pending-IconClock1.svg": {
+    "width": "20",
+    "height": "20",
+    "bytes": 587
+  },
+  "agreed-IconPlane.svg": {
+    "width": "28",
+    "height": "28",
+    "bytes": 456
+  },
+  "agreed-IconHome.svg": {
+    "width": "20",
+    "height": "20",
+    "bytes": 386
+  },
+  "agreed-IconMap.svg": {
+    "width": "20",
+    "height": "20",
+    "bytes": 398
+  },
+  "agreed-IconPeople.svg": {
+    "width": "20",
+    "height": "20",
+    "bytes": 1061
+  },
+  "agreed-IconWallet.svg": {
+    "width": "20",
+    "height": "20",
+    "bytes": 867
+  },
+  "agreed-IconLock.svg": {
+    "width": "22",
+    "height": "22",
+    "bytes": 873
+  },
+  "agreed-IconCheck.svg": {
+    "width": "20",
+    "height": "20",
+    "bytes": 341
+  },
+  "bookings-IconPlane.svg": {
+    "width": "28",
+    "height": "28",
+    "bytes": 456
+  },
+  "bookings-IconHome.svg": {
+    "width": "20",
+    "height": "20",
+    "bytes": 386
+  },
+  "bookings-IconMap.svg": {
+    "width": "20",
+    "height": "20",
+    "bytes": 398
+  },
+  "bookings-IconPeople.svg": {
+    "width": "20",
+    "height": "20",
+    "bytes": 1061
+  },
+  "bookings-IconWallet.svg": {
+    "width": "20",
+    "height": "20",
+    "bytes": 867
+  },
+  "bookings-IconBed.svg": {
+    "width": "20",
+    "height": "20",
+    "bytes": 417
+  },
+  "bookings-IconPlane1.svg": {
+    "width": "20",
+    "height": "20",
+    "bytes": 456
+  },
+  "bookings-EditableIllustrationGoaCoast.svg": {
+    "width": "336",
+    "height": "210",
+    "bytes": 2967
+  },
+  "aiConsent-IconPlane.svg": {
+    "width": "28",
+    "height": "28",
+    "bytes": 456
+  },
+  "aiConsent-IconHome.svg": {
+    "width": "20",
+    "height": "20",
+    "bytes": 386
+  },
+  "aiConsent-IconMap.svg": {
+    "width": "20",
+    "height": "20",
+    "bytes": 398
+  },
+  "aiConsent-IconPeople.svg": {
+    "width": "20",
+    "height": "20",
+    "bytes": 1061
+  },
+  "aiConsent-IconWallet.svg": {
+    "width": "20",
+    "height": "20",
+    "bytes": 867
+  },
+  "aiConsent-IconLock.svg": {
+    "width": "22",
+    "height": "22",
+    "bytes": 873
+  },
+  "aiConsent-EditableIllustrationGoaCoast.svg": {
+    "width": "336",
+    "height": "220",
+    "bytes": 3005
+  },
+  "parsed-IconPlane.svg": {
+    "width": "28",
+    "height": "28",
+    "bytes": 456
+  },
+  "parsed-IconHome.svg": {
+    "width": "20",
+    "height": "20",
+    "bytes": 386
+  },
+  "parsed-IconMap.svg": {
+    "width": "20",
+    "height": "20",
+    "bytes": 398
+  },
+  "parsed-IconPeople.svg": {
+    "width": "20",
+    "height": "20",
+    "bytes": 1061
+  },
+  "parsed-IconWallet.svg": {
+    "width": "20",
+    "height": "20",
+    "bytes": 867
+  },
+  "parsed-IconCalendar.svg": {
+    "width": "20",
+    "height": "20",
+    "bytes": 690
+  },
+  "parsed-IconLeaf.svg": {
+    "width": "20",
+    "height": "20",
+    "bytes": 519
+  },
+  "parsed-IconSun.svg": {
+    "width": "20",
+    "height": "20",
+    "bytes": 875
+  },
+  "parsed-IconLock.svg": {
+    "width": "22",
+    "height": "22",
+    "bytes": 873
+  },
+  "parsed-EditableIllustrationGoaCoast.svg": {
+    "width": "336",
+    "height": "240",
+    "bytes": 2927
+  }
+}

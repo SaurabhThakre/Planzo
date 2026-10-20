@@ -1,0 +1,128 @@
+{
+  "date": "2026-10-16T17:40:06.817Z",
+  "makeFile": "4tPr5AkQO1g0L1esRvGRjz",
+  "project": "ewysgpuwvufbklesdhuj",
+  "migration": "20261016173645_planzo_private_inputs_and_planning_flow",
+  "appliedOnce": true,
+  "canonicalSqlEqualsDevelopment": true,
+  "newPrivateTables": 8,
+  "newPublicTable": 0,
+  "newPublicRpc": "planzo_flow",
+  "publicSecurityInvoker": true,
+  "anonymousDenied": true,
+  "legacyTripsStayVersion1": true,
+  "existingFunctionChanges": [
+    "planzo_private.api",
+    "planzo_private.itinerary_api",
+    "planzo_private.planning_api"
+  ],
+  "existingFunctionBodiesUnchanged": 26,
+  "existingFunctionPermissionsUnchanged": 29,
+  "newFunctions": [
+    {
+      "schema": "planzo_private",
+      "proname": "flow_api",
+      "args": "p_action text, p_payload jsonb",
+      "body_md5": "fc72a5539741d4e7229e49abfaefa00e",
+      "prosecdef": true,
+      "proconfig": [
+        "search_path=\"\""
+      ],
+      "acl": "{postgres=X/postgres,authenticated=X/postgres}"
+    },
+    {
+      "schema": "planzo_private",
+      "proname": "flow_context",
+      "args": "p_trip uuid",
+      "body_md5": "dc2214fb89f46c6da2a2502566618d98",
+      "prosecdef": false,
+      "proconfig": [
+        "search_path=\"\""
+      ],
+      "acl": "{postgres=X/postgres}"
+    },
+    {
+      "schema": "planzo_private",
+      "proname": "flow_document",
+      "args": "ctx jsonb, choice jsonb",
+      "body_md5": "9bd240868d65d4b40f7e93f19eb0ec77",
+      "prosecdef": false,
+      "proconfig": [
+        "search_path=\"\""
+      ],
+      "acl": "{postgres=X/postgres}"
+    },
+    {
+      "schema": "planzo_private",
+      "proname": "flow_stamp",
+      "args": "p_trip uuid",
+      "body_md5": "5c938477a373343802f4ef002696e2de",
+      "prosecdef": false,
+      "proconfig": [
+        "search_path=\"\""
+      ],
+      "acl": "{postgres=X/postgres}"
+    },
+    {
+      "schema": "planzo_private",
+      "proname": "flow_state",
+      "args": "p_trip uuid, p_actor uuid",
+      "body_md5": "9645d5b804f54f21e0ea1e08c82307ef",
+      "prosecdef": false,
+      "proconfig": [
+        "search_path=\"\""
+      ],
+      "acl": "{postgres=X/postgres}"
+    },
+    {
+      "schema": "public",
+      "proname": "planzo_flow",
+      "args": "p_action text, p_payload jsonb",
+      "body_md5": "7e80cb4382d8662a35410afbddfa5612",
+      "prosecdef": false,
+      "proconfig": [
+        "search_path=\"\""
+      ],
+      "acl": "{postgres=X/postgres,service_role=X/postgres,authenticated=X/postgres}"
+    }
+  ],
+  "edge": {
+    "name": "planzo-planning",
+    "version": 1,
+    "status": "ACTIVE",
+    "verifyJwt": true,
+    "submittedFiles": 6,
+    "packagedRuntimeSourcesReadBackExactly": 5,
+    "serviceRoleUsed": false,
+    "paidFallback": false,
+    "providerCalls": 0
+  },
+  "local": {
+    "appTypecheck": "passed",
+    "handlerTypecheck": "passed",
+    "appTestsPassed": 77,
+    "isolatedDatabaseChecksPassed": 48,
+    "build": "passed; existing chunk-size advisory"
+  },
+  "protectedBaseline": {
+    "id": "a5c044b5-812d-4f2a-8cc7-b0718ce1f767",
+    "stage": "agreed",
+    "revision": 19,
+    "workflow_version": 1,
+    "members": 4,
+    "versions": 1,
+    "ready_rows": 4,
+    "handoffs": 0
+  },
+  "securityAdvisors": {
+    "privateDefaultDenyInfo": 27,
+    "existingAuthWarning": 1,
+    "remediation": "https://supabase.com/docs/guides/auth/password-security#password-strength-and-leaked-password-protection",
+    "authSettingsChanged": false
+  },
+  "makeVerification": "pending",
+  "liveUiVerification": "pending",
+  "websitePublished": false,
+  "billingChanged": false,
+  "purchases": 0
+}

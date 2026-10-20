@@ -1,0 +1,32 @@
+{
+  "date": "2026-10-18",
+  "scope": "Desktop web only, as clarified by the human",
+  "changes": [
+    "Stage-aware top instructions for locked, confirmed and postponed trips",
+    "Confirmed requests render as readable saved text, with no disabled Add/Remove controls",
+    "Confirmed guide no longer claims answers are unsaved",
+    "Locked decisions empty state and included-status wording reflect agreement"
+  ],
+  "checks": {
+    "typecheck": true,
+    "appTestsPassed": 85,
+    "appTestsFailed": 0,
+    "build": true,
+    "desktopSummary": {
+      "clientWidth": 1265,
+      "scrollWidth": 1265,
+      "requests": 3,
+      "editableControls": 0
+    },
+    "normalWebFixture": {
+      "clientWidth": 661,
+      "scrollWidth": 661,
+      "editableControls": 0
+    }
+  },
+  "existingPrivateAndConfirmActionLogic": "unchanged; presentation branch only",
+  "backendSourcesUnchanged": 64,
+  "tripWrites": 0,
+  "realProviderCalls": 0,
+  "actualFinalMakeCopyReview": "pending installation; earlier signed-in layout navigation completed"
+}

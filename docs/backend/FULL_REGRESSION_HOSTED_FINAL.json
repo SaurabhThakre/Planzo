@@ -1,0 +1,196 @@
+{
+  "date": "2026-10-17T17:05:00.483Z",
+  "project": "ewysgpuwvufbklesdhuj",
+  "method": "35 specified ordinary-account checks completed across an initial live run and continuation on the same labelled fixture after the stale HTTP response correction. The earlier timeout and incomplete-envelope attempts remain separate evidence.",
+  "summary": {
+    "passed": 35,
+    "failed": 0
+  },
+  "checks": [
+    {
+      "name": "New trip uses workflow2 with editable minimum4 and tentative duration3",
+      "result": "pass"
+    },
+    {
+      "name": "Real verified outsider cannot read or mutate the new trip",
+      "result": "pass"
+    },
+    {
+      "name": "Signed-out planning and booking RPCs are denied",
+      "result": "pass"
+    },
+    {
+      "name": "Verified invitation joins all four existing identities",
+      "result": "pass"
+    },
+    {
+      "name": "Missing private input blocks generation without a provider call",
+      "result": "pass"
+    },
+    {
+      "name": "Personal dates outside tentative bounds are rejected",
+      "result": "pass"
+    },
+    {
+      "name": "Different personal arrival times use only their shared overlap",
+      "result": "pass"
+    },
+    {
+      "name": "Other members cannot read another private city, ceiling or raw requirements",
+      "result": "pass"
+    },
+    {
+      "name": "One missing Gemini consent blocks provider admission",
+      "result": "pass"
+    },
+    {
+      "name": "Confirmed but non-overlapping personal windows block planning",
+      "result": "pass"
+    },
+    {
+      "name": "Members cannot generate a group itinerary",
+      "result": "pass"
+    },
+    {
+      "name": "One actual Gemini request creates the current fictional itinerary",
+      "result": "pass"
+    },
+    {
+      "name": "The shared schedule is continuous, bounded, and reports every must-have outcome",
+      "result": "pass"
+    },
+    {
+      "name": "One traveller review cannot permit organiser lock before everyone responds",
+      "result": "pass"
+    },
+    {
+      "name": "Open concern blocks lock and early vote closure",
+      "result": "pass"
+    },
+    {
+      "name": "Other ballots remain private before voting closes",
+      "result": "pass"
+    },
+    {
+      "name": "Stale ballot revisions cannot overwrite a saved vote",
+      "result": "pass",
+      "error_code": "40001",
+      "http_status": 409,
+      "elapsed_ms": 65
+    },
+    {
+      "name": "Three of four votes apply a step change and invalidate earlier reviews",
+      "result": "pass"
+    },
+    {
+      "name": "Only the concern author can resolve their private must-have review",
+      "result": "pass"
+    },
+    {
+      "name": "Only organiser locks the exact version reviewed by all four",
+      "result": "pass"
+    },
+    {
+      "name": "Locked plan cannot be silently edited or regenerated",
+      "result": "pass"
+    },
+    {
+      "name": "Members cannot prepare shared booking handoff",
+      "result": "pass"
+    },
+    {
+      "name": "Every member sees shared tasks and only their own two personal legs",
+      "result": "pass"
+    },
+    {
+      "name": "A member cannot update another personal booking or an unassigned shared task",
+      "result": "pass"
+    },
+    {
+      "name": "Unknown critical booking prices block handoff review",
+      "result": "pass"
+    },
+    {
+      "name": "Shared owner assignment is organiser-only and due dates fit the itinerary",
+      "result": "pass"
+    },
+    {
+      "name": "Shared quotes and own private quotes replace estimates without double counting",
+      "result": "pass"
+    },
+    {
+      "name": "Protected meal/fee/contingency reserve cannot be lowered away",
+      "result": "pass"
+    },
+    {
+      "name": "One person’s over-budget personal quote cannot be approved or leaked to others",
+      "result": "pass"
+    },
+    {
+      "name": "All four current handoff reviews are required for readiness",
+      "result": "pass"
+    },
+    {
+      "name": "Later private reserve changes invalidate every handoff review",
+      "result": "pass"
+    },
+    {
+      "name": "Stale booking writes fail after another member changes the handoff",
+      "result": "pass"
+    },
+    {
+      "name": "Exact retries are idempotent; altered request reuse is rejected",
+      "result": "pass"
+    },
+    {
+      "name": "Fresh four-person review restores readiness while earlier task revisions remain historical",
+      "result": "pass"
+    },
+    {
+      "name": "Recoverable unused-draft deletion and restore preserve the draft",
+      "result": "pass"
+    }
+  ],
+  "realGeminiRequests": 1,
+  "continuationGeminiRequests": 0,
+  "actors": [
+    {
+      "role": "Organiser A",
+      "user_fingerprint": "9432f19b74c3b059"
+    },
+    {
+      "role": "Member B",
+      "user_fingerprint": "f56cbbb4bbfd2f7c"
+    },
+    {
+      "role": "Member C",
+      "user_fingerprint": "c9d146dab5814329"
+    },
+    {
+      "role": "Member D",
+      "user_fingerprint": "ba581e5a523bb22e"
+    }
+  ],
+  "fixtures": [
+    {
+      "trip_id": "4c3ff90e-77a2-4c0f-8bba-842298c6a930",
+      "label": "TEST · AI full regression 387bf8f9",
+      "purpose": "Continue existing four-person workflow",
+      "final_state": "agreed; current handoff reviewed by four; no reservations made"
+    },
+    {
+      "trip_id": "bfc81b5d-cd65-4b4a-b419-5d6d1dd73a49",
+      "label": "TEST · lifecycle regression 650d5346",
+      "purpose": "Recoverable lifecycle only",
+      "final_state": "archived; recoverable"
+    }
+  ],
+  "evidence": [
+    "FULL_REGRESSION_HOSTED_CHECKS.json",
+    "STALE_HTTP_FIRST_WRAPPER_ATTEMPT.json",
+    "FULL_REGRESSION_HOSTED_CONTINUATION.json",
+    "STALE_HTTP_COMPLETE_DEPLOYMENT.json"
+  ],
+  "credentialsRecorded": false,
+  "preExistingTripsMutated": false
+}

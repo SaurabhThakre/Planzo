@@ -1,0 +1,141 @@
+{
+  "date": "2026-10-19",
+  "project": "ewysgpuwvufbklesdhuj",
+  "migration": "20261018170419_contextual_planning",
+  "cliPreparedAs": "20261018170327",
+  "appliedOnce": true,
+  "functions": [
+    {
+      "schema": "planzo_private",
+      "name": "contextual_document",
+      "body_md5": "4d68e2a217da7ab161eb47044f98d084",
+      "acl": "{postgres=X/postgres}",
+      "proconfig": [
+        "search_path=\"\""
+      ],
+      "prosecdef": false
+    },
+    {
+      "schema": "planzo_private",
+      "name": "contextual_reconcile_document",
+      "body_md5": "ba47420a4e38829129b73a2d2a325717",
+      "acl": "{postgres=X/postgres}",
+      "proconfig": [
+        "search_path=\"\""
+      ],
+      "prosecdef": false
+    },
+    {
+      "schema": "planzo_private",
+      "name": "contextual_refs",
+      "body_md5": "2647f483df024338182833a863f1338c",
+      "acl": "{postgres=X/postgres}",
+      "proconfig": [
+        "search_path=\"\""
+      ],
+      "prosecdef": false
+    },
+    {
+      "schema": "planzo_private",
+      "name": "flow_document",
+      "body_md5": "f10c79993ba9ba7498a1c5087256c102",
+      "acl": "{postgres=X/postgres}",
+      "proconfig": [
+        "search_path=\"\""
+      ],
+      "prosecdef": false
+    },
+    {
+      "schema": "planzo_private",
+      "name": "flow_literal_document",
+      "body_md5": "407c68a51752db2953da71dff204c679",
+      "acl": "{postgres=X/postgres}",
+      "proconfig": [
+        "search_path=\"\""
+      ],
+      "prosecdef": false
+    },
+    {
+      "schema": "planzo_private",
+      "name": "flow_literal_reconcile_document",
+      "body_md5": "1f20a44c882de65a530fdb379840567b",
+      "acl": "{postgres=X/postgres}",
+      "proconfig": [
+        "search_path=\"\""
+      ],
+      "prosecdef": false
+    },
+    {
+      "schema": "planzo_private",
+      "name": "flow_reconcile_document",
+      "body_md5": "294a3f89e3a16d569eb21157624273a3",
+      "acl": "{postgres=X/postgres}",
+      "proconfig": [
+        "search_path=\"\""
+      ],
+      "prosecdef": false
+    },
+    {
+      "schema": "planzo_private",
+      "name": "flow_requirement_checks",
+      "body_md5": "53c19d665e463fdd1df84fe9f17dfb54",
+      "acl": "{postgres=X/postgres}",
+      "proconfig": [
+        "search_path=\"\""
+      ],
+      "prosecdef": false
+    }
+  ],
+  "existingDataUnchanged": true,
+  "afterMigrationMetadata": {
+    "locks": 8,
+    "plans": 20,
+    "polls": 7,
+    "trips": 24,
+    "inputs": 34,
+    "ballots": 10,
+    "reviews": 14,
+    "plan_hash": "16202e159f7792a778cbfde0ca3d353f",
+    "trip_hash": "3472f4cbb4db0d1d19c7929beefd8d8e",
+    "input_hash": "238be51486fd76740553b86c0112d750"
+  },
+  "advisors": {
+    "before": {
+      "INFO": 1,
+      "WARN": 1
+    },
+    "after": {
+      "INFO": 1,
+      "WARN": 1
+    },
+    "newFindings": []
+  },
+  "hostedFunctionBodiesMatched": 8,
+  "edge": {
+    "slug": "planzo-planning",
+    "version": 7,
+    "status": "ACTIVE",
+    "verify_jwt": true,
+    "returnedSourcesMatched": 5
+  },
+  "interpreter": {
+    "slug": "planzo-ai-preferences",
+    "version": 6,
+    "changed": false,
+    "reason": "Its runtime dependency graph does not use changed planning modules."
+  },
+  "finalPreservation": {
+    "fixtureExcluded": "2dca569d-85f8-4c70-b69d-ba1a29d20b77",
+    "locks": 8,
+    "plans": 20,
+    "polls": 7,
+    "trips": 24,
+    "inputs": 34,
+    "ballots": 10,
+    "reviews": 14,
+    "plan_hash": "16202e159f7792a778cbfde0ca3d353f",
+    "trip_hash": "3472f4cbb4db0d1d19c7929beefd8d8e",
+    "input_hash": "238be51486fd76740553b86c0112d750",
+    "allOriginalMetadataAndFingerprintsMatched": true
+  }
+}

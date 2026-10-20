@@ -1,0 +1,12 @@
+{
+  "makeFile": "4tPr5AkQO1g0L1esRvGRjz",
+  "project": "ewysgpuwvufbklesdhuj",
+  "recordsMatched": 27,
+  "beforeGuardsMatched": 4,
+  "appHashesMatched": 38,
+  "backendHashesMatched": 52,
+  "applicationChanged": false,
+  "hostedFullRun": "pending_user_sign_in",
+  "aiRequestsThisAudit": 0,
+  "unexpectedPaths": []
+}

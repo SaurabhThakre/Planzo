@@ -1,0 +1,11 @@
+{
+  "title": "Planzo",
+  "description": "This web application offers a streamlined account management interface, featuring an optimized two-column layout and responsive design for seamless user experience on mobile devices.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}

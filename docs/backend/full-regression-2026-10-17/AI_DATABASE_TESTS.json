@@ -1,0 +1,126 @@
+{
+  "date": "2026-10-17T14:56:48.938Z",
+  "environment": "Disposable local PostgreSQL with minimal Auth stand-in; no hosted JWTs or paid calls",
+  "summary": {
+    "passed": 29,
+    "failed": 0
+  },
+  "checks": [
+    {
+      "name": "Additive AI migration preserves the complete prior workspace",
+      "result": "pass"
+    },
+    {
+      "name": "Every earlier application function body remains unchanged",
+      "result": "pass"
+    },
+    {
+      "name": "Signed-out request denied by function ACL",
+      "result": "pass"
+    },
+    {
+      "name": "Unverified account denied",
+      "result": "pass"
+    },
+    {
+      "name": "Verified outsider denied",
+      "result": "pass"
+    },
+    {
+      "name": "Separate AI consent required",
+      "result": "pass"
+    },
+    {
+      "name": "Current consent policy required",
+      "result": "pass"
+    },
+    {
+      "name": "Forged actor denied",
+      "result": "pass"
+    },
+    {
+      "name": "Raw text rejected from receipt endpoint",
+      "result": "pass"
+    },
+    {
+      "name": "Unknown fields rejected",
+      "result": "pass"
+    },
+    {
+      "name": "Invalid request digest denied",
+      "result": "pass"
+    },
+    {
+      "name": "Stale trip revision denied",
+      "result": "pass"
+    },
+    {
+      "name": "Stale own brief revision denied",
+      "result": "pass"
+    },
+    {
+      "name": "No client can read private usage receipts",
+      "result": "pass"
+    },
+    {
+      "name": "Own context admits one preview with only safe trip dates and revisions",
+      "result": "pass"
+    },
+    {
+      "name": "Admission does not save a brief, change a trip or create agreement",
+      "result": "pass"
+    },
+    {
+      "name": "Post-provider check can revalidate the exact admitted attempt",
+      "result": "pass"
+    },
+    {
+      "name": "Duplicate request cannot produce another paid attempt",
+      "result": "pass"
+    },
+    {
+      "name": "Changed digest cannot reuse an admitted attempt",
+      "result": "pass"
+    },
+    {
+      "name": "Rapid repeat is limited",
+      "result": "pass"
+    },
+    {
+      "name": "Another member cannot claim the first member’s receipt",
+      "result": "pass"
+    },
+    {
+      "name": "Input edited while provider processes invalidates the earlier preview",
+      "result": "pass"
+    },
+    {
+      "name": "Persisted consent/usage receipt contains no raw text, financial fields or model output",
+      "result": "pass"
+    },
+    {
+      "name": "Banned verified account denied",
+      "result": "pass"
+    },
+    {
+      "name": "Per-person daily allowance enforced",
+      "result": "pass"
+    },
+    {
+      "name": "Independent connections cannot overspend the last global preview",
+      "result": "pass"
+    },
+    {
+      "name": "Prototype allowance stays capped at eight total admitted attempts",
+      "result": "pass"
+    },
+    {
+      "name": "Global allowance has no automatic reset or paid retry",
+      "result": "pass"
+    },
+    {
+      "name": "Postponed trip cannot start an AI preview",
+      "result": "pass"
+    }
+  ]
+}

@@ -1,0 +1,69 @@
+{
+  "date": "2026-10-18",
+  "makeFile": "4tPr5AkQO1g0L1esRvGRjz",
+  "project": "ewysgpuwvufbklesdhuj",
+  "fixture": {
+    "id": "75f98b65-5fd5-457a-8996-51da9f81df6c",
+    "label": "TEST · AI booking journey 2026-10-17"
+  },
+  "complete": true,
+  "checks": [
+    {
+      "name": "Live journey: all four shared kinds and private transport, aligned 16px icons with visible text and no overflow",
+      "passed": true,
+      "measurement": {
+        "aligned": true,
+        "allIcons": true,
+        "client": 1445,
+        "count": 18,
+        "labels": [
+          "Private transport",
+          "Activity",
+          "Meal",
+          "Stay",
+          "Free time"
+        ],
+        "scroll": 1445
+      }
+    },
+    {
+      "name": "Current locked itinerary: all four types, decorative SVG, aligned labels and no overflow",
+      "passed": true,
+      "measurement": {
+        "aligned": true,
+        "client": 1445,
+        "count": 16,
+        "labels": [
+          "Activity",
+          "Meal",
+          "Stay",
+          "Free time"
+        ],
+        "scroll": 1445,
+        "valid": true
+      }
+    },
+    {
+      "name": "Read-only saved version 1: all four types, visible labels and no overflow",
+      "passed": true,
+      "measurement": {
+        "client": 1445,
+        "count": 16,
+        "labels": [
+          "Activity",
+          "Meal",
+          "Stay",
+          "Free time"
+        ],
+        "savedHeading": true,
+        "scroll": 1445,
+        "valid": true
+      },
+      "measurementCorrection": "Historical-version heading is h3; initial h2-only selector was corrected."
+    }
+  ],
+  "tripWrites": 0,
+  "aiCalls": 0,
+  "reviewMethod": "Normal signed-in desktop live editor, read-only navigation. Screenshot clipped to the actual preview to show meal/free-time/activity/stay icons clearly.",
+  "legacyManualCoverage": "Shared renderer installed and typechecked/built; old agreed trips not opened."
+}

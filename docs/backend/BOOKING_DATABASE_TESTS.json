@@ -1,0 +1,218 @@
+{
+  "date": "2026-10-16T05:53:33.866Z",
+  "target": "disposable-local-postgresql-only",
+  "auth": "minimal local stand-in; not hosted JWTs",
+  "sql_sha256": "e4126d64e93331c9e16b37947a20008e4f8bf2ed5ff899a95842d6268c306d11",
+  "checks": [
+    {
+      "name": "Additive booking migration preserves the agreed legacy version, costs and responses",
+      "result": "pass"
+    },
+    {
+      "name": "Read-only legacy access derives milestones without backfill or writes",
+      "result": "pass"
+    },
+    {
+      "name": "Agreed legacy trip has four earned milestones and booking handoff pending",
+      "result": "pass"
+    },
+    {
+      "name": "Signed-out booking read denied",
+      "result": "pass"
+    },
+    {
+      "name": "Unverified identity denied",
+      "result": "pass"
+    },
+    {
+      "name": "Outside-trip booking read denied",
+      "result": "pass"
+    },
+    {
+      "name": "Outside-trip booking mutation denied",
+      "result": "pass"
+    },
+    {
+      "name": "Member cannot prepare group handoff",
+      "result": "pass"
+    },
+    {
+      "name": "Forged actor or private price field rejected",
+      "result": "pass"
+    },
+    {
+      "name": "No client table read/write path: booking_handoffs",
+      "result": "pass"
+    },
+    {
+      "name": "No client table read/write path: booking_tasks",
+      "result": "pass"
+    },
+    {
+      "name": "No client table read/write path: booking_reports",
+      "result": "pass"
+    },
+    {
+      "name": "No client table read/write path: milestone_events",
+      "result": "pass"
+    },
+    {
+      "name": "Private milestone evaluation is not client-executable",
+      "result": "pass"
+    },
+    {
+      "name": "Idempotent handoff creation leaves planning revision and agreement unchanged",
+      "result": "pass"
+    },
+    {
+      "name": "Opening handoff starts every task pending without fabricated booking reports",
+      "result": "pass"
+    },
+    {
+      "name": "Booking output excludes private briefs, reasons and personal costs",
+      "result": "pass"
+    },
+    {
+      "name": "Organiser and member each see shared tasks plus only their own personal tasks",
+      "result": "pass"
+    },
+    {
+      "name": "Member cannot assign an unowned shared task",
+      "result": "pass"
+    },
+    {
+      "name": "Cross-trip owner denied",
+      "result": "pass"
+    },
+    {
+      "name": "Another member’s personal task is unavailable",
+      "result": "pass"
+    },
+    {
+      "name": "Arbitrary provider URL payload denied",
+      "result": "pass"
+    },
+    {
+      "name": "Wrong-category provider denied",
+      "result": "pass"
+    },
+    {
+      "name": "Due time after departure denied",
+      "result": "pass"
+    },
+    {
+      "name": "Due time in past denied",
+      "result": "pass"
+    },
+    {
+      "name": "Organiser cannot report a shared task assigned to another owner",
+      "result": "pass"
+    },
+    {
+      "name": "Handoff milestone completes only after shared and all personal task details are saved",
+      "result": "pass"
+    },
+    {
+      "name": "Booking report requires explicit verification acknowledgement",
+      "result": "pass"
+    },
+    {
+      "name": "Owner booking report saves once with its plan, task revision and timestamp",
+      "result": "pass"
+    },
+    {
+      "name": "Reported booking is timestamped and attributed without claiming provider verification",
+      "result": "pass"
+    },
+    {
+      "name": "Reused request identifier with changed data denied",
+      "result": "pass"
+    },
+    {
+      "name": "Stale handoff request denied",
+      "result": "pass"
+    },
+    {
+      "name": "A broken link leaves a pending task and blocks prepared-handoff milestone",
+      "result": "pass"
+    },
+    {
+      "name": "Explicit no-reservation-needed status is separate from a booking report",
+      "result": "pass"
+    },
+    {
+      "name": "Reassignment preserves earlier report and requires fresh owner verification",
+      "result": "pass"
+    },
+    {
+      "name": "Former owner cannot update reassigned task",
+      "result": "pass"
+    },
+    {
+      "name": "Independent connections serialize competing handoff edits and reject the stale edit",
+      "result": "pass"
+    },
+    {
+      "name": "Assignment and report activity preserves every original plan and readiness record",
+      "result": "pass"
+    },
+    {
+      "name": "Material provider change invalidates agreement while preserving booking and milestone history",
+      "result": "pass"
+    },
+    {
+      "name": "Historical handoff cannot accept fresh completion",
+      "result": "pass"
+    },
+    {
+      "name": "Unagreed new version cannot prepare booking tasks",
+      "result": "pass"
+    },
+    {
+      "name": "Newly agreed manual itinerary gets fresh pending tasks; old reports never carry forward",
+      "result": "pass"
+    },
+    {
+      "name": "Valid older plan ID rejected after a fresh agreement",
+      "result": "pass"
+    },
+    {
+      "name": "Postponement records a decision with no booking milestone and retains previously earned progress",
+      "result": "pass"
+    },
+    {
+      "name": "New trip creation still works and starts with five pending milestones",
+      "result": "pass"
+    },
+    {
+      "name": "New membership and private-input saves survive the deferred milestone trigger",
+      "result": "pass"
+    },
+    {
+      "name": "Cross-trip plan or task cannot be used for an unagreed trip",
+      "result": "pass"
+    },
+    {
+      "name": "Immutable append-only history: booking_tasks",
+      "result": "pass"
+    },
+    {
+      "name": "Immutable append-only history: booking_reports",
+      "result": "pass"
+    },
+    {
+      "name": "Immutable append-only history: milestone_events",
+      "result": "pass"
+    },
+    {
+      "name": "New tables have no direct client grants",
+      "result": "pass"
+    },
+    {
+      "name": "All four new private tables use default-deny RLS",
+      "result": "pass"
+    }
+  ],
+  "passed": 52,
+  "failed": 0
+}

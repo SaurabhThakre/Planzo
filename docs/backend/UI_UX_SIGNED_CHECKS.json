@@ -1,0 +1,754 @@
+{
+  "date": "2026-10-18",
+  "makeFile": "4tPr5AkQO1g0L1esRvGRjz",
+  "project": "ewysgpuwvufbklesdhuj",
+  "primaryScope": "Desktop web; the human clarified this during the review and no further phone-layout work followed",
+  "method": "Actual signed-in Make preview, read-only navigation/disclosures on existing labelled fixtures. No credential/session export or trip mutation.",
+  "fixtures": [
+    "75f98b65-5fd5-457a-8996-51da9f81df6c",
+    "4c3ff90e-77a2-4c0f-8bba-842298c6a930"
+  ],
+  "checks": [
+    {
+      "screen": "Desktop trip list",
+      "result": "pass",
+      "client": 1441,
+      "header": [
+        {
+          "height": 43.98433303833008,
+          "name": "Planzo home",
+          "width": 109.45396423339844,
+          "x": 144.8779754638672,
+          "y": 17.09250259399414
+        },
+        {
+          "height": 45.589393615722656,
+          "name": "Signed in as Saurabh",
+          "width": 112.01643371582033,
+          "x": 1081.6710205078125,
+          "y": 16.30405044555664
+        },
+        {
+          "height": 43.98433303833008,
+          "name": "Sign out",
+          "width": 91.20694732666016,
+          "x": 1205.6832275390625,
+          "y": 17.09250259399414
+        }
+      ],
+      "overflow": [],
+      "scroll": 1441
+    },
+    {
+      "screen": "Desktop trip setup",
+      "result": "pass",
+      "client": 1441,
+      "header": [
+        {
+          "height": 43.98433303833008,
+          "name": "Planzo home",
+          "width": 109.45396423339844,
+          "x": 144.8779754638672,
+          "y": 17.09250259399414
+        },
+        {
+          "height": 45.589393615722656,
+          "name": "Signed in as Saurabh",
+          "width": 112.01643371582033,
+          "x": 1081.6710205078125,
+          "y": 16.30405044555664
+        },
+        {
+          "height": 43.98433303833008,
+          "name": "Sign out",
+          "width": 91.20694732666016,
+          "x": 1205.6832275390625,
+          "y": 17.09250259399414
+        }
+      ],
+      "overflow": [],
+      "scroll": 1441
+    },
+    {
+      "screen": "Make date editor: expanded state, blocked create and Cancel closes editor",
+      "result": "pass"
+    },
+    {
+      "screen": "Desktop locked overview",
+      "result": "pass",
+      "client": 1441,
+      "header": [
+        {
+          "height": 43.98433303833008,
+          "name": "Planzo home",
+          "width": 109.45396423339844,
+          "x": 144.8779754638672,
+          "y": 17.09250259399414
+        },
+        {
+          "height": 45.589393615722656,
+          "name": "Signed in as Saurabh",
+          "width": 112.01643371582033,
+          "x": 1081.6710205078125,
+          "y": 16.30405044555664
+        },
+        {
+          "height": 43.98433303833008,
+          "name": "Sign out",
+          "width": 91.20694732666016,
+          "x": 1205.6832275390625,
+          "y": 17.09250259399414
+        }
+      ],
+      "overflow": [],
+      "scroll": 1441
+    },
+    {
+      "screen": "Desktop confirmed private guide",
+      "result": "pass",
+      "client": 1441,
+      "header": [
+        {
+          "height": 43.98433303833008,
+          "name": "Planzo home",
+          "width": 109.45396423339844,
+          "x": 144.8779754638672,
+          "y": 17.09250259399414
+        },
+        {
+          "height": 45.589393615722656,
+          "name": "Signed in as Saurabh",
+          "width": 112.01643371582033,
+          "x": 1081.6710205078125,
+          "y": 16.30405044555664
+        },
+        {
+          "height": 43.98433303833008,
+          "name": "Sign out",
+          "width": 91.20694732666016,
+          "x": 1205.6832275390625,
+          "y": 17.09250259399414
+        }
+      ],
+      "overflow": [],
+      "scroll": 1441
+    },
+    {
+      "screen": "Desktop locked itinerary",
+      "result": "pass",
+      "client": 1441,
+      "header": [
+        {
+          "height": 43.98433303833008,
+          "name": "Planzo home",
+          "width": 109.45396423339844,
+          "x": 144.8779754638672,
+          "y": 17.09250259399414
+        },
+        {
+          "height": 45.589393615722656,
+          "name": "Signed in as Saurabh",
+          "width": 112.01643371582033,
+          "x": 1081.6710205078125,
+          "y": 16.30405044555664
+        },
+        {
+          "height": 43.98433303833008,
+          "name": "Sign out",
+          "width": 91.20694732666016,
+          "x": 1205.6832275390625,
+          "y": 17.09250259399414
+        }
+      ],
+      "overflow": [],
+      "scroll": 1441
+    },
+    {
+      "screen": "Desktop step decisions",
+      "result": "pass",
+      "client": 1441,
+      "header": [
+        {
+          "height": 43.98433303833008,
+          "name": "Planzo home",
+          "width": 109.45396423339844,
+          "x": 144.8779754638672,
+          "y": 17.09250259399414
+        },
+        {
+          "height": 45.589393615722656,
+          "name": "Signed in as Saurabh",
+          "width": 112.01643371582033,
+          "x": 1081.6710205078125,
+          "y": 16.30405044555664
+        },
+        {
+          "height": 43.98433303833008,
+          "name": "Sign out",
+          "width": 91.20694732666016,
+          "x": 1205.6832275390625,
+          "y": 17.09250259399414
+        }
+      ],
+      "overflow": [],
+      "scroll": 1441
+    },
+    {
+      "screen": "Desktop booking handoff",
+      "result": "pass",
+      "client": 1441,
+      "header": [
+        {
+          "height": 43.98433303833008,
+          "name": "Planzo home",
+          "width": 109.45396423339844,
+          "x": 144.8779754638672,
+          "y": 17.09250259399414
+        },
+        {
+          "height": 45.589393615722656,
+          "name": "Signed in as Saurabh",
+          "width": 112.01643371582033,
+          "x": 1081.6710205078125,
+          "y": 16.30405044555664
+        },
+        {
+          "height": 43.98433303833008,
+          "name": "Sign out",
+          "width": 91.20694732666016,
+          "x": 1205.6832275390625,
+          "y": 17.09250259399414
+        }
+      ],
+      "overflow": [],
+      "scroll": 1441
+    },
+    {
+      "screen": "Desktop expanded accommodation task",
+      "result": "pass",
+      "client": 1441,
+      "header": [
+        {
+          "height": 43.98433303833008,
+          "name": "Planzo home",
+          "width": 109.45396423339844,
+          "x": 144.8779754638672,
+          "y": -797.4905395507812
+        },
+        {
+          "height": 45.589393615722656,
+          "name": "Signed in as Saurabh",
+          "width": 112.01643371582033,
+          "x": 1081.6710205078125,
+          "y": -798.2789916992188
+        },
+        {
+          "height": 43.98433303833008,
+          "name": "Sign out",
+          "width": 91.20694732666016,
+          "x": 1205.6832275390625,
+          "y": -797.4905395507812
+        }
+      ],
+      "overflow": [],
+      "scroll": 1441
+    },
+    {
+      "screen": "Desktop visual journey",
+      "result": "pass",
+      "client": 1441,
+      "header": [
+        {
+          "height": 43.98433303833008,
+          "name": "Planzo home",
+          "width": 109.45396423339844,
+          "x": 144.8779754638672,
+          "y": 17.09250259399414
+        },
+        {
+          "height": 45.589393615722656,
+          "name": "Signed in as Saurabh",
+          "width": 112.01643371582033,
+          "x": 1081.6710205078125,
+          "y": 16.30405044555664
+        },
+        {
+          "height": 43.98433303833008,
+          "name": "Sign out",
+          "width": 91.20694732666016,
+          "x": 1205.6832275390625,
+          "y": 17.09250259399414
+        }
+      ],
+      "overflow": [],
+      "scroll": 1441
+    },
+    {
+      "screen": "Journey keeps Booking handoff selected",
+      "result": "pass"
+    },
+    {
+      "screen": "Desktop fully loaded history",
+      "result": "pass",
+      "client": 1441,
+      "header": [
+        {
+          "height": 43.98433303833008,
+          "name": "Planzo home",
+          "width": 109.45396423339844,
+          "x": 144.8779754638672,
+          "y": 17.09250259399414
+        },
+        {
+          "height": 45.589393615722656,
+          "name": "Signed in as Saurabh",
+          "width": 112.01643371582033,
+          "x": 1081.6710205078125,
+          "y": 16.30405044555664
+        },
+        {
+          "height": 43.98433303833008,
+          "name": "Sign out",
+          "width": 91.20694732666016,
+          "x": 1205.6832275390625,
+          "y": 17.09250259399414
+        }
+      ],
+      "overflow": [],
+      "scroll": 1441
+    },
+    {
+      "screen": "Desktop historical version",
+      "result": "pass",
+      "client": 1441,
+      "header": [
+        {
+          "height": 43.98433303833008,
+          "name": "Planzo home",
+          "width": 109.45396423339844,
+          "x": 144.8779754638672,
+          "y": 13.488152503967283
+        },
+        {
+          "height": 45.589393615722656,
+          "name": "Signed in as Saurabh",
+          "width": 112.01643371582033,
+          "x": 1081.6710205078125,
+          "y": 12.699701309204102
+        },
+        {
+          "height": 43.98433303833008,
+          "name": "Sign out",
+          "width": 91.20694732666016,
+          "x": 1205.6832275390625,
+          "y": 13.488152503967283
+        }
+      ],
+      "overflow": [],
+      "scroll": 1441
+    },
+    {
+      "screen": "One central History link",
+      "result": "pass"
+    },
+    {
+      "screen": "Intermediate browser window:994px client width",
+      "result": "pass",
+      "client": 994,
+      "header": [
+        {
+          "height": 43.98925018310547,
+          "name": "Planzo home",
+          "width": 109.41961669921876,
+          "x": 23.985307693481445,
+          "y": 13.633753776550291
+        },
+        {
+          "height": 44.43593978881836,
+          "name": "Signed in as Saurabh",
+          "width": 110.83737182617188,
+          "x": 757.4696044921875,
+          "y": 13.420119285583496
+        },
+        {
+          "height": 43.98925018310547,
+          "name": "Sign out",
+          "width": 90.09542083740234,
+          "x": 880.2899169921875,
+          "y": 13.633753776550291
+        }
+      ],
+      "overflow": [],
+      "scroll": 994
+    },
+    {
+      "screen": "Mobile historical version",
+      "result": "pass",
+      "client": 363,
+      "header": [
+        {
+          "height": 43.98722839355469,
+          "name": "Planzo home",
+          "width": 104.22347259521484,
+          "x": 15.986403465270996,
+          "y": 13.278234481811523
+        },
+        {
+          "height": 42.066890716552734,
+          "name": "Signed in as Saurabh",
+          "width": 41.984825134277344,
+          "x": 219.72276306152344,
+          "y": 14.230196952819824
+        },
+        {
+          "height": 43.98722839355469,
+          "name": "Sign out",
+          "width": 77.7654800415039,
+          "x": 269.7008056640625,
+          "y": 13.278234481811523
+        }
+      ],
+      "overflow": [],
+      "scroll": 363
+    },
+    {
+      "screen": "Mobile locked overview",
+      "result": "pass",
+      "client": 363,
+      "header": [
+        {
+          "height": 43.98722839355469,
+          "name": "Planzo home",
+          "width": 104.22347259521484,
+          "x": 15.986403465270996,
+          "y": 17.479999542236328
+        },
+        {
+          "height": 42.066890716552734,
+          "name": "Signed in as Saurabh",
+          "width": 41.984825134277344,
+          "x": 219.72276306152344,
+          "y": 18.431961059570312
+        },
+        {
+          "height": 43.98722839355469,
+          "name": "Sign out",
+          "width": 77.7654800415039,
+          "x": 269.7008056640625,
+          "y": 17.479999542236328
+        }
+      ],
+      "overflow": [],
+      "scroll": 363
+    },
+    {
+      "screen": "Mobile confirmed private guide",
+      "result": "pass",
+      "client": 363,
+      "header": [
+        {
+          "height": 43.98722839355469,
+          "name": "Planzo home",
+          "width": 104.22347259521484,
+          "x": 15.986403465270996,
+          "y": -3.5288262367248535
+        },
+        {
+          "height": 42.066890716552734,
+          "name": "Signed in as Saurabh",
+          "width": 41.984825134277344,
+          "x": 219.72276306152344,
+          "y": -2.5768637657165527
+        },
+        {
+          "height": 43.98722839355469,
+          "name": "Sign out",
+          "width": 77.7654800415039,
+          "x": 269.7008056640625,
+          "y": -3.5288262367248535
+        }
+      ],
+      "overflow": [],
+      "scroll": 363
+    },
+    {
+      "screen": "Mobile locked itinerary",
+      "result": "pass",
+      "client": 363,
+      "header": [
+        {
+          "height": 43.98722839355469,
+          "name": "Planzo home",
+          "width": 104.22347259521484,
+          "x": 15.986403465270996,
+          "y": 17.479999542236328
+        },
+        {
+          "height": 42.066890716552734,
+          "name": "Signed in as Saurabh",
+          "width": 41.984825134277344,
+          "x": 219.72276306152344,
+          "y": 18.431961059570312
+        },
+        {
+          "height": 43.98722839355469,
+          "name": "Sign out",
+          "width": 77.7654800415039,
+          "x": 269.7008056640625,
+          "y": 17.479999542236328
+        }
+      ],
+      "overflow": [],
+      "scroll": 363
+    },
+    {
+      "screen": "Mobile step decisions",
+      "result": "pass",
+      "client": 363,
+      "header": [
+        {
+          "height": 43.98722839355469,
+          "name": "Planzo home",
+          "width": 104.22347259521484,
+          "x": 15.986403465270996,
+          "y": 17.479999542236328
+        },
+        {
+          "height": 42.066890716552734,
+          "name": "Signed in as Saurabh",
+          "width": 41.984825134277344,
+          "x": 219.72276306152344,
+          "y": 18.431961059570312
+        },
+        {
+          "height": 43.98722839355469,
+          "name": "Sign out",
+          "width": 77.7654800415039,
+          "x": 269.7008056640625,
+          "y": 17.479999542236328
+        }
+      ],
+      "overflow": [],
+      "scroll": 363
+    },
+    {
+      "screen": "Mobile booking handoff",
+      "result": "pass",
+      "client": 363,
+      "header": [
+        {
+          "height": 43.98722839355469,
+          "name": "Planzo home",
+          "width": 104.22347259521484,
+          "x": 15.986403465270996,
+          "y": 17.479999542236328
+        },
+        {
+          "height": 42.066890716552734,
+          "name": "Signed in as Saurabh",
+          "width": 41.984825134277344,
+          "x": 219.72276306152344,
+          "y": 18.431961059570312
+        },
+        {
+          "height": 43.98722839355469,
+          "name": "Sign out",
+          "width": 77.7654800415039,
+          "x": 269.7008056640625,
+          "y": 17.479999542236328
+        }
+      ],
+      "overflow": [],
+      "scroll": 363
+    },
+    {
+      "screen": "Mobile expanded accommodation task",
+      "result": "pass",
+      "client": 363,
+      "header": [
+        {
+          "height": 43.98722839355469,
+          "name": "Planzo home",
+          "width": 104.22347259521484,
+          "x": 15.986403465270996,
+          "y": -1570.7872314453125
+        },
+        {
+          "height": 42.066890716552734,
+          "name": "Signed in as Saurabh",
+          "width": 41.984825134277344,
+          "x": 219.72276306152344,
+          "y": -1569.835205078125
+        },
+        {
+          "height": 43.98722839355469,
+          "name": "Sign out",
+          "width": 77.7654800415039,
+          "x": 269.7008056640625,
+          "y": -1570.7872314453125
+        }
+      ],
+      "overflow": [],
+      "scroll": 363
+    },
+    {
+      "screen": "Mobile visual journey",
+      "result": "pass",
+      "client": 363,
+      "header": [
+        {
+          "height": 43.98722839355469,
+          "name": "Planzo home",
+          "width": 104.22347259521484,
+          "x": 15.986403465270996,
+          "y": 17.479999542236328
+        },
+        {
+          "height": 42.066890716552734,
+          "name": "Signed in as Saurabh",
+          "width": 41.984825134277344,
+          "x": 219.72276306152344,
+          "y": 18.431961059570312
+        },
+        {
+          "height": 43.98722839355469,
+          "name": "Sign out",
+          "width": 77.7654800415039,
+          "x": 269.7008056640625,
+          "y": 17.479999542236328
+        }
+      ],
+      "overflow": [],
+      "scroll": 363
+    },
+    {
+      "screen": "Mobile trip list",
+      "result": "pass",
+      "client": 363,
+      "header": [
+        {
+          "height": 43.98722839355469,
+          "name": "Planzo home",
+          "width": 104.22347259521484,
+          "x": 15.986403465270996,
+          "y": 17.479999542236328
+        },
+        {
+          "height": 42.066890716552734,
+          "name": "Signed in as Saurabh",
+          "width": 41.984825134277344,
+          "x": 219.72276306152344,
+          "y": 18.431961059570312
+        },
+        {
+          "height": 43.98722839355469,
+          "name": "Sign out",
+          "width": 77.7654800415039,
+          "x": 269.7008056640625,
+          "y": 17.479999542236328
+        }
+      ],
+      "overflow": [],
+      "scroll": 363
+    },
+    {
+      "screen": "Mobile trip setup",
+      "result": "pass",
+      "client": 363,
+      "header": [
+        {
+          "height": 43.98722839355469,
+          "name": "Planzo home",
+          "width": 104.22347259521484,
+          "x": 15.986403465270996,
+          "y": 17.479999542236328
+        },
+        {
+          "height": 42.066890716552734,
+          "name": "Signed in as Saurabh",
+          "width": 41.984825134277344,
+          "x": 219.72276306152344,
+          "y": 18.431961059570312
+        },
+        {
+          "height": 43.98722839355469,
+          "name": "Sign out",
+          "width": 77.7654800415039,
+          "x": 269.7008056640625,
+          "y": 17.479999542236328
+        }
+      ],
+      "overflow": [],
+      "scroll": 363
+    },
+    {
+      "screen": "Mobile four-person decisions screen (no current polls)",
+      "result": "pass",
+      "client": 363,
+      "header": [
+        {
+          "height": 43.98722839355469,
+          "name": "Planzo home",
+          "width": 104.22347259521484,
+          "x": 15.986403465270996,
+          "y": 17.479999542236328
+        },
+        {
+          "height": 42.066890716552734,
+          "name": "Signed in as Saurabh",
+          "width": 41.984825134277344,
+          "x": 219.72276306152344,
+          "y": 18.431961059570312
+        },
+        {
+          "height": 43.98722839355469,
+          "name": "Sign out",
+          "width": 77.7654800415039,
+          "x": 269.7008056640625,
+          "y": 17.479999542236328
+        }
+      ],
+      "overflow": [],
+      "scroll": 363
+    },
+    {
+      "screen": "Desktop restored after scope clarification",
+      "result": "pass",
+      "client": 1449,
+      "header": [
+        {
+          "height": 43.99199676513672,
+          "name": "Planzo home",
+          "width": 109.47599029541016,
+          "x": 148.6079864501953,
+          "y": 17.615999221801758
+        },
+        {
+          "height": 43.99199676513672,
+          "name": "Signed in as Saurabh",
+          "width": 109.9679946899414,
+          "x": 1089.47998046875,
+          "y": 17.615999221801758
+        },
+        {
+          "height": 43.99199676513672,
+          "name": "Sign out",
+          "width": 89.15999603271484,
+          "x": 1211.4478759765625,
+          "y": 17.615999221801758
+        }
+      ],
+      "overflow": [],
+      "scroll": 1449
+    }
+  ],
+  "summary": {
+    "recordedChecks": 27,
+    "desktopLayoutMeasurements": 12,
+    "failed": 0
+  },
+  "historicalNote": "Narrow-browser measurements were completed before desktop-only clarification. They are retained as history, not a mobile-app deliverable. Four-person current plan has no current polls; no populated ballot UI coverage is claimed.",
+  "copyFindingsResolvedBy": "UI_UX_DESKTOP_FINISH_RECEIPT.json; source40. Final confirmed-summary and locked-decision checks were rechecked in the live signed-in editor session.",
+  "tripWrites": 0,
+  "providerCalls": 0
+}

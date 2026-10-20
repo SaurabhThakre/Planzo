@@ -1,0 +1,26 @@
+{
+  "fileKey": "IRAXhHV3ldeGoxWwXJeZk9",
+  "approvedScope": "Interactive browser-saved demo",
+  "views": {
+    "entry": "22:266",
+    "signup": "25:3519",
+    "signin": "25:152",
+    "setup": "25:475",
+    "join": "25:362",
+    "created": "25:606",
+    "overview": "22:107",
+    "private": "25:717",
+    "plans": "25:3938",
+    "builder": "25:4045",
+    "poll": "25:1205",
+    "itinerary": "25:1423",
+    "costs": "25:1513",
+    "optional": "41:1098",
+    "review": "22:2",
+    "outcome": "25:2299",
+    "compare": "25:4604",
+    "bookings": "25:2802",
+    "scenarios": "25:43"
+  },
+  "implementation": "Shared React components and real local state replace duplicated static frames. Sample service labels remain."
+}

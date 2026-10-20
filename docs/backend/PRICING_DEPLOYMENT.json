@@ -1,0 +1,90 @@
+{
+  "date": "2026-10-19",
+  "project": "ewysgpuwvufbklesdhuj",
+  "migration": "20261019043452_gemini_pricing",
+  "cliPreparedAs": "20261019042919",
+  "appliedOnce": true,
+  "hostedFunctions": [
+    {
+      "acl": "{postgres=X/postgres}",
+      "name": "flow_document",
+      "config": [
+        "search_path=\"\""
+      ],
+      "body_md5": "4efc809e05def8e417549e995791695a",
+      "volatility": "s",
+      "security_definer": false
+    },
+    {
+      "acl": "{postgres=X/postgres}",
+      "name": "flow_reconcile_document",
+      "config": [
+        "search_path=\"\""
+      ],
+      "body_md5": "731f139c77e4b952744ef29624f912ff",
+      "volatility": "i",
+      "security_definer": false
+    },
+    {
+      "acl": "{postgres=X/postgres}",
+      "name": "priced_document",
+      "config": [
+        "search_path=\"\""
+      ],
+      "body_md5": "7b46f0a23ae0bb6b48f68c1d5c26eebf",
+      "volatility": "s",
+      "security_definer": false
+    },
+    {
+      "acl": "{postgres=X/postgres}",
+      "name": "priced_reconcile_document",
+      "config": [
+        "search_path=\"\""
+      ],
+      "body_md5": "a8437c6d3bbf03aa25456aa2863806d3",
+      "volatility": "i",
+      "security_definer": false
+    },
+    {
+      "acl": "{postgres=X/postgres}",
+      "name": "priced_refs",
+      "config": [
+        "search_path=\"\""
+      ],
+      "body_md5": "d8854722e00c61c996da0c853b0548d7",
+      "volatility": "i",
+      "security_definer": false
+    },
+    {
+      "acl": "{postgres=X/postgres}",
+      "name": "pricing_range",
+      "config": [
+        "search_path=\"\""
+      ],
+      "body_md5": "f01bd1d14c73105d1fc864615443f7a2",
+      "volatility": "i",
+      "security_definer": false
+    }
+  ],
+  "existingDataUnchanged": true,
+  "metadata": {
+    "locks": 10,
+    "plans": 24,
+    "polls": 8,
+    "trips": 25,
+    "inputs": 36,
+    "ballots": 11,
+    "reviews": 16,
+    "plan_hash": "fd3a2fc400f71b5c6d99d92fcd749ff6",
+    "trip_hash": "e507e90bc578140d3147cc321855db68",
+    "input_hash": "b6192394b343f0340e799101a50394e4"
+  },
+  "advisorsUnchanged": true,
+  "edge": {
+    "version": 8,
+    "status": "ACTIVE",
+    "verify_jwt": true,
+    "returnedSourcesMatched": 5,
+    "pricingDeploymentPending": false
+  }
+}

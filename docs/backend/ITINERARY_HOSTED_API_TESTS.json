@@ -1,0 +1,37 @@
+{
+  "project": "ewysgpuwvufbklesdhuj",
+  "date": "2026-10-16T04:25:24.117Z",
+  "tests": [
+    {
+      "name": "Signed-out itinerary get denied",
+      "status": 401,
+      "result": "pass"
+    },
+    {
+      "name": "Signed-out itinerary prepare denied",
+      "status": 401,
+      "result": "pass"
+    },
+    {
+      "name": "Private itinerary_drafts is not exposed",
+      "status": 404,
+      "result": "pass"
+    },
+    {
+      "name": "Private itinerary_polls is not exposed",
+      "status": 404,
+      "result": "pass"
+    },
+    {
+      "name": "Private itinerary_ballots is not exposed",
+      "status": 404,
+      "result": "pass"
+    },
+    {
+      "name": "Private itinerary evaluator is not exposed",
+      "status": 404,
+      "result": "pass"
+    }
+  ],
+  "scope": "Signed-out REST/RPC boundaries; not a substitute for ordinary signed-in A/B/C verification."
+}

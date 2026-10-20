@@ -1,0 +1,62 @@
+{
+  "date": "2026-10-16",
+  "makeFile": "4tPr5AkQO1g0L1esRvGRjz",
+  "project": "ewysgpuwvufbklesdhuj",
+  "evidenceSource": "Observed Make completion summaries and separate live UI checks",
+  "initialSourceCopy": {
+    "makeVersion": 42,
+    "completionHeading": "Package 1 installed successfully",
+    "completionTimeIST": "18:58",
+    "bundleRecords": 30,
+    "safeDistinctRelativePaths": 30,
+    "invalidPaths": 0,
+    "utf8DigestsMatched": 30,
+    "preAppHashesMatched": 23,
+    "preBackendHashesMatched": 33,
+    "extraDomainBaselineHashesMatched": 1,
+    "destinationDigestsMatched": 30,
+    "jsonParsesPassed": 7,
+    "canonicalSqlEqualsDevelopment": true,
+    "finalAppHashesMatched": 30,
+    "finalBackendHashesMatched": 36,
+    "typecheck": "passed",
+    "applicationTestsPassed": 58,
+    "applicationTestsFailed": 0,
+    "build": "passed; existing chunk-size advisory",
+    "unexpectedChangedPaths": []
+  },
+  "followupCopy": {
+    "makeVersion": 43,
+    "completionHeading": "Package 1 follow-up installed",
+    "completionTimeIST": "19:05",
+    "reason": "Live lifecycle navigation exposed invitation read with an empty trip id. Guard route/user context, discard stale invitation responses and correct archived page instructions.",
+    "preAppHashesMatched": 30,
+    "preBackendHashesMatched": 36,
+    "originalAttachmentsMatched": 3,
+    "jsonParsesPassed": 2,
+    "paths": [
+      "src/LiveApp.tsx",
+      "docs/backend/SOURCE_HASHES.json",
+      "docs/backend/PRE_SETUP_ARCHIVE_COPY_SOURCE_HASHES.json"
+    ],
+    "finalAppHashesMatched": 30,
+    "finalBackendHashesMatched": 36,
+    "typecheck": "passed",
+    "applicationTestsPassed": 58,
+    "applicationTestsFailed": 0,
+    "build": "passed; existing chunk-size advisory",
+    "unexpectedChangedPaths": []
+  },
+  "liveUi": {
+    "checksPassed": 22,
+    "checksFailed": 0,
+    "report": "docs/backend/SETUP_MAKE_UI_TESTS.json"
+  },
+  "makeAgentBackendActions": 0,
+  "makeAgentSqlExecutions": 0,
+  "makeAgentProviderCalls": 0,
+  "makeAgentPreviewInteractions": 0,
+  "websitePublished": false,
+  "billingChanged": false,
+  "documentationCloseout": "Exact documentation/evidence copy follows these source/UI checks; no source changes or repeated tests needed."
+}

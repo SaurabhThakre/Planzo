@@ -1,0 +1,34 @@
+{
+  "project": "ewysgpuwvufbklesdhuj",
+  "slug": "planzo-planning",
+  "version": 2,
+  "status": "ACTIVE",
+  "verify_jwt": true,
+  "checks": [
+    {
+      "path": "supabase/functions/planzo-planning/index.ts",
+      "result": "pass",
+      "sha256": "4bbffda1e2dd4e69fb15a9ff4931c7874918ef1c63751203078a8b57c0146a16"
+    },
+    {
+      "path": "supabase/functions/planzo-planning/handler.ts",
+      "result": "pass",
+      "sha256": "62cd23cb6be940a3a7bf3f202555fcf5032946a9cc03d68acd28fb5ac5599518"
+    },
+    {
+      "path": "src/aiProtocol.ts",
+      "result": "pass",
+      "sha256": "af9ca8d9ae9d52ed3efff9f8b4d44f32574153f94712caf9e4d35e3121a8e3be"
+    },
+    {
+      "path": "src/aiAvailability.ts",
+      "result": "pass",
+      "sha256": "62ee67f35e253d8412d4584c42874001a11d9a6c3e52fcf3a9655537b9c7b8e5"
+    },
+    {
+      "path": "src/privatePlanning.ts",
+      "result": "pass",
+      "sha256": "0d03126dc3179ffa99e1a81fdfb88f8c92b86ef62c7862485ecd4f30c761fa73"
+    }
+  ]
+}

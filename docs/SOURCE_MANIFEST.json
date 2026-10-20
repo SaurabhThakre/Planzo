@@ -1,0 +1,982 @@
+{
+  "recorded": "2026-10-15",
+  "makeFileKey": "4tPr5AkQO1g0L1esRvGRjz",
+  "note": "All source/support files except this manifest itself; generated dependencies/output and OS metadata excluded.",
+  "files": [
+    {
+      "path": ".figma/make/analyze-routes",
+      "bytes": 70,
+      "sha256": "7a81578bcfa5ba5f2105d7165e0cd2d8d1c6151d2a0c5ba766b3ef1c824ee788"
+    },
+    {
+      "path": ".figma/make/deploy",
+      "bytes": 102,
+      "sha256": "6bcf32b3a46e1dd40a1986aae3cb9e5eec32ad794e91f6f0e185910ad8db3723"
+    },
+    {
+      "path": ".figma/make/deploy-preview",
+      "bytes": 183,
+      "sha256": "b26067978eb4453d56540706ead577df049e068dbaffdd54847e1e5d8ef73154"
+    },
+    {
+      "path": ".figma/make/dev",
+      "bytes": 137,
+      "sha256": "2b03e9cae1f8caa78e626225be2b60515fae76c56094bb7589f8a379ef4a2014"
+    },
+    {
+      "path": ".figma/make/dev.json",
+      "bytes": 959,
+      "sha256": "e78b91a2a63456a6eab9756c3fb6d767dfe3673adcef1dcfe4f52c010238c3e7"
+    },
+    {
+      "path": ".figma/make/format",
+      "bytes": 63,
+      "sha256": "254598ef0d1a61c3abc2a426c7065487ca140c8f9b90e4d66ea05dff20832335"
+    },
+    {
+      "path": ".figma/make/import-assets.mjs",
+      "bytes": 2540,
+      "sha256": "19832cfcff92cdb381cee823ca4b41213f4128d82a6c7a0465040cb48dd717c1"
+    },
+    {
+      "path": ".figma/make/install",
+      "bytes": 69,
+      "sha256": "ca980d08b424a17a9a1e89bace89f550999b2939076d77ff77f35c4b030df8c9"
+    },
+    {
+      "path": ".figma/make/langserver",
+      "bytes": 106,
+      "sha256": "e6b9034d28bbc82e6333a3b77f8d5fd593ac54eeed7e4e76569329fdbb534fff"
+    },
+    {
+      "path": ".figma/make/site.json",
+      "bytes": 309,
+      "sha256": "795f2254b10df5b8546b1cf5487fa29624e5e2be7dfa7349fe4b5ab1800a27c7"
+    },
+    {
+      "path": ".gitignore",
+      "bytes": 424,
+      "sha256": "6770e60e045a25964f62df2a396a19b3f5c402facbf43c73c125b021b2fc5674"
+    },
+    {
+      "path": ".mise.toml",
+      "bytes": 43,
+      "sha256": "6d2834ef5f78a7dc4c384570a62b895137fdf63df171d237f0747932bd001435"
+    },
+    {
+      "path": "AGENTS.md",
+      "bytes": 1526,
+      "sha256": "ab9a20e8102275180627e5c06894cd05c9de17011b624c6fd04984b84566ff15"
+    },
+    {
+      "path": "CLAUDE.md",
+      "bytes": 99,
+      "sha256": "ce55a0a05dc6d98be5925f6c6b0d4ef0226d96036828344a0175ca5bf9f2983c"
+    },
+    {
+      "path": "README.md",
+      "bytes": 5916,
+      "sha256": "74d41a4d66cd6e0b29c952da7a46646f9dee4d93ca447f2835736daf61c0e6f2"
+    },
+    {
+      "path": "UPLOAD_TO_FIGMA_MAKE.md",
+      "bytes": 2525,
+      "sha256": "8c0e5234db8c06c130934957212e2985e1dcf3e0c66f8ded2e7efc6c732eca17"
+    },
+    {
+      "path": "docs/HANDOFF.md",
+      "bytes": 7137,
+      "sha256": "4f374415748ee5be439ecd86ce2b5721210e6e5ec7d471610ea33269f5b51209"
+    },
+    {
+      "path": "docs/TEST_REPORT.md",
+      "bytes": 3910,
+      "sha256": "fe3329495bb94326c38e2400f4cb8fed60df550b03e97f9b12d83bb8f7d19b71"
+    },
+    {
+      "path": "docs/design-context/asset-dimensions.json",
+      "bytes": 12994,
+      "sha256": "d2cb3e40f59869c0b13dbc735c95da07128d8e008cb25454eb4d7224cc957478"
+    },
+    {
+      "path": "docs/design-context/assets.json",
+      "bytes": 25701,
+      "sha256": "b2b9377625ad8308c3b0e687af46d83eb4542850ca0126ae4a7312de7f1e12eb"
+    },
+    {
+      "path": "docs/design-context/coverage.json",
+      "bytes": 716,
+      "sha256": "fe6984b62922092f61ccd0a33404daac763a6870b2d8139c1f1da0f011a69070"
+    },
+    {
+      "path": "docs/test-evidence/01-welcome-desktop.png",
+      "bytes": 100628,
+      "sha256": "d9361701d73dd03a28a1d134e46f26261ed4b2f9b7aec3d3b7db8794360a35c5"
+    },
+    {
+      "path": "docs/test-evidence/02-comparisons-desktop.png",
+      "bytes": 208197,
+      "sha256": "5b26575541a8af389bfa1a6dc7a232d205f9eec5f69be87d54aaffdaf000282d"
+    },
+    {
+      "path": "docs/test-evidence/03-welcome-mobile.png",
+      "bytes": 75820,
+      "sha256": "026be0d9e9266c3a3828f64be106565e0034d6012edfb4f7d11985f89f9b8f31"
+    },
+    {
+      "path": "docs/test-evidence/04-review-mobile.png",
+      "bytes": 130148,
+      "sha256": "541d730bf258aea730de029a2ce97f14f283656b76bd5455a1dc8ce56e37450a"
+    },
+    {
+      "path": "docs/test-evidence/05-preferences-mobile.png",
+      "bytes": 202597,
+      "sha256": "6dcc240a157da691627e77b18de20c82bd6346a4d937672bf7019c320e920a81"
+    },
+    {
+      "path": "docs/test-evidence/browser-results.json",
+      "bytes": 1703,
+      "sha256": "9057d59ef564819fc150b0ab712b144f3f1bb1e84b4f31820a6405de9d72a9c3"
+    },
+    {
+      "path": "index.html",
+      "bytes": 440,
+      "sha256": "768eac67e6271681de61c23f1c94a6bf688607bbad2d0bccafd8f4bfe789a079"
+    },
+    {
+      "path": "package.json",
+      "bytes": 707,
+      "sha256": "162db41b773664b9b3dc5e1f5ccb1657e7b317a1284f25f3f27fbf32d5b4105f"
+    },
+    {
+      "path": "pnpm-lock.yaml",
+      "bytes": 29455,
+      "sha256": "811aecd91f12d4f77c1b88c0ea1edd5127b6bf2150e668e62659cadaac366460"
+    },
+    {
+      "path": "public/assets/agreed-IconCheck.svg",
+      "bytes": 341,
+      "sha256": "ddaaa9208d3700f8522bb1222e16a923ce81e3709c3065aded1cf75c8565680a"
+    },
+    {
+      "path": "public/assets/agreed-IconHome.svg",
+      "bytes": 386,
+      "sha256": "7e6c76ea67743553febebb80f84a49495a5037fff93133dccfc9bf80485b423e"
+    },
+    {
+      "path": "public/assets/agreed-IconLock.svg",
+      "bytes": 873,
+      "sha256": "34acdc2d15438fb3e4e98c216323135ac808ba7234a58c916f49ec731fc7f161"
+    },
+    {
+      "path": "public/assets/agreed-IconMap.svg",
+      "bytes": 398,
+      "sha256": "6ec45bf1d70f496e2953ddb7bc4230a7675d1c2258a280c440b95440bea423cf"
+    },
+    {
+      "path": "public/assets/agreed-IconPeople.svg",
+      "bytes": 1061,
+      "sha256": "32859cb927aed75df9de6d70a40983ccdfb19112f1899740ed586d5c95f8a6dc"
+    },
+    {
+      "path": "public/assets/agreed-IconPlane.svg",
+      "bytes": 456,
+      "sha256": "ddb42236a5295e64ea06e7a9b7ce3d1ee9e5872542051b4f6fcc52a085885fea"
+    },
+    {
+      "path": "public/assets/agreed-IconWallet.svg",
+      "bytes": 867,
+      "sha256": "b4cae2e935279ba8d379c5cd81a9ca901341e44ccd72fc3c77737d3c25df457d"
+    },
+    {
+      "path": "public/assets/aiConsent-EditableIllustrationGoaCoast.svg",
+      "bytes": 3005,
+      "sha256": "2bce1bf7bd7ffab1ad18e3156c3f683efe7df886364d919232cdc922215f7416"
+    },
+    {
+      "path": "public/assets/aiConsent-IconHome.svg",
+      "bytes": 386,
+      "sha256": "7e6c76ea67743553febebb80f84a49495a5037fff93133dccfc9bf80485b423e"
+    },
+    {
+      "path": "public/assets/aiConsent-IconLock.svg",
+      "bytes": 873,
+      "sha256": "34acdc2d15438fb3e4e98c216323135ac808ba7234a58c916f49ec731fc7f161"
+    },
+    {
+      "path": "public/assets/aiConsent-IconMap.svg",
+      "bytes": 398,
+      "sha256": "6ec45bf1d70f496e2953ddb7bc4230a7675d1c2258a280c440b95440bea423cf"
+    },
+    {
+      "path": "public/assets/aiConsent-IconPeople.svg",
+      "bytes": 1061,
+      "sha256": "32859cb927aed75df9de6d70a40983ccdfb19112f1899740ed586d5c95f8a6dc"
+    },
+    {
+      "path": "public/assets/aiConsent-IconPlane.svg",
+      "bytes": 456,
+      "sha256": "ddb42236a5295e64ea06e7a9b7ce3d1ee9e5872542051b4f6fcc52a085885fea"
+    },
+    {
+      "path": "public/assets/aiConsent-IconWallet.svg",
+      "bytes": 867,
+      "sha256": "b4cae2e935279ba8d379c5cd81a9ca901341e44ccd72fc3c77737d3c25df457d"
+    },
+    {
+      "path": "public/assets/aiPlans-IconCoffee.svg",
+      "bytes": 746,
+      "sha256": "16881a3402d3b54d94e03a415a9c21cfbb8e8d3f0a137c54dbb776c3b79ee9c4"
+    },
+    {
+      "path": "public/assets/aiPlans-IconHome.svg",
+      "bytes": 386,
+      "sha256": "7e6c76ea67743553febebb80f84a49495a5037fff93133dccfc9bf80485b423e"
+    },
+    {
+      "path": "public/assets/aiPlans-IconMap.svg",
+      "bytes": 398,
+      "sha256": "6ec45bf1d70f496e2953ddb7bc4230a7675d1c2258a280c440b95440bea423cf"
+    },
+    {
+      "path": "public/assets/aiPlans-IconMap1.svg",
+      "bytes": 370,
+      "sha256": "06edf99c577ffd10531589fcd421ac5108bc0e2b5df335d50d347145ea84380d"
+    },
+    {
+      "path": "public/assets/aiPlans-IconPeople.svg",
+      "bytes": 1061,
+      "sha256": "32859cb927aed75df9de6d70a40983ccdfb19112f1899740ed586d5c95f8a6dc"
+    },
+    {
+      "path": "public/assets/aiPlans-IconPeople1.svg",
+      "bytes": 1041,
+      "sha256": "6689b5d994ffadf8e58f1fa642a10e1b57b2adeafaaf122300c8f153daf70da8"
+    },
+    {
+      "path": "public/assets/aiPlans-IconPlane.svg",
+      "bytes": 456,
+      "sha256": "ddb42236a5295e64ea06e7a9b7ce3d1ee9e5872542051b4f6fcc52a085885fea"
+    },
+    {
+      "path": "public/assets/aiPlans-IconStar.svg",
+      "bytes": 443,
+      "sha256": "0389bc05927c49238d56a7ae968019d90be2e7def1d743a75df479b348c8a292"
+    },
+    {
+      "path": "public/assets/aiPlans-IconSun.svg",
+      "bytes": 865,
+      "sha256": "d124e0d1b2f34b53fa65cf4a9d74935da041c3aea4ceeafeba947149c38858ef"
+    },
+    {
+      "path": "public/assets/aiPlans-IconWallet.svg",
+      "bytes": 867,
+      "sha256": "b4cae2e935279ba8d379c5cd81a9ca901341e44ccd72fc3c77737d3c25df457d"
+    },
+    {
+      "path": "public/assets/bookingCompare-IconHome.svg",
+      "bytes": 386,
+      "sha256": "7e6c76ea67743553febebb80f84a49495a5037fff93133dccfc9bf80485b423e"
+    },
+    {
+      "path": "public/assets/bookingCompare-IconMap.svg",
+      "bytes": 398,
+      "sha256": "6ec45bf1d70f496e2953ddb7bc4230a7675d1c2258a280c440b95440bea423cf"
+    },
+    {
+      "path": "public/assets/bookingCompare-IconPeople.svg",
+      "bytes": 1061,
+      "sha256": "32859cb927aed75df9de6d70a40983ccdfb19112f1899740ed586d5c95f8a6dc"
+    },
+    {
+      "path": "public/assets/bookingCompare-IconPlane.svg",
+      "bytes": 456,
+      "sha256": "ddb42236a5295e64ea06e7a9b7ce3d1ee9e5872542051b4f6fcc52a085885fea"
+    },
+    {
+      "path": "public/assets/bookingCompare-IconWallet.svg",
+      "bytes": 867,
+      "sha256": "b4cae2e935279ba8d379c5cd81a9ca901341e44ccd72fc3c77737d3c25df457d"
+    },
+    {
+      "path": "public/assets/bookings-EditableIllustrationGoaCoast.svg",
+      "bytes": 2967,
+      "sha256": "b20d49e4522ebb351c8aef661fbd50326bb68fff3e75138adcc25a8c570f25ff"
+    },
+    {
+      "path": "public/assets/bookings-IconBed.svg",
+      "bytes": 417,
+      "sha256": "0d3f0d0e3ae725f8a11340c1e62b3b2536d0faaa7b5570d4312bec3068337738"
+    },
+    {
+      "path": "public/assets/bookings-IconHome.svg",
+      "bytes": 386,
+      "sha256": "7e6c76ea67743553febebb80f84a49495a5037fff93133dccfc9bf80485b423e"
+    },
+    {
+      "path": "public/assets/bookings-IconMap.svg",
+      "bytes": 398,
+      "sha256": "6ec45bf1d70f496e2953ddb7bc4230a7675d1c2258a280c440b95440bea423cf"
+    },
+    {
+      "path": "public/assets/bookings-IconPeople.svg",
+      "bytes": 1061,
+      "sha256": "32859cb927aed75df9de6d70a40983ccdfb19112f1899740ed586d5c95f8a6dc"
+    },
+    {
+      "path": "public/assets/bookings-IconPlane.svg",
+      "bytes": 456,
+      "sha256": "ddb42236a5295e64ea06e7a9b7ce3d1ee9e5872542051b4f6fcc52a085885fea"
+    },
+    {
+      "path": "public/assets/bookings-IconPlane1.svg",
+      "bytes": 456,
+      "sha256": "aed1fc3a397f861b2306a18af647466ce5f80864e4c122f62b41210c5ed824cc"
+    },
+    {
+      "path": "public/assets/bookings-IconWallet.svg",
+      "bytes": 867,
+      "sha256": "b4cae2e935279ba8d379c5cd81a9ca901341e44ccd72fc3c77737d3c25df457d"
+    },
+    {
+      "path": "public/assets/builder-EditableIllustrationGoaCoast.svg",
+      "bytes": 2874,
+      "sha256": "b2a370dd53eb2c4b8f3a1b744d4108b27a3a6793082cb4fb5d1882c24b407e50"
+    },
+    {
+      "path": "public/assets/builder-IconBed.svg",
+      "bytes": 417,
+      "sha256": "0d3f0d0e3ae725f8a11340c1e62b3b2536d0faaa7b5570d4312bec3068337738"
+    },
+    {
+      "path": "public/assets/builder-IconCoffee.svg",
+      "bytes": 761,
+      "sha256": "25562c9f177ba1807c11dfbf21529ba2aa5465d130717bb285c7034ef1d5b3d5"
+    },
+    {
+      "path": "public/assets/builder-IconHome.svg",
+      "bytes": 386,
+      "sha256": "7e6c76ea67743553febebb80f84a49495a5037fff93133dccfc9bf80485b423e"
+    },
+    {
+      "path": "public/assets/builder-IconMap.svg",
+      "bytes": 398,
+      "sha256": "6ec45bf1d70f496e2953ddb7bc4230a7675d1c2258a280c440b95440bea423cf"
+    },
+    {
+      "path": "public/assets/builder-IconPeople.svg",
+      "bytes": 1061,
+      "sha256": "32859cb927aed75df9de6d70a40983ccdfb19112f1899740ed586d5c95f8a6dc"
+    },
+    {
+      "path": "public/assets/builder-IconPlane.svg",
+      "bytes": 456,
+      "sha256": "ddb42236a5295e64ea06e7a9b7ce3d1ee9e5872542051b4f6fcc52a085885fea"
+    },
+    {
+      "path": "public/assets/builder-IconPlane1.svg",
+      "bytes": 456,
+      "sha256": "aed1fc3a397f861b2306a18af647466ce5f80864e4c122f62b41210c5ed824cc"
+    },
+    {
+      "path": "public/assets/builder-IconSun.svg",
+      "bytes": 875,
+      "sha256": "7a94917bf04857c61512629bd7572f432ad82429d462a8c05d58ec13ea13fc76"
+    },
+    {
+      "path": "public/assets/builder-IconWallet.svg",
+      "bytes": 867,
+      "sha256": "b4cae2e935279ba8d379c5cd81a9ca901341e44ccd72fc3c77737d3c25df457d"
+    },
+    {
+      "path": "public/assets/costs-IconBoat.svg",
+      "bytes": 548,
+      "sha256": "6590f5c5d502fdb23ef13041340def2bcf8dc52bd4a3be9b819f86cc413de5c7"
+    },
+    {
+      "path": "public/assets/costs-IconHome.svg",
+      "bytes": 386,
+      "sha256": "7e6c76ea67743553febebb80f84a49495a5037fff93133dccfc9bf80485b423e"
+    },
+    {
+      "path": "public/assets/costs-IconLock.svg",
+      "bytes": 873,
+      "sha256": "34acdc2d15438fb3e4e98c216323135ac808ba7234a58c916f49ec731fc7f161"
+    },
+    {
+      "path": "public/assets/costs-IconMap.svg",
+      "bytes": 398,
+      "sha256": "6ec45bf1d70f496e2953ddb7bc4230a7675d1c2258a280c440b95440bea423cf"
+    },
+    {
+      "path": "public/assets/costs-IconPeople.svg",
+      "bytes": 1061,
+      "sha256": "32859cb927aed75df9de6d70a40983ccdfb19112f1899740ed586d5c95f8a6dc"
+    },
+    {
+      "path": "public/assets/costs-IconPlane.svg",
+      "bytes": 456,
+      "sha256": "ddb42236a5295e64ea06e7a9b7ce3d1ee9e5872542051b4f6fcc52a085885fea"
+    },
+    {
+      "path": "public/assets/costs-IconPlane1.svg",
+      "bytes": 456,
+      "sha256": "aed1fc3a397f861b2306a18af647466ce5f80864e4c122f62b41210c5ed824cc"
+    },
+    {
+      "path": "public/assets/costs-IconWallet.svg",
+      "bytes": 867,
+      "sha256": "b4cae2e935279ba8d379c5cd81a9ca901341e44ccd72fc3c77737d3c25df457d"
+    },
+    {
+      "path": "public/assets/entry-EditableIllustrationGoaCoast.svg",
+      "bytes": 3033,
+      "sha256": "810d15abdcaeaf18cc06a1c92dfb55f2acf34c28dd185b46255db7fadef53b61"
+    },
+    {
+      "path": "public/assets/entry-IconHeart.svg",
+      "bytes": 775,
+      "sha256": "e84315111c9394f920949015d3ae930365c81b85516df7e1dcc85bc46a6aa914"
+    },
+    {
+      "path": "public/assets/entry-IconLock.svg",
+      "bytes": 858,
+      "sha256": "07618df5cce106cd7bafc7c93b82e6f7c3c54e464b3f004ffbcd9dc85a2d4fa3"
+    },
+    {
+      "path": "public/assets/entry-IconPeople.svg",
+      "bytes": 1061,
+      "sha256": "32859cb927aed75df9de6d70a40983ccdfb19112f1899740ed586d5c95f8a6dc"
+    },
+    {
+      "path": "public/assets/entry-IconPlane.svg",
+      "bytes": 456,
+      "sha256": "ddb42236a5295e64ea06e7a9b7ce3d1ee9e5872542051b4f6fcc52a085885fea"
+    },
+    {
+      "path": "public/assets/entry-IconWallet.svg",
+      "bytes": 867,
+      "sha256": "b4cae2e935279ba8d379c5cd81a9ca901341e44ccd72fc3c77737d3c25df457d"
+    },
+    {
+      "path": "public/assets/invite-EditableIllustrationGoaCoast.svg",
+      "bytes": 3033,
+      "sha256": "0668d36b155a53eba3162c68e4d18c13c050e094926507dbb81ca62449a3b88e"
+    },
+    {
+      "path": "public/assets/invite-IconLock.svg",
+      "bytes": 858,
+      "sha256": "07618df5cce106cd7bafc7c93b82e6f7c3c54e464b3f004ffbcd9dc85a2d4fa3"
+    },
+    {
+      "path": "public/assets/invite-IconLock1.svg",
+      "bytes": 873,
+      "sha256": "34acdc2d15438fb3e4e98c216323135ac808ba7234a58c916f49ec731fc7f161"
+    },
+    {
+      "path": "public/assets/invite-IconPeople.svg",
+      "bytes": 1061,
+      "sha256": "32859cb927aed75df9de6d70a40983ccdfb19112f1899740ed586d5c95f8a6dc"
+    },
+    {
+      "path": "public/assets/invite-IconPlane.svg",
+      "bytes": 456,
+      "sha256": "ddb42236a5295e64ea06e7a9b7ce3d1ee9e5872542051b4f6fcc52a085885fea"
+    },
+    {
+      "path": "public/assets/invite-IconWallet.svg",
+      "bytes": 867,
+      "sha256": "b4cae2e935279ba8d379c5cd81a9ca901341e44ccd72fc3c77737d3c25df457d"
+    },
+    {
+      "path": "public/assets/itinerary-IconBoat.svg",
+      "bytes": 411,
+      "sha256": "de452189608833bd8f5a475f1668baaf9621a42b95fdf7295a9fcbade24c24f2"
+    },
+    {
+      "path": "public/assets/itinerary-IconHome.svg",
+      "bytes": 386,
+      "sha256": "7e6c76ea67743553febebb80f84a49495a5037fff93133dccfc9bf80485b423e"
+    },
+    {
+      "path": "public/assets/itinerary-IconMap.svg",
+      "bytes": 398,
+      "sha256": "6ec45bf1d70f496e2953ddb7bc4230a7675d1c2258a280c440b95440bea423cf"
+    },
+    {
+      "path": "public/assets/itinerary-IconPeople.svg",
+      "bytes": 1061,
+      "sha256": "32859cb927aed75df9de6d70a40983ccdfb19112f1899740ed586d5c95f8a6dc"
+    },
+    {
+      "path": "public/assets/itinerary-IconPlane.svg",
+      "bytes": 456,
+      "sha256": "ddb42236a5295e64ea06e7a9b7ce3d1ee9e5872542051b4f6fcc52a085885fea"
+    },
+    {
+      "path": "public/assets/itinerary-IconWallet.svg",
+      "bytes": 867,
+      "sha256": "b4cae2e935279ba8d379c5cd81a9ca901341e44ccd72fc3c77737d3c25df457d"
+    },
+    {
+      "path": "public/assets/overview-EditableIllustrationGoaCoast.svg",
+      "bytes": 2874,
+      "sha256": "b2a370dd53eb2c4b8f3a1b744d4108b27a3a6793082cb4fb5d1882c24b407e50"
+    },
+    {
+      "path": "public/assets/overview-IconCheck.svg",
+      "bytes": 341,
+      "sha256": "ddaaa9208d3700f8522bb1222e16a923ce81e3709c3065aded1cf75c8565680a"
+    },
+    {
+      "path": "public/assets/overview-IconClock.svg",
+      "bytes": 587,
+      "sha256": "54401349fd12da714b62d4303010dde791574b1bb217dc84ccdcf971507be744"
+    },
+    {
+      "path": "public/assets/overview-IconHome.svg",
+      "bytes": 386,
+      "sha256": "7e6c76ea67743553febebb80f84a49495a5037fff93133dccfc9bf80485b423e"
+    },
+    {
+      "path": "public/assets/overview-IconMap.svg",
+      "bytes": 398,
+      "sha256": "6ec45bf1d70f496e2953ddb7bc4230a7675d1c2258a280c440b95440bea423cf"
+    },
+    {
+      "path": "public/assets/overview-IconPeople.svg",
+      "bytes": 1061,
+      "sha256": "32859cb927aed75df9de6d70a40983ccdfb19112f1899740ed586d5c95f8a6dc"
+    },
+    {
+      "path": "public/assets/overview-IconPlane.svg",
+      "bytes": 456,
+      "sha256": "ddb42236a5295e64ea06e7a9b7ce3d1ee9e5872542051b4f6fcc52a085885fea"
+    },
+    {
+      "path": "public/assets/overview-IconWallet.svg",
+      "bytes": 867,
+      "sha256": "b4cae2e935279ba8d379c5cd81a9ca901341e44ccd72fc3c77737d3c25df457d"
+    },
+    {
+      "path": "public/assets/parsed-EditableIllustrationGoaCoast.svg",
+      "bytes": 2927,
+      "sha256": "59971c06b3a2db83b93f0600ef24ce7c327111f1640a0074bcc2ebc11a57f3bb"
+    },
+    {
+      "path": "public/assets/parsed-IconCalendar.svg",
+      "bytes": 690,
+      "sha256": "41b230aa2d8e374d9919cdfa5f9f62c16da51a3f8cc22bb0a3d9419289f66958"
+    },
+    {
+      "path": "public/assets/parsed-IconHome.svg",
+      "bytes": 386,
+      "sha256": "7e6c76ea67743553febebb80f84a49495a5037fff93133dccfc9bf80485b423e"
+    },
+    {
+      "path": "public/assets/parsed-IconLeaf.svg",
+      "bytes": 519,
+      "sha256": "12c68ed7c092be078caeb482a9ee97dd3887a2ce2d8ffe607a85aa4f46facceb"
+    },
+    {
+      "path": "public/assets/parsed-IconLock.svg",
+      "bytes": 873,
+      "sha256": "34acdc2d15438fb3e4e98c216323135ac808ba7234a58c916f49ec731fc7f161"
+    },
+    {
+      "path": "public/assets/parsed-IconMap.svg",
+      "bytes": 398,
+      "sha256": "6ec45bf1d70f496e2953ddb7bc4230a7675d1c2258a280c440b95440bea423cf"
+    },
+    {
+      "path": "public/assets/parsed-IconPeople.svg",
+      "bytes": 1061,
+      "sha256": "32859cb927aed75df9de6d70a40983ccdfb19112f1899740ed586d5c95f8a6dc"
+    },
+    {
+      "path": "public/assets/parsed-IconPlane.svg",
+      "bytes": 456,
+      "sha256": "ddb42236a5295e64ea06e7a9b7ce3d1ee9e5872542051b4f6fcc52a085885fea"
+    },
+    {
+      "path": "public/assets/parsed-IconSun.svg",
+      "bytes": 875,
+      "sha256": "0c9b79bb7447477ed267c58d5471f6e4b17b91d05fdcb1c9dfc65499503a999d"
+    },
+    {
+      "path": "public/assets/parsed-IconWallet.svg",
+      "bytes": 867,
+      "sha256": "b4cae2e935279ba8d379c5cd81a9ca901341e44ccd72fc3c77737d3c25df457d"
+    },
+    {
+      "path": "public/assets/pending-IconCheck.svg",
+      "bytes": 341,
+      "sha256": "ddaaa9208d3700f8522bb1222e16a923ce81e3709c3065aded1cf75c8565680a"
+    },
+    {
+      "path": "public/assets/pending-IconClock.svg",
+      "bytes": 600,
+      "sha256": "e0ac1b3c179fc9c174afceb8073abe1a36da00a31ef643d6c6ebfaeed483fd70"
+    },
+    {
+      "path": "public/assets/pending-IconClock1.svg",
+      "bytes": 587,
+      "sha256": "54401349fd12da714b62d4303010dde791574b1bb217dc84ccdcf971507be744"
+    },
+    {
+      "path": "public/assets/pending-IconHome.svg",
+      "bytes": 386,
+      "sha256": "7e6c76ea67743553febebb80f84a49495a5037fff93133dccfc9bf80485b423e"
+    },
+    {
+      "path": "public/assets/pending-IconMap.svg",
+      "bytes": 398,
+      "sha256": "6ec45bf1d70f496e2953ddb7bc4230a7675d1c2258a280c440b95440bea423cf"
+    },
+    {
+      "path": "public/assets/pending-IconPeople.svg",
+      "bytes": 1061,
+      "sha256": "32859cb927aed75df9de6d70a40983ccdfb19112f1899740ed586d5c95f8a6dc"
+    },
+    {
+      "path": "public/assets/pending-IconPlane.svg",
+      "bytes": 456,
+      "sha256": "ddb42236a5295e64ea06e7a9b7ce3d1ee9e5872542051b4f6fcc52a085885fea"
+    },
+    {
+      "path": "public/assets/pending-IconWallet.svg",
+      "bytes": 867,
+      "sha256": "b4cae2e935279ba8d379c5cd81a9ca901341e44ccd72fc3c77737d3c25df457d"
+    },
+    {
+      "path": "public/assets/poll-IconCheck.svg",
+      "bytes": 341,
+      "sha256": "985042a6d5e873a7cfa846598545eb73c35b40d109bfd8a36fc47dbb0e4bdcfd"
+    },
+    {
+      "path": "public/assets/poll-IconHome.svg",
+      "bytes": 386,
+      "sha256": "7e6c76ea67743553febebb80f84a49495a5037fff93133dccfc9bf80485b423e"
+    },
+    {
+      "path": "public/assets/poll-IconMap.svg",
+      "bytes": 398,
+      "sha256": "6ec45bf1d70f496e2953ddb7bc4230a7675d1c2258a280c440b95440bea423cf"
+    },
+    {
+      "path": "public/assets/poll-IconPeople.svg",
+      "bytes": 1061,
+      "sha256": "32859cb927aed75df9de6d70a40983ccdfb19112f1899740ed586d5c95f8a6dc"
+    },
+    {
+      "path": "public/assets/poll-IconPlane.svg",
+      "bytes": 456,
+      "sha256": "ddb42236a5295e64ea06e7a9b7ce3d1ee9e5872542051b4f6fcc52a085885fea"
+    },
+    {
+      "path": "public/assets/poll-IconSun.svg",
+      "bytes": 875,
+      "sha256": "e8911710a6b6d257582e79f88cd436f9ef50f44d487e7b2209fc3a37b9523d22"
+    },
+    {
+      "path": "public/assets/poll-IconWallet.svg",
+      "bytes": 867,
+      "sha256": "b4cae2e935279ba8d379c5cd81a9ca901341e44ccd72fc3c77737d3c25df457d"
+    },
+    {
+      "path": "public/assets/private-EditableIllustrationGoaCoast.svg",
+      "bytes": 2997,
+      "sha256": "a25b635879073ca7904d7620ff86dd2539ff8d6c0bc10b3cf4866d948f0d8a55"
+    },
+    {
+      "path": "public/assets/private-IconCheck.svg",
+      "bytes": 341,
+      "sha256": "985042a6d5e873a7cfa846598545eb73c35b40d109bfd8a36fc47dbb0e4bdcfd"
+    },
+    {
+      "path": "public/assets/private-IconEdit.svg",
+      "bytes": 409,
+      "sha256": "11350d2f02416c683d6dea59af9f01f1d6c3fb16bd9ee92a152e6b842cb8e11f"
+    },
+    {
+      "path": "public/assets/private-IconHome.svg",
+      "bytes": 386,
+      "sha256": "7e6c76ea67743553febebb80f84a49495a5037fff93133dccfc9bf80485b423e"
+    },
+    {
+      "path": "public/assets/private-IconLock.svg",
+      "bytes": 873,
+      "sha256": "34acdc2d15438fb3e4e98c216323135ac808ba7234a58c916f49ec731fc7f161"
+    },
+    {
+      "path": "public/assets/private-IconLock1.svg",
+      "bytes": 858,
+      "sha256": "07618df5cce106cd7bafc7c93b82e6f7c3c54e464b3f004ffbcd9dc85a2d4fa3"
+    },
+    {
+      "path": "public/assets/private-IconMap.svg",
+      "bytes": 398,
+      "sha256": "6ec45bf1d70f496e2953ddb7bc4230a7675d1c2258a280c440b95440bea423cf"
+    },
+    {
+      "path": "public/assets/private-IconPeople.svg",
+      "bytes": 1061,
+      "sha256": "32859cb927aed75df9de6d70a40983ccdfb19112f1899740ed586d5c95f8a6dc"
+    },
+    {
+      "path": "public/assets/private-IconPlane.svg",
+      "bytes": 456,
+      "sha256": "ddb42236a5295e64ea06e7a9b7ce3d1ee9e5872542051b4f6fcc52a085885fea"
+    },
+    {
+      "path": "public/assets/private-IconWallet.svg",
+      "bytes": 867,
+      "sha256": "b4cae2e935279ba8d379c5cd81a9ca901341e44ccd72fc3c77737d3c25df457d"
+    },
+    {
+      "path": "public/assets/review-IconBed.svg",
+      "bytes": 417,
+      "sha256": "0d3f0d0e3ae725f8a11340c1e62b3b2536d0faaa7b5570d4312bec3068337738"
+    },
+    {
+      "path": "public/assets/review-IconBoat.svg",
+      "bytes": 548,
+      "sha256": "502014cd825fb8ca51a18dac19cd27f8d64d318b4d3dbef3723079d8c29d2d24"
+    },
+    {
+      "path": "public/assets/review-IconCalendar.svg",
+      "bytes": 690,
+      "sha256": "41b230aa2d8e374d9919cdfa5f9f62c16da51a3f8cc22bb0a3d9419289f66958"
+    },
+    {
+      "path": "public/assets/review-IconHome.svg",
+      "bytes": 386,
+      "sha256": "7e6c76ea67743553febebb80f84a49495a5037fff93133dccfc9bf80485b423e"
+    },
+    {
+      "path": "public/assets/review-IconMap.svg",
+      "bytes": 398,
+      "sha256": "6ec45bf1d70f496e2953ddb7bc4230a7675d1c2258a280c440b95440bea423cf"
+    },
+    {
+      "path": "public/assets/review-IconPeople.svg",
+      "bytes": 1061,
+      "sha256": "32859cb927aed75df9de6d70a40983ccdfb19112f1899740ed586d5c95f8a6dc"
+    },
+    {
+      "path": "public/assets/review-IconPlane.svg",
+      "bytes": 456,
+      "sha256": "ddb42236a5295e64ea06e7a9b7ce3d1ee9e5872542051b4f6fcc52a085885fea"
+    },
+    {
+      "path": "public/assets/review-IconWallet.svg",
+      "bytes": 867,
+      "sha256": "b4cae2e935279ba8d379c5cd81a9ca901341e44ccd72fc3c77737d3c25df457d"
+    },
+    {
+      "path": "public/assets/setup-EditableIllustrationGoaCoast.svg",
+      "bytes": 3017,
+      "sha256": "e3dada1dc186642680eae5623add885b669663fd04ad4548bebc80d252883bed"
+    },
+    {
+      "path": "public/assets/setup-IconCalendar.svg",
+      "bytes": 690,
+      "sha256": "41b230aa2d8e374d9919cdfa5f9f62c16da51a3f8cc22bb0a3d9419289f66958"
+    },
+    {
+      "path": "public/assets/setup-IconHome.svg",
+      "bytes": 386,
+      "sha256": "7e6c76ea67743553febebb80f84a49495a5037fff93133dccfc9bf80485b423e"
+    },
+    {
+      "path": "public/assets/setup-IconLock.svg",
+      "bytes": 873,
+      "sha256": "34acdc2d15438fb3e4e98c216323135ac808ba7234a58c916f49ec731fc7f161"
+    },
+    {
+      "path": "public/assets/setup-IconMap.svg",
+      "bytes": 398,
+      "sha256": "6ec45bf1d70f496e2953ddb7bc4230a7675d1c2258a280c440b95440bea423cf"
+    },
+    {
+      "path": "public/assets/setup-IconPeople.svg",
+      "bytes": 1061,
+      "sha256": "32859cb927aed75df9de6d70a40983ccdfb19112f1899740ed586d5c95f8a6dc"
+    },
+    {
+      "path": "public/assets/setup-IconPlane.svg",
+      "bytes": 456,
+      "sha256": "ddb42236a5295e64ea06e7a9b7ce3d1ee9e5872542051b4f6fcc52a085885fea"
+    },
+    {
+      "path": "public/assets/setup-IconWallet.svg",
+      "bytes": 867,
+      "sha256": "b4cae2e935279ba8d379c5cd81a9ca901341e44ccd72fc3c77737d3c25df457d"
+    },
+    {
+      "path": "public/assets/signin-EditableIllustrationGoaCoast.svg",
+      "bytes": 3033,
+      "sha256": "810d15abdcaeaf18cc06a1c92dfb55f2acf34c28dd185b46255db7fadef53b61"
+    },
+    {
+      "path": "public/assets/signin-IconLock.svg",
+      "bytes": 858,
+      "sha256": "07618df5cce106cd7bafc7c93b82e6f7c3c54e464b3f004ffbcd9dc85a2d4fa3"
+    },
+    {
+      "path": "public/assets/signin-IconPeople.svg",
+      "bytes": 1061,
+      "sha256": "32859cb927aed75df9de6d70a40983ccdfb19112f1899740ed586d5c95f8a6dc"
+    },
+    {
+      "path": "public/assets/signin-IconPlane.svg",
+      "bytes": 456,
+      "sha256": "ddb42236a5295e64ea06e7a9b7ce3d1ee9e5872542051b4f6fcc52a085885fea"
+    },
+    {
+      "path": "public/assets/signin-IconWallet.svg",
+      "bytes": 867,
+      "sha256": "b4cae2e935279ba8d379c5cd81a9ca901341e44ccd72fc3c77737d3c25df457d"
+    },
+    {
+      "path": "public/assets/signup-EditableIllustrationGoaCoast.svg",
+      "bytes": 2927,
+      "sha256": "d551bc690e474a7c31a920e0417e91908e7995576f2fed5b052600b2c5afc766"
+    },
+    {
+      "path": "public/assets/signup-IconLock.svg",
+      "bytes": 873,
+      "sha256": "34acdc2d15438fb3e4e98c216323135ac808ba7234a58c916f49ec731fc7f161"
+    },
+    {
+      "path": "public/assets/signup-IconPeople.svg",
+      "bytes": 1061,
+      "sha256": "32859cb927aed75df9de6d70a40983ccdfb19112f1899740ed586d5c95f8a6dc"
+    },
+    {
+      "path": "public/assets/signup-IconPlane.svg",
+      "bytes": 456,
+      "sha256": "ddb42236a5295e64ea06e7a9b7ce3d1ee9e5872542051b4f6fcc52a085885fea"
+    },
+    {
+      "path": "public/assets/signup-IconWallet.svg",
+      "bytes": 867,
+      "sha256": "b4cae2e935279ba8d379c5cd81a9ca901341e44ccd72fc3c77737d3c25df457d"
+    },
+    {
+      "path": "src/App.tsx",
+      "bytes": 31681,
+      "sha256": "5f20477857358944509c7c9b2f4bdbeac080c5c81b539b349fb05d6c00bd1dd9"
+    },
+    {
+      "path": "src/assets/fonts/Inter-400.ttf",
+      "bytes": 324820,
+      "sha256": "1b08e7fc267a5c7e1d614100f604b83e7e8a0be241f0f288faa2b3ac93a683ba"
+    },
+    {
+      "path": "src/assets/fonts/Inter-500.ttf",
+      "bytes": 325304,
+      "sha256": "8c883f63b2c4157d997319f2c8bc6995ed4357ef371940d31ca159004a4aae63"
+    },
+    {
+      "path": "src/assets/fonts/Inter-600.ttf",
+      "bytes": 326048,
+      "sha256": "e7a1aaf7eda9f2fad4131725fa556265ec75ca7b2d756260173a040363e8d4f7"
+    },
+    {
+      "path": "src/assets/fonts/Inter-700.ttf",
+      "bytes": 326468,
+      "sha256": "b37284b5701b6b168dfc770aa1a4ac492106422fd3ba76bc7641e37434e8019c"
+    },
+    {
+      "path": "src/assets/fonts/OFL.txt",
+      "bytes": 4377,
+      "sha256": "5b9321a4298cfeb6b34354164a1c3afc3db114569984c502b9b35d988fd58c57"
+    },
+    {
+      "path": "src/assets.ts",
+      "bytes": 8509,
+      "sha256": "d59fab03a94cd306e315ae8a77c182effdf9797cf76b5c75a201fe262ac45e3d"
+    },
+    {
+      "path": "src/bookings.tsx",
+      "bytes": 12268,
+      "sha256": "e98f6f68e9eb4591530e098925c29bccf056a0b04a7110528408f3930e13a147"
+    },
+    {
+      "path": "src/decisions.tsx",
+      "bytes": 16272,
+      "sha256": "7e0fb559454b6272c1be2be6ef73cb07fda1bb6a060b964edddde50f5772467b"
+    },
+    {
+      "path": "src/domain.ts",
+      "bytes": 23210,
+      "sha256": "f96440df6548247bdbbde9e1c106710b7be33ba9766a2be361bfc61ab44bf4f0"
+    },
+    {
+      "path": "src/entry.tsx",
+      "bytes": 14063,
+      "sha256": "9e4669eb0a2561a276652ff628c5d3424f83c77c0ad066648675cc2256f19141"
+    },
+    {
+      "path": "src/index.css",
+      "bytes": 14709,
+      "sha256": "8bd4bb092c694bef79d0354cda63b2313cb31256b57a1b01865048f883c7d8c1"
+    },
+    {
+      "path": "src/main.tsx",
+      "bytes": 231,
+      "sha256": "b19351436a1a41156bf4a6b420c5d9514988596aaa124dc5019f1c7ebc8530be"
+    },
+    {
+      "path": "src/planning.tsx",
+      "bytes": 21503,
+      "sha256": "1ad05846420648b7c9f537cf0f50181c83c1128d3d6a23772de8eb68d50bcdab"
+    },
+    {
+      "path": "src/preferences.tsx",
+      "bytes": 10955,
+      "sha256": "9b455f22056d6cfbb3344df70fd6f45d23207d78546238b10b44116bcb95065d"
+    },
+    {
+      "path": "src/store.ts",
+      "bytes": 1853,
+      "sha256": "3b62a9a5f3a7e7e16bb6b8f26cfb4782c07249ae9b636f4b452e439ef4be2baf"
+    },
+    {
+      "path": "src/ui.tsx",
+      "bytes": 5760,
+      "sha256": "3f0e1d2faa78c9cfb1985a8457b58f3b6765f8e13c3ee1c44c14328fb03d050b"
+    },
+    {
+      "path": "src/vite-env.d.ts",
+      "bytes": 38,
+      "sha256": "65996936fbb042915f7b74a200fcdde7e410f32a669b1ab9597cfaa4b0faddb5"
+    },
+    {
+      "path": "tests/browser.mjs",
+      "bytes": 12323,
+      "sha256": "cf6f36d9830ef8546a83ba2014019c27d3a7f1d19d781276fb0d9a5987c66936"
+    },
+    {
+      "path": "tests/domain.test.mjs",
+      "bytes": 7424,
+      "sha256": "f44539c8d4679a536b662055e65fb60691600923ae6a46536f7d340ce4e6404c"
+    },
+    {
+      "path": "tools/format.mjs",
+      "bytes": 1261,
+      "sha256": "7fdf3279e802a08904c346a52e582f2fd66c79af37e985e0e01ff7506756764d"
+    },
+    {
+      "path": "tsconfig.json",
+      "bytes": 620,
+      "sha256": "0af635fe325f8e84f7dd5d1cd2ef9df9b241e90448fe73b27d92027e3c5bb578"
+    },
+    {
+      "path": "vite.config.ts",
+      "bytes": 15290,
+      "sha256": "a1f4ff1b35c6b587536060508e79c9a989a491fceb0caa87fe547c13075945da"
+    }
+  ]
+}
