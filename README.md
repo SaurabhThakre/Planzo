@@ -4,6 +4,20 @@
 
 [Open the live app](https://person-siren-40913121.figma.site/) · [Explore the fictional Goa sample](https://person-siren-40913121.figma.site/?demo=1) · [View the Figma design](https://www.figma.com/design/IRAXhHV3ldeGoxWwXJeZk9/Planzo-Design?node-id=22-266)
 
+## App screenshots
+
+The itinerary and decision views use the separate fictional Goa sample. Click an image to see it at full size.
+
+### Live app landing page
+
+[![Planzo landing page with trip creation and invitation options](docs/landing.jpg)](docs/landing.jpg)
+
+### Fictional Goa sample
+
+| Trip itinerary and personal estimate | Group decision status |
+| --- | --- |
+| [![Three-day Goa itinerary with optional activity and cost estimate](docs/itinerary.jpg)](docs/itinerary.jpg) | [![Six travellers' pending responses and Planzo Passport progress](docs/decisions.jpg)](docs/decisions.jpg) |
+
 ## The problem
 
 Group trips often stall because dates, costs and personal needs are scattered across messages. A popular option can still be unaffordable or impossible for someone. Planzo makes those constraints visible in the decision process while keeping each person's raw budget and private reasons out of shared summaries.
