@@ -12,11 +12,13 @@ The itinerary and decision views use the separate fictional Goa sample. Click an
 
 [![Planzo landing page with trip creation and invitation options](docs/landing.jpg)](docs/landing.jpg)
 
-### Fictional Goa sample
+### Fictional Goa sample — itinerary and estimate
 
-| Trip itinerary and personal estimate | Group decision status |
-| --- | --- |
-| [![Three-day Goa itinerary with optional activity and cost estimate](docs/itinerary.jpg)](docs/itinerary.jpg) | [![Six travellers' pending responses and Planzo Passport progress](docs/decisions.jpg)](docs/decisions.jpg) |
+[![Three-day Goa itinerary with optional activity and cost estimate](docs/itinerary.jpg)](docs/itinerary.jpg)
+
+### Fictional Goa sample — group decisions
+
+[![Six travellers' pending responses and Planzo Passport progress](docs/decisions.jpg)](docs/decisions.jpg)
 
 ## The problem
 
