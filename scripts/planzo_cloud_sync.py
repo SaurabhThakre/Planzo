@@ -285,15 +285,9 @@ def publish() -> None:
         download_code(page, verify_zip)
         if metadata_for_zip(verify_zip)["source_hash"] != expected:
             raise RuntimeError("Make code changed during this run; retry on the next run")
-        page.get_by_role("button", name="Publish", exact=True).click()
-        page.get_by_role("heading", name="Publish", exact=True).wait_for(timeout=30_000)
-        page.get_by_role("link", name=SITE_HOST).wait_for(timeout=15_000)
-        if page.get_by_text("No issues", exact=True).count() == 0:
-            raise RuntimeError("Figma reports publishing issues; refusing to update")
+        open_publish_dialog(page)
         last_published = page.get_by_text("Last published", exact=True).locator("..").locator("..").inner_text()
         update = page.get_by_role("button", name="Update", exact=True)
-        if not update.is_enabled():
-            raise RuntimeError("Figma Update button is disabled")
         update.click()
         for _ in range(60):
             page.wait_for_timeout(2000)
@@ -304,6 +298,22 @@ def publish() -> None:
                 print(f"Figma Site updated at {SITE_HOST}")
                 return
         raise RuntimeError("Could not verify Figma publication; GitHub sync was stopped")
+
+
+def open_publish_dialog(page) -> None:
+    page.get_by_role("button", name="Publish", exact=True).click()
+    page.get_by_role("heading", name="Publish", exact=True).wait_for(timeout=30_000)
+    page.get_by_role("link", name=SITE_HOST).wait_for(timeout=15_000)
+    if page.get_by_text("No issues", exact=True).count() == 0:
+        raise RuntimeError("Figma reports publishing issues; refusing to update")
+    if not page.get_by_role("button", name="Update", exact=True).is_enabled():
+        raise RuntimeError("Figma Update button is disabled")
+
+
+def check_publish() -> None:
+    with figma_browser() as page:
+        open_publish_dialog(page)
+    print(f"Figma Site update controls ready for {SITE_HOST}")
 
 
 def git(*args: str, env: dict | None = None) -> str:
@@ -358,13 +368,15 @@ def sync() -> None:
 
 def main() -> None:
     parser = argparse.ArgumentParser()
-    parser.add_argument("command", choices=["download", "review-readme", "publish", "sync", "inspect-zip"])
+    parser.add_argument("command", choices=["download", "review-readme", "check-publish", "publish", "sync", "inspect-zip"])
     parser.add_argument("--zip", type=Path, help="Local Figma export for an offline inspection")
     args = parser.parse_args()
     if args.command == "download":
         download()
     elif args.command == "review-readme":
         review_readme()
+    elif args.command == "check-publish":
+        check_publish()
     elif args.command == "publish":
         publish()
     elif args.command == "sync":

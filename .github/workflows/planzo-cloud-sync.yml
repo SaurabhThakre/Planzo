@@ -91,10 +91,16 @@ jobs:
           pnpm run build
 
       - name: Review whether README needs a flow update
-        if: steps.export.outputs.changed == 'true' && steps.gate.outputs.mode == 'publish'
+        if: steps.export.outputs.changed == 'true'
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
         run: python scripts/planzo_cloud_sync.py review-readme
+
+      - name: Check Figma Site publication controls in dry run
+        if: steps.export.outputs.changed == 'true' && steps.gate.outputs.mode == 'dry-run'
+        env:
+          FIGMA_STORAGE_STATE_B64: ${{ secrets.FIGMA_STORAGE_STATE_B64 }}
+        run: python scripts/planzo_cloud_sync.py check-publish
 
       - name: Publish the changed Make app to its existing Figma Site
         if: steps.export.outputs.changed == 'true' && steps.gate.outputs.mode == 'publish'
