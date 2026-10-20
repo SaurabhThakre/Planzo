@@ -12,7 +12,7 @@ On each run it exports the existing [Figma Make project](https://www.figma.com/m
    node scripts/capture_figma_session.cjs
    ```
 
-   Sign in yourself in the browser opened by the script. The script verifies that the Planzo Make file and its Publish button are accessible, then writes an encoded session to `~/.config/planzo-cloud-sync/figma-session-secret.txt`. Do not commit or share that file.
+   Sign in yourself in the browser opened by the script. The script verifies that the Planzo Make file and its Publish button are accessible, then prints the path to a temporary private session file. Do not commit or share that file.
 
 2. In the repository's **Settings → Secrets and variables → Actions**, create repository secret `FIGMA_STORAGE_STATE_B64` with the complete contents of that file. Delete the local secret file after saving it. This session grants the cloud runner the same Figma access as the signed-in account until it expires or is revoked.
 3. In the same place, create repository secret `OPENAI_API_KEY` with an OpenAI API key that can use `gpt-6.1-sol`. The key is used only on days with Make code changes, to decide whether the README needs a substantial user-flow correction and to write that correction.

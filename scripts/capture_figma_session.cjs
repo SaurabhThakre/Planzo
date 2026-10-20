@@ -20,7 +20,7 @@ try {
 }
 
 const makeUrl = "https://www.figma.com/make/4tPr5AkQO1g0L1esRvGRjz/Planzo-%E2%80%94-Working-Prototype";
-const secretPath = path.join(os.homedir(), ".config/planzo-cloud-sync/figma-session-secret.txt");
+const secretPath = path.join(os.tmpdir(), "planzo-figma-session-secret.txt");
 
 async function main() {
   const browser = await chromium.launch({ headless: false, channel: "chrome" });
