@@ -64,7 +64,7 @@ jobs:
       - name: Install browser and README review dependencies
         if: steps.gate.outputs.active == 'true'
         run: |
-          python -m pip install --disable-pip-version-check playwright openai pydantic
+          python -m pip install --disable-pip-version-check playwright google-genai pydantic
           python -m playwright install --with-deps chromium
 
       - name: Export Make source and compare it with the last published source
@@ -90,17 +90,17 @@ jobs:
           pnpm test
           pnpm run build
 
-      - name: Review whether README needs a flow update
-        if: steps.export.outputs.changed == 'true'
-        env:
-          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-        run: python scripts/planzo_cloud_sync.py review-readme
-
       - name: Check Figma Site publication controls in dry run
         if: steps.export.outputs.changed == 'true' && steps.gate.outputs.mode == 'dry-run'
         env:
           FIGMA_STORAGE_STATE_B64: ${{ secrets.FIGMA_STORAGE_STATE_B64 }}
         run: python scripts/planzo_cloud_sync.py check-publish
+
+      - name: Review whether README needs a flow update
+        if: steps.export.outputs.changed == 'true'
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: python scripts/planzo_cloud_sync.py review-readme
 
       - name: Publish the changed Make app to its existing Figma Site
         if: steps.export.outputs.changed == 'true' && steps.gate.outputs.mode == 'publish'
