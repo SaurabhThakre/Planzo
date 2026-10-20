@@ -21,4 +21,4 @@ On each run it exports the existing [Figma Make project](https://www.figma.com/m
 
 The workflow never writes a Figma password or session into source control or logs. A Figma session can still expire; repeat step 1 and replace `FIGMA_STORAGE_STATE_B64` when access fails. Anyone with permission to edit this repository's Actions workflow could cause it to use the session or Gemini API key, so limit workflow write access.
 
-The prior Codex desktop schedule remains a fallback until one full cloud publication and GitHub push have been verified. Pause it then to prevent duplicate runs.
+The prior Codex desktop schedule is paused so it will not duplicate the cloud run. The first actual publication and GitHub push are scheduled for October 21; the dry run verifies access and controls without publishing.
