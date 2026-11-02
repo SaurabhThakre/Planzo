@@ -4,12 +4,147 @@
   "makeFile": "4tPr5AkQO1g0L1esRvGRjz",
   "fixture": "10c6492e-cb08-4dc4-9b3d-d79a883a7e5f",
   "label": "TEST · Complete Japan route 2026-10-19",
-  "status": "Live quality failed; complete-route generation is not yet reliable or certified complete",
-  "providerAttempts": 6,
-  "validatedResults": 0,
-  "savedPlans": 0,
+  "status": "Live Gemini route saved and inspected; the reported540-minute error is fixed",
+  "validatedResults": 1,
+  "savedPlans": 1,
   "automaticRetries": 0,
-  "attempts": [
+  "finalDeployedEdge": 30,
+  "localValidation": {
+    "testsPassed": 183,
+    "testsFailed": 0,
+    "typecheck": true,
+    "build": true,
+    "isolatedDatabaseChecks": 24,
+    "readOnlyClockDatabaseReplay": {
+      "before": "Rejected: Combine duplicate contextual items",
+      "after": "Accepted62 steps from2026-11-20T00:30Z through2026-11-26T13:00Z,Asia/Tokyo",
+      "insertedRows": 0
+    },
+    "additionalSQLIntegration": "A supplemental disposable-database run produced no completed results and was interrupted; pg_ctl confirmed no server running. Do not count it as passing."
+  },
+  "sourceVerification": {
+    "uniqueRuntimeFiles": 140,
+    "applicationEntries": 57,
+    "backendEntries": 86,
+    "fixtureEntries": 2,
+    "validationExecutedInMake": false,
+    "method": "Base137-file archive plus guarded incremental source editor readbacks"
+  },
+  "existingDataUnchanged": true,
+  "preservation": {
+    "trips": 28,
+    "plans": 27,
+    "inputs": 40,
+    "locks": 11,
+    "reviews": 17,
+    "polls": 8,
+    "ballots": 11,
+    "trip_hash": "134d1c617f08cc1b29b2490d831aa333",
+    "plan_hash": "b32f0e7d6abb908f79960ba23d61933f",
+    "input_hash": "55fe67edf68db20acd6ddfa1d4586157",
+    "fixture_admissions": 30,
+    "fixture_used_admissions": 1,
+    "fixture_plans": 1
+  },
+  "fixtureInput": {
+    "fictional": true,
+    "includedTravellers": 1,
+    "start": "2026-11-20T06:00:00+05:30",
+    "end": "2026-11-26T18:30:00+05:30",
+    "destination": "Japan",
+    "requests": [
+      "Visit Tokyo Tower.",
+      "See Mount Fuji from the lakes region.",
+      "Include timed transfers between places.",
+      "Enjoy Tokyo nightlife."
+    ]
+  },
+  "remaining": [
+    "Refine coarse gateway/neighbourhood labels before treating this as travel-ready; actual opening hours,routing,timetables and prices still need Phase2 verification.",
+    "This one-person fixture does not certify all destinations or multi-traveller model variations. Earlier verified concern/voting flows remain baseline.",
+    "No further Gemini call is needed to repeat this successful smoke check."
+  ],
+  "providerAttemptsMeaning": "Historical explicitly observed responses are preserved separately. Current manually observed outcomes are listed in currentContinuation. Admissions are not a provider-call count; no automatic retry.",
+  "providerAdmissionRecords": 30,
+  "installedTimingCorrections": [
+    "Destination-clock compiler anchored to exact shared instants",
+    "Explicit sequential Gemini connections including same-neighbourhood travel",
+    "Unique recurring catalogue preserving every occurrence,source and estimate",
+    "Solo group-vote suppression with unplaced source-tagged wishes still requiring review"
+  ],
+  "currentContinuation": {
+    "date": "2026-10-20",
+    "edge": {
+      "id": "d11581d0-56b0-4c0e-b2e6-17a1514a35f5",
+      "version": 30,
+      "status": "ACTIVE",
+      "verify_jwt": true,
+      "ezbr_sha256": "ad2363e252e2977f2ebb69873a6ed133a152adbb4c099cb48da235ac69f8e590"
+    },
+    "testsPassed": 183,
+    "savedPlans": 1,
+    "routeInspected": true,
+    "existingDataUnchanged": true,
+    "preservation": {
+      "trips": 28,
+      "plans": 27,
+      "inputs": 40,
+      "locks": 11,
+      "reviews": 17,
+      "polls": 8,
+      "ballots": 11,
+      "trip_hash": "134d1c617f08cc1b29b2490d831aa333",
+      "plan_hash": "b32f0e7d6abb908f79960ba23d61933f",
+      "input_hash": "55fe67edf68db20acd6ddfa1d4586157",
+      "fixture_admissions": 30,
+      "fixture_used_admissions": 1,
+      "fixture_plans": 1
+    },
+    "metrics": {
+      "id": "d6ce420c-8634-4574-a3eb-1cf6ac3923e9",
+      "version": 1,
+      "time_zone": "Asia/Tokyo",
+      "timed_steps": 74,
+      "visits": 14,
+      "meals": 14,
+      "nights": 6,
+      "journeys": 22,
+      "independent_visits": 10,
+      "days": 7,
+      "starts_at": "2026-11-20 00:30:00+00",
+      "ends_at": "2026-11-26 13:00:00+00"
+    },
+    "reviewAndLock": {
+      "reviews": 1,
+      "locks": 1,
+      "route_document_md5": "02cffd15760a81b0d7f81e34b48fc4ce"
+    },
+    "liveSummary": "A real Gemini response on Edgev30 saved version1 with74 timed steps across all7 days:14 visits,14 meals,6 overnight stays and22 journeys;10 visits were independent additions. All four reviewed source wishes have included outcomes. First stop is20November09:30JST and final end26November22:00JST. The ordinary signed-in fixture user reviewed and locked this version; Final journey and the historical version/decision log were read successfully. No reservation was made.",
+    "observedContinuation": [
+      "v15–21: day/stay/network/identifier format failures observed while separating destination clocks from model timestamps",
+      "v22: rejected incomplete usable-day activities/meals",
+      "v23: rejected disconnected proposed travel network",
+      "v24: connected-format response rejected by an over-strict same-area connection check; an earlier v24 result was lost during Make rebuild",
+      "v25: generic validation/completion failure; not treated as a saved result",
+      "v26: final database rejection; a read-only synthetic replay reproduced duplicate contextual items and passed after catalogue correction",
+      "v27: rejected incompatible vote alternatives in a one-person fixture",
+      "v28: final result not observed after preview returned Home; no saved plan or used receipt claimed",
+      "v29: observed provider HTTP503, then one controlled retry rejected a ten-minute stop by blanket20-minute minimum",
+      "v30: real Gemini route saved, reviewed, locked and read through Final journey and History"
+    ],
+    "automaticRetries": 0,
+    "providerCallCount": "Not inferred from admission receipts; some preview results were unobserved.",
+    "remaining": [
+      "Refine coarse gateway/neighbourhood labels before treating this as travel-ready; actual opening hours,routing,timetables and prices still need Phase2 verification.",
+      "This one-person fixture does not certify all destinations or multi-traveller model variations. Earlier verified concern/voting flows remain baseline.",
+      "No further Gemini call is needed to repeat this successful smoke check."
+    ],
+    "proofScreenshots": [
+      "docs/backend/ROUTE_CLOCK_LIVE_DESKTOP.jpg",
+      "docs/backend/ROUTE_CLOCK_FINAL_JOURNEY.jpg"
+    ]
+  },
+  "historicalObservedAttempts": [
     {
       "edge": 9,
       "result": "Rejected: location changes need an explicit transfer"
@@ -34,63 +169,5 @@
       "edge": 14,
       "result": "Rejected: a transfer needs a transport mode and a meaningful flight route"
     }
-  ],
-  "finalDeployedEdge": 14,
-  "localValidation": {
-    "testsPassed": 137,
-    "testsFailed": 0,
-    "typecheck": true,
-    "build": true,
-    "isolatedDatabaseChecks": 24,
-    "additionalSQLIntegration": "A supplemental disposable-database run produced no completed results and was interrupted; pg_ctl confirmed no server running. Do not count it as passing."
-  },
-  "sourceVerification": {
-    "uniqueRuntimeFiles": 137,
-    "applicationEntries": 54,
-    "backendEntries": 85,
-    "fixtureEntries": 2,
-    "validationExecutedInMake": false,
-    "method": "137-file base archive readback plus two subsequent4-file guarded editor passes (v13,v14); no tests executed in Make"
-  },
-  "existingDataUnchanged": true,
-  "preservation": {
-    "trips": 28,
-    "plans": 27,
-    "inputs": 40,
-    "locks": 11,
-    "reviews": 17,
-    "polls": 8,
-    "ballots": 11,
-    "trip_hash": "134d1c617f08cc1b29b2490d831aa333",
-    "plan_hash": "b32f0e7d6abb908f79960ba23d61933f",
-    "input_hash": "55fe67edf68db20acd6ddfa1d4586157",
-    "fixture_admissions": 7,
-    "fixture_used_admissions": 0,
-    "fixture_plans": 0
-  },
-  "fixtureInput": {
-    "fictional": true,
-    "includedTravellers": 1,
-    "start": "2026-11-20T06:00:00+05:30",
-    "end": "2026-11-26T18:30:00+05:30",
-    "destination": "Japan",
-    "requests": [
-      "Visit Tokyo Tower.",
-      "See Mount Fuji from the lakes region.",
-      "Include timed transfers between places.",
-      "Enjoy Tokyo nightlife."
-    ]
-  },
-  "remaining": [
-    "Simplify the model contract so valid route/transport data is generated reliably",
-    "Establish a successful live complete seven-day itinerary and inspect semantic quality before certifying",
-    "Only after a valid result, review and lock the labelled fixture and verify Final journey/History"
-  ],
-  "providerAttemptsMeaning": "Six explicitly observed Gemini responses; no automatic retries. Seven reservation records are not proof of seven external calls.",
-  "providerAdmissionRecords": 7,
-  "installedTimingCorrections": [
-    "Ordinary gaps become explicitly labelled, zero-cost flexible time in the same area; no attraction, journey or sleep is invented",
-    "Only first/last visit, meal or rest may be shortened by at most60 minutes, retaining its declared minimum, same-area boundary and a visible assumption note; transport and stays are never shortened",
-    "Overlaps, missing transfers, impossible journey times, missing usable days and sleep remain rejected"
   ]
 }

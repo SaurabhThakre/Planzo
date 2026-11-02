@@ -83,10 +83,12 @@
     }
   ],
   "edge": {
-    "version": 14,
+    "id": "d11581d0-56b0-4c0e-b2e6-17a1514a35f5",
+    "version": 30,
     "status": "ACTIVE",
     "verify_jwt": true,
-    "returnedSourcesMatched": 6
+    "ezbr_sha256": "ad2363e252e2977f2ebb69873a6ed133a152adbb4c099cb48da235ac69f8e590",
+    "returnedSourcesMatched": 7
   },
   "existingDataUnchanged": true,
   "baseline": {
@@ -112,14 +114,21 @@
     "trip_hash": "134d1c617f08cc1b29b2490d831aa333",
     "plan_hash": "b32f0e7d6abb908f79960ba23d61933f",
     "input_hash": "55fe67edf68db20acd6ddfa1d4586157",
-    "fixture_admissions": 7,
-    "fixture_used_admissions": 0,
-    "fixture_plans": 0
+    "fixture_admissions": 30,
+    "fixture_used_admissions": 1,
+    "fixture_plans": 1
   },
   "securityAdvisors": {
     "INFO:rls_enabled_no_policy": 1,
     "WARN:auth_leaked_password_protection": 1
   },
-  "liveQualityStatus": "Not validated: six observed model drafts rejected, no fixture plan saved",
-  "continuationSQLChanges": 0
+  "liveQualityStatus": "Live Gemini route saved and inspected; the reported540-minute error is fixed",
+  "continuationSQLChanges": false,
+  "clockCompiler": {
+    "providerFormat": 7,
+    "savedFormat": 3,
+    "thinkingLevel": "medium",
+    "databaseReplaySteps": 62,
+    "sqlChanged": false
+  }
 }

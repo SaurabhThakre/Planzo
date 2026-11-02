@@ -1,0 +1,123 @@
+{
+  "deployment": {
+    "version": 33,
+    "status": "ACTIVE",
+    "verify_jwt": true,
+    "ezbr_sha256": "7686812e7313f0235e64dc9e364856c0a4d4a35830591f17bb42c64367645f8a",
+    "runtime_files": [
+      {
+        "path": "supabase/functions/planzo-planning/index.ts",
+        "exact": true
+      },
+      {
+        "path": "supabase/functions/planzo-planning/handler.ts",
+        "exact": true
+      },
+      {
+        "path": "src/aiProtocol.ts",
+        "exact": true
+      },
+      {
+        "path": "src/aiAvailability.ts",
+        "exact": true
+      },
+      {
+        "path": "src/budgetPlanning.ts",
+        "exact": true
+      },
+      {
+        "path": "src/routeCompiler.ts",
+        "exact": true
+      },
+      {
+        "path": "src/routePlanning.ts",
+        "exact": true
+      },
+      {
+        "path": "src/contextualPlanning.ts",
+        "exact": true
+      }
+    ]
+  },
+  "preservation": {
+    "before": {
+      "trips": 30,
+      "plans": 28,
+      "input_versions": 43,
+      "locks": 12,
+      "reviews": 18,
+      "polls": 8,
+      "ballots": 11,
+      "trip_hash": "b5cfabd21d177078f9e1e7f2f29524e8",
+      "plan_hash": "e4254bd207501723ac20c037d07d9ec8",
+      "input_version_hash": "2a051faa84aa72f6fcc288307fb20563"
+    },
+    "after": {
+      "trips": 30,
+      "plans": 28,
+      "input_versions": 43,
+      "locks": 12,
+      "reviews": 18,
+      "polls": 8,
+      "ballots": 11,
+      "trip_hash": "b5cfabd21d177078f9e1e7f2f29524e8",
+      "plan_hash": "e4254bd207501723ac20c037d07d9ec8",
+      "input_version_hash": "2a051faa84aa72f6fcc288307fb20563",
+      "route_document_hash": "02cffd15760a81b0d7f81e34b48fc4ce"
+    },
+    "match": true
+  },
+  "readOnlySQL": [
+    {
+      "name": "primary_above_private_cap",
+      "expectedError": true,
+      "error": true,
+      "pass": true
+    },
+    {
+      "name": "economy_fits_same_private_cap",
+      "expectedError": false,
+      "error": false,
+      "pass": true
+    },
+    {
+      "name": "impossible_budget_still_rejected",
+      "expectedError": true,
+      "error": true,
+      "pass": true
+    }
+  ],
+  "fixture": {
+    "trip_id": "cc715a95-1a53-450f-974c-de382f67c778",
+    "name": "TEST · Economy planning 2026-10-20",
+    "first_attempt": "v31 travel20minutes vs conservative22 rejected without save",
+    "second_attempt": "v32 complete response exceeded fictional INR90000 including compatible economy options; no save",
+    "third_attempt": "v32 rejected 5-minute journey needing20minutes; no plan saved",
+    "fourth_attempt": "v33 rejected day3 with3visits but1meal, no plan saved. Live successful generation is NOT verified for this patch.",
+    "metadata": {
+      "plans": 0,
+      "admissions": 4,
+      "used_receipts": 0,
+      "input_versions": 2,
+      "confirmed_inputs": 1
+    }
+  },
+  "tests": {
+    "application": 209,
+    "passed": 209,
+    "typecheck": "pass",
+    "build": "pass",
+    "database_read_only": 3
+  },
+  "observed_provider_requests": 4,
+  "source": {
+    "application": 59,
+    "backend": 87,
+    "fixture": 2,
+    "unique_runtime_paths": 142,
+    "changed_path_readbacks": 9,
+    "readback_operations": 11,
+    "evidence": "BUDGET_SOURCE_READBACK.json"
+  },
+  "status": "budget fallback installed; local/database verification passed; live successful generation remains blocked by model completeness"
+}

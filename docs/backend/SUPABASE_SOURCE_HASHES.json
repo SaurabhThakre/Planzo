@@ -40,8 +40,8 @@
     "tools/setup-check.mjs": "8408d48d9bb4f5ad78fc2ea94145d09f4ecd86c9f48ffefb5ed2886eec450282",
     "supabase/changes/planzo_private_planning.sql": "ea46d27614abb8d4636d1a3369e61f8bf922b13f482d0f069b90c4c86c3f9ee2",
     "supabase/migrations/20261016173645_planzo_private_inputs_and_planning_flow.sql": "ea46d27614abb8d4636d1a3369e61f8bf922b13f482d0f069b90c4c86c3f9ee2",
-    "supabase/functions/planzo-planning/index.ts": "6f083335d7e90422b0316a42e2f0658175466c156392d239ea50ccc8d6f39909",
-    "supabase/functions/planzo-planning/handler.ts": "0199d2f07b13e4ac6321c9333fae25f91affcb0bdd78134cafe56c2bbfc97f22",
+    "supabase/functions/planzo-planning/index.ts": "fdd5578a0eba291a7811e8912a2a5bc8d339191576e16e1929e0f4658e57334b",
+    "supabase/functions/planzo-planning/handler.ts": "aeda794f991239ec0498ebde4b6948e5d6a7bc9f079a78fe6a61934131bb448d",
     "supabase/functions/planzo-planning/deno.json": "f9f4eff8685cefcca7029131e907daecb71956399c97a685a1747d578cf60a52",
     "src/privatePlanning.ts": "6912f49c00056013f552fdbf23f06ab05c42b5b0b186ecb5e02bbfa2d485b4d0",
     "tools/private-planning-check.mjs": "a2e1fc174ddd3821aa8ec8715fafe9f9b110ad9a104cd3ace398b3ebcc15f6f0",
@@ -87,6 +87,7 @@
     "supabase/migrations/20261019141707_route_mobility_contract.sql": "7ca6c754d229105f3219d2967818d2fa7197cebd4314159de7b50201eac9e77b",
     "supabase/changes/planzo_route_transfer_timing.sql": "4357fd8f7d1fd6285ee9665b707a44a6ce12a8f53ff6a4b816b449c02a676a08",
     "supabase/migrations/20261019142245_route_transfer_timing.sql": "4357fd8f7d1fd6285ee9665b707a44a6ce12a8f53ff6a4b816b449c02a676a08",
-    "src/routeCompiler.ts": "529602b99b3447930512768115aa54ca0880c87537ee331a094a5c96eaea0454"
+    "src/routeCompiler.ts": "fcbaf4413fbf7ae4f1c7e12877b27aee6e6adeef9d12a26d53528007dcfbc2a6",
+    "src/budgetPlanning.ts": "4b9fd7faa8385ecb3ad85960189d8879b688708bd3508f8e538b9b322123ed30"
   }
 }

@@ -1,0 +1,63 @@
+{
+  "date": "2026-10-20",
+  "makeFile": "4tPr5AkQO1g0L1esRvGRjz",
+  "method": "Two empty-path creates and nine guarded replacements; eleven operations independently read back. Last record per path is current.",
+  "operations": 11,
+  "records": [
+    {
+      "path": "src/budgetPlanning.ts",
+      "sha256": "4b9fd7faa8385ecb3ad85960189d8879b688708bd3508f8e538b9b322123ed30",
+      "matched": true
+    },
+    {
+      "path": "tests/budget-planning.test.mjs",
+      "sha256": "60c7a8b68d69954d100dff92ad4c628db0b6654e9c7e849ab7db141921e260a8",
+      "matched": true
+    },
+    {
+      "path": "supabase/functions/planzo-planning/handler.ts",
+      "sha256": "aeda794f991239ec0498ebde4b6948e5d6a7bc9f079a78fe6a61934131bb448d",
+      "matched": true
+    },
+    {
+      "path": "supabase/functions/planzo-planning/index.ts",
+      "sha256": "fdd5578a0eba291a7811e8912a2a5bc8d339191576e16e1929e0f4658e57334b",
+      "matched": true
+    },
+    {
+      "path": "tests/private-planning.test.mjs",
+      "sha256": "ca64de1d429c054369c43bd011fe0473755e7cc360a64a9853e613866640c43d",
+      "matched": true
+    },
+    {
+      "path": "docs/backend/SOURCE_HASHES.json",
+      "sha256": "133237e852799306e5cf71da5c7fa3827e82d31224554c199539e0a81529c78d",
+      "matched": true
+    },
+    {
+      "path": "docs/backend/SUPABASE_SOURCE_HASHES.json",
+      "sha256": "d9bfd9f1ec9a03e369d9cc9f3790b16f163ef1fb0fff71d954ab2d275f1d1e9b",
+      "matched": true
+    },
+    {
+      "path": "src/routeCompiler.ts",
+      "sha256": "fcbaf4413fbf7ae4f1c7e12877b27aee6e6adeef9d12a26d53528007dcfbc2a6",
+      "matched": true
+    },
+    {
+      "path": "tests/route-compiler.test.mjs",
+      "sha256": "11c0fbb69dd52ce6d61999d67752ce77045cc32aba1a91f24d5f0dedd598a08d",
+      "matched": true
+    },
+    {
+      "path": "docs/backend/SOURCE_HASHES.json",
+      "sha256": "d4ef8264c85441ca1f28e5051387e79e29699d924be2254aceaec1f762f6bea6",
+      "matched": true
+    },
+    {
+      "path": "docs/backend/SUPABASE_SOURCE_HASHES.json",
+      "sha256": "52f7518bbdf06d65b7a33c1d2511ed794641c2446a0b383375e95989a07b938e",
+      "matched": true
+    }
+  ]
+}

@@ -36,7 +36,7 @@
     "src/flowBackend.ts": "67531e3cc7094fe23b23ef927927a2b67ee7c0754a364cb69344086f8249c3ea",
     "src/PrivateConversation.tsx": "5a4abfcfacbe27ca95be5e067b9b83fbeb1eb115596cf0c61930356c80be6599",
     "src/LivePrivatePlanning.tsx": "d4d9b38e51a206b56ffea9f7ed67840af69eaf7622f027b34167da262c8eef1f",
-    "tests/private-planning.test.mjs": "88ef4c72aa5decdb56311ec8fa9b949a616d1c2d91f16dc0816ccd15504fbc5d",
+    "tests/private-planning.test.mjs": "ca64de1d429c054369c43bd011fe0473755e7cc360a64a9853e613866640c43d",
     "src/LiveJourney.tsx": "ba71c723e737c84cee73addebda64844d5fc7f805154bd1d19e03bc41cd316ae",
     "src/journeyBackend.ts": "b8ef9d02812048a169c201a408bd9ace3640e8a7515d964d9dfd1c91a350122c",
     "tests/journey.test.mjs": "a8ee4a8c05c5760c72095dd078be864372a4fecfbb6e468289759a0117c316a4",
@@ -56,8 +56,10 @@
     "src/routePlanning.ts": "09bc6412e607f090bec0d48ae99615beec73775b4454a51047fe643383d838ea",
     "tests/route-fixture.mjs": "ead6a2db905dd8c6f03afce27d1a386173e821fa9476b7a3587c65e369b22cca",
     "tests/route-planning.test.mjs": "13ca495755208c752f3d4a444608004a33314df5ac3802805428c44521d21e48",
-    "src/routeCompiler.ts": "529602b99b3447930512768115aa54ca0880c87537ee331a094a5c96eaea0454",
-    "tests/day-plan-fixture.mjs": "2651cf102c6aa6d30724d5a542438a599eb86567a1120b0cd2ea33092a58d1f0",
-    "tests/route-compiler.test.mjs": "ea3dd896767aa62df4a2f6db5cbbeb24f8dbef277843e3e6fdb12a3be6b7f654"
+    "src/routeCompiler.ts": "fcbaf4413fbf7ae4f1c7e12877b27aee6e6adeef9d12a26d53528007dcfbc2a6",
+    "tests/day-plan-fixture.mjs": "f73f1cb6a841647eee5e27f02ae33174f1999019e384308b82094d071a833b21",
+    "tests/route-compiler.test.mjs": "11c0fbb69dd52ce6d61999d67752ce77045cc32aba1a91f24d5f0dedd598a08d",
+    "src/budgetPlanning.ts": "4b9fd7faa8385ecb3ad85960189d8879b688708bd3508f8e538b9b322123ed30",
+    "tests/budget-planning.test.mjs": "60c7a8b68d69954d100dff92ad4c628db0b6654e9c7e849ab7db141921e260a8"
   }
 }
