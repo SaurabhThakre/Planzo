@@ -92,7 +92,7 @@ export function Preferences({ trip, personId, act, onDone, live = false, readOnl
     }
     return (<div className="columns">
       <div>
-        <Card title="My private brief" sub={live ? "Saved privately to your verified identity. Friends see completion status, not your raw limits." : "These fields belong to your current demo persona. Friends see completion status, not your raw limits."}>
+        <Card title="My private brief" titleIcon="lock" sub={live ? "Saved privately to your verified identity. Friends see completion status, not your raw limits." : "These fields belong to your current demo persona. Friends see completion status, not your raw limits."}>
           <fieldset className="stack" aria-label="Private input fields" disabled={readOnly || saving}>
           {readOnly&&<p className="notice">This trip is archived. Your saved private input is available to read.</p>}
           <Badge tone={trip.briefs[personId]?.confirmed ? "positive" : "pending"}>
@@ -209,7 +209,7 @@ export function Preferences({ trip, personId, act, onDone, live = false, readOnl
         </Card>
       </div>
       <aside>
-        <Card title="You set the boundaries" tone="mint">
+        <Card title="You set the boundaries" titleIcon="lock" tone="mint">
           <Feature icon="lock" title="No public budget ranking">
             No financial explanations required.
           </Feature>
@@ -221,7 +221,7 @@ export function Preferences({ trip, personId, act, onDone, live = false, readOnl
           </Feature>
           <Coast />
         </Card>
-        <Card title="Manual entry always works">
+        <Card title="Manual entry always works" titleIcon="edit">
           <p className="small muted">
             You can confirm your structured fields without using the
             interpretation or voice previews.

@@ -301,7 +301,7 @@ export function Itinerary({ trip, personId, go, }: {
 }) {
     const selected = trip.plan?.revision === trip.revision ? trip.plan.choices : trip.selected;
     return (<div className="columns">
-      <Card title={(trip.plan && trip.plan.revision === trip.revision
+      <Card titleIcon="map" title={(trip.plan && trip.plan.revision === trip.revision
             ? "Plan v" + trip.plan.version
             : "Working draft") +
             " · " +
@@ -379,7 +379,7 @@ export function Costs({ trip, personId, go, }: {
 }) {
     const quote = cost(trip, personId);
     return (<div className="columns">
-      <Card title="Your full personal estimate" sub={trip.members.find((m) => m.id === personId)?.name +
+      <Card title="Your full personal estimate" titleIcon="wallet" sub={trip.members.find((m) => m.id === personId)?.name +
             " · " +
             (trip.plan ? "Plan v" + trip.plan.version : "Working draft") +
             " · " +

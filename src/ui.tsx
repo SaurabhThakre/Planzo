@@ -65,15 +65,16 @@ export function ItineraryTypeBadge({kind,label}:{kind:string;label?:string}){
     const known=Object.hasOwn(labels,type);
     return <span className={'badge itinerary-type type-'+(known?type:'item')}><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" focusable="false">{known?marks[type]:<><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></>}</svg><span>{label||labels[type]||'Item'}</span></span>;
 }
-export function Card({ title, sub, children, tone = "", className = "", }: {
+export function Card({ title, titleIcon, sub, children, tone = "", className = "", }: {
     title?: string;
+    titleIcon?: string;
     sub?: ReactNode;
     children?: ReactNode;
     tone?: string;
     className?: string;
 }) {
     return (<section className={"card " + tone + " " + className}>
-      {title && <h2>{title}</h2>}
+      {title && (titleIcon ? <div className="card-title-row"><span className="icon-tile compact"><Icon name={titleIcon}/></span><h2>{title}</h2></div> : <h2>{title}</h2>)}
       {sub && <p className="small muted">{sub}</p>}
       {children}
     </section>);
@@ -97,7 +98,7 @@ export function Feature({ icon = "check", title, children, }: {
     title: string;
     children?: ReactNode;
 }) {
-    return (<div className="feature">
+    return (<div className={"feature " + (children ? "feature-detail" : "feature-label")}>
       <span className="icon-tile">
         <Icon name={icon}/>
       </span>
@@ -194,7 +195,7 @@ export function Empty({ title, children, }: {
     title: string;
     children: ReactNode;
 }) {
-    return (<Card title={title} tone="mint">
+    return (<Card title={title} titleIcon="map" tone="mint">
       <Coast />
       {children}
     </Card>);

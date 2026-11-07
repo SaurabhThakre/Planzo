@@ -34,7 +34,7 @@ export function Review({ trip, personId, act, go }: Props) {
         }
     }
     return (<div className="columns">
-      <Card title={current
+      <Card titleIcon="check" title={current
             ? "Current published plan · v" + plan!.version
             : "Working draft · fresh validation required"} sub="Your response belongs to these exact terms.">
         {!current && (<Note title={plan
@@ -190,7 +190,7 @@ export function Outcomes({ trip, personId, act, go }: Props) {
     const isPostponed = trip.status === "postponed";
     const agreed = trip.status === "agreed" && currentPlan(trip);
     return (<div className="columns">
-      <Card title={isPostponed
+      <Card titleIcon="people" title={isPostponed
             ? "Decision recorded · postponed"
             : agreed
                 ? "Itinerary agreed · bookings pending"

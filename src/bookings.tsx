@@ -114,7 +114,7 @@ export function BookingComparison({ trip, personId, go }: Omit<Props, "act">) {
           </Button>))}
       </div>
       <div className="columns">
-        <Card title={category + " · compare example offers"} sub="Fictional comparisons for the current arrangement. Opening a provider keeps booking tasks pending.">
+        <Card titleIcon="wallet" title={category + " · compare example offers"} sub="Fictional comparisons for the current arrangement. Opening a provider keeps booking tasks pending.">
           {offers[category].map((o) => (<div className={"offer " + (o.outside ? "peach" : "cream")} key={o.provider}>
               <h3>{o.provider}</h3>
               <p className="price-line">{o.price}</p>
@@ -163,7 +163,7 @@ export function BookingHandoff({ trip, personId, act, go }: Props) {
     const valid = trip.status === "agreed" && currentPlan(trip);
     const task = trip.tasks.find((t) => t.id === taskId);
     return (<div className="columns">
-      <Card title="Booking responsibilities" sub={(trip.plan ? "Plan v" + trip.plan.version : "Draft") +
+      <Card title="Booking responsibilities" titleIcon="wallet" sub={(trip.plan ? "Plan v" + trip.plan.version : "Draft") +
             " · external providers own inventory, checkout and reservations."}>
         {!valid && (<Note title="Review the current decision first" tone="peach">
             Booking actions require an agreed, current plan. Existing reported

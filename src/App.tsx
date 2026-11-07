@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import type { Person, Slot, Trip } from "./domain";
 import { briefErrors, concepts, cost, currentPlan, currentResponse, feasibility, included, invalidate, makeTrip, now, publish, respond, sampleTrip, uid, } from "./domain";
 import { commit, mutateTrip, storageWarning, useStore } from "./store";
@@ -113,11 +113,12 @@ function getSession() {
         return "";
     }
 }
-export default function App() {
+export default function App({ launchSample = false }: { launchSample?: boolean }) {
     const state = useStore(), [route, setRoute] = useState(readRoute), [personId, setPersonId] = useState(getSession), [notice, setNotice] = useState<{
         text: string;
         error?: boolean;
-    } | null>(null), [menu, setMenu] = useState(false), [failSave, setFailSave] = useState(false);
+    } | null>(null), [menu, setMenu] = useState(false), [failSave, setFailSave] = useState(false), [openingSample, setOpeningSample] = useState(launchSample);
+    const sampleLaunchStarted = useRef(false);
     useEffect(() => {
         const listener = () => {
             setRoute(readRoute());
@@ -239,6 +240,16 @@ export default function App() {
                         ? "builder"
                         : "review");
     };
+    useEffect(() => {
+        if (!launchSample || sampleLaunchStarted.current)
+            return;
+        sampleLaunchStarted.current = true;
+        const nextState = { ...history.state };
+        delete nextState.planzoDemoLaunch;
+        history.replaceState(nextState, "", location.href);
+        loadSample();
+        setOpeningSample(false);
+    }, [launchSample]);
     const enter = (p: Person) => {
         commit((s) => {
             if (!s.people.some((x) => x.id === p.id))
@@ -315,7 +326,11 @@ export default function App() {
         "Choose a section from the navigation.",
     ];
     let content;
-    if (route.view === "entry")
+    if (openingSample)
+        content = (<Card className="opening-card" title="Opening the fictional Goa sample" titleIcon="map">
+          <p role="status">Preparing the seeded review workspace on this browser…</p>
+        </Card>);
+    else if (route.view === "entry")
         content = <Welcome go={go} loadSample={() => loadSample()}/>;
     else if (["signup", "signin", "recovery"].includes(route.view))
         content = (<Account key={route.view} mode={route.view} state={state} onEnter={enter} go={go}/>);
@@ -652,7 +667,7 @@ function Overview({ trip, personId, act, go, }: {
             (trip.plan ? "Plan v" + trip.plan.version : "Collecting input")}/>
       <div className="columns">
         <div className="stack">
-          <Card title="Your next small step" sub="The right plan starts with complete, confirmed input.">
+          <Card title="Your next small step" titleIcon="calendar" sub="The right plan starts with complete, confirmed input.">
             <Badge tone={currentPlan(trip) ? "positive" : "pending"}>
               {trip.status === "postponed"
             ? "Trip postponed"
@@ -703,7 +718,7 @@ function Overview({ trip, personId, act, go, }: {
           </Card>
         </div>
         <aside>
-          <Card title="Planzo Passport" tone="mint">
+          <Card title="Planzo Passport" titleIcon="map" tone="mint">
             {[
             [
                 "Inputs received",

@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import type { Session } from '@supabase/supabase-js';
 import type { Brief, Person, Trip } from './domain';
 import { assets } from './assets';
-import { Actions, Badge, Button, Card, Coast, Feature, Field, Note, windowText } from './ui';
+import { Actions, Badge, Button, Card, Coast, Feature, Field, Icon, Note, windowText } from './ui';
 import { TripSetup } from './TripSetup';
 import {TripControls} from './TripControls';
 import {TripDetailsEditor} from './TripDetailsEditor';
@@ -102,7 +102,12 @@ export default function LiveApp(){
   }
   async function loadInvites(){if(!tripId)return;const requestedTrip=tripId,requestedUser=uid;const data=await api<Invite[]>('list_invites',{trip_id:requestedTrip});const current=readRoute();if(activeUser.current===requestedUser&&current[0]==='trip'&&current[1]===requestedTrip)setInvites(data);}
   useEffect(()=>{if(tripId&&workspace?.trip.id===tripId&&workspace.members.find(m=>m.id===uid)?.role==='organiser')void loadInvites().catch(e=>setError(readableError(e)));},[tripId,workspace?.members.length,uid]);
-  const sample=()=>{location.href=location.pathname+'?demo=1';};
+  const sample=()=>{
+    const url=new URL(location.pathname,location.origin);
+    url.searchParams.set('demo','1');
+    url.searchParams.set('launch','goa');
+    location.assign(url);
+  };
   let view=route[0]||'home';
   const person=profile||(session?{id:session.user.id,name:'Traveller'}:null);
   const ownMember=workspace?.members.find(m=>m.id===uid);
@@ -168,8 +173,8 @@ export default function LiveApp(){
             {invites.map(i=><div className="invite-row" key={i.id}><span>{i.revoked_at?'Revoked':new Date(i.expires_at)<new Date()?'Expired':'Active'} · {new Date(i.expires_at).toLocaleDateString('en-IN')}</span>
               {!i.revoked_at&&new Date(i.expires_at)>new Date()&&<Button variant="ghost" disabled={busy} onClick={()=>perform(async()=>{await api('revoke_invite',{trip_id:tripId,invite_id:i.id});if(freshInvite?.id===i.id)setFreshInvite(null);await loadInvites();})}>Revoke</Button>}</div>)}
           </Card>:<Note title="You are a member">Only the organiser can create or revoke invitations. Your private input belongs to you.</Note>}
-          {workspace.trip.workflow_version===2?<Card title="Your planning journey"><ol className="personal-journey"><li><strong>Private inputs</strong><span>{workspace.members.filter(m=>m.included&&m.confirmed).length} / {workspace.members.filter(m=>m.included).length} confirmed</span></li><li><strong>Itinerary and step decisions</strong><Button variant="ghost" onClick={()=>go('trip',tripId,'plan')}>Open itinerary</Button></li><li><strong>Finalized itinerary and journey</strong><span>{workspace.trip.stage==='agreed'?'Everyone reviewed · itinerary finalized':'Resolve decisions, review and finalize the itinerary'}</span>{workspace.trip.stage==='agreed'&&<Button variant="secondary" onClick={()=>go('trip',tripId,'journey')}>Open final journey</Button>}</li><li><strong>Booking handoff · Phase 2</strong><span>Transport, accommodation, responsibilities and live prices come in the second phase.</span></li></ol></Card>:<LiveMilestones tripId={tripId} revision={workspace.trip.revision}/>}
-          <Note title="Next step">{workspace.trip.stage==='archived'?'Read saved decisions in History. The organiser can restore this trip from the Archived list.':workspace.trip.stage==='agreed'?'Follow your final journey. Booking handoff, provider checks and reservations are Phase 2.':ownMember?.confirmed?'Follow the group’s input progress. Open Itinerary when everyone included has confirmed.':'Add and confirm your private input. The group sees completion status, not your raw limits.'}</Note>
+          {workspace.trip.workflow_version===2?<Card title="Your planning journey" titleIcon="map"><ol className="personal-journey"><li><strong>Private inputs</strong><span>{workspace.members.filter(m=>m.included&&m.confirmed).length} / {workspace.members.filter(m=>m.included).length} confirmed</span></li><li><strong>Itinerary and step decisions</strong><Button variant="ghost" onClick={()=>go('trip',tripId,'plan')}>Open itinerary</Button></li><li><strong>Finalized itinerary and journey</strong><span>{workspace.trip.stage==='agreed'?'Everyone reviewed · itinerary finalized':'Resolve decisions, review and finalize the itinerary'}</span>{workspace.trip.stage==='agreed'&&<Button variant="secondary" onClick={()=>go('trip',tripId,'journey')}>Open final journey</Button>}</li><li><strong>Booking handoff · Phase 2</strong><span>Transport, accommodation, responsibilities and live prices come in the second phase.</span></li></ol></Card>:<LiveMilestones tripId={tripId} revision={workspace.trip.revision}/>}
+          <Note title="Next step" icon="calendar">{workspace.trip.stage==='archived'?'Read saved decisions in History. The organiser can restore this trip from the Archived list.':workspace.trip.stage==='agreed'?'Follow your final journey. Booking handoff, provider checks and reservations are Phase 2.':ownMember?.confirmed?'Follow the group’s input progress. Open Itinerary when everyone included has confirmed.':'Add and confirm your private input. The group sees completion status, not your raw limits.'}</Note>
         </aside></div>}
       </>:<Card title="Opening your shared trip…"><p>If this takes longer than expected, use Home and reopen the trip.</p><Button onClick={()=>go('home')}>Home</Button></Card>):
       session?<div className="columns trip-dashboard"><Card className="trips-card" title="Your trips" sub="Saved securely and available when you sign in on another device.">
@@ -177,9 +182,9 @@ export default function LiveApp(){
         {trips.filter(t=>tripBucket==='active'?t.stage!=='archived':tripBucket==='deleted'?t.removal_kind==='deleted_draft':t.stage==='archived'&&t.removal_kind!=='deleted_draft').map(t=><div className="trip-list-item" key={t.id}><div className="trip-card-summary"><h3>{t.name}</h3><p className="small muted">{t.destination} · {t.role}{t.stage==='archived'?' · '+(t.removal_kind==='deleted_draft'?'Deleted draft':'Archived'):''}</p></div><div className="trip-card-actions"><Button variant="secondary" onClick={()=>go('trip',t.id)}>Open trip</Button><TripControls trip={t} onDone={reloadTripList}/></div></div>)}
         {!trips.some(t=>tripBucket==='active'?t.stage!=='archived':tripBucket==='deleted'?t.removal_kind==='deleted_draft':t.stage==='archived'&&t.removal_kind!=='deleted_draft')&&<p>No trips in this list.</p>}
         <Button variant="ghost" onClick={()=>go('join')}>Join with an invitation</Button>
-      </Card><Card title="Your group, your pace" tone="mint"><Coast/><Feature icon="lock" title="Your limits stay private"/><Feature icon="people" title="Everyone contributes as themselves"/><Button variant="secondary" onClick={sample}>Explore the separate Goa sample</Button></Card></div>:
+      </Card><Card title="Your group, your pace" titleIcon="people" tone="mint"><Coast/><Feature icon="lock" title="Your limits stay private"/><Feature icon="people" title="Everyone contributes as themselves"/><Button variant="secondary" onClick={sample}><Icon name="map"/>Explore the separate Goa sample</Button></Card></div>:
       <div className="columns welcome"><Card title="Plan together. Travel together." sub="Private preferences. Shared trips. Clear decisions." tone="mint"><Coast variant="large"/><div className="benefits"><Feature icon="lock" title="Private limits"/><Feature icon="wallet" title="Full costs"/><Feature icon="people" title="Equal say"/></div></Card>
-        <aside><Card title="Your next good trip"><p className="muted">Start a shared trip, invite your friends and save what works for each of you.</p><Button onClick={()=>go('signup')}>Create a trip</Button><Button variant="secondary" onClick={()=>go('join')}>Join with an invite</Button><Note title="Your group, your pace">A respectful no or a postponed trip is a useful outcome.</Note><Button variant="secondary" onClick={()=>go('signin')}>I already have an account</Button></Card><Button variant="ghost" onClick={sample}>Explore the separate Goa sample →</Button><p className="caption muted">The sample uses fictional data. Your shared trips save your real inputs.</p></aside></div>}
+        <aside><Card title="Your next good trip" titleIcon="map"><p className="muted">Start a shared trip, invite your friends and save what works for each of you.</p><Button onClick={()=>go('signup')}>Create a trip</Button><Button variant="secondary" onClick={()=>go('join')}>Join with an invite</Button><Note title="Your group, your pace" icon="heart">A respectful no or a postponed trip is a useful outcome.</Note><Button variant="secondary" onClick={()=>go('signin')}>I already have an account</Button></Card><Button variant="ghost" onClick={sample}><Icon name="map"/>Explore the separate Goa sample →</Button><p className="caption muted">The sample uses fictional data. Your shared trips save your real inputs.</p></aside></div>}
       {busy&&<p role="status">Saving your request…</p>}
     </main><footer className="app-footer">Planzo · private preferences, shared trips</footer>
   </>;
