@@ -18,6 +18,7 @@ import {planStage} from './planningBackend';
 import {interpretPreferences} from './aiBackend';
 import {LivePrivatePlanning} from './LivePrivatePlanning';
 import {AppHeader} from './AppHeader';
+import {HelpPage,helpHref} from './Help';
 
 const readRoute=()=>location.hash.replace(/^#\/?/,'').split('/');
 function RememberInvite(token:string){try{sessionStorage.setItem('planzo.pending-invite',token);}catch{}}
@@ -120,9 +121,12 @@ export default function LiveApp(){
     await refreshTrip();setNotice(confirm?'Your private input is confirmed and saved.':'Your private draft is saved. Confirm it when you are ready.');
     return result.revision;
   }
+  const openHelp=(topic='organise-trip')=>{try{if(view!=='help')sessionStorage.setItem('planzo.help-return.shared',location.hash||'#/home');}catch{}go('help',topic);};
+  const returnFromHelp=()=>{let target='#/home';try{target=sessionStorage.getItem('planzo.help-return.shared')||target;sessionStorage.removeItem('planzo.help-return.shared');}catch{}location.hash=target;};
+  if(view==='help')return <><AppHeader name={session?profile?.name||'Signed in':undefined} busy={busy} onHome={()=>go('home')} onHelp={()=>openHelp()} onSignIn={()=>go('signin')} onSignOut={()=>void perform(async()=>{const {error}=await supabase.auth.signOut();if(error)throw error;go('home');})}/><main id="main" className="public-shell"><HelpPage shell="shared" initialTopic={route[1]} onReturn={returnFromHelp} onSelect={topic=>history.replaceState(null,'',helpHref(topic))}/></main><footer className="app-footer">Planzo · private preferences, shared trips</footer></>;
   return <>
     <a className="skip-link" href="#main">Skip to content</a>
-    <AppHeader name={session?profile?.name||'Signed in':undefined} busy={busy} onHome={()=>go('home')} onSignIn={()=>go('signin')} onSignOut={()=>void perform(async()=>{const {error}=await supabase.auth.signOut();if(error)throw error;go('home');})}/>
+    <AppHeader name={session?profile?.name||'Signed in':undefined} busy={busy} onHome={()=>go('home')} onHelp={()=>openHelp()} onSignIn={()=>go('signin')} onSignOut={()=>void perform(async()=>{const {error}=await supabase.auth.signOut();if(error)throw error;go('home');})}/>
     <main id="main" className="public-shell"><div className="page-heading"><h1>{heading}</h1><p>{instruction}</p></div>
       {error&&<div className="form-error" role="alert">{error}</div>}{notice&&<p className="notice" role="status">{notice}</p>}
       {loadingAuth?<Card title="Restoring your session…"><p>Please wait while Planzo checks your sign-in.</p></Card>:
@@ -285,6 +289,7 @@ function GuestJoin({session,initialToken,onJoined}:{session:Session|null;initial
     {error&&<p className="form-error" role="alert">{error}</p>}
     <form onSubmit={submit} className="stack"><fieldset disabled={busy} className="auth-fields">
       <Field label="Invitation link or code"><input required value={inviteInput} onChange={e=>{setInviteInput(e.target.value);setSent(false);}} autoComplete="off" spellCheck={false}/></Field>
+      <a className="context-help-link" href={helpHref('join-trip')} target="_blank" rel="noopener noreferrer">Didn’t get your code?<span className="sr-only"> Opens Help in a new tab</span></a>
       <Field label="Your name"><input required maxLength={50} autoComplete="given-name" value={name} onChange={e=>setName(e.target.value)}/></Field>
       {session?<Note title="Email verified">Joining as {session.user.email}. To use another email, sign out first.</Note>:<>
       <Field label="Email address"><input type="email" required readOnly={sent} autoComplete="email" value={email} onChange={e=>setEmail(e.target.value)}/></Field>

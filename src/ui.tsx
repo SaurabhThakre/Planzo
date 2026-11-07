@@ -26,6 +26,14 @@ export function Icon({ name = "check", brand = false, }: {
     name?: string;
     brand?: boolean;
 }) {
+    const outline: Record<string, ReactNode> = {
+        help: <><circle cx="12" cy="12" r="9"/><path d="M9.7 9a2.45 2.45 0 1 1 3.86 2c-.9.65-1.56 1.08-1.56 2.25M12 17h.01"/></>,
+        link: <><path d="M10 13a5 5 0 0 0 7.07.07l2-2a5 5 0 0 0-7.07-7.07l-1.15 1.15M14 11a5 5 0 0 0-7.07-.07l-2 2A5 5 0 0 0 12 20l1.15-1.15"/></>,
+        mail: <><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m4 7 8 6 8-6"/></>,
+    };
+    if (!brand && outline[name]) {
+        return <span className="icon outline-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" focusable="false">{outline[name]}</svg></span>;
+    }
     return (<span className={"icon " + (brand ? "brand-icon" : "")} aria-hidden="true">
       <img src={brand ? assets.entry.imgIconPlane : urls[name] || urls.check} alt=""/>
     </span>);

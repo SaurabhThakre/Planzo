@@ -8,6 +8,7 @@ import { Builder, Costs, Itinerary, OptionalActivity, Plans, PollView, } from ".
 import { changeRoster, History, Outcomes, Review } from "./decisions";
 import { BookingComparison, BookingHandoff } from "./bookings";
 import { Actions, Badge, Button, Card, Coast, Feature, Hero, Icon, Note, Total, windowText, } from "./ui";
+import { HelpPage } from "./Help";
 function readRoute() {
     try {
         const [view, arg] = location.hash.replace(/^#\/?/, "").split("/");
@@ -99,6 +100,10 @@ const titles: Record<string, [
         "Explore the Planzo demo.",
         "Choose a journey or inspect a rule. Each scenario creates a separate sample trip.",
     ],
+    help: [
+        "Help & documentation",
+        "Follow the trip journey and find the exact control you need.",
+    ],
 };
 function getSession() {
     try {
@@ -138,8 +143,25 @@ export default function App() {
     const person = state.people.find((p) => p.id === personId);
     const trip = state.trips.find((t) => t.id === state.activeTripId);
     const member = trip?.members.find((m) => m.id === personId);
-    const publicPage = ["entry", "signup", "signin", "recovery", "join", "scenarios"].includes(route.view) || !person;
+    const publicPage = ["entry", "signup", "signin", "recovery", "join", "scenarios", "help"].includes(route.view) || !person;
     const notify = (text: string, error = false) => setNotice({ text, error });
+    const openHelp = (topic = "organise-trip") => {
+        try {
+            if (route.view !== "help")
+                sessionStorage.setItem("planzo.help-return.demo", location.hash || "#/entry");
+        }
+        catch { }
+        go("help", topic);
+    };
+    const returnFromHelp = () => {
+        let target = "#/entry";
+        try {
+            target = sessionStorage.getItem("planzo.help-return.demo") || target;
+            sessionStorage.removeItem("planzo.help-return.demo");
+        }
+        catch { }
+        location.hash = target;
+    };
     const act = (fn: (t: Trip) => void, message?: string) => {
         try {
             if (failSave) {
@@ -299,6 +321,8 @@ export default function App() {
         content = (<Account key={route.view} mode={route.view} state={state} onEnter={enter} go={go}/>);
     else if (route.view === "join")
         content = (<Join key={route.arg} trip={state.trips.find((t) => t.token === route.arg)} onJoin={onJoin} go={go}/>);
+    else if (route.view === "help")
+        content = (<HelpPage shell="demo" initialTopic={route.arg} onReturn={returnFromHelp} onSelect={(topic) => history.replaceState(null, "", location.pathname + location.search + "#/help/" + topic)}/>);
     else if (route.view === "scenarios")
         content = (<div className="stack">
         <Hero trip={trip || sampleTrip()} title="A trip that works for everyone." sub="Start with the happy path, then inspect the decisions that keep planning honest."/>
@@ -487,8 +511,12 @@ export default function App() {
         </button>
         <p className="tagline">Good trips start with common ground.</p>
         <Badge>Interactive local demo</Badge>
-        <Button variant="ghost" onClick={() => go("scenarios")}>
+        <Button variant="ghost" className="scenarios-link" onClick={() => go("scenarios")}>
           Scenarios
+        </Button>
+        <Button variant="ghost" className="header-help" onClick={() => openHelp()}>
+          <Icon name="help"/>
+          Help
         </Button>
         <span className="persona">{publicPage ? "Welcome" : person?.name}</span>
         {!publicPage && (<button className="mobile-toggle" aria-expanded={menu} onClick={() => setMenu((v) => !v)} aria-label="Toggle navigation">
@@ -554,12 +582,12 @@ export default function App() {
             </p>
           </aside>)}
         <main id="main" tabIndex={-1}>
-          <div className="page-heading">
+          {route.view !== "help" && (<div className="page-heading">
             <h1>
               {route.view === "overview" && trip ? trip.name : mainTitle[0]}
             </h1>
             <p className="muted">{mainTitle[1]}</p>
-          </div>
+          </div>)}
           {!publicPage && trip && (<div className="demo-toolbar">
               <span>
                 <strong>Demo persona</strong> · test the group journey
