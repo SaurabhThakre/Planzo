@@ -2,7 +2,8 @@ import { useEffect, useState } from "react";
 import type { Choice, Slot, Trip } from "./domain";
 import { chooseDraft, closePoll, concepts, cost, feasibility, included, openPoll, option, options, publish, saveBrief, slotLabels, slots, vote, } from "./domain";
 import type { Navigate } from "./entry";
-import { Actions, Badge, Button, Card, Coast, Feature, Field, Hero, Note, Total, range, windowText, } from "./ui";
+import { Actions, Badge, Button, Card, Coast, Feature, Field, Hero, ItineraryTypeBadge, Note, Total, range, windowText, } from "./ui";
+import {InPlacePanel} from './InPlacePanel';
 export type TripAction = (fn: (t: Trip) => void, message?: string) => boolean;
 type Props = {
     trip: Trip;
@@ -300,6 +301,23 @@ export function Itinerary({ trip, personId, go, }: {
     go: Navigate;
 }) {
     const selected = trip.plan?.revision === trip.revision ? trip.plan.choices : trip.selected;
+    const [selectedDay,setSelectedDay]=useState(0);
+    const [selectedStop,setSelectedStop]=useState<{title:string;kind:string;description:string;estimate?:string;optional?:boolean}|null>(null);
+    const days=[
+        {day:"DAY 1",title:"Arrive, settle in, exhale.",summary:"06:00 departure · "+option("travel",selected.travel).title+" · check-in · nearby beach · group dinner",stops:[
+            {title:option("travel",selected.travel).title,kind:"transport",description:option("travel",selected.travel).description,estimate:range(option("travel",selected.travel).range)+" return allowance"},
+            {title:option("stay",selected.stay).title,kind:"stay",description:option("stay",selected.stay).description,estimate:range(option("stay",selected.stay).range)+" sample room allowance"},
+        ]},
+        {day:"DAY 2",title:"A little culture. A little freedom.",summary:"Breakfast · "+option("activity",selected.activity).title+" · "+option("food",selected.food).title+" · optional afternoon · reunion dinner",stops:[
+            {title:option("food",selected.food).title,kind:"food",description:option("food",selected.food).description,estimate:range(option("food",selected.food).range)+" meal allowance"},
+            {title:option("activity",selected.activity).title,kind:"activity",description:option("activity",selected.activity).description,estimate:range(option("activity",selected.activity).range)+" activity allowance"},
+            trip.briefs[personId]?.boat?{title:"Boat activity",kind:"optional",description:"Selected attendees only · ₹880–1,100 extra including contingency.",optional:true}:{title:"Quiet beach or café time",kind:"optional",description:"Non-attendees have quiet beach or café time, then meet for the shared dinner.",optional:true},
+        ]},
+        {day:"DAY 3",title:"One last slow morning.",summary:"Breakfast · free time · checkout · return travel · home by 22:00",stops:[
+            {title:option("travel",selected.travel).title,kind:"transport",description:"Return travel · "+option("travel",selected.travel).description,estimate:range(option("travel",selected.travel).range)+" return allowance"},
+        ]},
+    ];
+    const activeDay=days[selectedDay]||days[0];
     return (<div className="columns">
       <Card titleIcon="map" title={(trip.plan && trip.plan.revision === trip.revision
             ? "Plan v" + trip.plan.version
@@ -309,33 +327,15 @@ export function Itinerary({ trip, personId, go, }: {
             " · " +
             included(trip).length +
             " included travellers · sample timings"}>
-        {[
-            [
-                "DAY 1",
-                "Arrive, settle in, exhale.",
-                "06:00 departure · " +
-                    option("travel", selected.travel).title +
-                    " · check-in · nearby beach · group dinner",
-            ],
-            [
-                "DAY 2",
-                "A little culture. A little freedom.",
-                "Breakfast · " +
-                    option("activity", selected.activity).title +
-                    " · " +
-                    option("food", selected.food).title +
-                    " · optional afternoon · reunion dinner",
-            ],
-            [
-                "DAY 3",
-                "One last slow morning.",
-                "Breakfast · free time · checkout · return travel · home by 22:00",
-            ],
-        ].map(([day, t, d]) => (<div className="itinerary-day" key={day}>
-            <Badge>{day}</Badge>
-            <h3>{t}</h3>
-            <p className="muted small">{d}</p>
-          </div>))}
+        <div className={trip.destination.trim().toLowerCase()==="goa"?"destination-cover":"destination-cover neutral"}>{trip.destination.trim().toLowerCase()==="goa"?<Coast variant="hero"/>:<div aria-hidden="true" className="neutral-destination-mark"><span>1</span><span>2</span><span>3</span></div>}</div>
+        <div className="day-tabs" role="tablist" aria-label="Itinerary days">{days.map((day,index)=><button role="tab" aria-selected={selectedDay===index} key={day.day} onClick={()=>setSelectedDay(index)}>{day.day}<small>{day.title}</small></button>)}</div>
+        <section className="day-panel" role="tabpanel">
+          <Badge>{activeDay.day}</Badge>
+          <h3>{activeDay.title}</h3>
+          <p className="muted small">{activeDay.summary}</p>
+          <ol className="stop-summary">{activeDay.stops.map((stop,index)=><li key={index}><button onClick={()=>setSelectedStop(stop)}><span className="stop-number">{index+1}</span><span className="stop-copy"><ItineraryTypeBadge kind={stop.kind}/><strong>{stop.title}</strong><small>{stop.description}</small></span><span aria-hidden="true">→</span></button></li>)}</ol>
+          <div className="illustrative-route"><span className="eyebrow">Illustrative · saved ordering only</span><div>{activeDay.stops.map((stop,index)=><span key={index}><b>{index+1}</b>{stop.title}</span>)}</div></div>
+        </section>
         <Actions>
           <Button onClick={() => go("review")}>Review and respond</Button>
           <Button variant="secondary" onClick={() => go("builder")}>
@@ -345,6 +345,7 @@ export function Itinerary({ trip, personId, go, }: {
         <p className="caption muted">
           Times are illustrative. Verify actual transport times before booking.
         </p>
+        {selectedStop&&<InPlacePanel title={selectedStop.title} onClose={()=>setSelectedStop(null)}>{({close})=><Card><ItineraryTypeBadge kind={selectedStop.kind}/><Feature icon={selectedStop.kind==="optional"?"boat":selectedStop.kind==="transport"?"plane":selectedStop.kind==="stay"?"bed":selectedStop.kind==="food"?"coffee":"map"} title={selectedStop.title}>{selectedStop.description}</Feature>{selectedStop.estimate&&<p className="price-line">{selectedStop.estimate}</p>}{selectedStop.optional&&<Button variant="secondary" onClick={()=>close(()=>go("optional"))}>Review optional choices</Button>}</Card>}</InPlacePanel>}
       </Card>
       <aside>
         <Card title="Your optional afternoon" tone="mint">

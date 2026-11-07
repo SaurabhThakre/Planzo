@@ -9,6 +9,7 @@ import { changeRoster, History, Outcomes, Review } from "./decisions";
 import { BookingComparison, BookingHandoff } from "./bookings";
 import { Actions, Badge, Button, Card, Coast, Feature, Hero, Icon, Note, Total, windowText, } from "./ui";
 import { HelpPage } from "./Help";
+import { InPlacePanel } from "./InPlacePanel";
 function readRoute() {
     try {
         const [view, arg] = location.hash.replace(/^#\/?/, "").split("/");
@@ -117,12 +118,13 @@ export default function App({ launchSample = false }: { launchSample?: boolean }
     const state = useStore(), [route, setRoute] = useState(readRoute), [personId, setPersonId] = useState(getSession), [notice, setNotice] = useState<{
         text: string;
         error?: boolean;
-    } | null>(null), [menu, setMenu] = useState(false), [failSave, setFailSave] = useState(false), [openingSample, setOpeningSample] = useState(launchSample);
+    } | null>(null), [menu, setMenu] = useState(false), [failSave, setFailSave] = useState(false), [openingSample, setOpeningSample] = useState(launchSample), [panel, setPanel] = useState<"costs" | "optional" | "compare" | null>(null);
     const sampleLaunchStarted = useRef(false);
     useEffect(() => {
         const listener = () => {
             setRoute(readRoute());
             setMenu(false);
+            setPanel(null);
             window.scrollTo({ top: 0, behavior: "instant" });
         };
         window.addEventListener("hashchange", listener);
@@ -438,7 +440,14 @@ export default function App({ launchSample = false }: { launchSample?: boolean }
         </Actions>
       </Card>);
     else {
-        const p = { trip, personId, act, go };
+        const tripGo = (view: string, arg = "") => {
+            if (view === "costs" || view === "optional" || view === "compare") {
+                setPanel(view);
+                return;
+            }
+            go(view, arg);
+        };
+        const p = { trip, personId, act, go: tripGo };
         switch (route.view) {
             case "created":
                 content =
@@ -641,6 +650,13 @@ export default function App({ launchSample = false }: { launchSample?: boolean }
               {storageWarning()}
             </Note>)}
           {content}
+          {panel && trip && member && (<InPlacePanel title={panel === "costs" ? "Your full personal estimate" : panel === "optional" ? "Your optional afternoon" : "Compare booking providers"} onClose={() => setPanel(null)}>
+              {({ close }) => panel === "costs"
+                ? <Costs trip={trip} personId={personId} go={(view, arg) => close(() => go(view, arg))}/>
+                : panel === "optional"
+                  ? <OptionalActivity trip={trip} personId={personId} act={act} go={(view, arg) => close(() => go(view, arg))}/>
+                  : <BookingComparison trip={trip} personId={personId} go={(view, arg) => close(() => go(view, arg))}/>}
+            </InPlacePanel>)}
           <footer>
             Planzo demo · sample AI and provider prices · saved on this browser
             only

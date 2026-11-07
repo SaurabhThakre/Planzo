@@ -322,7 +322,7 @@ export function Outcomes({ trip, personId, act, go }: Props) {
 export function History({ trip }: {
     trip: Trip;
 }) {
-    const [copied, setCopied] = useState(false), [error, setError] = useState("");
+    const [copied, setCopied] = useState(false), [error, setError] = useState(""), [tab,setTab]=useState<"summary"|"decisions">("summary");
     async function copy() {
         try {
             await navigator.clipboard.writeText(safeSummary(trip));
@@ -332,8 +332,8 @@ export function History({ trip }: {
             setError("Clipboard access is unavailable. Select the summary text below to copy it.");
         }
     }
-    return (<div className="columns">
-      <Card title="Current plan summary" sub="Safe shared content: no private ceilings or change details.">
+    return (<div className="stack"><div className="local-tabs" role="tablist" aria-label="Plan summary and history sections"><Button role="tab" aria-selected={tab==="summary"} variant={tab==="summary"?"primary":"secondary"} onClick={()=>setTab("summary")}>Current plan summary</Button><Button role="tab" aria-selected={tab==="decisions"} variant={tab==="decisions"?"primary":"secondary"} onClick={()=>setTab("decisions")}>Decision history</Button></div>
+      <div hidden={tab!=="summary"}><Card title="Current plan summary" sub="Safe shared content: no private ceilings or change details.">
         <pre className="summary">{safeSummary(trip)}</pre>
         <Button onClick={copy}>
           {copied ? "Summary copied" : "Copy current summary"}
@@ -341,15 +341,15 @@ export function History({ trip }: {
         {error && (<p role="alert" className="small">
             {error}
           </p>)}
-      </Card>
-      <Card title="Decision history">
+      </Card></div>
+      <div hidden={tab!=="decisions"}><Card title="Decision history">
         {trip.history.map((h, i) => (<div className="history-event" key={h.at + i}>
             <span className="caption muted">
               {new Date(h.at).toLocaleString("en-IN")}
             </span>
             <p>{h.message}</p>
           </div>))}
-      </Card>
+      </Card></div>
     </div>);
 }
 export function changeRoster(trip: Trip, id: string, inRoster: boolean) {

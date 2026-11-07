@@ -2,7 +2,7 @@ import { useState } from "react";
 import type { Person, State, Trip, Window } from "./domain";
 import { uid } from "./domain";
 import { assets } from "./assets";
-import { Actions, Badge, Button, Card, Coast, Feature, Field, Icon, Note, windowText, } from "./ui";
+import { Actions, Badge, Button, Card, Coast, Feature, Field, Icon, Note, SamplePreview, windowText, } from "./ui";
 export type Navigate = (view: string, arg?: string) => void;
 export function Welcome({ go, loadSample, }: {
     go: Navigate;
@@ -36,6 +36,7 @@ export function Welcome({ go, loadSample, }: {
         <Button variant="ghost" onClick={loadSample}>
           <Icon name="map"/>Explore the Goa sample →
         </Button>
+        <SamplePreview/>
         <p className="caption muted">
           Interactive local demo. Sample accounts and trips stay in this
           browser.

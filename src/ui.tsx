@@ -54,13 +54,14 @@ export function Badge({ children, tone = "neutral", }: {
 }
 export function ItineraryTypeBadge({kind,label}:{kind:string;label?:string}){
     const type=kind==='travel'?'transport':kind;
-    const labels:Record<string,string>={food:'Meal',rest:'Free time',activity:'Activity',stay:'Stay',transport:'Transport'};
+    const labels:Record<string,string>={food:'Meal',rest:'Free time',activity:'Activity',stay:'Stay',transport:'Transport',optional:'Optional'};
     const marks:Record<string,ReactNode>={
         food:<><path d="M4 3v5a2 2 0 0 0 4 0V3M6 3v18M20 3c-3 1-5 4-5 8h5M20 3v18"/></>,
         rest:<><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.4 1.4m11.2 11.2L19 19M5 19l1.4-1.4M17.6 6.4 19 5"/></>,
         activity:<><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/></>,
         stay:<><path d="M3 18V6m18 12V9H3m0 6h18M6 9V5h12v4"/></>,
         transport:<><path d="m22 2-7 20-4-9-9-4L22 2ZM11 13 22 2"/></>,
+        optional:<><path d="M12 3v18M3 12h18"/><circle cx="12" cy="12" r="9"/></>,
     };
     const known=Object.hasOwn(labels,type);
     return <span className={'badge itinerary-type type-'+(known?type:'item')}><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" focusable="false">{known?marks[type]:<><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></>}</svg><span>{label||labels[type]||'Item'}</span></span>;
@@ -166,6 +167,13 @@ export function Coast({ variant = "small", }: {
             : assets.private.imgEditableIllustrationGoaCoast;
     return (<img className={"coast " + variant} src={src} alt="Illustrated Goa coastline with a palm tree, sailboat and warm sunset"/>);
 }
+export function DestinationCover({destination,compact=false}:{destination:string;compact?:boolean}){
+    const goa=destination.trim().toLowerCase()==='goa';
+    return <div className={(goa?'destination-cover':'destination-cover neutral')+(compact?' compact':'')}>{goa?<Coast variant={compact?'small':'hero'}/>:<div className="neutral-destination-mark" role="img" aria-label={'Neutral illustrated route for '+destination}><span>1</span><span>2</span><span>3</span></div>}</div>;
+}
+export function SamplePreview(){
+    return <div className="sample-preview"><Coast/><div><Badge tone="positive">Fictional Goa sample</Badge><strong>Three days · shared plan · clear decisions</strong><p className="caption muted">Preview the existing sample itinerary, personal estimate and group response flow.</p></div></div>;
+}
 export const dateText = (value: string) => new Date(value).toLocaleDateString("en-IN", {
     day: "numeric",
     month: "short",
@@ -188,7 +196,7 @@ export function Hero({ trip, title, sub, }: {
         <h2>{title}</h2>
         <p className="small">{sub}</p>
       </div>
-      <Coast variant="hero"/>
+      <DestinationCover destination={trip.destination} compact/>
     </section>);
 }
 export function Empty({ title, children, }: {
