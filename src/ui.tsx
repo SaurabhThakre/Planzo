@@ -169,7 +169,7 @@ export function Coast({ variant = "small", }: {
 }
 export function DestinationCover({destination,compact=false}:{destination:string;compact?:boolean}){
     const goa=destination.trim().toLowerCase()==='goa';
-    return <div className={(goa?'destination-cover':'destination-cover neutral')+(compact?' compact':'')}>{goa?<Coast variant={compact?'small':'hero'}/>:<div className="neutral-destination-mark" role="img" aria-label={'Neutral illustrated route for '+destination}><span>1</span><span>2</span><span>3</span></div>}</div>;
+    return <div className={(goa?'destination-cover':'destination-cover neutral')+(compact?' compact':'')}>{goa?<Coast variant={compact?'small':'hero'}/>:<div className="neutral-destination-mark" aria-hidden="true"><Icon name="map"/><strong>{destination}</strong></div>}</div>;
 }
 export function SamplePreview(){
     return <div className="sample-preview"><Coast/><div><Badge tone="positive">Fictional Goa sample</Badge><strong>Three days · shared plan · clear decisions</strong><p className="caption muted">Preview the existing sample itinerary, personal estimate and group response flow.</p></div></div>;

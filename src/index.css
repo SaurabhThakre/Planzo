@@ -242,11 +242,11 @@ main.public-shell{padding-top:32px;padding-bottom:32px}
 .destination-cover{min-height:132px;display:flex;align-items:center;justify-content:flex-end;overflow:hidden;border-radius:16px;background:linear-gradient(120deg,var(--mint),#f6efe2)}
 .destination-cover .coast{width:min(100%,380px);max-height:150px;object-fit:contain}
 .destination-cover.neutral{justify-content:center;background:linear-gradient(135deg,#edf3f0,#f4f0e8)}
-.neutral-destination-mark{display:flex;align-items:center;gap:28px;color:var(--forest)}
-.neutral-destination-mark span{display:grid;place-items:center;width:34px;height:34px;border:2px solid #a8c6ba;border-radius:50%;background:white;font-weight:700}
-.neutral-destination-mark span+span{position:relative}.neutral-destination-mark span+span::before{content:'';position:absolute;right:100%;width:30px;border-top:2px dotted #8aab9e}
-.day-tabs{display:flex;gap:8px;overflow-x:auto;padding:4px 2px}
-.day-tabs button{flex:1 0 150px;display:grid;gap:3px;min-height:64px;padding:10px 14px;border:1px solid var(--border);border-radius:12px;background:var(--cream);text-align:left;font-weight:700}
+.neutral-destination-mark{display:grid;justify-items:center;gap:8px;max-width:100%;padding:12px;color:var(--forest);text-align:center;overflow-wrap:anywhere}
+.neutral-destination-mark>.icon{display:grid;place-items:center;width:42px;height:42px;border:1px solid #a8c6ba;border-radius:50%;background:white}
+.neutral-destination-mark>.icon img{width:22px;height:22px}
+.day-tabs{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,108px),1fr));gap:8px;padding:4px 2px}
+.day-tabs button{min-width:0;overflow-wrap:anywhere;display:grid;gap:3px;min-height:64px;padding:10px 14px;border:1px solid var(--border);border-radius:12px;background:var(--cream);text-align:left;font-weight:700}
 .day-tabs button small{font-size:11px;line-height:16px;color:var(--muted);font-weight:500}
 .day-tabs button[aria-selected=true]{border-color:var(--forest);background:var(--mint);box-shadow:inset 0 -3px 0 var(--forest)}
 .day-panel{display:grid;gap:12px}
@@ -259,15 +259,15 @@ main.public-shell{padding-top:32px;padding-bottom:32px}
 .stop-copy strong{min-width:0;overflow-wrap:anywhere}
 .stop-copy small{grid-column:1/-1;color:var(--muted);font-size:12px;line-height:18px}
 .illustrative-route{display:grid;gap:10px;padding:14px;border-radius:14px;background:var(--cream)}
-.illustrative-route>div{display:flex;align-items:flex-start;gap:10px;overflow-x:auto}
-.illustrative-route>div>span{display:flex;align-items:center;gap:7px;min-width:max-content;font-size:12px}
+.illustrative-route>div{display:flex;flex-wrap:wrap;align-items:flex-start;gap:10px}
+.illustrative-route>div>span{display:flex;align-items:center;gap:7px;min-width:0;font-size:12px;overflow-wrap:anywhere}
 .illustrative-route>div>span:not(:last-child)::after{content:'···';margin-left:3px;color:#7ca595;letter-spacing:2px}
-.illustrative-route b{display:grid;place-items:center;width:24px;height:24px;border-radius:50%;background:var(--mint);color:var(--forest);font-size:11px}
-@media(max-width:640px){.day-tabs button{flex-basis:120px}.stop-summary button{grid-template-columns:30px minmax(0,1fr) auto;padding:12px}.stop-number{width:28px;height:28px}}
+.illustrative-route b{flex:none;display:grid;place-items:center;width:24px;height:24px;border-radius:50%;background:var(--mint);color:var(--forest);font-size:11px}
+@media(max-width:640px){.stop-summary button{grid-template-columns:30px minmax(0,1fr) auto;padding:12px}.stop-number{width:28px;height:28px}}
 
 /* Phase-two shared workspace and local navigation. */
 .shared-trip-workspace{display:grid;grid-template-columns:210px minmax(0,1fr);gap:28px;align-items:start}
-.shared-trip-main{min-width:0;display:grid;gap:24px}
+.shared-trip-main{min-width:0;display:grid;grid-template-columns:minmax(0,1fr);gap:24px;overflow-wrap:anywhere}
 .trip-workspace-nav{position:sticky;top:20px;display:flex;flex-direction:column;gap:12px;padding:10px;border:1px solid var(--border);border-radius:18px;background:white;transition:width .16s}
 .workspace-nav-head{display:flex;justify-content:flex-end}.workspace-menu-button{display:none}.workspace-collapse{display:grid;place-items:center;width:34px;height:34px;border:0;border-radius:10px;background:var(--cream)}
 .trip-workspace-nav nav,.workspace-nav-utilities{display:grid;gap:5px}
