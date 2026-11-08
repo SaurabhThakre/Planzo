@@ -14,15 +14,29 @@ export function InPlacePanel({title,onClose,children,className='',open=true}:{
  const dialog=useRef<HTMLDialogElement>(null),opener=useRef<HTMLElement|null>(null);
  const token=useRef(crypto.randomUUID()),closing=useRef(false),after=useRef<(()=>void)|undefined>(undefined);
  const active=useRef(false);
+ const exitTimer=useRef<number|undefined>(undefined);
  const titleId=useId();
 
- const finish=()=>{
+ const complete=()=>{
   if(closing.current===false&&dialog.current?.open===false)return;
+  window.clearTimeout(exitTimer.current);
+  exitTimer.current=undefined;
   closing.current=false;
+  dialog.current?.removeAttribute('data-exiting');
   dialog.current?.close();
   onClose();
   const next=after.current;after.current=undefined;
   requestAnimationFrame(()=>{opener.current?.focus();next?.();});
+ };
+ const finish=()=>{
+  const element=dialog.current;
+  if(element?.hasAttribute('data-exiting'))return;
+  if(!element?.open||window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+   complete();return;
+  }
+  closing.current=true;
+  element.setAttribute('data-exiting','');
+  exitTimer.current=window.setTimeout(complete,280);
  };
  const close=(afterClose?:()=>void)=>{
   if(closing.current)return;
@@ -46,6 +60,10 @@ export function InPlacePanel({title,onClose,children,className='',open=true}:{
   window.addEventListener('popstate',popped);
   return()=>{
    window.removeEventListener('popstate',popped);
+   window.clearTimeout(exitTimer.current);
+   exitTimer.current=undefined;
+   element?.removeAttribute('data-exiting');
+   closing.current=false;
    document.body.classList.remove('panel-open');
    active.current=false;
    if(element?.open)element.close();
@@ -60,7 +78,7 @@ export function InPlacePanel({title,onClose,children,className='',open=true}:{
  },[open]);
 
  return <dialog ref={dialog} className={'in-place-panel '+className} aria-labelledby={titleId} onCancel={event=>{event.preventDefault();close();}}>
-  <div className="panel-frame">
+  <div className="panel-frame" onAnimationEnd={event=>{if(event.target===event.currentTarget&&dialog.current?.hasAttribute('data-exiting')&&event.animationName.startsWith('planzo-panel-out'))complete();}}>
    <header className="panel-header"><h2 id={titleId}>{title}</h2><Button variant="ghost" className="panel-close" onClick={()=>close()}>Close</Button></header>
    <div className="panel-body">{typeof children==='function'?children({close}):children}</div>
   </div>

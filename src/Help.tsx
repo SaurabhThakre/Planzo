@@ -161,7 +161,7 @@ export function HelpPage({initialTopic='organise-trip',shell,onReturn,onSelect,a
  const valid=topics.some(x=>x.id===initialTopic)?initialTopic as HelpTopic:'organise-trip';
  const [selected,setSelected]=useState<HelpTopic>(valid),[walkthrough,setWalkthrough]=useState(false),article=useRef<HTMLElement>(null);
  useEffect(()=>setSelected(valid),[valid]);
- const select=(topic:HelpTopic,scroll=true)=>{setSelected(topic);onSelect?.(topic);if(scroll)requestAnimationFrame(()=>article.current?.scrollIntoView({behavior:'smooth',block:'start'}));};
+ const select=(topic:HelpTopic,scroll=true)=>{setSelected(topic);onSelect?.(topic);if(scroll)requestAnimationFrame(()=>article.current?.scrollIntoView({behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth',block:'start'}));};
  return <div className="help-page">
   <div className="help-return"><Button variant="ghost" onClick={onReturn}>← Return to Planzo</Button></div>
   <section className="help-intro" aria-labelledby="help-title"><div><span className="eyebrow">{shell==='demo'?'FICTIONAL GOA SAMPLE HELP':'PLANZO HELP'}</span><h1 id="help-title">Help & documentation</h1><p>Follow the trip journey, understand what stays private and find the exact control you need.</p></div><HelpHeroArt/></section>
