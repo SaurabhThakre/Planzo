@@ -1,7 +1,7 @@
 {
   "make_file": "4tPr5AkQO1g0L1esRvGRjz",
   "site": "https://person-siren-40913121.figma.site",
-  "source_hash": "fb8c376e6a219df0405da1c5d8a91a02129043b98981f02232a5e3cd5391aa91",
+  "source_hash": "56a55427d21cdb721071c7e2b636dac642453548f3ce8b2f640dfe32f24ba6ae",
   "managed_files": [
     ".figma/make/analyze-routes",
     ".figma/make/deploy",
@@ -464,6 +464,8 @@
     "src/planning.tsx",
     "src/planningBackend.ts",
     "src/preferences.tsx",
+    "src/presentation.css",
+    "src/presentation.ts",
     "src/privatePlanning.ts",
     "src/routeCompiler.ts",
     "src/routePlanning.ts",
@@ -573,5 +575,5 @@
     "utils/supabase/info.tsx",
     "vite.config.ts"
   ],
-  "last_published_utc": "2026-11-07T14:47:59.340073+00:00"
+  "last_published_utc": "2026-11-08T08:09:26.228278+00:00"
 }

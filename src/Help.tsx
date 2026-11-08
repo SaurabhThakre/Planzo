@@ -9,7 +9,7 @@ const topics:{id:HelpTopic;label:string;summary:string;icon:string}[]=[
  {id:'organise-trip',label:'Organise a trip',summary:'Create the shared trip and invite travellers.',icon:'map'},
  {id:'join-trip',label:'Join a trip',summary:'Open an invitation and verify your email.',icon:'link'},
  {id:'private-input',label:'Private input',summary:'Confirm your own dates, budget and preferences.',icon:'lock'},
- {id:'itinerary-decisions',label:'Itinerary & decisions',summary:'Review the draft and resolve step decisions.',icon:'people'},
+ {id:'itinerary-decisions',label:'Itinerary & decisions',summary:'Find the schedule, individual votes and personal review.',icon:'people'},
  {id:'final-journey-booking',label:'Final journey & booking',summary:'Confirm the plan and use the final journey.',icon:'plane'},
  {id:'troubleshooting',label:'Troubleshooting',summary:'Fix invitation, code and planning issues.',icon:'help'},
 ];
@@ -54,10 +54,10 @@ function HelpHeroArt(){
  </div>;
 }
 
-function GuideVisual({kind}:{kind:'join'|'decisions'|'journey'|'fixes'}){
+function GuideVisual({kind,demo=false}:{kind:'join'|'decisions'|'journey'|'fixes';demo?:boolean}){
  const data={
   join:{caption:'Invitation to verified membership',label:'Illustrated flow: open a fictional invitation link, receive an email code, then verify and join.',steps:[['link','Invitation link','Open the shared link'],['mail','Email code','Use the newest message'],['check','Verified','Join the trip']]},
-  decisions:{caption:'From draft to a locked plan',label:'Illustrated flow: review the draft itinerary, resolve required decisions, then confirm the exact version.',steps:[['map','Draft itinerary','Review route and assumptions'],['people','Step decisions','Submit your own ballot'],['check','Confirmation','Review the exact version']]},
+  decisions:{caption:'Read the plan, resolve choices, then review',label:demo?'Illustrated flow: read the Goa schedule in Plan, vote in Decisions, then review and respond.':'Illustrated flow: read the schedule in Itinerary, resolve choices in Step decisions, then return to Itinerary to review.',steps:[['map',demo?'Plan':'Itinerary','Check the route and estimates'],['people',demo?'Decisions':'Step decisions','Compare and vote on one stop'],['check',demo?'Review and respond':'Back to Itinerary',demo?'Respond to the current plan':'Review and lock the current version']]},
   journey:{caption:'Journey and booking handoff',label:'Illustrated flow: follow the locked final journey, then independently check booking tasks with real providers.',steps:[['plane','Final journey','Use the locked day-by-day route'],['calendar','Booking handoff','Check providers in Phase 2'],['check','Self-report','Not a verified reservation']]},
   fixes:{caption:'Three cues to check first',label:'Troubleshooting cues: request a fresh invitation link, use the newest email code, and check estimate assumptions before proceeding.',steps:[['link','Link','Ask for a fresh active invite'],['clock','Code','Use the newest email code'],['wallet','Estimate','Read prices and assumptions']]},
  }[kind];
@@ -84,9 +84,9 @@ function Question({children}:{children:ReactNode}){
 function ExampleFigure({kind}:{kind:'invite'|'private'}){
  const invite=kind==='invite';
  return <figure className="help-figure">
-  <figcaption><strong>Illustrated example</strong> · Fictional Goa walkthrough · {invite?'Create an invitation from the shared trip overview.':'Open and confirm your own private input.'}</figcaption>
+  <figcaption><strong>Illustrated example</strong> · Fictional shared trip · {invite?'Open the invitation panel from Share.':'Open and confirm your own private input.'}</figcaption>
   <div className="help-mock" role="img" aria-label={invite?'Illustration of the Invite your friends card':'Illustration of the shared trip navigation and private input guide'}>
-   <div className="help-mock-bar"><Icon brand/><span>Planzo</span><span className="help-mock-pill">Shared trips</span></div>
+   <div className="help-mock-bar"><Icon brand/><span>Planzo</span><span className="help-mock-pill">{invite?'Overview → Share':'Shared trips'}</span></div>
    {invite?<div className="help-mock-card">
     <span className="help-callout" aria-hidden="true">1</span><h3><Icon name="people"/>Invite your friends</h3>
     <p>Friends verify their email with a code.</p><span className="help-mock-button">Create invitation link</span>
@@ -101,7 +101,7 @@ function ExampleFigure({kind}:{kind:'invite'|'private'}){
    </>}
   </div>
   <ol className="help-callout-copy">
-   {invite?<><li><strong>Open the trip overview.</strong> Find the “Invite your friends” card.</li><li><strong>Select “Create invitation link”.</strong> Copy the newly shown link and share it yourself.</li></>:<><li><strong>Select “My private input”.</strong> This opens only your own planning guide.</li><li><strong>Complete all six steps.</strong> Review, then select “Confirm my private summary”.</li></>}
+   {invite?<><li><strong>Select Share on Overview.</strong> This opens the “Invite your friends” panel.</li><li><strong>Select “Create invitation link”.</strong> Copy the newly shown link and share it yourself.</li></>:<><li><strong>Select “My private input”.</strong> This opens only your own planning guide.</li><li><strong>Complete all six steps.</strong> Review, then select “Confirm my private summary”.</li></>}
   </ol>
  </figure>;
 }
@@ -110,19 +110,28 @@ function Guide({topic,shell}:{topic:HelpTopic;shell:'shared'|'demo'}){
  switch(topic){
   case'organise-trip':return <>
    <p className="help-lede">Start with the shared dates and destination, then invite each traveller to contribute as themselves.</p>
-   <ol><li>Select <strong>Create a trip</strong> and complete the trip basics.</li><li>On the trip overview, find <strong>Invite your friends</strong>.</li><li>Select <strong>Create invitation link</strong>, then <strong>Copy invitation</strong>.</li><li>Share it yourself. Planzo does not send messages automatically.</li></ol>
-   <ExampleFigure kind="invite"/>
-   <details><summary><Question>Can I reuse an invitation?</Question></summary><p>Use it only while it is Active and before its expiry. The organiser can select <strong>Revoke</strong> and create a new link.</p></details>
+   {shell==='demo'?<ol><li>Select <strong>Create another trip</strong> and complete the trip basics.</li><li>On <strong>Invite your friends</strong>, select <strong>Copy invite link</strong> or <strong>Preview friend invitation</strong>.</li><li>Use fictional information for the sample invitation and any traveller details.</li></ol>:<>
+    <ol><li>Select <strong>Create a trip</strong> and complete the trip basics.</li><li>On <strong>Overview</strong>, select <strong>Share</strong> to open <strong>Invite your friends</strong>.</li><li>Select <strong>Create invitation link</strong>, then <strong>Copy invitation</strong>.</li><li>Share the link with the people you want to invite.</li></ol>
+    <ExampleFigure kind="invite"/>
+   </>}
+   <details><summary><Question>Can I reuse an invitation?</Question></summary><p>{shell==='demo'?'Sample invitations work in the browser where the trip is saved while the invitation is active.':'Use it while it is active and before its expiry. The organiser can revoke it and create a new link through Share.'}</p></details>
    <details><summary><Question>What is different in the fictional sample?</Question></summary><p>The Goa sample is browser-saved and its invitation works only with sample data in that browser. The shared app uses email verification and securely saved trip membership.</p></details>
   </>;
-  case'join-trip':return <>
+  case'join-trip':return shell==='demo'?<>
+   <p className="help-lede">Use a fictional invitation and display name to try joining in the same browser.</p>
+   <ol><li>From <strong>Invite your friends</strong>, select <strong>Preview friend invitation</strong>.</li><li>Enter a fictional name and choose <strong>Join as guest</strong>.</li></ol>
+  </>:<>
    <p className="help-lede">A traveller joins from the organiser’s invitation and verifies the email they will use to return.</p>
    <ol><li>Open the invitation or select <strong>Join with an invite</strong>.</li><li>Paste the <strong>Invitation link or code</strong>.</li><li>Enter <strong>Your name</strong> and <strong>Email address</strong>.</li><li>Select <strong>Send email code</strong>.</li><li>Enter the newest <strong>Email verification code</strong>, then select <strong>Verify email and join</strong>.</li></ol>
    <GuideVisual kind="join"/>
    <details><summary><Question>I did not receive a code. What should I do?</Question></summary><p>Check the address, spam folder and newest message. Select <strong>Change email or request a new code</strong> before trying again. If the invitation expired, ask the organiser for a fresh link.</p></details>
    <details><summary><Question>Do travellers need a password?</Question></summary><p>No. The invitation flow verifies an email code and does not require a separate signup form.</p></details>
+   <details><summary><Question>How do I return to a shared trip?</Question></summary><p>Open <strong>Sign in</strong>. Choose <strong>Password</strong> if you set one, or <strong>Email code</strong> and use the same email you verified when joining.</p></details>
   </>;
-  case'private-input':return <>
+  case'private-input':return shell==='demo'?<>
+   <p className="help-lede">Enter fictional dates, a budget and preferences for the current sample traveller.</p>
+   <ol><li>Open <strong>My private input</strong>.</li><li>Complete the sample brief. Use <strong>Save draft</strong> if you want to return to it later in this browser.</li><li>Select <strong>Confirm my private input</strong> when you have checked your entries.</li></ol>
+  </>:<>
    <p className="help-lede">Each traveller confirms their own availability, whole-trip ceiling and planning preferences.</p>
    <ol><li>Open the trip and select <strong>My private input</strong>.</li><li>Complete <strong>Your destination times</strong> and <strong>Your whole-trip budget</strong>.</li><li>Add shareable places, then describe private must-haves and flexible preferences.</li><li>Review the proposed planning requests and what may be shared.</li><li>Select <strong>Confirm my private summary</strong>.</li></ol>
    <HelpNote icon="lock" title="What the group sees">The group sees whether your input is pending or confirmed. Your raw budget limit, starting city and private notes stay private. Short planning requests you explicitly review are shared for itinerary planning.</HelpNote>
@@ -131,14 +140,25 @@ function Guide({topic,shell}:{topic:HelpTopic;shell:'shared'|'demo'}){
    <details><summary><Question>Can I change confirmed input?</Question></summary><p>Yes. Use <strong>Edit my confirmed answers</strong>, acknowledge the impact, then select <strong>Reopen my private input</strong>. The trip will need fresh planning and review.</p></details>
   </>;
   case'itinerary-decisions':return <>
-   <p className="help-lede">The itinerary stays provisional until required decisions and every included traveller’s personal review are complete.</p>
-   <ol><li>Open <strong>Itinerary</strong> and check the route, timing, assumptions and exclusions.</li><li>If prompted, open <strong>Step decisions</strong> and submit your own ballot.</li><li>Return to the itinerary and check <strong>Your private whole-trip check</strong>.</li><li>Acknowledge the exact version, then select <strong>Confirm my personal review</strong>.</li><li>The organiser selects <strong>Lock resolved itinerary</strong> only after everyone reviews.</li></ol>
-   <GuideVisual kind="decisions"/>
+   {shell==='demo'?<>
+    <p className="help-lede">Use Plan for the Goa schedule and Decisions for individual choices.</p>
+    <ol><li>Open <strong>Plan</strong> and select a day to read its stops, times and estimates.</li><li>Open <strong>Decisions</strong> to find open votes. You can also open a stop marked <strong>Decision pending</strong> and choose <strong>View decision</strong>.</li><li>Compare the options and submit your ballot when the vote is open. Select <strong>View in itinerary</strong> to return to the relevant day.</li><li>When you are ready to respond to the whole plan, choose <strong>Review and respond</strong> from the itinerary.</li></ol>
+    <GuideVisual kind="decisions" demo/>
+   </>:<>
+    <p className="help-lede">Read the whole trip in Itinerary. Use Step decisions for votes about individual stops.</p>
+    <ol><li>Open <strong>Itinerary</strong> and select a day. Check the route, local timing, assumptions and estimates.</li><li>Open a stop marked <strong>Decision pending</strong> and select <strong>View decision</strong>. To propose a change to an eligible stop, use <strong>Raise a concern about this step</strong>.</li><li>In <strong>Step decisions</strong>, compare the arrangements, check the deadline and submit your own ballot. Open <strong>Resolved decisions</strong> to see saved outcomes.</li><li>Choose <strong>View in itinerary</strong> to return to that stop. Under <strong>Review and lock this itinerary</strong>, check your estimate and requirement outcomes before selecting <strong>Confirm my personal review</strong>.</li><li>The organiser selects <strong>Lock resolved itinerary</strong> after everyone included reviews that version.</li></ol>
+    <GuideVisual kind="decisions"/>
+    <HelpNote icon="map" title="Find your trip tools">Use the sidebar on desktop or <strong>Trip menu</strong> on smaller screens. <strong>Overview → Trip passport</strong> shows planning progress. <strong>History</strong> shows earlier itinerary versions and decisions. Some older trips use a separate <strong>Review &amp; confirm</strong> section.</HelpNote>
+   </>}
    <HelpNote icon="wallet" title="Prices are planning estimates">Estimated prices and availability need verification. Hard budgets and availability outrank votes, and silence never counts as approval.</HelpNote>
    <details><summary><Question>Why can’t I confirm?</Question></summary><p>Look for unresolved step decisions, an over-budget estimate, missing requirement checks or another traveller’s incomplete input.</p></details>
    <details><summary><Question>Does a popular vote override my limit?</Question></summary><p>No. A vote cannot override a hard budget, availability or required personal check.</p></details>
   </>;
-  case'final-journey-booking':return <>
+  case'final-journey-booking':return shell==='demo'?<>
+   <p className="help-lede">In the Goa sample, use Plan for the itinerary and Bookings for the fictional handoff.</p>
+   <ol><li>Choose <strong>Review and respond</strong> from the itinerary to review the current sample version.</li><li>Once every included sample traveller is ready, the organiser can close the decision round in <strong>Decisions</strong>.</li><li>Open <strong>Bookings</strong> to see sample responsibilities and compare example provider offers.</li></ol>
+   <HelpNote icon="lock" title="Fictional booking examples">The offers and booking reports are sample data. Use this view to explore how the handoff works.</HelpNote>
+  </>:<>
    <p className="help-lede">Final journey is the readable destination itinerary for the exact locked plan.</p>
    <ol><li>Finish your personal review of the current itinerary version.</li><li>Wait for every included traveller to review and for the organiser to lock it.</li><li>Select <strong>Final journey</strong> or <strong>See my final journey</strong>.</li><li>Use the day-by-day route as a planning baseline while checking real providers.</li></ol>
    <GuideVisual kind="journey"/>
@@ -148,10 +168,10 @@ function Guide({topic,shell}:{topic:HelpTopic;shell:'shared'|'demo'}){
   </>;
   case'troubleshooting':return <>
    <p className="help-lede">Use the message on screen first; Planzo does not advertise a support channel in this prototype.</p>
-   <ul><li><strong>Invitation unavailable:</strong> ask the organiser to check that it is Active and create a fresh link if needed.</li><li><strong>Email code rejected:</strong> use the newest code for the exact email address entered.</li><li><strong>Save did not complete:</strong> keep the form open and retry after the current action finishes.</li><li><strong>Trip looks out of date:</strong> select <strong>Refresh</strong> on the trip overview.</li><li><strong>Cannot proceed:</strong> read the pending status in the itinerary or private-input guide.</li></ul>
+   <ul><li><strong>Invitation unavailable:</strong> ask the organiser to check that it is Active and create a fresh link if needed.</li><li><strong>Email code rejected:</strong> use the newest code for the exact email address entered.</li><li><strong>Save did not complete:</strong> keep the form open and retry after the current action finishes.</li><li><strong>Shared trip looks out of date:</strong> select <strong>Refresh</strong> in the trip navigation.</li><li><strong>Cannot proceed:</strong> check the passport for planning progress. In shared trips, open <strong>Overview → Trip passport</strong> or <strong>Pact Passport</strong>. In the sample, open <strong>Decisions → Planzo Passport</strong>.</li></ul>
    <GuideVisual kind="fixes"/>
    <details><summary><Question>Is the Goa sample connected to my shared trips?</Question></summary><p>No. The fictional Goa sample is a separate browser-saved demonstration. Its sample identities, prices and actions do not change shared app trips.</p></details>
-   <details><summary><Question>Where is my unfinished form saved?</Question></summary><p>Keep the tab open until you save or confirm. Contextual Help links open separately so the form remains in place. Do not put real information in the fictional sample.</p></details>
+   <details><summary><Question>Can I open Help while filling out a form?</Question></summary><p>Help in the top bar stays visible while you scroll. If a form has a Help link next to it, use that link to open the guide in a panel. Close the panel to return to the form, then save or confirm your entries.</p></details>
    {shell==='demo'&&<p className="caption">You are reading Help inside the fictional sample shell. Shared-app labels are documented accurately, but sample invitation, identity and storage behaviour is explicitly different.</p>}
   </>;
  }
@@ -161,12 +181,12 @@ export function HelpPage({initialTopic='organise-trip',shell,onReturn,onSelect,a
  const valid=topics.some(x=>x.id===initialTopic)?initialTopic as HelpTopic:'organise-trip';
  const [selected,setSelected]=useState<HelpTopic>(valid),[walkthrough,setWalkthrough]=useState(false),article=useRef<HTMLElement>(null);
  useEffect(()=>setSelected(valid),[valid]);
- const select=(topic:HelpTopic,scroll=true)=>{setSelected(topic);onSelect?.(topic);if(scroll)requestAnimationFrame(()=>article.current?.scrollIntoView({behavior:'smooth',block:'start'}));};
+ const select=(topic:HelpTopic,scroll=true)=>{setSelected(topic);onSelect?.(topic);if(scroll)requestAnimationFrame(()=>article.current?.scrollIntoView({behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth',block:'start'}));};
  return <div className="help-page">
   <div className="help-return"><Button variant="ghost" onClick={onReturn}>← Return to Planzo</Button></div>
   <section className="help-intro" aria-labelledby="help-title"><div><span className="eyebrow">{shell==='demo'?'FICTIONAL GOA SAMPLE HELP':'PLANZO HELP'}</span><h1 id="help-title">Help & documentation</h1><p>Follow the trip journey, understand what stays private and find the exact control you need.</p></div><HelpHeroArt/></section>
   {allowWalkthrough&&<Card className="help-walkthrough-launch" title="New to the shared trip?"><p>Open a short three-step guide when you want it. Nothing starts automatically.</p><Button variant="secondary" onClick={()=>setWalkthrough(true)}>Start three-step walkthrough</Button></Card>}
-  {walkthrough&&<InPlacePanel title="Three steps through Planzo" onClose={()=>setWalkthrough(false)}><ol className="walkthrough-steps"><li><span>1</span><div><h3>My private input</h3><p>Open My private input, complete your own dates, whole-trip budget and preferences, then confirm your summary.</p></div></li><li><span>2</span><div><h3>Itinerary</h3><p>Review the route, timing, assumptions and exclusions. Open Step decisions only where the group needs one.</p></div></li><li><span>3</span><div><h3>Review the plan</h3><p>Check your private whole-trip estimate and the exact version before confirming your personal review.</p></div></li></ol></InPlacePanel>}
+  {walkthrough&&<InPlacePanel title="Three steps through Planzo" onClose={()=>setWalkthrough(false)}><ol className="walkthrough-steps"><li><span>1</span><div><h3>My private input</h3><p>Open My private input, complete your own dates, whole-trip budget and preferences, then confirm your summary.</p></div></li><li><span>2</span><div><h3>{shell==='demo'?'Plan':'Itinerary'}</h3><p>Select a day to read its schedule. Open a pending stop and choose View decision to compare the options.</p></div></li><li><span>3</span><div><h3>Review the plan</h3><p>{shell==='demo'?'Return to Plan and select Review and respond for the current version.':'Return to Itinerary and open Review and lock this itinerary to check your estimate and confirm your personal review.'}</p></div></li></ol></InPlacePanel>}
   <Card className="help-map" title="Your Planzo journey" sub="Choose any step to open its guide.">
    <div className="help-starts">
     <div className={selected==='organise-trip'?'selected':''}><div className="help-branch-heading"><span className="help-icon-tile"><Icon name="map"/></span><span><strong>Organiser</strong><small>Set the shared starting point</small></span></div><div className="help-path"><button aria-pressed={selected==='organise-trip'} onClick={()=>select('organise-trip')}><Icon name="calendar"/>Create a trip</button><span aria-hidden="true">→</span><button aria-pressed={selected==='organise-trip'} onClick={()=>select('organise-trip')}><Icon name="people"/>Invite travellers</button></div></div>

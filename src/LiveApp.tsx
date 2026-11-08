@@ -151,7 +151,7 @@ export default function LiveApp(){
       view==='trip'&&session?(workspace&&person?<div className={'shared-trip-workspace '+(['preferences','review','journey'].includes(route[2])?'focused':'')}>
         <TripWorkspaceNav workspace={workspace} tab={route[2]||''} busy={busy} go={tab=>tab==='all-trips'?go('home'):tab?go('trip',tripId,tab):go('trip',tripId)} onRefresh={()=>void perform(async()=>{await refreshTrip();setNotice('Showing the latest saved trip.');})}/>
         <div className="shared-trip-main"><TripWorkspaceHeader workspace={workspace} instruction={instruction}/>
-        {workspace.trip.workflow_version===2&&['preferences','plan','voting','review','bookings','journey','history'].includes(route[2])?<LivePrivatePlanning key={tripId+uid} workspace={workspace} userId={person.id} tab={route[2]} onRefresh={()=>refreshTrip()} go={tab=>go('trip',tripId,tab)}/>:
+        {workspace.trip.workflow_version===2&&['preferences','plan','voting','review','bookings','journey','history'].includes(route[2])?<LivePrivatePlanning key={tripId+uid} workspace={workspace} userId={person.id} tab={route[2]} target={route[3]} onRefresh={()=>refreshTrip()} go={(tab,target)=>target?go('trip',tripId,tab,target):go('trip',tripId,tab)}/>:
         route[2]==='history'?<LiveHistory workspace={workspace}/>:
         route[2]==='preferences'?<Preferences key={tripId+uid} trip={asTrip(workspace,person)} personId={person.id} live readOnly={workspace.trip.stage==='archived'} savedRevision={workspace.own_brief?.revision||0} onSave={saveBrief} onInterpret={interpretPreferences} onDone={()=>go('trip',tripId)}/>:
         route[2]==='bookings'?<LiveBookings key={tripId+uid} workspace={workspace} userId={person.id} onRefresh={()=>refreshTrip()} go={tab=>go('trip',tripId,tab)}/>:

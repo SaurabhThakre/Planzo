@@ -476,7 +476,7 @@ export default function App({ launchSample = false }: { launchSample?: boolean }
                         : "activity"}/>);
                 break;
             case "itinerary":
-                content = <Itinerary {...p}/>;
+                content = <Itinerary {...p} initialDay={route.arg}/>;
                 break;
             case "costs":
                 content = <Costs {...p}/>;
@@ -508,14 +508,13 @@ export default function App({ launchSample = false }: { launchSample?: boolean }
     const active = [
         "builder",
         "plans",
-        "poll",
         "itinerary",
         "costs",
         "optional",
         "review",
     ].includes(route.view)
         ? "Plan"
-        : ["outcome", "history"].includes(route.view)
+        : ["poll", "outcome", "history"].includes(route.view)
             ? "Decisions"
             : ["bookings", "compare"].includes(route.view)
                 ? "Bookings"

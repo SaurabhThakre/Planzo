@@ -1,0 +1,298 @@
+:root {
+    --planzo-header-height: 80px;
+    --planzo-quick: 205ms;
+    --planzo-reveal: 455ms;
+    --planzo-ease: cubic-bezier(.22, 1, .36, 1);
+    scroll-padding-top: calc(var(--planzo-header-height) + 12px);
+}
+
+#root > .topbar {
+    position: sticky;
+    top: 0;
+    z-index: 30;
+    background: var(--white);
+    box-shadow: 0 0 0 transparent;
+}
+
+:root[data-planzo-scrolled] #root > .topbar {
+    box-shadow: 0 5px 18px rgb(23 61 55 / 10%);
+}
+
+@media (min-width: 761px) {
+    .sidebar { top: calc(var(--planzo-header-height) + 24px); }
+    .trip-workspace-nav { top: calc(var(--planzo-header-height) + 20px); }
+}
+
+@media (min-width: 901px) {
+    .help-topics { top: calc(var(--planzo-header-height) + 24px); }
+}
+
+.help-article { scroll-margin-top: 4px; }
+
+.help-article details > summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    list-style: none;
+}
+
+.help-article details > summary::-webkit-details-marker { display: none; }
+.help-article details > summary::after {
+    content: "";
+    flex: 0 0 8px;
+    height: 8px;
+    margin-inline-end: 4px;
+    border: solid currentColor;
+    border-width: 0 2px 2px 0;
+    rotate: 45deg;
+}
+.help-article details[open] > summary::after { rotate: 225deg; }
+
+.sample-preview .sample-preview-art { position: relative; display: block; min-width: 0; }
+.sample-preview-trail {
+    position: absolute;
+    inset: auto 10% 14% 10%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    pointer-events: none;
+    opacity: 0;
+}
+.sample-preview-trail::before {
+    content: "";
+    position: absolute;
+    inset-inline: 0;
+    border-top: 2px dotted var(--forest);
+}
+.sample-preview-trail i {
+    z-index: 1;
+    width: 8px;
+    height: 8px;
+    border: 1px solid var(--forest);
+    border-radius: 50%;
+    background: var(--white);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    #root > .topbar { transition: box-shadow var(--planzo-quick) ease; }
+
+    :is(.button, .day-tabs button, .trip-workspace-nav button, .sidebar nav button,
+        .help-topics button, .help-shared-path button, .workspace-menu-button,
+        .trip-actions-menu > summary, .stop-summary button, .decision-radio,
+        .trip-list-item, .provider-link, .help-topic-icon) {
+        transition: background-color var(--planzo-quick) ease, border-color var(--planzo-quick) ease,
+            color var(--planzo-quick) ease, box-shadow var(--planzo-quick) ease,
+            scale var(--planzo-quick) var(--planzo-ease);
+    }
+
+    .field :is(input, textarea, select) {
+        transition: border-color var(--planzo-quick) ease, box-shadow var(--planzo-quick) ease;
+    }
+
+    :is(.button, .day-tabs button, .workspace-menu-button, .help-shared-path button):not(:disabled):active {
+        scale: .98;
+    }
+
+    .date-time-chevron, .help-article details > summary::after {
+        transition: rotate var(--planzo-quick) var(--planzo-ease);
+    }
+    .date-time-field > button[aria-expanded="true"] .date-time-chevron { rotate: 180deg; }
+
+    .context-help-link, .provider-link, .sample-banner a {
+        transition: color var(--planzo-quick) ease, text-decoration-color var(--planzo-quick) ease,
+            background-color var(--planzo-quick) ease;
+    }
+
+    :is(.date-time-editor, .trip-actions-menu[open] > .actions,
+        .help-article details[open] > p, .inline-decision,
+        .booking-task[open] > :not(summary),
+        .conversation-layout details[open] > :not(summary)) {
+        animation: planzo-enter 285ms var(--planzo-ease);
+    }
+
+    .in-place-panel[open] .panel-frame { animation: planzo-panel-in-x 365ms var(--planzo-ease); }
+    .in-place-panel[open][data-exiting] .panel-frame { animation: planzo-panel-out-x 240ms ease-in both; }
+    .in-place-panel[open][data-exiting]::backdrop { animation: planzo-backdrop 240ms ease-in reverse both; }
+    .trip-dialog[open] { animation: planzo-enter 280ms var(--planzo-ease); }
+    :is(.in-place-panel, .trip-dialog)[open]::backdrop { animation: planzo-backdrop 300ms ease-out; }
+
+    .notice[role="status"] { animation: planzo-confirmed 680ms var(--planzo-ease); }
+    :is(.journey-progress span, .conversation-progress span) {
+        transition: background-color var(--planzo-quick) ease, border-color var(--planzo-quick) ease;
+    }
+
+    [data-planzo-enter="title"] { animation: planzo-title var(--planzo-reveal) var(--planzo-ease); }
+    .page-heading > p[data-planzo-enter] { animation-delay: 85ms; }
+    .trip-workspace-header dl > [data-planzo-enter] { animation-delay: calc(110ms + var(--planzo-enter-delay, 0ms)); }
+    [data-planzo-enter="art"] { animation: planzo-art 580ms var(--planzo-ease); }
+    [data-planzo-enter="item"] { animation: planzo-enter var(--planzo-reveal) var(--planzo-ease); }
+    :is([data-planzo-enter="item"], [data-planzo-enter="art"]) { animation-delay: var(--planzo-enter-delay, 0ms); }
+
+    .personal-journey { position: relative; }
+    .personal-journey[data-planzo-enter]::after {
+        content: "";
+        position: absolute;
+        inset: 0 auto 0 0;
+        width: 3px;
+        background: #89b6a5;
+        pointer-events: none;
+        transform-origin: top;
+        animation: planzo-draw-y 580ms var(--planzo-ease);
+    }
+    .personal-journey li[data-planzo-enter]::before,
+    :is(.stop-summary li[data-planzo-enter] .stop-number, .final-journey li[data-planzo-enter] .journey-dot) {
+        animation: planzo-marker 465ms var(--planzo-ease);
+        animation-delay: var(--planzo-enter-delay, 0ms);
+    }
+    .illustrative-route { position: relative; }
+    .illustrative-route[data-planzo-enter]::after {
+        content: "";
+        position: absolute;
+        inset: auto 14px 6px;
+        border-top: 2px dotted #88b3a3;
+        transform-origin: left;
+        animation: planzo-draw-x 600ms var(--planzo-ease);
+    }
+    .help-flow-label[data-planzo-enter] > span { animation: planzo-draw-x 550ms var(--planzo-ease); }
+    .help-shared-path [data-planzo-enter] .help-route-connector,
+    .help-visual-stage[data-planzo-enter] .help-route-arrow {
+        animation: planzo-link-appear 620ms var(--planzo-ease);
+    }
+
+    .decision-radio.selected :is(input, strong) { animation: planzo-marker 280ms var(--planzo-ease); }
+    .stop-summary button > span:last-child, .stop-summary button .itinerary-type svg {
+        transition: translate var(--planzo-quick) var(--planzo-ease);
+    }
+    .stop-summary button:is(:hover, :focus-visible) > span:last-child { translate: 3px 0; }
+    .stop-summary button:is(:hover, :focus-visible) .itinerary-type svg { translate: 0 -2px; }
+    .stop-summary button:is(:hover, :focus-visible) .stop-number { background: var(--green); }
+    :is(.personal-journey > li, .itinerary-timeline > li, .final-journey > li,
+        .history-event, .milestone-list > li, .stop-summary > li > button) {
+        transition: background-color var(--planzo-quick) ease, border-color var(--planzo-quick) ease;
+    }
+    :is(.personal-journey > li, .itinerary-timeline > li, .final-journey > li,
+        .history-event, .milestone-list > li)[data-planzo-reading],
+    .stop-summary > li[data-planzo-reading] > button {
+        background-color: #f3f8f5;
+        border-color: #a8c6ba;
+    }
+}
+
+@media (max-width: 760px) and (prefers-reduced-motion: no-preference) {
+    .in-place-panel[open] .panel-frame { animation-name: planzo-panel-in-y; }
+    .in-place-panel[open][data-exiting] .panel-frame { animation-name: planzo-panel-out-y; }
+    .trip-workspace-nav.mobile-open :is(nav, .workspace-nav-utilities) > button {
+        animation: planzo-enter 295ms var(--planzo-ease);
+    }
+    .trip-workspace-nav.mobile-open :is(nav, .workspace-nav-utilities) > button:nth-child(2) { animation-delay: 35ms; }
+    .trip-workspace-nav.mobile-open :is(nav, .workspace-nav-utilities) > button:nth-child(n+3) { animation-delay: 65ms; }
+}
+
+@supports (interpolate-size: allow-keywords) and selector(details::details-content) {
+    @media (prefers-reduced-motion: no-preference) {
+        :is(.help-article details, .booking-task, .conversation-layout details, .day-panel details)::details-content {
+            interpolate-size: allow-keywords;
+            block-size: 0;
+            overflow: clip;
+            transition: block-size 275ms var(--planzo-ease), content-visibility 275ms allow-discrete;
+        }
+        :is(.help-article details, .booking-task, .conversation-layout details, .day-panel details)[open]::details-content {
+            block-size: auto;
+        }
+    }
+}
+
+@media (hover: hover) and (pointer: fine) {
+    :is(.decision-radio:hover, .stop-summary button:hover, .trip-list-item:hover,
+        .provider-link:hover, .trip-actions-menu > summary:hover) {
+        background-color: #f3f8f5;
+    }
+    .decision-radio:not(.selected):hover { border-color: #a8c6ba; }
+    .decision-radio.selected:hover { background-color: #edf6f1; }
+    fieldset:disabled .decision-radio:not(.selected):hover { background-color: white; border-color: var(--border); }
+    .context-help-link:hover { text-decoration-color: var(--coral); }
+}
+
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+    .sample-preview-art .coast { transition: transform 340ms var(--planzo-ease); }
+    .sample-preview { transition: box-shadow var(--planzo-quick) ease, border-color var(--planzo-quick) ease; }
+    .sample-preview:hover, .welcome aside > .button:is(:hover, :focus-visible) + .sample-preview {
+        border-color: #a1c5b7;
+        box-shadow: 0 8px 18px rgb(23 61 55 / 14%);
+    }
+    .sample-preview:hover .sample-preview-art .coast,
+    .welcome aside > .button:is(:hover, :focus-visible) + .sample-preview .sample-preview-art .coast {
+        transform: perspective(400px) rotateY(-9deg) rotate(-3deg) scale(1.075);
+    }
+    .sample-preview:hover .sample-preview-trail,
+    .welcome aside > .button:is(:hover, :focus-visible) + .sample-preview .sample-preview-trail {
+        animation: planzo-trail 520ms var(--planzo-ease) both;
+    }
+    .trip-list-item .trip-card-summary { transition: translate var(--planzo-quick) var(--planzo-ease); }
+    .trip-list-item:is(:hover, :focus-within) .trip-card-summary { translate: 0 -3px; }
+    .welcome aside > .button > .icon { transition: translate var(--planzo-quick) var(--planzo-ease); }
+    .welcome aside > .button:is(:hover, :focus-visible) > .icon { translate: 5px 0; }
+}
+
+@supports (animation-timeline: view()) {
+    @media (min-width: 901px) and (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+        :is(.welcome .card.mint, .hero) { position: relative; isolation: isolate; }
+        :is(.welcome .card.mint, .hero)::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            z-index: -1;
+            border-radius: inherit;
+            pointer-events: none;
+            background: radial-gradient(ellipse at 80% 45%, rgb(227 174 125 / 19%), transparent 62%);
+            background-size: 100% 125%;
+            animation: planzo-depth linear both;
+            animation-timeline: view();
+        }
+    }
+}
+
+@supports (animation-timeline: scroll(root block)) {
+    @media (prefers-reduced-motion: no-preference) {
+        html:has(.help-page, .day-panel, .final-itinerary-journey) #root > .topbar::after {
+            content: "";
+            position: absolute;
+            inset: auto 0 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--forest), #7fb59c);
+            transform-origin: left;
+            pointer-events: none;
+            animation: planzo-draw-x linear both;
+            animation-timeline: scroll(root block);
+        }
+    }
+}
+
+@keyframes planzo-title {
+    from { opacity: .46; translate: 0 20px; clip-path: inset(0 0 36%); }
+    to { opacity: 1; translate: 0 0; clip-path: inset(0); }
+}
+@keyframes planzo-enter {
+    from { opacity: .55; translate: 0 17px; }
+    to { opacity: 1; translate: 0 0; }
+}
+@keyframes planzo-art {
+    from { opacity: .34; scale: .945; translate: 0 24px; }
+    to { opacity: 1; scale: 1; translate: 0 0; }
+}
+@keyframes planzo-confirmed {
+    from { box-shadow: inset 0 0 0 3px #83b5a1; background-color: #c9eadb; }
+    to { box-shadow: inset 0 0 0 3px transparent; }
+}
+@keyframes planzo-backdrop { from { opacity: 0; } to { opacity: 1; } }
+@keyframes planzo-depth { from { background-position: center top; } to { background-position: center bottom; } }
+@keyframes planzo-draw-x { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@keyframes planzo-draw-y { from { transform: scaleY(0); } to { transform: scaleY(1); } }
+@keyframes planzo-marker { from { scale: .7; opacity: .52; } 70% { scale: 1.08; } to { scale: 1; opacity: 1; } }
+@keyframes planzo-link-appear { from { opacity: .15; scale: .6; } to { opacity: 1; scale: 1; } }
+@keyframes planzo-trail { from { opacity: 0; clip-path: inset(0 100% 0 0); } to { opacity: 1; clip-path: inset(0); } }
+@keyframes planzo-panel-in-x { from { transform: translateX(64px); opacity: .42; } to { transform: none; opacity: 1; } }
+@keyframes planzo-panel-out-x { from { transform: none; opacity: 1; } to { transform: translateX(50px); opacity: 0; } }
+@keyframes planzo-panel-in-y { from { transform: translateY(66px); opacity: .42; } to { transform: none; opacity: 1; } }
+@keyframes planzo-panel-out-y { from { transform: none; opacity: 1; } to { transform: translateY(52px); opacity: 0; } }

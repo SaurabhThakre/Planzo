@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import type { Trip } from "./domain";
-import { closeRound, cost, currentPlan, currentResponse, feasibility, included, invalidate, now, option, publish, respond, safeSummary, slots, } from "./domain";
+import { closeRound, cost, currentPlan, currentResponse, feasibility, included, invalidate, now, option, publish, respond, safeSummary, slotLabels, slots, } from "./domain";
 import type { Navigate } from "./entry";
 import type { TripAction } from "./planning";
 import { Actions, Badge, Button, Card, Coast, Feature, Field, Note, Total, windowText, } from "./ui";
@@ -189,7 +189,27 @@ export function Outcomes({ trip, personId, act, go }: Props) {
     const all = currentPlan(trip) && group.length > 0 && ready === group.length;
     const isPostponed = trip.status === "postponed";
     const agreed = trip.status === "agreed" && currentPlan(trip);
-    return (<div className="columns">
+    const currentPolls = slots.flatMap(slot => {
+        const poll = trip.polls[slot];
+        return poll?.revision === trip.revision ? [{slot, poll}] : [];
+    });
+    const openPolls = currentPolls.filter(({poll}) => poll.status === "open" || poll.status === "unresolved");
+    const resolvedPolls = slots.filter(slot => trip.polls[slot]?.status === "closed");
+    return (<div className="stack">
+      <Card title="Step decisions" titleIcon="people" sub="Compare individual choices and return to the itinerary for the full plan.">
+        {openPolls.length ? openPolls.map(({slot, poll}) => (
+          <div className="member-row" key={slot}>
+            <strong>{slotLabels[slot]}</strong><Badge tone="pending">{poll.status === "open" ? "Open vote" : "Needs another decision"}</Badge>
+            <Button variant="secondary" onClick={() => go("poll", slot)}>View decision</Button>
+          </div>
+        )) : <p>No step decisions need action.</p>}
+        {resolvedPolls.length > 0 && <details><summary>Resolved decisions ({resolvedPolls.length})</summary>
+          {resolvedPolls.map(slot => <Button key={slot} variant="ghost" onClick={() => go("poll", slot)}>{slotLabels[slot]} outcome</Button>)}
+        </details>}
+        <Actions><Button variant="secondary" onClick={() => go("itinerary")}>Back to Itinerary</Button>
+          <Button variant="ghost" onClick={() => go("builder")}>Compare step choices</Button></Actions>
+      </Card>
+      <div className="columns">
       <Card titleIcon="people" title={isPostponed
             ? "Decision recorded · postponed"
             : agreed
@@ -317,7 +337,7 @@ export function Outcomes({ trip, personId, act, go }: Props) {
           View safe decision history
         </Button>
       </aside>
-    </div>);
+    </div></div>);
 }
 export function History({ trip }: {
     trip: Trip;

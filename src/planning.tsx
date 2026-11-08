@@ -259,6 +259,9 @@ export function PollView({ trip, personId, slot, act, go, }: Props & {
           <Button variant="ghost" onClick={() => go("builder")}>
             Back to day choices
           </Button>
+          <Button variant="secondary" onClick={() => go("itinerary", slot === "activity" || slot === "food" ? "2" : "1")}>
+            View in itinerary
+          </Button>
         </Actions>
         {poll?.status === "unresolved" && (<Note title="No valid tie-break result" tone="peach">
             Equal top votes with equal upper costs, or all abstentions, leave
@@ -295,13 +298,14 @@ export function PollView({ trip, personId, slot, act, go, }: Props & {
       </aside>
     </div>);
 }
-export function Itinerary({ trip, personId, go, }: {
+export function Itinerary({ trip, personId, go, initialDay, }: {
     trip: Trip;
     personId: string;
     go: Navigate;
+    initialDay?: string;
 }) {
     const selected = trip.plan?.revision === trip.revision ? trip.plan.choices : trip.selected;
-    const [selectedDay,setSelectedDay]=useState(0);
+    const [selectedDay,setSelectedDay]=useState(initialDay === "2" ? 1 : 0);
     const [selectedStop,setSelectedStop]=useState<{title:string;kind:string;description:string;estimate?:string;optional?:boolean}|null>(null);
     const days=[
         {day:"DAY 1",title:"Arrive, settle in, exhale.",summary:"06:00 departure · "+option("travel",selected.travel).title+" · check-in · nearby beach · group dinner",stops:[
@@ -318,6 +322,12 @@ export function Itinerary({ trip, personId, go, }: {
         ]},
     ];
     const activeDay=days[selectedDay]||days[0];
+    const pendingSlot=(kind:string)=>{
+        const slot=kind==="transport"?"travel":slots.find(item=>item===kind);
+        const poll=slot&&trip.polls[slot];
+        return poll&&poll.revision===trip.revision&&["open","unresolved"].includes(poll.status)?slot:undefined;
+    };
+    const stopDecision=selectedStop&&pendingSlot(selectedStop.kind);
     return (<div className="columns">
       <Card titleIcon="map" title={(trip.plan && trip.plan.revision === trip.revision
             ? "Plan v" + trip.plan.version
@@ -333,19 +343,19 @@ export function Itinerary({ trip, personId, go, }: {
           <Badge>{activeDay.day}</Badge>
           <h3>{activeDay.title}</h3>
           <p className="muted small">{activeDay.summary}</p>
-          <ol className="stop-summary">{activeDay.stops.map((stop,index)=><li key={index}><button onClick={()=>setSelectedStop(stop)}><span className="stop-number">{index+1}</span><span className="stop-copy"><ItineraryTypeBadge kind={stop.kind}/><strong>{stop.title}</strong><small>{stop.description}</small></span><span aria-hidden="true">→</span></button></li>)}</ol>
+          <ol className="stop-summary">{activeDay.stops.map((stop,index)=><li key={index}><button onClick={()=>setSelectedStop(stop)}><span className="stop-number">{index+1}</span><span className="stop-copy"><ItineraryTypeBadge kind={stop.kind}/><strong>{stop.title}</strong><small>{stop.description}</small>{pendingSlot(stop.kind)&&<Badge tone="pending">Decision pending</Badge>}</span><span aria-hidden="true">→</span></button></li>)}</ol>
           <div className="illustrative-route"><span className="eyebrow">Illustrative · saved ordering only</span><div>{activeDay.stops.map((stop,index)=><span key={index}><b>{index+1}</b>{stop.title}</span>)}</div></div>
         </section>
         <Actions>
           <Button onClick={() => go("review")}>Review and respond</Button>
-          <Button variant="secondary" onClick={() => go("builder")}>
-            Vote on each step
+          <Button variant="secondary" onClick={() => go("outcome")}>
+            Open Step decisions
           </Button>
         </Actions>
         <p className="caption muted">
           Times are illustrative. Verify actual transport times before booking.
         </p>
-        {selectedStop&&<InPlacePanel title={selectedStop.title} onClose={()=>setSelectedStop(null)}>{({close})=><Card><ItineraryTypeBadge kind={selectedStop.kind}/><Feature icon={selectedStop.kind==="optional"?"boat":selectedStop.kind==="transport"?"plane":selectedStop.kind==="stay"?"bed":selectedStop.kind==="food"?"coffee":"map"} title={selectedStop.title}>{selectedStop.description}</Feature>{selectedStop.estimate&&<p className="price-line">{selectedStop.estimate}</p>}{selectedStop.optional&&<Button variant="secondary" onClick={()=>close(()=>go("optional"))}>Review optional choices</Button>}</Card>}</InPlacePanel>}
+        {selectedStop&&<InPlacePanel title={selectedStop.title} onClose={()=>setSelectedStop(null)}>{({close})=><Card><ItineraryTypeBadge kind={selectedStop.kind}/><Feature icon={selectedStop.kind==="optional"?"boat":selectedStop.kind==="transport"?"plane":selectedStop.kind==="stay"?"bed":selectedStop.kind==="food"?"coffee":"map"} title={selectedStop.title}>{selectedStop.description}</Feature>{selectedStop.estimate&&<p className="price-line">{selectedStop.estimate}</p>}{selectedStop.optional&&<Button variant="secondary" onClick={()=>close(()=>go("optional"))}>Review optional choices</Button>}{stopDecision&&<Button variant="secondary" onClick={()=>close(()=>go("poll",stopDecision))}>View decision</Button>}</Card>}</InPlacePanel>}
       </Card>
       <aside>
         <Card title="Your optional afternoon" tone="mint">

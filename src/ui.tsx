@@ -157,7 +157,7 @@ export function Total({ value, complete = true, }: {
       <p className="small muted">Per person · includes 10% contingency</p>
     </div>);
 }
-export function Coast({ variant = "small", }: {
+export function Coast({ variant = "small" }: {
     variant?: "large" | "small" | "hero";
 }) {
     const src = variant === "large"
@@ -165,14 +165,17 @@ export function Coast({ variant = "small", }: {
         : variant === "hero"
             ? assets.builder.imgEditableIllustrationGoaCoast
             : assets.private.imgEditableIllustrationGoaCoast;
-    return (<img className={"coast " + variant} src={src} alt="Illustrated Goa coastline with a palm tree, sailboat and warm sunset"/>);
+    const size = variant === "large" ? [696, 370] : variant === "hero" ? [300, 154] : [336, 200];
+    const lazy = variant === "small";
+    return (<img className={"coast " + variant} src={src} alt="Illustrated Goa coastline with a palm tree, sailboat and warm sunset"
+      width={size[0]} height={size[1]} loading={lazy ? "lazy" : undefined} decoding={lazy ? "async" : undefined}/>);
 }
 export function DestinationCover({destination,compact=false}:{destination:string;compact?:boolean}){
     const goa=destination.trim().toLowerCase()==='goa';
     return <div className={(goa?'destination-cover':'destination-cover neutral')+(compact?' compact':'')}>{goa?<Coast variant={compact?'small':'hero'}/>:<div className="neutral-destination-mark" aria-hidden="true"><Icon name="map"/><strong>{destination}</strong></div>}</div>;
 }
 export function SamplePreview(){
-    return <div className="sample-preview"><Coast/><div><Badge tone="positive">Fictional Goa sample</Badge><strong>Three days · shared plan · clear decisions</strong><p className="caption muted">Preview the existing sample itinerary, personal estimate and group response flow.</p></div></div>;
+    return <div className="sample-preview"><div className="sample-preview-art"><Coast/><span className="sample-preview-trail" aria-hidden="true"><i/><i/><i/></span></div><div><Badge tone="positive">Fictional Goa sample</Badge><strong>Three days · shared plan · clear decisions</strong><p className="caption muted">Preview the existing sample itinerary, personal estimate and group response flow.</p></div></div>;
 }
 export const dateText = (value: string) => new Date(value).toLocaleDateString("en-IN", {
     day: "numeric",
