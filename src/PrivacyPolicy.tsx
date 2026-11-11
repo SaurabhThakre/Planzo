@@ -20,6 +20,7 @@ export function PrivacyPolicy() {
         <ul>
           <li><strong>Account information.</strong> Planzo uses your email address and, if you provide it, your display name. Supabase Auth handles passwords, email codes and sign-in sessions.</li>
           <li><strong>Trip information.</strong> Planzo stores trip details, membership, itinerary versions, votes, review responses and the planning input you submit. Input can include availability, a budget, a departure city, preferences and travel requirements.</li>
+          <li><strong>Booking and payment information.</strong> Planzo stores booking reports, shared expenses and refunds, splits, records of transfers made outside Planzo, and the history of changes to those records.</li>
           <li><strong>Browser and service data.</strong> Planzo uses browser storage for sign-in sessions. Hosting and service providers may record IP addresses, requests and technical errors to run and protect the service.</li>
         </ul>
       </section>
@@ -27,6 +28,11 @@ export function PrivacyPolicy() {
       <section aria-labelledby="sharing">
         <h2 id="sharing">What your trip group can see</h2>
         <p>Trip members can see the shared trip, member names or display labels, itinerary, and group progress and outcomes. Planzo uses private inputs to check whether a trip works for everyone. It keeps individual budget ceilings and departure cities out of the shared itinerary. Review the requests marked for shared planning before confirming your input.</p>
+        <p>Travellers included in the trip can see the shared booking records and payments ledger.</p>
+        <ul>
+          <li><strong>Bookings.</strong> Included travellers can see the itinerary item, booking status, provider, total paid, who booked, and any reference or notes entered. Booking history shows who saved each update and when.</li>
+          <li><strong>Payments.</strong> Included travellers can see expense and refund descriptions, amounts, who paid or received a refund, dates, notes, each traveller's share, and group balances. Transfer records show the sender, recipient, amount, method, date, status and any notes entered. Activity history shows who made updates and when.</li>
+        </ul>
         <p>When the voting feature is enabled, a concern note stays private unless its author chooses to share it with the organiser. Share trip invitation links only with the people you intend to invite.</p>
       </section>
 

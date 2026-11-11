@@ -10,9 +10,13 @@ const topics:{id:HelpTopic;label:string;summary:string;icon:string}[]=[
  {id:'join-trip',label:'Join a trip',summary:'Open an invitation and verify your email.',icon:'link'},
  {id:'private-input',label:'Private input',summary:'Confirm your own dates, budget and preferences.',icon:'lock'},
  {id:'itinerary-decisions',label:'Itinerary & decisions',summary:'Find the schedule, individual votes and personal review.',icon:'people'},
- {id:'final-journey-booking',label:'Final journey & booking',summary:'Confirm the plan and use the final journey.',icon:'plane'},
+ {id:'final-journey-booking',label:'Final journey, Bookings & Payments',summary:'Use your locked schedule, record bookings and settle expenses.',icon:'plane'},
  {id:'troubleshooting',label:'Troubleshooting',summary:'Fix invitation, code and planning issues.',icon:'help'},
 ];
+
+const demoTopics=topics.map(topic=>topic.id==='final-journey-booking'
+ ? {...topic,label:'Final journey & booking',summary:'Confirm the plan and use the final journey.'}
+ : topic);
 
 const journey:{label:string;topic:HelpTopic;icon:string}[]=[
  {label:'Confirm private input',topic:'private-input',icon:'lock'},
@@ -54,11 +58,10 @@ function HelpHeroArt(){
  </div>;
 }
 
-function GuideVisual({kind,demo=false}:{kind:'join'|'decisions'|'journey'|'fixes';demo?:boolean}){
+function GuideVisual({kind,demo=false}:{kind:'join'|'decisions'|'fixes';demo?:boolean}){
  const data={
   join:{caption:'Invitation to verified membership',label:'Illustrated flow: open a fictional invitation link, receive an email code, then verify and join.',steps:[['link','Invitation link','Open the shared link'],['mail','Email code','Use the newest message'],['check','Verified','Join the trip']]},
   decisions:{caption:'Read the plan, resolve choices, then review',label:demo?'Illustrated flow: read the Goa schedule in Plan, vote in Decisions, then review and respond.':'Illustrated flow: read the schedule in Itinerary, resolve choices in Step decisions, then return to Itinerary to review.',steps:[['map',demo?'Plan':'Itinerary','Check the route and estimates'],['people',demo?'Decisions':'Step decisions','Compare and vote on one stop'],['check',demo?'Review and respond':'Back to Itinerary',demo?'Respond to the current plan':'Review and lock the current version']]},
-  journey:{caption:'Journey and booking handoff',label:'Illustrated flow: follow the locked final journey, then independently check booking tasks with real providers.',steps:[['plane','Final journey','Use the locked day-by-day route'],['calendar','Bookings','Check current provider options'],['check','Self-report','Not a verified reservation']]},
   fixes:{caption:'Three cues to check first',label:'Troubleshooting cues: request a fresh invitation link, use the newest email code, and check estimate assumptions before proceeding.',steps:[['link','Link','Ask for a fresh active invite'],['clock','Code','Use the newest email code'],['wallet','Estimate','Read prices and assumptions']]},
  }[kind];
  return <figure className={'help-flow-figure '+(kind==='fixes'?'three-cues':'')}>
@@ -158,12 +161,20 @@ function Guide({topic,shell}:{topic:HelpTopic;shell:'shared'|'demo'}){
    <ol><li>Choose <strong>Review and respond</strong> from the itinerary to review the current sample version.</li><li>Once every included sample traveller is ready, the organiser can close the decision round in <strong>Decisions</strong>.</li><li>Open <strong>Bookings</strong> to see sample responsibilities and compare example provider offers.</li></ol>
    <HelpNote icon="lock" title="Fictional booking examples">The offers and booking reports are sample data. Use this view to explore how the handoff works.</HelpNote>
   </>:<>
-   <p className="help-lede">Final journey is the readable destination itinerary for the exact locked plan.</p>
-   <ol><li>Finish your personal review of the current itinerary version.</li><li>Wait for every included traveller to review and for the organiser to lock it.</li><li>Select <strong>Final journey</strong> or <strong>See my final journey</strong>.</li><li>Use the day tabs in Final journey for your schedule, and open the separate Bookings tab for provider links.</li></ol>
-   <GuideVisual kind="journey"/>
-   <HelpNote icon="lock" title="Planzo does not make reservations">Provider availability, routes and prices must be checked before purchase. Open the Bookings tab after lock; a saved or reported task is not a verified reservation.</HelpNote>
-   <details><summary><Question>Why is Final journey unavailable?</Question></summary><p>The itinerary must be resolved, personally reviewed by everyone included and locked by the organiser first.</p></details>
-   <details><summary><Question>Are the shown prices live quotes?</Question></summary><p>No. They are planning estimates with stated assumptions, not live quotes or guaranteed inventory.</p></details>
+   <p className="help-lede">After everyone included confirms the current itinerary and the organiser locks it, use <strong>Final journey</strong> to view your schedule by day.</p>
+   <h3>Bookings</h3>
+   <ol>
+    <li>Open <strong>Bookings</strong> and choose a day. Use the provider links to check availability and final prices, then book directly with the provider.</li>
+    <li>Choose <strong>Add booking details</strong> or <strong>Edit booking details</strong>. Record the status, provider, total paid and who booked. Add a reference or notes if needed. Save a payment covering several nights once and list the dates in the notes.</li>
+   </ol>
+   <h3>Payments</h3>
+   <ol>
+    <li>Open <strong>Payments</strong>. Paid bookings appear automatically. Choose <strong>Add expense</strong> for other costs or refunds, select the travellers sharing the cost, then split it equally or enter exact amounts.</li>
+    <li>For a booking, use <strong>Edit split</strong> in Payments. Update the amount or payer in Bookings. If a changed amount makes an exact split invalid, update the split before settling.</li>
+    <li>Send money outside Planzo, then use <strong>Settle up</strong> to record it. The recipient selects <strong>Confirm received</strong> once the money arrives. Pending payments leave balances unchanged.</li>
+   </ol>
+   <details><summary><Question>Why is Final journey unavailable?</Question></summary><p>Resolve open decisions, confirm the current itinerary and have the organiser lock it after all included travellers confirm.</p></details>
+   <details><summary><Question>Are the shown prices live quotes?</Question></summary><p>Planzo shows planning estimates. Check current prices and availability with the provider.</p></details>
   </>;
   case'troubleshooting':return <>
    <p className="help-lede">Use the message on screen first; Planzo does not advertise a support channel in this prototype.</p>
@@ -176,7 +187,8 @@ function Guide({topic,shell}:{topic:HelpTopic;shell:'shared'|'demo'}){
 }
 
 export function HelpPage({initialTopic='organise-trip',shell,onReturn,onSelect,allowWalkthrough=true}:{initialTopic?:string;shell:'shared'|'demo';onReturn:()=>void;onSelect?:(topic:HelpTopic)=>void;allowWalkthrough?:boolean}){
- const valid=topics.some(x=>x.id===initialTopic)?initialTopic as HelpTopic:'organise-trip';
+ const helpTopics=shell==='demo'?demoTopics:topics;
+ const valid=helpTopics.some(x=>x.id===initialTopic)?initialTopic as HelpTopic:'organise-trip';
  const linkedWalkthrough=allowWalkthrough&&initialTopic==='walkthrough';
  const [selected,setSelected]=useState<HelpTopic>(valid),[walkthrough,setWalkthrough]=useState(linkedWalkthrough),article=useRef<HTMLElement>(null);
  const walkthroughTrigger=useRef<HTMLButtonElement>(null);
@@ -213,8 +225,8 @@ export function HelpPage({initialTopic='organise-trip',shell,onReturn,onSelect,a
    <div className="help-shared-path" aria-label="Shared journey">{journey.map((step,index)=><div key={step.label}><button aria-pressed={selected===step.topic} onClick={()=>select(step.topic)}><span className="help-step-number">{index+1}</span><Icon name={step.icon}/><span className="help-step-label">{step.label}</span></button>{index<journey.length-1&&<span className="help-route-connector" aria-hidden="true">→</span>}</div>)}</div>
   </Card>
   <div className="help-content">
-   <nav className="help-topics" aria-label="Help topics"><span className="eyebrow">TOPICS</span>{topics.map(topic=><button key={topic.id} className={selected===topic.id?'active':''} aria-current={selected===topic.id?'page':undefined} onClick={()=>select(topic.id)}><span className="help-topic-icon"><Icon name={topic.icon}/></span><span className="help-topic-copy"><strong>{topic.label}</strong><span>{topic.summary}</span></span></button>)}</nav>
-   <article className="card help-article" ref={article} tabIndex={-1}><div className="help-article-heading"><span className="help-heading-icon"><Icon name={topics.find(x=>x.id===selected)!.icon}/></span><div><Badge tone="positive">Guide</Badge><h2>{topics.find(x=>x.id===selected)!.label}</h2></div></div><Guide topic={selected} shell={shell}/></article>
+   <nav className="help-topics" aria-label="Help topics"><span className="eyebrow">TOPICS</span>{helpTopics.map(topic=><button key={topic.id} className={selected===topic.id?'active':''} aria-current={selected===topic.id?'page':undefined} onClick={()=>select(topic.id)}><span className="help-topic-icon"><Icon name={topic.icon}/></span><span className="help-topic-copy"><strong>{topic.label}</strong><span>{topic.summary}</span></span></button>)}</nav>
+   <article className="card help-article" ref={article} tabIndex={-1}><div className="help-article-heading"><span className="help-heading-icon"><Icon name={helpTopics.find(x=>x.id===selected)!.icon}/></span><div><Badge tone="positive">Guide</Badge><h2>{helpTopics.find(x=>x.id===selected)!.label}</h2></div></div><Guide topic={selected} shell={shell}/></article>
   </div>
  </div>;
 }
