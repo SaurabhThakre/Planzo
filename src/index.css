@@ -373,8 +373,7 @@ main.public-shell{padding-top:32px;padding-bottom:32px}
 .help-map-heading{display:flex;align-items:center;justify-content:space-between;gap:4px 12px;flex-wrap:wrap}
 .help-map-heading>button{align-self:center;min-height:44px}
 .privacy-policy{display:grid;gap:20px;overflow-wrap:anywhere}
-.privacy-policy .privacy-intro,.privacy-policy section{display:grid;gap:8px;max-width:76ch}
-@media(min-width:1024px){.privacy-policy .privacy-intro,.privacy-policy section{max-width:92ch}}
+.privacy-policy .privacy-intro,.privacy-policy section{display:grid;gap:8px;min-width:0}
 .privacy-policy h2{font-size:21px;line-height:1.3}
 .privacy-policy p,.privacy-policy li{line-height:1.65}
 .privacy-policy .privacy-lede{margin-top:4px}
@@ -559,7 +558,22 @@ main.live-shell,
 .live-shell .trips-card .trip-list-item {
     padding-block: 12px;
 }
-.live-shell .welcome > aside { gap: 10px; }
+.live-shell .welcome > aside { gap: 10px; align-items: stretch; }
+.home-next-steps {
+    padding: 16px 20px;
+    gap: 8px;
+}
+.home-next-steps h2 { font-size: 18px; line-height: 1.35; }
+.home-next-steps ol {
+    display: grid;
+    gap: 5px;
+    list-style: decimal;
+    padding-inline-start: 1.4rem;
+    font-size: 14px;
+    line-height: 1.45;
+}
+.home-next-steps li::marker { color: var(--forest); font-weight: 700; }
+.home-next-steps > a { display: inline-flex; align-items: center; min-height: 44px; }
 @media (max-width: 760px) {
     :root { --live-page-gutter: clamp(12px, 4vw, 24px); }
     .live-shell .welcome > aside { order: -1; }

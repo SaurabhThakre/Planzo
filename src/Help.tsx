@@ -177,8 +177,18 @@ function Guide({topic,shell}:{topic:HelpTopic;shell:'shared'|'demo'}){
 
 export function HelpPage({initialTopic='organise-trip',shell,onReturn,onSelect,allowWalkthrough=true}:{initialTopic?:string;shell:'shared'|'demo';onReturn:()=>void;onSelect?:(topic:HelpTopic)=>void;allowWalkthrough?:boolean}){
  const valid=topics.some(x=>x.id===initialTopic)?initialTopic as HelpTopic:'organise-trip';
- const [selected,setSelected]=useState<HelpTopic>(valid),[walkthrough,setWalkthrough]=useState(false),article=useRef<HTMLElement>(null);
+ const linkedWalkthrough=allowWalkthrough&&initialTopic==='walkthrough';
+ const [selected,setSelected]=useState<HelpTopic>(valid),[walkthrough,setWalkthrough]=useState(linkedWalkthrough),article=useRef<HTMLElement>(null);
+ const walkthroughTrigger=useRef<HTMLButtonElement>(null);
  useEffect(()=>setSelected(valid),[valid]);
+ useEffect(()=>setWalkthrough(linkedWalkthrough),[linkedWalkthrough]);
+ const closeWalkthrough=()=>{
+  setWalkthrough(false);
+  if(linkedWalkthrough){
+   onSelect?.(selected);
+   requestAnimationFrame(()=>walkthroughTrigger.current?.focus());
+  }
+ };
  const select=(topic:HelpTopic,scroll=true)=>{setSelected(topic);onSelect?.(topic);if(scroll)requestAnimationFrame(()=>article.current?.scrollIntoView({behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth',block:'start'}));};
  return <div className="help-page">
   <section className="help-intro" aria-labelledby="help-title">
@@ -189,11 +199,11 @@ export function HelpPage({initialTopic='organise-trip',shell,onReturn,onSelect,a
    </div>
    <HelpHeroArt/>
   </section>
-  {walkthrough&&<InPlacePanel title="Three steps through Planzo" onClose={()=>setWalkthrough(false)}><ol className="walkthrough-steps"><li><span>1</span><div><h3>My private input</h3><p>Open My private input, complete your own dates, whole-trip budget and preferences, then confirm your summary.</p></div></li><li><span>2</span><div><h3>{shell==='demo'?'Plan':'Itinerary'}</h3><p>Select a day to read its schedule. Open a pending stop and choose View decision to compare the options.</p></div></li><li><span>3</span><div><h3>Review the plan</h3><p>{shell==='demo'?'Return to Plan and select Review and respond for the current version.':'Return to Itinerary and open Review and lock this itinerary to check your estimate and confirm your personal review.'}</p></div></li></ol></InPlacePanel>}
+  {walkthrough&&<InPlacePanel title="Three steps through Planzo" onClose={closeWalkthrough}><ol className="walkthrough-steps"><li><span>1</span><div><h3>My private input</h3><p>Open My private input, complete your own dates, whole-trip budget and preferences, then confirm your summary.</p></div></li><li><span>2</span><div><h3>{shell==='demo'?'Plan':'Itinerary'}</h3><p>Select a day to read its schedule. Open a pending stop and choose View decision to compare the options.</p></div></li><li><span>3</span><div><h3>Review the plan</h3><p>{shell==='demo'?'Return to Plan and select Review and respond for the current version.':'Return to Itinerary and open Review and lock this itinerary to check your estimate and confirm your personal review.'}</p></div></li></ol></InPlacePanel>}
   <Card className="help-map">
    <div className="help-map-heading">
     <h2>Your Planzo journey</h2>
-    {allowWalkthrough && <button type="button" className="context-help-link context-help-button" onClick={() => setWalkthrough(true)}>Three-step walkthrough</button>}
+    {allowWalkthrough && <button type="button" className="context-help-link context-help-button" ref={walkthroughTrigger} onClick={() => setWalkthrough(true)}>Three-step walkthrough</button>}
    </div>
    <div className="help-starts">
     <div className={selected==='organise-trip'?'selected':''}><div className="help-branch-heading"><span className="help-icon-tile"><Icon name="map"/></span><span><strong>Organiser</strong><small>Set the shared starting point</small></span></div><div className="help-path"><button aria-pressed={selected==='organise-trip'} onClick={()=>select('organise-trip')}><Icon name="calendar"/>Create a trip</button><span aria-hidden="true">→</span><button aria-pressed={selected==='organise-trip'} onClick={()=>select('organise-trip')}><Icon name="people"/>Invite travellers</button></div></div>

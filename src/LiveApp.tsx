@@ -127,7 +127,8 @@ export default function LiveApp(){
     await refreshTrip();setNotice(confirm?'Your private input is confirmed and saved.':'Your private draft is saved. Confirm it when you are ready.');
     return result.revision;
   }
-  const openHelp=(topic='organise-trip')=>{try{if(view!=='help')sessionStorage.setItem('planzo.help-return.shared',location.hash||'#/home');}catch{}go('help',topic);};
+  const rememberHelpReturn=()=>{try{if(view!=='help')sessionStorage.setItem('planzo.help-return.shared',location.hash||'#/home');}catch{}};
+  const openHelp=()=>{rememberHelpReturn();go('help','organise-trip');};
   const returnFromHelp=()=>{let target='#/home';try{target=sessionStorage.getItem('planzo.help-return.shared')||target;sessionStorage.removeItem('planzo.help-return.shared');}catch{}location.hash=target;};
   const header = <AppHeader name={session ? profile?.name || 'Signed in' : undefined} busy={busy}
     onHome={() => go('home')} onHelp={() => openHelp()} onSignIn={() => go('signin')}
@@ -199,7 +200,22 @@ export default function LiveApp(){
         <Button variant="ghost" onClick={()=>go('join')}>Join with an invitation</Button>
       </Card><Card className="home-coast-card" title="Your group, your pace" titleIcon="people" tone="mint"><Coast/><Feature icon="lock" title="Your limits stay private"/><Feature icon="people" title="Everyone contributes as themselves"/></Card></div>:
       <div className="columns welcome"><Card className="home-coast-card" title="Plan together. Travel together." tone="mint"><Coast variant="large"/><div className="benefits"><Feature icon="lock" title="Private limits"/><Feature icon="wallet" title="Full costs"/><Feature icon="people" title="Equal say"/></div></Card>
-        <aside><Card title="Your next good trip" titleIcon="map"><Button onClick={()=>go('signup')}>Create a trip</Button><Button variant="secondary" onClick={()=>go('join')}>Join with an invite</Button><Button variant="secondary" onClick={()=>go('signin')}>I already have an account</Button></Card></aside></div>}
+        <aside>
+          <Card title="Your next good trip" titleIcon="map">
+            <Button onClick={()=>go('signup')}>Create a trip</Button>
+            <Button variant="secondary" onClick={()=>go('join')}>Join with an invite</Button>
+            <Button variant="secondary" onClick={()=>go('signin')}>I already have an account</Button>
+          </Card>
+          <Card title="What happens next?" className="home-next-steps">
+            <ol>
+              <li>Invite your group</li>
+              <li>Share your preferences privately</li>
+              <li>Review one itinerary together</li>
+            </ol>
+            <a className="context-help-link" href="#/help/walkthrough" onClick={rememberHelpReturn}>See how it works</a>
+          </Card>
+        </aside>
+      </div>}
       {busy&&<p role="status">Saving your request…</p>}
     </main><PublicFooter/>
   </>;
