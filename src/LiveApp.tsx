@@ -117,7 +117,7 @@ export default function LiveApp(){
     view==='signup'?'A shared trip starts with you.':['signin','emailcode'].includes(view)?'Welcome back.':view==='recovery'?'Let’s get you back in.':'Make room for everyone.';
   const lockedTrip=workspace?.trip.stage==='agreed';
   const instruction=authMode==='reset'?'Choose and confirm your new password.':view==='trip'&&workspace?.trip.removal_kind?.startsWith('deleted_')?'This trip is deleted. Its saved details are read-only. The organiser can restore it from Deleted trips.':view==='trip'&&workspace?.trip.stage==='archived'?'This trip is archived. Read its saved details or History; the organiser can restore it from Archived trips.':view==='trip'&&workspace?.trip.stage==='postponed'?'This trip is postponed. Read the saved plan and decisions in History.':view==='trip'?({preferences:ownMember?.confirmed?'Review your saved private answers. Reopen them only if they need to change.':'Choose your dates, enter your limits and confirm only after checking them.',plan:lockedTrip?'Review your finalized itinerary or open Bookings for provider options.':'Check the itinerary and its missing steps before sharing it for review.',voting:lockedTrip?'Read the saved step decisions. This itinerary is locked.':'Compare the feasible choices and submit your own vote.',review:'Review your complete estimate and respond to the current plan.',payments:'Track shared expenses, balances and recorded settlements.',bookings:workspace?.trip.workflow_version===2?(lockedTrip?'':'Finish the itinerary to open Bookings.'):'Assign responsibilities, check providers and update only your own tasks.',journey:'Follow your finalized itinerary one day at a time. Open Bookings for provider options.',history:'Read saved decisions, earlier versions and progress in one place.'}[route[2]]??(lockedTrip?'Your itinerary is finalized. Open Final journey or Bookings.':ownMember?.confirmed?'Check group progress and review the itinerary when everyone is ready.':'Check the dates and group progress, then add your private input.')):
-    view==='setup'?'Enter the trip basics. Apply date and time changes before creating the trip.':view==='join'?'Use your invitation and verify your email to join the group.':view==='signup'?'Create your organiser account, then verify your email.':view==='recovery'?'Request and verify your recovery code to choose a new password.':['signin','emailcode'].includes(view)?'Sign in to continue with your saved trips.':session?'':'Create a trip or join with an invitation.';
+    view==='setup'?'Enter the trip basics. Apply date and time changes before creating the trip.':view==='join'?'Use your invitation and verify your email to join the group.':view==='signup'?'Create your organiser account, then verify your email.':view==='recovery'?'Request and verify your recovery code to choose a new password.':['signin','emailcode'].includes(view)?'Sign in to continue with your saved trips.':'';
   async function reloadTripList(){const data=await api<{profile:Person;trips:TripSummary[]}>('list');setTrips(data.trips);}
   useEffect(()=>{if(uid&&view==='home')void reloadTripList().catch(e=>setError(readableError(e)));},[uid,view]);
   async function saveBrief(brief:Brief,confirm:boolean,expectedRevision:number){
@@ -153,7 +153,7 @@ export default function LiveApp(){
   return <>
     {skipLink}
     {header}
-    <main id="main" tabIndex={-1} className="public-shell live-shell">{view!=='trip'&&<div className="page-heading"><h1>{heading}</h1>{instruction&&<p>{instruction}</p>}</div>}
+    <main id="main" tabIndex={-1} className={'public-shell live-shell' + (view === 'home' && !session ? ' welcome-shell' : '')}>{view!=='trip'&&<div className="page-heading"><h1>{heading}</h1>{instruction&&<p>{instruction}</p>}</div>}
       {error&&<div className="form-error" role="alert">{error}</div>}{notice&&<p className="notice" role="status">{notice}</p>}
       {uid&&session?.user.email_confirmed_at&&<DeadlineAlerts key={uid} userId={uid} tripId={tripId} revision={workspace?.trip.revision}/>}
       {loadingAuth?<Card title="Restoring your session…"><p>Please wait while Planzo checks your sign-in.</p></Card>:
@@ -201,18 +201,21 @@ export default function LiveApp(){
       </Card><Card className="home-coast-card" title="Your group, your pace" titleIcon="people" tone="mint"><Coast/><Feature icon="lock" title="Your limits stay private"/><Feature icon="people" title="Everyone contributes as themselves"/></Card></div>:
       <div className="columns welcome"><Card className="home-coast-card" title="Plan together. Travel together." tone="mint"><Coast variant="large"/><div className="benefits"><Feature icon="lock" title="Private limits"/><Feature icon="wallet" title="Full costs"/><Feature icon="people" title="Equal say"/></div></Card>
         <aside>
-          <Card title="Your next good trip" titleIcon="map">
+          <Card title="Your next good trip" titleIcon="map" className="home-start-card">
             <Button onClick={()=>go('signup')}>Create a trip</Button>
             <Button variant="secondary" onClick={()=>go('join')}>Join with an invite</Button>
             <Button variant="secondary" onClick={()=>go('signin')}>I already have an account</Button>
           </Card>
-          <Card title="What happens next?" className="home-next-steps">
+          <Card className="home-next-steps">
+            <div className="home-next-heading">
+              <h2>What happens next?</h2>
+              <a className="context-help-link" href="#/help/walkthrough" onClick={rememberHelpReturn}>See how it works</a>
+            </div>
             <ol>
               <li>Invite your group</li>
               <li>Share your preferences privately</li>
               <li>Review one itinerary together</li>
             </ol>
-            <a className="context-help-link" href="#/help/walkthrough" onClick={rememberHelpReturn}>See how it works</a>
           </Card>
         </aside>
       </div>}

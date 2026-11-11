@@ -576,7 +576,50 @@ main.live-shell,
     line-height: 1.45;
 }
 .home-next-steps li::marker { color: var(--forest); font-weight: 700; }
-.home-next-steps > a { display: inline-flex; align-items: center; min-height: 44px; }
+.home-next-heading { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0 8px; }
+.home-next-heading > a { display: inline-flex; align-items: center; align-self: center; min-height: 44px; }
+main.welcome-shell {
+    padding-block: clamp(12px, 2.5svh, 24px);
+}
+.welcome-shell > .page-heading { gap: 4px; margin-bottom: 14px; }
+.welcome-shell > .page-heading h1 { font-size: clamp(26px, 3vw, 34px); line-height: 1.15; }
+.welcome-shell .welcome.columns { grid-template-columns: minmax(0, 1.12fr) minmax(0, 1fr); gap: 14px; }
+.welcome-shell .welcome .card { padding: 14px 16px; gap: 8px; }
+.welcome-shell .welcome h2 { font-size: 20px; line-height: 1.25; }
+.welcome-shell .welcome .home-next-steps h2 { font-size: 18px; }
+.welcome-shell .home-coast-card > .coast {
+    max-block-size: clamp(160px, 40svh, 300px);
+    object-fit: cover;
+    object-position: 50% 51%;
+}
+.welcome-shell .home-coast-card .benefits { display: flex; flex-wrap: wrap; gap: 4px 16px; }
+.welcome-shell .benefits .feature { gap: 5px; }
+.welcome-shell .benefits .icon-tile { inline-size: 24px; min-inline-size: 24px; block-size: 28px; }
+.welcome-shell .benefits .icon { width: 18px; height: 18px; }
+.welcome-shell .benefits strong { font-size: 13px; line-height: 18px; }
+.welcome-shell .home-start-card .card-title-row { align-items: center; }
+.welcome-shell .home-start-card .button { min-height: 44px; padding: 8px 12px; }
+.welcome-shell + .app-footer { padding-block: 10px; }
+@media (max-width: 760px) {
+    main.welcome-shell { padding-block: 12px; }
+    .welcome-shell > .page-heading { margin-bottom: 10px; }
+    .welcome-shell .welcome.columns { gap: 10px; }
+    .welcome-shell .welcome .card { padding: 12px 14px; }
+    .welcome-shell .welcome h2 { font-size: 18px; }
+    .welcome-shell .home-next-heading > a { font-size: 12px; }
+    .welcome-shell .home-next-steps ol { gap: 3px; line-height: 1.4; }
+    .welcome-shell .home-start-card { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .welcome-shell .home-start-card :is(.card-title-row, .button:last-child) { grid-column: 1 / -1; }
+    .welcome-shell .home-start-card .button { padding-inline: 8px; font-size: 13px; }
+    .welcome-shell .home-coast-card > .coast { max-block-size: clamp(100px, 31vw, 146px); }
+    .welcome-shell .home-coast-card .benefits { gap: 3px 9px; }
+    .welcome-shell .benefits strong { font-size: 12px; }
+}
+@media (max-width: 350px) {
+    .welcome-shell .home-start-card .button { font-size: 12px; }
+    .welcome-shell .welcome .home-next-steps h2 { font-size: 17px; }
+}
+
 @media (max-width: 760px) {
     :root { --live-page-gutter: clamp(12px, 4vw, 24px); }
     .live-shell .welcome > aside { order: -1; }
