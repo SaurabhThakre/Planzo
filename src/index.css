@@ -635,9 +635,37 @@ main.welcome-shell {
 .private-input-layout .guide-question h3 { font-size: 18px; line-height: 24px; margin: 2px 0; }
 .private-input-layout .conversation-progress { margin: 0; }
 .private-input-layout .conversation-progress li { flex-basis: 125px; }
-.deadline-alerts { display: grid; gap: 8px; margin-bottom: 16px; overflow-wrap: anywhere; }
-.deadline-alerts a { text-decoration: underline; }
-.deadline-alerts .button { min-height: 36px; align-self: flex-start; }
+.live-header:has(> .deadline-alerts) { flex-direction: column; align-items: stretch; gap: 0; }
+.deadline-alerts {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding-inline: var(--live-page-gutter);
+    background: #faf2df;
+    border-top: 1px solid #e7dcc4;
+    color: var(--ink);
+    font-size: 13px;
+    line-height: 1.4;
+    white-space: nowrap;
+}
+.deadline-alerts > .icon { width: 16px; height: 16px; }
+.deadline-trip { min-width: 0; overflow: hidden; text-overflow: ellipsis; }
+.deadline-alerts time { flex: none; }
+.deadline-alerts :is(a, button) {
+    display: inline-flex;
+    flex: none;
+    align-items: center;
+    justify-content: center;
+    min-height: 40px;
+    font-weight: 600;
+}
+.deadline-alerts a { color: var(--forest); text-decoration: underline; text-underline-offset: .15em; }
+.deadline-alerts button { min-width: 32px; padding-inline: 3px; }
+.deadline-alerts .deadline-dismiss { font-size: 20px; }
+@media (max-width: 600px) {
+    .deadline-alerts { gap: 5px; font-size: 12px; }
+    .deadline-alerts > .icon { display: none; }
+}
 
 .planning-stages { display: grid; gap: 8px; }
 .planning-stages ol, .passport-steps { list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; }

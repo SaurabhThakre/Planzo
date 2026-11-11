@@ -130,7 +130,9 @@ export default function LiveApp(){
   const rememberHelpReturn=()=>{try{if(view!=='help')sessionStorage.setItem('planzo.help-return.shared',location.hash||'#/home');}catch{}};
   const openHelp=()=>{rememberHelpReturn();go('help','organise-trip');};
   const returnFromHelp=()=>{let target='#/home';try{target=sessionStorage.getItem('planzo.help-return.shared')||target;sessionStorage.removeItem('planzo.help-return.shared');}catch{}location.hash=target;};
+  const showReminder = uid && session?.user.email_confirmed_at && view !== 'help' && view !== 'privacy';
   const header = <AppHeader name={session ? profile?.name || 'Signed in' : undefined} busy={busy}
+    reminder={showReminder ? <DeadlineAlerts key={uid} userId={uid} tripId={tripId} revision={workspace?.trip.revision}/> : undefined}
     onHome={() => go('home')} onHelp={() => openHelp()} onSignIn={() => go('signin')}
     onSignOut={() => void perform(async () => {
       const {error} = await supabase.auth.signOut();
@@ -155,7 +157,6 @@ export default function LiveApp(){
     {header}
     <main id="main" tabIndex={-1} className={'public-shell live-shell' + (view === 'home' && !session ? ' welcome-shell' : '')}>{view!=='trip'&&<div className="page-heading"><h1>{heading}</h1>{instruction&&<p>{instruction}</p>}</div>}
       {error&&<div className="form-error" role="alert">{error}</div>}{notice&&<p className="notice" role="status">{notice}</p>}
-      {uid&&session?.user.email_confirmed_at&&<DeadlineAlerts key={uid} userId={uid} tripId={tripId} revision={workspace?.trip.revision}/>}
       {loadingAuth?<Card title="Restoring your session…"><p>Please wait while Planzo checks your sign-in.</p></Card>:
       authMode==='reset'?<Auth mode="reset" onDone={()=>{recoveryVerified.current=false;setAuthMode('');go('home');setNotice('Your password is updated. You can sign out and sign in with your new password.');}} go={go}/>:
       view==='join'?<GuestJoin session={session} signedInName={profile?.name} initialToken={route[1]||pendingInvite()} onJoined={id=>{go('trip',id);void api<{profile:Person;trips:TripSummary[]}>('list').then(d=>{setProfile(d.profile);setTrips(d.trips);});}}/>:
