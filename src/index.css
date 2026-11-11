@@ -600,6 +600,41 @@ main.welcome-shell {
 .welcome-shell .home-start-card .card-title-row { align-items: center; }
 .welcome-shell .home-start-card .button { min-height: 44px; padding: 8px 12px; }
 .welcome-shell + .app-footer { padding-block: 10px; }
+@media (min-width: 1000px) and (min-height: 660px) {
+    #root:has(> .welcome-shell) {
+        display: flex;
+        flex-direction: column;
+        min-block-size: 100svh;
+    }
+    main.welcome-shell {
+        display: flex;
+        flex: 1 0 auto;
+        flex-direction: column;
+        justify-content: center;
+        padding-block: clamp(18px, 3.2svh, 36px);
+    }
+    .welcome-shell > .page-heading { margin-bottom: clamp(14px, calc(6svh - 26px), 28px); }
+    .welcome-shell .welcome.columns {
+        align-items: stretch;
+        gap: clamp(14px, 2.7svh, 24px);
+    }
+    .welcome-shell .welcome .card {
+        padding: clamp(14px, calc(5svh - 18px), 28px) clamp(16px, 2.9svh, 28px);
+        gap: clamp(8px, calc(4svh - 18px), 20px);
+    }
+    .welcome-shell .home-coast-card { justify-content: space-between; }
+    .welcome-shell .home-coast-card > .coast {
+        block-size: min(29vw, clamp(240px, calc(76svh - 202px), 500px));
+        max-block-size: none;
+    }
+    .welcome-shell .welcome > aside { gap: clamp(10px, 1.8svh, 16px); }
+    .welcome-shell .home-next-steps { flex: 1; justify-content: center; }
+    .welcome-shell + .app-footer {
+        max-width: none;
+        width: calc(100% - 2 * var(--live-page-gutter));
+        padding-block: clamp(10px, 2svh, 18px);
+    }
+}
 @media (max-width: 760px) {
     main.welcome-shell { padding-block: 12px; }
     .welcome-shell > .page-heading { margin-bottom: 10px; }
