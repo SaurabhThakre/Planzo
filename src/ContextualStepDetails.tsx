@@ -3,9 +3,12 @@ import{contextualStepRef,contextualMealName}from'./contextualPlanning';
 import { stayRateRequest } from './stayRates';
 import { StayRatePanel } from './StayRatePanel';
 import { publishedLocalFare } from './localTransportFare';
-export function ContextualStepDetails({step,refs}:{step:FlowStep;refs:FlowRef[]}){
+export function ContextualStepDetails({step,refs,collapsed=false}:{step:FlowStep;refs:FlowRef[];collapsed?:boolean}){
  const r=contextualStepRef(step,refs);if(!r?.description||step.kind==='rest'&&r.route_item&&r.route_item.category!=='rest')return null;
- return <div className="stack"><p className="caption"><strong>Where:</strong> {r.location}</p>{step.kind==='food'&&!r.route_item&&<p className="caption">Choose a {contextualMealName(step.start).toLowerCase()}-appropriate meal using this shared cuisine and dietary brief. Menu and provider still need checking.</p>}<p>{r.description}</p>{r.needs_confirmation&&<p className="notice">Suggested interpretation: check that this is the place or activity you meant. Any change after agreement needs a fresh review.</p>}</div>;
+ const details = <div className="stack">{r.location&&<p className="caption"><strong>Where:</strong> {r.location}</p>}{step.kind==='food'&&!r.route_item&&<p className="caption">Choose a {contextualMealName(step.start).toLowerCase()}-appropriate meal using this shared cuisine and dietary brief. Menu and provider still need checking.</p>}<p>{r.description}</p>{r.needs_confirmation&&<p className="notice">Suggested interpretation: check that this is the place or activity you meant. Any change after agreement needs a fresh review.</p>}</div>;
+ return collapsed&&!r.needs_confirmation
+  ? <details className="journey-stop-details"><summary>Stop details</summary>{details}</details>
+  : details;
 }
 
 

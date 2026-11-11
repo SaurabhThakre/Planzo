@@ -26,9 +26,19 @@ export function TripWorkspaceNav({workspace:w,tab,busy,go,onRefresh}:{workspace:
 }
 
 export function TripWorkspaceHeader({workspace:w,instruction}:{workspace:Workspace;instruction:string}){
- const stage=w.trip.removal_kind?.startsWith('deleted_')?'Deleted':w.trip.workflow_version===2&&w.trip.stage==='agreed'?'Trip agreed · itinerary locked':planStage(w.trip.stage);
+ const stage=w.trip.removal_kind?.startsWith('deleted_')?'Deleted':w.trip.workflow_version===2&&w.trip.stage==='agreed'?'Itinerary locked':planStage(w.trip.stage);
  return <header className="trip-workspace-header">
-  <div>{w.trip.destination.trim().toLowerCase()!==w.trip.name.trim().toLowerCase()&&<span className="eyebrow">{w.trip.destination}</span>}<h1>{w.trip.name}</h1>{instruction&&<p>{instruction}</p>}</div>
-  <dl><div><dt>{w.windows.length===1?'Trip dates':'Date options'}</dt><dd>{w.windows.length?w.windows.map(window=><p key={window.id}>{flowStamp(window.start)} → {flowStamp(window.end)} IST</p>):'Dates pending'}</dd></div><div><dt>Stage</dt><dd>{stage}</dd></div></dl>
+  <div className="trip-workspace-title">
+   {w.trip.destination.trim().toLowerCase()!==w.trip.name.trim().toLowerCase()&&<span className="eyebrow">{w.trip.destination}</span>}
+   <h1>{w.trip.name}</h1>
+   {instruction&&<p>{instruction}</p>}
+  </div>
+  <dl>
+   <div>
+    <dt>{w.windows.length>1?'Date options':'Trip dates'}</dt>
+    <dd>{w.windows.length?w.windows.map(window=><p key={window.id}>{flowStamp(window.start)} → {flowStamp(window.end)} IST</p>):'Dates pending'}</dd>
+   </div>
+   <div><dt>Stage</dt><dd>{stage}</dd></div>
+  </dl>
  </header>;
 }

@@ -27,7 +27,6 @@ export function PlanningNavigation({ state, tab, go }: {
     { key: 'journey', title: 'Locked', done: Boolean(plan?.locked), available: Boolean(plan?.locked), pending: 'Available after the organiser locks the plan' },
   ];
   return <nav aria-label="Itinerary stages" className="planning-stages">
-    <p className="caption">Tell us what works → Pick together → Say yes or no</p>
     <ol>{stages.map(stage => <li key={stage.key}>
       {stage.available
         ? <Button variant={tab === stage.key ? 'primary' : 'secondary'} aria-current={tab === stage.key ? 'step' : undefined} onClick={() => go(stage.key)}>
