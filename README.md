@@ -1,6 +1,6 @@
 # Planzo
 
-**Plan trips together without making everyone share their private limits.** Planzo is a collaborative travel-planning web app. An organiser creates a trip and invites friends; each person adds their own availability, budget and preferences. The group can review a shared itinerary, resolve decisions, and explicitly respond to the current version before treating the plan as agreed.
+**Plan trips together without making everyone share their private limits.** Planzo is a collaborative travel-planning web app. An organiser creates a trip and invites friends; each person adds their own availability, budget and preferences. The group reviews a shared itinerary, resolves decisions, and confirms the current version before the organiser locks it. Included travellers can then track bookings and share expenses.
 
 [Open the live app](https://person-siren-40913121.figma.site/) · [View the Figma design](https://www.figma.com/design/IRAXhHV3ldeGoxWwXJeZk9/Planzo-Design?node-id=22-266)
 
@@ -14,8 +14,9 @@ Group trips often stall because dates, costs and personal needs are scattered ac
 - **Private input:** individual availability, budget and preferences feed planning without displaying raw private briefs to the group.
 - **Planning and review:** itinerary proposals, estimated costs, feasibility checks, human review and item-level decisions.
 - **Explicit agreement:** members respond to a specific plan version; material changes require fresh responses. Silence remains pending.
-- **Final journey and Bookings:** a day-by-day locked itinerary, external provider links and self-reported booking status. Check availability and final prices with the provider.
-- **Payments:** a shared expense and settlement ledger for transfers made outside Planzo.
+- **Final journey** shows the locked itinerary by day in the destination time zone.
+- **Bookings** shows provider links by day, a trip-wide progress summary and shared booking reports. Travellers check availability and final prices with providers.
+- **Payments** combines reported booking costs, manual expenses and refunds, equal or exact splits, and a shared ledger for transfers made outside Planzo. The recipient confirms receipt before a transfer affects balances.
 
 The app uses Supabase Auth, a trip-scoped database and Edge Functions.
 
@@ -35,8 +36,8 @@ Open the [live app](https://person-siren-40913121.figma.site/) to create a trip 
 - `src/main.tsx` loads the shared app.
 - `src/LiveApp.tsx` and related `src/Live*.tsx` files contain the shared journeys.
 - `src/domain.ts`, `src/routePlanning.ts` and `src/routeCompiler.ts` hold planning rules and route checks.
-- `supabase/migrations/` and `supabase/functions/` contain the backend source.
-- `tests/` contains application tests; `docs/` contains implementation and verification notes.
+- `supabase/migrations/`, `supabase/changes/` and `supabase/functions/` contain the backend source.
+- `tests/` contains application tests. The [development guide](docs/DEVELOPMENT.md) maps the current routes to their source files, data contracts and regression checks.
 
 ## Run locally
 
@@ -57,6 +58,6 @@ pnpm run build
 
 ## Current status
 
-Planzo is a live, evolving prototype. The shared planning flow is available. Earlier release checks recorded variability in live AI route generation. The [latest route-planning handoff](docs/ROUTE_PLANNING_HANDOFF.md) records that limitation and its verification evidence. Review generated prices, schedules and locations before booking. Use the provider to book, pay and confirm reservations.
+Planzo is a live prototype with shared planning, Final journey, Bookings and Payments. Generated prices and schedules are planning estimates. Use the provider to check prices and availability, book and confirm reservations. The [budget planning handoff](docs/BUDGET_PLANNING_HANDOFF.md) records the limits observed in hosted itinerary generation.
 
-For implementation history and test detail, see the [handoff documents](docs/) and [test report](docs/TEST_REPORT.md).
+The [handoff archive](docs/HANDOFF.md) and [original prototype test report](docs/TEST_REPORT.md) record earlier releases.
