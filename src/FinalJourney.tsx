@@ -1,11 +1,41 @@
-import{destinationDay,routeStamp,routeTimeLabel,routeBadge}from'./routePlanning';
-import{StepPrice,PricingSummary,RouteOverview}from'./ContextualStepDetails';
-import{contextualStepLabel}from'./contextualPlanning';import{ContextualStepDetails}from'./ContextualStepDetails';
-import type{FlowDocument,PersonalInput}from'./privatePlanning';import{flowMoney,flowStamp,localDate}from'./privatePlanning';import{Actions,Badge,Button,Card,ItineraryTypeBadge,Note}from'./ui';
-export function FinalJourney({document:d,version,own,total,go}:{document:FlowDocument;version:number;own?:PersonalInput;total:number;go:(tab:string)=>void}){
- const days=new Map<string,typeof d.steps>();for(const s of d.steps){const day=destinationDay(s.start,d.route?.time_zone);days.set(day,[...(days.get(day)||[]),s])}
- return <div className="stack planning-v2 final-itinerary-journey"><Card title="Your finalized journey" sub={'Version '+version+' · '+flowStamp(d.start)+' → '+flowStamp(d.end)+' IST'} tone="mint"><Badge tone="positive">Itinerary finalized</Badge><p>Follow your agreed destination itinerary below. Each traveller has reviewed this version; any host edit creates a fresh draft for review.</p><Actions><Button variant="secondary" onClick={()=>go('plan')}>Review the finalized itinerary</Button></Actions><RouteOverview document={d}/><PricingSummary document={d}/></Card>
- {[...days].map(([date,steps],index)=><Card key={date} title={'Day '+(index+1)+' · '+new Date(date+'T12:00:00+05:30').toLocaleDateString('en-IN',{dateStyle:'long',timeZone:'Asia/Kolkata'})}><ol className="final-journey">{steps.map(s=><li key={s.id}><span className="journey-dot"/><div><ItineraryTypeBadge kind={routeBadge(s,d.refs)}/><h3>{contextualStepLabel(s,d.refs)}{s.ref.endsWith('_alternative')?' · alternative arrangement':''}</h3><p>{routeStamp(s.start,d)} → {routeStamp(s.end,d)} {routeTimeLabel(d)}</p><ContextualStepDetails step={s} refs={d.refs}/><StepPrice step={s} document={d}/></div></li>)}</ol></Card>)}
- {own&&<Card title="Your personal allowance" sub="Private to you · unallocated budget"><p className="remaining-budget">{flowMoney(Math.max(0,own.ceiling_paise-total))}</p><p>Remaining within your whole-trip ceiling after this planning estimate. Keep this for personal travel and other extras; transport prices and any additional spending will be checked in Phase 2.</p><p className="caption">This is part of your existing budget, not extra money or a verified booking allowance.</p></Card>}
- <Note title="Booking handoff · Phase 2" icon="calendar">Transport options, accommodation bookings, owners and final prices will be handled in the second phase. This phase ends with your finalized itinerary. Planzo does not make bookings or payments.</Note></div>;
+import { routeStamp, routeTimeLabel, routeBadge } from './routePlanning';
+import { ContextualStepDetails, StepPrice } from './ContextualStepDetails';
+import { contextualStepLabel } from './contextualPlanning';
+import { itineraryDays, itineraryDayTitle } from './ItineraryDays';
+import type { FlowDocument, PersonalInput } from './privatePlanning';
+import { flowMoney } from './privatePlanning';
+import { Card, ItineraryTypeBadge } from './ui';
+import { useId, useState } from 'react';
+import { ItineraryDayTabs } from './ItineraryDayTabs';
+
+export function FinalJourney({ document, own, total }: {
+  document: FlowDocument; own?: PersonalInput; total: number;
+}) {
+  const days = [...itineraryDays(document.steps, document.route?.time_zone)];
+  const [selectedDay, setSelectedDay] = useState('');
+  const currentIndex = Math.max(0, days.findIndex(([day]) => day === selectedDay));
+  const [date, steps] = days[currentIndex] || ['', []];
+  const panelId = useId();
+  return <div className="stack final-itinerary-journey">
+    <ItineraryDayTabs days={days.map(([day])=>day)} currentIndex={currentIndex} onSelect={index=>setSelectedDay(days[index][0])} panelId={panelId} label="Locked itinerary days"/>
+    {date && <section id={panelId} role="tabpanel" aria-labelledby={panelId+'-tab-'+currentIndex}>
+    <Card title={itineraryDayTitle(date, currentIndex)}>
+      <ol className="final-journey">{steps.map(step => {
+        return <li key={step.id}>
+        <span className="journey-dot" aria-hidden="true"/>
+        <div>
+          <ItineraryTypeBadge kind={routeBadge(step, document.refs)}/>
+          <h3>{contextualStepLabel(step, document.refs)}{step.ref.endsWith('_alternative') ? ' · alternative arrangement' : ''}</h3>
+          <p>{routeStamp(step.start, document)} → {routeStamp(step.end, document)} {routeTimeLabel(document)}</p>
+          <ContextualStepDetails step={step} refs={document.refs}/>
+          <StepPrice step={step} document={document}/>
+        </div>
+      </li>;
+      })}</ol>
+    </Card></section>}
+    <Card title="Planning estimate" sub="Estimated total per person">
+      <p className="remaining-budget">{flowMoney(own ? total : document.cost_paise)}</p>
+      {own && <p className="small">Remaining within your trip budget · {flowMoney(Math.max(0, own.ceiling_paise - total))}</p>}
+    </Card>
+  </div>;
 }

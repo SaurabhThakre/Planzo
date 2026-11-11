@@ -8,11 +8,11 @@ export const supabase = createClient(
   'sb_publishable_itUO45I1N1T3rp06T6p_DA_q-RN6DPI',
   { auth: { flowType: 'pkce', persistSession: true, autoRefreshToken: true, detectSessionInUrl: true } },
 );
-export type TripSummary = { id: string; name: string; destination: string; role: 'organiser'|'member'; stage: string; revision: number; tentative_days?:number; removal_kind?:'deleted_draft'|'archived'|null; can_delete?:boolean };
+export type TripSummary = { id: string; name: string; destination: string; role: 'organiser'|'member'; stage: string; revision: number; tentative_days?:number; removal_kind?:'deleted_draft'|'deleted_trip'|'archived'|null; can_delete?:boolean };
 export type LiveMember = {id:string;name:string;role:'organiser'|'member';included:boolean;confirmed:boolean;revision:number};
 export type StoredBrief = {origin:string;ceiling_paise:number|null;windows:string[];vegetarian:boolean;step_free:boolean;stars:Record<string,number>;text:string;boat:boolean};
 export type Workspace = {
-  trip:{id:string;name:string;destination:string;minimum_group_size:number;response_deadline:string;revision:number;stage:string;tentative_days?:number;workflow_version?:number;removal_kind?:'deleted_draft'|'archived'|null};
+  trip:{id:string;name:string;destination:string;minimum_group_size:number;response_deadline:string;revision:number;stage:string;tentative_days?:number;workflow_version?:number;removal_kind?:'deleted_draft'|'deleted_trip'|'archived'|null};
   windows:{id:string;start:string;end:string}[];
   members:LiveMember[];
   own_brief:{content:StoredBrief;revision:number;confirmed:boolean}|null;

@@ -1,0 +1,17 @@
+# Compact bookings and shared payments — 11 November 2026
+
+User authorized compact booking cards, right-hand status summary and a Payments tab after Bookings once the itinerary is locked. User selected record-and-confirm settlements, without UPI handoff or a payment gateway. No real funds are transferred by Planzo.
+
+Payments supports on-trip expenses/refunds, payer selection, equal or exact splits, balances, suggested transfers, editing/removing manual expenses, pending payment records, sender cancellation, recipient confirmation/rejection and an append-only activity log. Pending transfers never clear balances. Confirmed settlements are retained. Financial rows never change itinerary budgets or private input.
+
+Paid bookings are projected once per plan/step from the latest report containing a payer and amount. Snapshot participants at the first financial report; initial adoption of existing paid bookings uses the current roster plus the recorded payer. Custom splits are editable in Payments. Amount/payer edits remain in Bookings. New amount invalidating exact shares requires review, excludes that expense from balances and blocks new settlements until corrected. Cancellation without an explicit corrected amount retains the last paid report; record refunds separately. Earlier versions remain in the ledger. Booking references must be entered once for a payment covering several nights.
+
+Migration `20261111110812 shared_trip_payments` applied once to `ewysgpuwvufbklesdhuj`; source `supabase/changes/planzo_shared_payments.sql`. Do not rerun. Four private RLS tables have no client grants. Only verified nonanonymous included members can use the public invoker RPC/private guarded API. Shared trip-row locks serialize booking and ledger changes; whole-ledger stamps prevent stale edits; request receipts prevent duplicate retries. Recipient-only settlement confirmation, strict amounts/dates/member checks and exact paise allocation are server-enforced. Payment details are shared within the included trip group. Helpers are not client executable.
+
+Local typecheck, 246 tests (including 100 generated ledger reconciliation cases) and production build pass. `tests/payments.hosted.sql` passed 41 transactional checks, including historical plan payments; all changes rolled back. An authenticated-role read of the derived QA ledger passed. Security advisor reports the expected private deny-all table information and the pre-existing leaked-password-protection warning; no security setting was weakened.
+
+Before/after transactional QA fingerprints match: trips `07782c0648620ce54d0765b1a3867b4a`, plans `0a2ac0c0fbcd2ad338be8ebe2913c901`, private inputs `bcc3475cbaddc46dd2fbc28601a0a2b1`, booking events `954854b086c80119ca9ee2e470c4b411`. No real user data was edited. New booking-share snapshots are derived initialization for this feature.
+
+Use labelled QA trip `791e21bb-b93e-470b-a22e-5dbad90b8863` for browser writes, existing verified dummy accounts only. Never regenerate locked fixtures. Existing synthetic booking: first-night stay INR4200.25, booked-by member1. Keep credentials out of source and uploads. Publishing/live UI results follow in the session record.
+
+Do not start local Vite servers or embedded PostgreSQL runners in this environment (earlier approval review blocked their telemetry). Node tests/typecheck/build, hosted transactional checks and the public browser are supported. Prior IAB viewport override did not change its fixed 1280px rendering; do not claim mobile verification without observing a changed viewport.

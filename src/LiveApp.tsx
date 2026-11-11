@@ -3,7 +3,7 @@ import type {ReactNode} from 'react';
 import type { Session } from '@supabase/supabase-js';
 import type { Brief, Person, Trip } from './domain';
 import { assets } from './assets';
-import { Actions, Badge, Button, Card, Coast, DestinationCover, Feature, Field, Icon, Note, SamplePreview, windowText } from './ui';
+import { Actions, Badge, Button, Card, Coast, DestinationCover, Feature, Field, Icon, Note } from './ui';
 import { TripSetup } from './TripSetup';
 import {TripControls} from './TripControls';
 import {TripDetailsEditor} from './TripDetailsEditor';
@@ -20,8 +20,11 @@ import {interpretPreferences} from './aiBackend';
 import {LivePrivatePlanning} from './LivePrivatePlanning';
 import {AppHeader} from './AppHeader';
 import {InPlacePanel} from './InPlacePanel';
+import {DeadlineAlerts} from './DeadlineAlerts';
+import {TripPassport} from './TripPlanningProgress';
 import {TripWorkspaceHeader,TripWorkspaceNav} from './TripWorkspaceNav';
 import {ContextHelpLink,HelpPage,helpHref} from './Help';
+import {PrivacyPolicy} from './PrivacyPolicy';
 
 const readRoute=()=>location.hash.replace(/^#\/?/,'').split('/');
 function RememberInvite(token:string){try{sessionStorage.setItem('planzo.pending-invite',token);}catch{}}
@@ -33,6 +36,7 @@ export default function LiveApp(){
   const [busy,setBusy]=useState(false),[notice,setNotice]=useState(''),[error,setError]=useState('');
   const [tripBucket,setTripBucket]=useState('active');
   const [authMode,setAuthMode]=useState(''),[invites,setInvites]=useState<Invite[]>([]),[freshInvite,setFreshInvite]=useState<Invite|null>(null),[shareOpen,setShareOpen]=useState(false);
+  const performing=useRef(false);
   const activeUser=useRef<string|null>(null),createId=useRef(crypto.randomUUID());
   const authReturn=useRef(readAuthReturn(location.search,location.hash)),recoveryVerified=useRef(false);
   const uid=session?.user.id||null;
@@ -90,7 +94,7 @@ export default function LiveApp(){
     const timer=window.setInterval(onFocus,15000);
     return()=>{cancelled=true;clearInterval(timer);window.removeEventListener('focus',onFocus);document.removeEventListener('visibilitychange',onFocus);};
   },[uid,tripId]);
-  async function perform(fn:()=>Promise<void>){setBusy(true);setError('');try{await fn();}catch(e){setError(readableError(e));}finally{setBusy(false);}}
+  async function perform(fn:()=>Promise<void>){if(performing.current)return;performing.current=true;setBusy(true);setError('');try{await fn();}catch(e){setError(readableError(e));}finally{performing.current=false;setBusy(false);}}
   async function copyInvitationLink(token:string){
     let timeout:number|undefined;
     setNotice('If automatic copying is unavailable, select and copy the invitation link above.');
@@ -105,21 +109,15 @@ export default function LiveApp(){
   }
   async function loadInvites(){if(!tripId)return;const requestedTrip=tripId,requestedUser=uid;const data=await api<Invite[]>('list_invites',{trip_id:requestedTrip});const current=readRoute();if(activeUser.current===requestedUser&&current[0]==='trip'&&current[1]===requestedTrip)setInvites(data);}
   useEffect(()=>{if(tripId&&workspace?.trip.id===tripId&&workspace.members.find(m=>m.id===uid)?.role==='organiser')void loadInvites().catch(e=>setError(readableError(e)));},[tripId,workspace?.members.length,uid]);
-  const sample=()=>{
-    const url=new URL(location.pathname,location.origin);
-    url.searchParams.set('demo','1');
-    url.searchParams.set('launch','goa');
-    location.assign(url);
-  };
   let view=route[0]||'home';
   const person=profile||(session?{id:session.user.id,name:'Traveller'}:null);
   const ownMember=workspace?.members.find(m=>m.id===uid);
-  const heading=authMode==='reset'?'Choose a new password.':view==='trip'?({preferences:'My private preferences',plan:'Your itinerary',voting:'Group votes',review:'Review the plan',bookings:'Booking handoff',journey:'Your travel journey',history:'Trip history'}[route[2]]||'Your trip overview'):
+  const heading=authMode==='reset'?'Choose a new password.':view==='trip'?({preferences:'My private preferences',plan:'Your itinerary',voting:'Group votes',review:'Review the plan',bookings:'Bookings',payments:'Payments',journey:'Your travel journey',history:'Trip history'}[route[2]]||'Your trip overview'):
     view==='setup'?'A good trip starts here.':view==='join'?'Your friends are planning a trip.':
     view==='signup'?'A shared trip starts with you.':['signin','emailcode'].includes(view)?'Welcome back.':view==='recovery'?'Let’s get you back in.':'Make room for everyone.';
   const lockedTrip=workspace?.trip.stage==='agreed';
-  const instruction=authMode==='reset'?'Choose and confirm your new password.':view==='trip'&&workspace?.trip.stage==='archived'?'This trip is archived. Read its saved details or History; the organiser can restore it from Archived trips.':view==='trip'&&workspace?.trip.stage==='postponed'?'This trip is postponed. Read the saved plan and decisions in History.':view==='trip'?({preferences:ownMember?.confirmed?'Review your saved private answers. Reopen them only if they need to change.':'Choose your dates, enter your limits and confirm only after checking them.',plan:lockedTrip?'Review your finalized itinerary or open your final journey. Booking is Phase 2.':'Check the itinerary and its missing steps before sharing it for review.',voting:lockedTrip?'Read the saved step decisions. This itinerary is locked.':'Compare the feasible choices and submit your own vote.',review:'Review your complete estimate and respond to the current plan.',bookings:workspace?.trip.workflow_version===2?'Booking handoff comes in Phase 2. Open your final journey to follow the finalized itinerary.':'Assign responsibilities, check providers and update only your own tasks.',journey:'Follow your finalized destination itinerary. Booking and transport checks are Phase 2.',history:'Read saved decisions, earlier versions and progress in one place.'}[route[2]]||(lockedTrip?'Your itinerary is finalized. Follow your final journey; booking is Phase 2.':ownMember?.confirmed?'Check group progress and review the itinerary when everyone is ready.':'Check the dates and group progress, then add your private input.')):
-    view==='setup'?'Enter the trip basics. Apply date and time changes before creating the trip.':view==='join'?'Use your invitation and verify your email to join the group.':view==='signup'?'Create your organiser account, then verify your email.':view==='recovery'?'Request and verify your recovery code to choose a new password.':['signin','emailcode'].includes(view)?'Sign in to continue with your saved trips.':'Create a trip, join with an invitation or open one of your saved trips.';
+  const instruction=authMode==='reset'?'Choose and confirm your new password.':view==='trip'&&workspace?.trip.removal_kind?.startsWith('deleted_')?'This trip is deleted. Its saved details are read-only. The organiser can restore it from Deleted trips.':view==='trip'&&workspace?.trip.stage==='archived'?'This trip is archived. Read its saved details or History; the organiser can restore it from Archived trips.':view==='trip'&&workspace?.trip.stage==='postponed'?'This trip is postponed. Read the saved plan and decisions in History.':view==='trip'?({preferences:ownMember?.confirmed?'Review your saved private answers. Reopen them only if they need to change.':'Choose your dates, enter your limits and confirm only after checking them.',plan:lockedTrip?'Review your finalized itinerary or open Bookings for provider options.':'Check the itinerary and its missing steps before sharing it for review.',voting:lockedTrip?'Read the saved step decisions. This itinerary is locked.':'Compare the feasible choices and submit your own vote.',review:'Review your complete estimate and respond to the current plan.',payments:'Track shared expenses, balances and recorded settlements.',bookings:workspace?.trip.workflow_version===2?(lockedTrip?'':'Finish the itinerary to open Bookings.'):'Assign responsibilities, check providers and update only your own tasks.',journey:'Follow your finalized itinerary one day at a time. Open Bookings for provider options.',history:'Read saved decisions, earlier versions and progress in one place.'}[route[2]]??(lockedTrip?'Your itinerary is finalized. Open Final journey or Bookings.':ownMember?.confirmed?'Check group progress and review the itinerary when everyone is ready.':'Check the dates and group progress, then add your private input.')):
+    view==='setup'?'Enter the trip basics. Apply date and time changes before creating the trip.':view==='join'?'Use your invitation and verify your email to join the group.':view==='signup'?'Create your organiser account, then verify your email.':view==='recovery'?'Request and verify your recovery code to choose a new password.':['signin','emailcode'].includes(view)?'Sign in to continue with your saved trips.':session?'':'Create a trip or join with an invitation.';
   async function reloadTripList(){const data=await api<{profile:Person;trips:TripSummary[]}>('list');setTrips(data.trips);}
   useEffect(()=>{if(uid&&view==='home')void reloadTripList().catch(e=>setError(readableError(e)));},[uid,view]);
   async function saveBrief(brief:Brief,confirm:boolean,expectedRevision:number){
@@ -131,18 +129,38 @@ export default function LiveApp(){
   }
   const openHelp=(topic='organise-trip')=>{try{if(view!=='help')sessionStorage.setItem('planzo.help-return.shared',location.hash||'#/home');}catch{}go('help',topic);};
   const returnFromHelp=()=>{let target='#/home';try{target=sessionStorage.getItem('planzo.help-return.shared')||target;sessionStorage.removeItem('planzo.help-return.shared');}catch{}location.hash=target;};
-  if(view==='help')return <><AppHeader name={session?profile?.name||'Signed in':undefined} busy={busy} onHome={()=>go('home')} onHelp={()=>openHelp()} onSignIn={()=>go('signin')} onSignOut={()=>void perform(async()=>{const {error}=await supabase.auth.signOut();if(error)throw error;go('home');})}/><main id="main" className="public-shell"><HelpPage shell="shared" initialTopic={route[1]} onReturn={returnFromHelp} onSelect={topic=>history.replaceState(null,'',helpHref(topic))}/></main><footer className="app-footer">Planzo · private preferences, shared trips</footer></>;
+  const header = <AppHeader name={session ? profile?.name || 'Signed in' : undefined} busy={busy}
+    onHome={() => go('home')} onHelp={() => openHelp()} onSignIn={() => go('signin')}
+    onSignOut={() => void perform(async () => {
+      const {error} = await supabase.auth.signOut();
+      if (error) throw error;
+      go('home');
+    })}/>;
+  const skipLink = <a className="skip-link" href="#main" onClick={event => {
+    event.preventDefault();
+    document.getElementById('main')?.focus();
+  }}>Skip to content</a>;
+  if (view === 'help' || view === 'privacy') return <>
+    {skipLink}
+    {header}
+    <main id="main" tabIndex={-1} className={'public-shell live-shell ' + (view === 'help' ? 'help-shell' : 'privacy-shell')}>
+      {view === 'help' ? <HelpPage shell="shared" initialTopic={route[1]} onReturn={returnFromHelp}
+        onSelect={topic => history.replaceState(null, '', helpHref(topic))}/> : <PrivacyPolicy/>}
+    </main>
+    <PublicFooter/>
+  </>;
   return <>
-    <a className="skip-link" href="#main">Skip to content</a>
-    <AppHeader name={session?profile?.name||'Signed in':undefined} busy={busy} onHome={()=>go('home')} onHelp={()=>openHelp()} onSignIn={()=>go('signin')} onSignOut={()=>void perform(async()=>{const {error}=await supabase.auth.signOut();if(error)throw error;go('home');})}/>
-    <main id="main" className="public-shell">{view!=='trip'&&<div className="page-heading"><h1>{heading}</h1><p>{instruction}</p></div>}
+    {skipLink}
+    {header}
+    <main id="main" tabIndex={-1} className="public-shell live-shell">{view!=='trip'&&<div className="page-heading"><h1>{heading}</h1>{instruction&&<p>{instruction}</p>}</div>}
       {error&&<div className="form-error" role="alert">{error}</div>}{notice&&<p className="notice" role="status">{notice}</p>}
+      {uid&&session?.user.email_confirmed_at&&<DeadlineAlerts key={uid} userId={uid} tripId={tripId} revision={workspace?.trip.revision}/>}
       {loadingAuth?<Card title="Restoring your session…"><p>Please wait while Planzo checks your sign-in.</p></Card>:
       authMode==='reset'?<Auth mode="reset" onDone={()=>{recoveryVerified.current=false;setAuthMode('');go('home');setNotice('Your password is updated. You can sign out and sign in with your new password.');}} go={go}/>:
-      view==='join'?<GuestJoin session={session} initialToken={route[1]||pendingInvite()} onJoined={id=>{go('trip',id);void api<{profile:Person;trips:TripSummary[]}>('list').then(d=>{setProfile(d.profile);setTrips(d.trips);});}}/>:
+      view==='join'?<GuestJoin session={session} signedInName={profile?.name} initialToken={route[1]||pendingInvite()} onJoined={id=>{go('trip',id);void api<{profile:Person;trips:TripSummary[]}>('list').then(d=>{setProfile(d.profile);setTrips(d.trips);});}}/>:
       view==='recovery'?<Recovery onVerified={()=>{setError('');recoveryVerified.current=true;setAuthMode('reset');}} go={go}/>:
       view==='emailcode'?<SignInMethodShell active="emailcode" go={go}><EmailCodeSignIn onDone={()=>go('home')} go={go}/></SignInMethodShell>:view==='signup'?<Auth key={view} mode={view} go={go} onDone={()=>{const token=pendingInvite();token?go('join',token):go('home');}}/>:view==='signin'?<SignInMethodShell active="signin" go={go}><Auth key={view} mode={view} go={go} onDone={()=>{const token=pendingInvite();token?go('join',token):go('home');}}/></SignInMethodShell>:
-      view==='setup'&&person?<TripSetup person={person} onCancel={()=>go('home')} onSave={details=>{void perform(async()=>{
+      view==='setup'&&person?<TripSetup person={person} busy={busy} onCancel={()=>go('home')} onSave={details=>{void perform(async()=>{
         const name=details.name?.trim();if(!name)throw Error('Enter a trip name.');
         const result=await api<{trip_id:string}>('create_trip',{request_id:createId.current,name,destination:details.destination,
           minimum:details.minimum,tentative_days:details.tentativeDays,deadline:details.deadline+'T23:59:00+05:30',windows:details.windows?.map(w=>({...w,start:w.start+':00+05:30',end:w.end+':00+05:30'}))});
@@ -151,22 +169,19 @@ export default function LiveApp(){
       view==='trip'&&session?(workspace&&person?<div className={'shared-trip-workspace '+(['preferences','review','journey'].includes(route[2])?'focused':'')}>
         <TripWorkspaceNav workspace={workspace} tab={route[2]||''} busy={busy} go={tab=>tab==='all-trips'?go('home'):tab?go('trip',tripId,tab):go('trip',tripId)} onRefresh={()=>void perform(async()=>{await refreshTrip();setNotice('Showing the latest saved trip.');})}/>
         <div className="shared-trip-main"><TripWorkspaceHeader workspace={workspace} instruction={instruction}/>
-        {workspace.trip.workflow_version===2&&['preferences','plan','voting','review','bookings','journey','history'].includes(route[2])?<LivePrivatePlanning key={tripId+uid} workspace={workspace} userId={person.id} tab={route[2]} target={route[3]} onRefresh={()=>refreshTrip()} go={(tab,target)=>target?go('trip',tripId,tab,target):go('trip',tripId,tab)}/>:
+        {workspace.trip.workflow_version===2&&['preferences','plan','voting','review','bookings','payments','journey','history'].includes(route[2])?<LivePrivatePlanning key={tripId+uid} workspace={workspace} userId={person.id} tab={route[2]} target={route[3]} onRefresh={()=>refreshTrip()} go={(tab,target)=>target?go('trip',tripId,tab,target):go('trip',tripId,tab)}/>:
         route[2]==='history'?<LiveHistory workspace={workspace}/>:
         route[2]==='preferences'?<Preferences key={tripId+uid} trip={asTrip(workspace,person)} personId={person.id} live readOnly={workspace.trip.stage==='archived'} savedRevision={workspace.own_brief?.revision||0} onSave={saveBrief} onInterpret={interpretPreferences} onDone={()=>go('trip',tripId)}/>:
         route[2]==='bookings'?<LiveBookings key={tripId+uid} workspace={workspace} userId={person.id} onRefresh={()=>refreshTrip()} go={tab=>go('trip',tripId,tab)}/>:
         ['plan','voting','review'].includes(route[2])?<LivePlanning key={tripId+uid} workspace={workspace} person={person} tab={route[2]} onRefresh={()=>refreshTrip()} go={tab=>go('trip',tripId,tab)}/>:
-        <div className="columns"><div><Card title={workspace.trip.name} sub={workspace.trip.destination+' · '+workspace.members.length+' joined · minimum '+workspace.trip.minimum_group_size}><DestinationCover destination={workspace.trip.destination} compact/>
-          <Badge tone={workspace.trip.stage==='agreed'?'positive':'pending'}>{planStage(workspace.trip.stage)}</Badge>
-          <p>{workspace.trip.stage==='agreed'?'Your itinerary is finalized. Open your final journey; booking handoff will be done in Phase 2.':'Add your personal travel times and preferences. Everyone sees progress; your raw limits remain private.'}</p>
-          <Button onClick={()=>go('trip',tripId,'preferences')}>{workspace.trip.stage==='archived'?'View my saved input':ownMember?.confirmed?'Review my private input':'Add my private input'}</Button>
-          <h3>Tentative destination windows</h3>{workspace.windows.map(w=><p key={w.id}>{windowText(asTrip(workspace,person),w.id)} · {w.start.slice(11)} → {w.end.slice(11)} IST</p>)}
+        <div className="columns"><div><Card title="Your group" sub={workspace.members.length+' joined · minimum '+workspace.trip.minimum_group_size}>
           <p className="small muted">Response deadline: {new Date(workspace.trip.response_deadline).toLocaleString('en-IN',{timeZone:'Asia/Kolkata'})} IST</p>
           <p className="small muted">Tentative duration: {workspace.trip.tentative_days??3} days</p>
+          <DestinationCover key={workspace.trip.id+":"+workspace.trip.destination} tripId={workspace.trip.id} destination={workspace.trip.destination} compact showLabel={false}/>
+          {workspace.members.map(m=><div className="member-row" key={m.id}><strong>{m.name}{m.id===uid?' · you':''}</strong>{m.role==='organiser'&&<span>Organiser</span>}{!m.included&&<span>Observer</span>}<Badge tone={m.confirmed?'positive':'pending'}>{m.confirmed?'Input confirmed':m.revision?'Draft saved':'Input pending'}</Badge></div>)}
+          <Button onClick={()=>go('trip',tripId,'preferences')}>{workspace.trip.stage==='archived'?'View my saved input':ownMember?.confirmed?'Review my private input':'Add my private input'}</Button>
           {ownMember?.role==='organiser'&&workspace.trip.workflow_version===2&&!['archived','postponed'].includes(workspace.trip.stage)&&<TripDetailsEditor key={tripId+':'+workspace.trip.revision} workspace={workspace} person={person} onSaved={async()=>{await reloadTripList();await refreshTrip();}}/>}
-          <TripControls trip={{...workspace.trip,role:ownMember?.role||'member',can_delete:workspace.members.length===1&&!ownMember?.revision&&!invites.length&&trips.find(t=>t.id===tripId)?.can_delete}} onDone={async()=>{await reloadTripList();await refreshTrip();go('home');}}/>
-        </Card><Card title="Your group" sub="Safe progress only. Private budgets and preference text are never included here.">
-          {workspace.members.map(m=><div className="member-row" key={m.id}><strong>{m.name}{m.id===uid?' · you':''}</strong><span>{m.role} · {m.included?'included traveller':'observer'}</span><Badge tone={m.confirmed?'positive':'pending'}>{m.confirmed?'Input confirmed':m.revision?'Draft saved':'Input pending'}</Badge></div>)}
+          <TripControls trip={{...workspace.trip,role:ownMember?.role||'member'}} onDone={async()=>{await reloadTripList();go('home');}}/>
         </Card></div><aside>
           {ownMember?.role==='organiser'?<><Button variant="secondary" onClick={()=>setShareOpen(true)}>Share</Button>{shareOpen&&<InPlacePanel title="Invite your friends" onClose={()=>setShareOpen(false)}>{notice&&<p className="notice" role="status">{notice}</p>}<Card tone="mint"><p>Friends verify their email with a code. They do not need a password or a separate signup form.</p>
             <Button disabled={busy||workspace.trip.stage!=='collecting'} onClick={()=>perform(async()=>{const result=await api<Invite>('create_invite',{trip_id:tripId});setFreshInvite(result);await loadInvites();})}>Create invitation link</Button>
@@ -174,21 +189,24 @@ export default function LiveApp(){
             {invites.map(i=><div className="invite-row" key={i.id}><span>{i.revoked_at?'Revoked':new Date(i.expires_at)<new Date()?'Expired':'Active'} · {new Date(i.expires_at).toLocaleDateString('en-IN')}</span>
               {!i.revoked_at&&new Date(i.expires_at)>new Date()&&<Button variant="ghost" disabled={busy} onClick={()=>perform(async()=>{await api('revoke_invite',{trip_id:tripId,invite_id:i.id});if(freshInvite?.id===i.id)setFreshInvite(null);await loadInvites();})}>Revoke</Button>}</div>)}
           </Card></InPlacePanel>}</>:<Note title="You are a member">Only the organiser can create or revoke invitations. Your private input belongs to you.</Note>}
-          {workspace.trip.workflow_version===2?<Card title="Trip passport" sub="Your planning journey" titleIcon="map"><ol className="personal-journey"><li><strong>Private inputs</strong><span>{workspace.members.filter(m=>m.included&&m.confirmed).length} / {workspace.members.filter(m=>m.included).length} confirmed</span></li><li><strong>Itinerary and step decisions</strong><Button variant="ghost" onClick={()=>go('trip',tripId,'plan')}>Open itinerary</Button></li><li><strong>Finalized itinerary and journey</strong><span>{workspace.trip.stage==='agreed'?'Everyone reviewed · itinerary finalized':'Resolve decisions, review and finalize the itinerary'}</span>{workspace.trip.stage==='agreed'&&<Button variant="secondary" onClick={()=>go('trip',tripId,'journey')}>Open final journey</Button>}</li><li><strong>Booking handoff · Phase 2</strong><span>Transport, accommodation, responsibilities and live prices come in the second phase.</span></li></ol></Card>:<LiveMilestones tripId={tripId} revision={workspace.trip.revision}/>}
-          <Note title="Next step" icon="calendar">{workspace.trip.stage==='archived'?'Read saved decisions in History. The organiser can restore this trip from the Archived list.':workspace.trip.stage==='agreed'?'Follow your final journey. Booking handoff, provider checks and reservations are Phase 2.':ownMember?.confirmed?'Follow the group’s input progress. Open Itinerary when everyone included has confirmed.':'Add and confirm your private input. The group sees completion status, not your raw limits.'}</Note>
+          {workspace.trip.workflow_version===2?<TripPassport key={tripId+uid} workspace={workspace} userId={person.id} go={tab=>go('trip',tripId,tab)}/>:<LiveMilestones tripId={tripId} revision={workspace.trip.revision}/>}
         </aside></div>}
       </div></div>:<Card title="Opening your shared trip…"><p>If this takes longer than expected, use Home and reopen the trip.</p><Button onClick={()=>go('home')}>Home</Button></Card>):
-      session?<div className="columns trip-dashboard"><Card className="trips-card" title="Your trips" sub="Saved securely and available when you sign in on another device.">
-        <Button onClick={()=>go('setup')}>Create a trip</Button><div className="trip-buckets" role="group" aria-label="Trip lists">{[['active','Active'],['archived','Archived'],['deleted','Deleted drafts']].map(([id,label])=><Button key={id} variant={tripBucket===id?'primary':'ghost'} aria-pressed={tripBucket===id} onClick={()=>setTripBucket(id)}>{label}</Button>)}</div>
-        {trips.filter(t=>tripBucket==='active'?t.stage!=='archived':tripBucket==='deleted'?t.removal_kind==='deleted_draft':t.stage==='archived'&&t.removal_kind!=='deleted_draft').map(t=><div className="trip-list-item" key={t.id}><div className="trip-card-summary"><h3>{t.name}</h3><p className="small muted">{t.destination} · {t.role}{t.stage==='archived'?' · '+(t.removal_kind==='deleted_draft'?'Deleted draft':'Archived'):''}</p></div><div className="trip-card-actions"><Button variant="secondary" onClick={()=>go('trip',t.id)}>Open trip</Button><TripControls compact trip={t} onDone={reloadTripList}/></div></div>)}
-        {!trips.some(t=>tripBucket==='active'?t.stage!=='archived':tripBucket==='deleted'?t.removal_kind==='deleted_draft':t.stage==='archived'&&t.removal_kind!=='deleted_draft')&&<p>No trips in this list.</p>}
+      session?<div className="columns trip-dashboard"><Card className="trips-card" title="Your trips">
+        <Button onClick={()=>go('setup')}>Create a trip</Button><div className="trip-buckets" role="group" aria-label="Trip lists">{[['active','Active'],['archived','Archived'],['deleted','Deleted trips']].map(([id,label])=><Button key={id} variant={tripBucket===id?'primary':'ghost'} aria-pressed={tripBucket===id} onClick={()=>setTripBucket(id)}>{label}</Button>)}</div>
+        {trips.filter(t=>tripBucket==='active'?t.stage!=='archived':tripBucket==='deleted'?t.removal_kind?.startsWith('deleted_'):t.stage==='archived'&&!t.removal_kind?.startsWith('deleted_')).map(t=><div className="trip-list-item" key={t.id}><div className="trip-card-summary"><h3>{t.name}</h3><p className="small muted">{t.destination} · {t.role}{t.stage==='archived'?' · '+(t.removal_kind?.startsWith('deleted_')?'Deleted':'Archived'):''}</p></div><div className="trip-card-actions"><Button variant="secondary" onClick={()=>go('trip',t.id)}>Open trip</Button><TripControls compact trip={t} onDone={reloadTripList}/></div></div>)}
+        {!trips.some(t=>tripBucket==='active'?t.stage!=='archived':tripBucket==='deleted'?t.removal_kind?.startsWith('deleted_'):t.stage==='archived'&&!t.removal_kind?.startsWith('deleted_'))&&<p>No trips in this list.</p>}
         <Button variant="ghost" onClick={()=>go('join')}>Join with an invitation</Button>
-      </Card><Card title="Your group, your pace" titleIcon="people" tone="mint"><Coast/><Feature icon="lock" title="Your limits stay private"/><Feature icon="people" title="Everyone contributes as themselves"/><Button variant="secondary" onClick={sample}><Icon name="map"/>Explore the separate Goa sample</Button></Card></div>:
-      <div className="columns welcome"><Card title="Plan together. Travel together." sub="Private preferences. Shared trips. Clear decisions." tone="mint"><Coast variant="large"/><div className="benefits"><Feature icon="lock" title="Private limits"/><Feature icon="wallet" title="Full costs"/><Feature icon="people" title="Equal say"/></div></Card>
-        <aside><Card title="Your next good trip" titleIcon="map"><p className="muted">Start a shared trip, invite your friends and save what works for each of you.</p><Button onClick={()=>go('signup')}>Create a trip</Button><Button variant="secondary" onClick={()=>go('join')}>Join with an invite</Button><Note title="Your group, your pace" icon="heart">A respectful no or a postponed trip is a useful outcome.</Note><Button variant="secondary" onClick={()=>go('signin')}>I already have an account</Button></Card><Button variant="ghost" onClick={sample}><Icon name="map"/>Explore the separate Goa sample →</Button><SamplePreview/><p className="caption muted">The sample uses fictional data. Your shared trips save your real inputs.</p></aside></div>}
+      </Card><Card className="home-coast-card" title="Your group, your pace" titleIcon="people" tone="mint"><Coast/><Feature icon="lock" title="Your limits stay private"/><Feature icon="people" title="Everyone contributes as themselves"/></Card></div>:
+      <div className="columns welcome"><Card className="home-coast-card" title="Plan together. Travel together." tone="mint"><Coast variant="large"/><div className="benefits"><Feature icon="lock" title="Private limits"/><Feature icon="wallet" title="Full costs"/><Feature icon="people" title="Equal say"/></div></Card>
+        <aside><Card title="Your next good trip" titleIcon="map"><Button onClick={()=>go('signup')}>Create a trip</Button><Button variant="secondary" onClick={()=>go('join')}>Join with an invite</Button><Button variant="secondary" onClick={()=>go('signin')}>I already have an account</Button></Card></aside></div>}
       {busy&&<p role="status">Saving your request…</p>}
-    </main><footer className="app-footer">Planzo · private preferences, shared trips</footer>
+    </main><PublicFooter/>
   </>;
+}
+
+function PublicFooter(){
+  return <footer className="app-footer">Planzo · private preferences, shared trips · <a href="#/privacy">Privacy policy</a></footer>;
 }
 
 function SignInMethodShell({active,go,children}:{active:'signin'|'emailcode';go:(...parts:string[])=>void;children:ReactNode}){
@@ -224,7 +242,7 @@ function Auth({mode,onDone,go}:{mode:string;onDone:()=>void;go:(...parts:string[
         <Button type="submit" disabled={busy}>{busy?'Please wait…':mode==='signup'?'Create account':mode==='recovery'?'Send recovery email':mode==='reset'?'Save new password':'Sign in'}</Button>
       </fieldset></form>}
       <Actions><Button variant="ghost" onClick={()=>go(mode==='signup'?'signin':'signup')}>{mode==='signup'?'Already have an account? Sign in':'Create an account'}</Button>{mode==='signin'&&<><Button variant="ghost" onClick={()=>go('recovery')}>Forgot password?</Button><Button variant="secondary" onClick={()=>go('emailcode')}>Sign in with an email code</Button></>}</Actions>
-      <Note title="Friends join by invitation">Friends verify an email code without choosing a password or filling in a signup form.</Note>
+      <Note title="Friends (Non-Organizers) join by invitation">Friends (Non-Organizers) verify an email code without choosing a password or filling in a signup form.</Note>
     </Card></div>;
 }
 
@@ -274,7 +292,7 @@ function EmailCodeSignIn({onDone,go}:{onDone:()=>void;go:(...parts:string[])=>vo
   </Card><aside><Card title="Pick up where you left off" tone="mint"><Coast/><Feature icon="lock" title="Your membership is saved">Sign in on another device to open your trips and your own private inputs.</Feature><Feature icon="people" title="First time here?">Open a valid invitation from your organiser to join a new trip.</Feature></Card></aside></div>;
 }
 
-function GuestJoin({session,initialToken,onJoined}:{session:Session|null;initialToken:string;onJoined:(id:string)=>void}){
+function GuestJoin({session,signedInName,initialToken,onJoined}:{session:Session|null;signedInName?:string;initialToken:string;onJoined:(id:string)=>void}){
   const [inviteInput,setInviteInput]=useState(initialToken),[name,setName]=useState(''),[email,setEmail]=useState(''),[code,setCode]=useState('');
   const [sent,setSent]=useState(false),[busy,setBusy]=useState(false),[error,setError]=useState('');
   const [preview,setPreview]=useState<{name:string;destination:string}|null>(null);
@@ -283,10 +301,11 @@ function GuestJoin({session,initialToken,onJoined}:{session:Session|null;initial
     supabase.rpc('planzo_invite_preview',{p_token:token}).then(({data,error})=>{if(cancelled)return;if(error)setError(error.message);else{setError('');setPreview(data);RememberInvite(token);}});
     return()=>{cancelled=true;};
   },[token]);
-  async function join(){const result=await api<{trip_id:string}>('join',{token,name:name.trim()});try{sessionStorage.removeItem('planzo.pending-invite');}catch{}onJoined(result.trip_id);}
+  async function join(){const result=await api<{trip_id:string}>('join',{token,name:session?(signedInName||session.user.user_metadata?.display_name||'Traveller'):name.trim()});try{sessionStorage.removeItem('planzo.pending-invite');}catch{}onJoined(result.trip_id);}
   async function submit(e:React.SubmitEvent<HTMLFormElement>){e.preventDefault();setError('');setBusy(true);try{
     if(!token||!preview)throw Error('Open a valid invitation link first.');
-    if(!name.trim())throw Error('Enter your name.');
+    if(session&&!signedInName)throw Error('Wait for your account name to load, then try again.');
+    if(!session&&!name.trim())throw Error('Enter your name.');
     RememberInvite(token);
     if(session){await join();}
     else if(sent){
@@ -300,12 +319,12 @@ function GuestJoin({session,initialToken,onJoined}:{session:Session|null;initial
     <form onSubmit={submit} className="stack"><fieldset disabled={busy} className="auth-fields">
       <Field label="Invitation link or code"><input required value={inviteInput} onChange={e=>{setInviteInput(e.target.value);setSent(false);}} autoComplete="off" spellCheck={false}/></Field>
       <ContextHelpLink topic="join-trip">Didn’t get your code?</ContextHelpLink>
-      <Field label="Your name"><input required maxLength={50} autoComplete="given-name" value={name} onChange={e=>setName(e.target.value)}/></Field>
+      {!session&&<Field label="Your name"><input required readOnly={sent} maxLength={50} autoComplete="given-name" value={name} onChange={e=>setName(e.target.value)}/></Field>}
       {session?<Note title="Email verified">Joining as {session.user.email}. To use another email, sign out first.</Note>:<>
       <Field label="Email address"><input type="email" required readOnly={sent} autoComplete="email" value={email} onChange={e=>setEmail(e.target.value)}/></Field>
       {sent&&<><Note title="Check your email">Enter the sign-in code from Planzo. No password is needed.</Note><Field label="Email verification code"><input required inputMode="numeric" pattern="[0-9]{6,8}" minLength={6} maxLength={8} autoComplete="one-time-code" value={code} onChange={e=>setCode(e.target.value.replace(/\D/g,''))}/></Field><Button variant="ghost" onClick={()=>{setSent(false);setCode('');}}>Change email or request a new code</Button></>}
       </>}
-      <Button type="submit" disabled={busy||!preview}>{busy?'Please wait…':session?'Join this trip':sent?'Verify email and join':'Send email code'}</Button>
+      <Button type="submit" disabled={busy||!preview||Boolean(session&&!signedInName)}>{busy?'Please wait…':session?'Join this trip':sent?'Verify email and join':'Send email code'}</Button>
     </fieldset></form>
   </Card><aside><Card title="No separate signup" tone="mint"><Coast/><Feature icon="lock" title="Your email proves it is you">Use the same email to return on another device.</Feature><Feature icon="people" title="Your preferences stay yours">The group sees your completion status, not your raw limits.</Feature></Card></aside></div>;
 }

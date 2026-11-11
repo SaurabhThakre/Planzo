@@ -1,8 +1,13 @@
-import { cloneElement, isValidElement, useId } from "react";
+import { cloneElement, isValidElement, useEffect, useId, useState } from "react";
 import type { ButtonHTMLAttributes, ReactElement, ReactNode } from "react";
 import { assets } from "./assets";
 import type { Range, Trip } from "./domain";
 import type { PlanningRequest } from './privatePlanning';
+import { loadDestinationPhoto } from "./destinationPhoto";
+import type { DestinationPhoto } from "./destinationPhoto";
+import { DestinationIllustration } from "./DestinationIllustration";
+import { loadDestinationIllustration } from "./destinationCoverBackend";
+import type { CoverScene } from "../supabase/functions/planzo-destination-cover/scene";
 const urls: Record<string, string> = {
     clock: assets.overview.imgIconClock,
     star: assets.aiPlans.imgIconStar,
@@ -170,9 +175,42 @@ export function Coast({ variant = "small" }: {
     return (<img className={"coast " + variant} src={src} alt="Illustrated Goa coastline with a palm tree, sailboat and warm sunset"
       width={size[0]} height={size[1]} loading={lazy ? "lazy" : undefined} decoding={lazy ? "async" : undefined}/>);
 }
-export function DestinationCover({destination,compact=false}:{destination:string;compact?:boolean}){
+export function DestinationCover({destination,compact=false,showLabel=true,tripId}:{
+    destination:string;compact?:boolean;showLabel?:boolean;tripId?:string;
+}){
+    const [photo, setPhoto] = useState<DestinationPhoto | null>(null);
+    const [photoFinished, setPhotoFinished] = useState(false);
+    const [scene, setScene] = useState<CoverScene | null>(null);
+    useEffect(() => {
+        if (!tripId) return;
+        const request = new AbortController();
+        const timeout = AbortSignal.timeout(6500);
+        void loadDestinationPhoto(destination, AbortSignal.any([request.signal, timeout])).then(value => {
+            if (!request.signal.aborted && value) setPhoto(value);
+        }).catch(() => {}).finally(() => {
+            if (!request.signal.aborted) setPhotoFinished(true);
+        });
+        return () => request.abort();
+    }, [tripId, destination]);
+    useEffect(() => {
+        if (!tripId || !photoFinished || photo) return;
+        const request = new AbortController();
+        const timeout = AbortSignal.timeout(12000);
+        void loadDestinationIllustration(tripId, AbortSignal.any([request.signal, timeout])).then(value => {
+            if (!request.signal.aborted) setScene(value);
+        }).catch(() => {});
+        return () => request.abort();
+    }, [tripId, photo, photoFinished]);
+    if (photo) return <figure className={"destination-cover destination-photo" + (compact ? " compact" : "")}>
+        <img src={photo.imageUrl} alt={destination} decoding="async" referrerPolicy="no-referrer"
+          onError={() => setPhoto(null)}/>
+        <figcaption><a href={photo.sourceUrl} target="_blank" rel="noreferrer">{photo.credit} · Wikimedia Commons</a>
+            {" · "}<a href={photo.licenseUrl} target="_blank" rel="noreferrer">License</a>
+        </figcaption>
+    </figure>;
+    if (scene) return <DestinationIllustration scene={scene} destination={destination} compact={compact}/>;
     const goa=destination.trim().toLowerCase()==='goa';
-    return <div className={(goa?'destination-cover':'destination-cover neutral')+(compact?' compact':'')}>{goa?<Coast variant={compact?'small':'hero'}/>:<div className="neutral-destination-mark" aria-hidden="true"><Icon name="map"/><strong>{destination}</strong></div>}</div>;
+    return <div className={(goa?'destination-cover':'destination-cover neutral')+(compact?' compact':'')}>{goa?<Coast variant={compact?'small':'hero'}/>:<div className="neutral-destination-mark" aria-hidden="true"><Icon name="map"/>{showLabel&&<strong>{destination}</strong>}</div>}</div>;
 }
 export function SamplePreview(){
     return <div className="sample-preview"><div className="sample-preview-art"><Coast/><span className="sample-preview-trail" aria-hidden="true"><i/><i/><i/></span></div><div><Badge tone="positive">Fictional Goa sample</Badge><strong>Three days · shared plan · clear decisions</strong><p className="caption muted">Preview the existing sample itinerary, personal estimate and group response flow.</p></div></div>;

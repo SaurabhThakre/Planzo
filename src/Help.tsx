@@ -58,7 +58,7 @@ function GuideVisual({kind,demo=false}:{kind:'join'|'decisions'|'journey'|'fixes
  const data={
   join:{caption:'Invitation to verified membership',label:'Illustrated flow: open a fictional invitation link, receive an email code, then verify and join.',steps:[['link','Invitation link','Open the shared link'],['mail','Email code','Use the newest message'],['check','Verified','Join the trip']]},
   decisions:{caption:'Read the plan, resolve choices, then review',label:demo?'Illustrated flow: read the Goa schedule in Plan, vote in Decisions, then review and respond.':'Illustrated flow: read the schedule in Itinerary, resolve choices in Step decisions, then return to Itinerary to review.',steps:[['map',demo?'Plan':'Itinerary','Check the route and estimates'],['people',demo?'Decisions':'Step decisions','Compare and vote on one stop'],['check',demo?'Review and respond':'Back to Itinerary',demo?'Respond to the current plan':'Review and lock the current version']]},
-  journey:{caption:'Journey and booking handoff',label:'Illustrated flow: follow the locked final journey, then independently check booking tasks with real providers.',steps:[['plane','Final journey','Use the locked day-by-day route'],['calendar','Booking handoff','Check providers in Phase 2'],['check','Self-report','Not a verified reservation']]},
+  journey:{caption:'Journey and booking handoff',label:'Illustrated flow: follow the locked final journey, then independently check booking tasks with real providers.',steps:[['plane','Final journey','Use the locked day-by-day route'],['calendar','Bookings','Check current provider options'],['check','Self-report','Not a verified reservation']]},
   fixes:{caption:'Three cues to check first',label:'Troubleshooting cues: request a fresh invitation link, use the newest email code, and check estimate assumptions before proceeding.',steps:[['link','Link','Ask for a fresh active invite'],['clock','Code','Use the newest email code'],['wallet','Estimate','Read prices and assumptions']]},
  }[kind];
  return <figure className={'help-flow-figure '+(kind==='fixes'?'three-cues':'')}>
@@ -115,7 +115,6 @@ function Guide({topic,shell}:{topic:HelpTopic;shell:'shared'|'demo'}){
     <ExampleFigure kind="invite"/>
    </>}
    <details><summary><Question>Can I reuse an invitation?</Question></summary><p>{shell==='demo'?'Sample invitations work in the browser where the trip is saved while the invitation is active.':'Use it while it is active and before its expiry. The organiser can revoke it and create a new link through Share.'}</p></details>
-   <details><summary><Question>What is different in the fictional sample?</Question></summary><p>The Goa sample is browser-saved and its invitation works only with sample data in that browser. The shared app uses email verification and securely saved trip membership.</p></details>
   </>;
   case'join-trip':return shell==='demo'?<>
    <p className="help-lede">Use a fictional invitation and display name to try joining in the same browser.</p>
@@ -160,17 +159,16 @@ function Guide({topic,shell}:{topic:HelpTopic;shell:'shared'|'demo'}){
    <HelpNote icon="lock" title="Fictional booking examples">The offers and booking reports are sample data. Use this view to explore how the handoff works.</HelpNote>
   </>:<>
    <p className="help-lede">Final journey is the readable destination itinerary for the exact locked plan.</p>
-   <ol><li>Finish your personal review of the current itinerary version.</li><li>Wait for every included traveller to review and for the organiser to lock it.</li><li>Select <strong>Final journey</strong> or <strong>See my final journey</strong>.</li><li>Use the day-by-day route as a planning baseline while checking real providers.</li></ol>
+   <ol><li>Finish your personal review of the current itinerary version.</li><li>Wait for every included traveller to review and for the organiser to lock it.</li><li>Select <strong>Final journey</strong> or <strong>See my final journey</strong>.</li><li>Use the day tabs in Final journey for your schedule, and open the separate Bookings tab for provider links.</li></ol>
    <GuideVisual kind="journey"/>
-   <HelpNote icon="lock" title="Planzo does not make reservations">Provider availability, routes and prices must be checked before purchase. Booking handoff is Phase 2; a saved or reported task is not a verified reservation.</HelpNote>
+   <HelpNote icon="lock" title="Planzo does not make reservations">Provider availability, routes and prices must be checked before purchase. Open the Bookings tab after lock; a saved or reported task is not a verified reservation.</HelpNote>
    <details><summary><Question>Why is Final journey unavailable?</Question></summary><p>The itinerary must be resolved, personally reviewed by everyone included and locked by the organiser first.</p></details>
    <details><summary><Question>Are the shown prices live quotes?</Question></summary><p>No. They are planning estimates with stated assumptions, not live quotes or guaranteed inventory.</p></details>
   </>;
   case'troubleshooting':return <>
    <p className="help-lede">Use the message on screen first; Planzo does not advertise a support channel in this prototype.</p>
-   <ul><li><strong>Invitation unavailable:</strong> ask the organiser to check that it is Active and create a fresh link if needed.</li><li><strong>Email code rejected:</strong> use the newest code for the exact email address entered.</li><li><strong>Save did not complete:</strong> keep the form open and retry after the current action finishes.</li><li><strong>Shared trip looks out of date:</strong> select <strong>Refresh</strong> in the trip navigation.</li><li><strong>Cannot proceed:</strong> check the passport for planning progress. In shared trips, open <strong>Overview → Trip passport</strong> or <strong>Pact Passport</strong>. In the sample, open <strong>Decisions → Planzo Passport</strong>.</li></ul>
+   <ul><li><strong>Invitation unavailable:</strong> ask the organiser to check that it is Active and create a fresh link if needed.</li><li><strong>Email code rejected:</strong> use the newest code for the exact email address entered.</li><li><strong>Save did not complete:</strong> keep the form open and retry after the current action finishes.</li><li><strong>Shared trip looks out of date:</strong> select <strong>Refresh</strong> in the trip navigation.</li><li><strong>Cannot proceed:</strong> check the passport for planning progress. In shared trips, open <strong>Overview → Trip passport</strong> or <strong>Pact Passport</strong>.</li></ul>
    <GuideVisual kind="fixes"/>
-   <details><summary><Question>Is the Goa sample connected to my shared trips?</Question></summary><p>No. The fictional Goa sample is a separate browser-saved demonstration. Its sample identities, prices and actions do not change shared app trips.</p></details>
    <details><summary><Question>Can I open Help while filling out a form?</Question></summary><p>Help in the top bar stays visible while you scroll. If a form has a Help link next to it, use that link to open the guide in a panel. Close the panel to return to the form, then save or confirm your entries.</p></details>
    {shell==='demo'&&<p className="caption">You are reading Help inside the fictional sample shell. Shared-app labels are documented accurately, but sample invitation, identity and storage behaviour is explicitly different.</p>}
   </>;
@@ -183,11 +181,20 @@ export function HelpPage({initialTopic='organise-trip',shell,onReturn,onSelect,a
  useEffect(()=>setSelected(valid),[valid]);
  const select=(topic:HelpTopic,scroll=true)=>{setSelected(topic);onSelect?.(topic);if(scroll)requestAnimationFrame(()=>article.current?.scrollIntoView({behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth',block:'start'}));};
  return <div className="help-page">
-  <div className="help-return"><Button variant="ghost" onClick={onReturn}>← Return to Planzo</Button></div>
-  <section className="help-intro" aria-labelledby="help-title"><div><span className="eyebrow">{shell==='demo'?'FICTIONAL GOA SAMPLE HELP':'PLANZO HELP'}</span><h1 id="help-title">Help & documentation</h1><p>Follow the trip journey, understand what stays private and find the exact control you need.</p></div><HelpHeroArt/></section>
-  {allowWalkthrough&&<Card className="help-walkthrough-launch" title="New to the shared trip?"><p>Open a short three-step guide when you want it. Nothing starts automatically.</p><Button variant="secondary" onClick={()=>setWalkthrough(true)}>Start three-step walkthrough</Button></Card>}
+  <section className="help-intro" aria-labelledby="help-title">
+   <div className="help-intro-copy">
+    <div className="help-return"><button type="button" className="context-help-link context-help-button" onClick={onReturn}>← Return to Planzo</button></div>
+    <h1 id="help-title">Help &amp; documentation</h1>
+    <p>Find guides for each step of your trip.</p>
+   </div>
+   <HelpHeroArt/>
+  </section>
   {walkthrough&&<InPlacePanel title="Three steps through Planzo" onClose={()=>setWalkthrough(false)}><ol className="walkthrough-steps"><li><span>1</span><div><h3>My private input</h3><p>Open My private input, complete your own dates, whole-trip budget and preferences, then confirm your summary.</p></div></li><li><span>2</span><div><h3>{shell==='demo'?'Plan':'Itinerary'}</h3><p>Select a day to read its schedule. Open a pending stop and choose View decision to compare the options.</p></div></li><li><span>3</span><div><h3>Review the plan</h3><p>{shell==='demo'?'Return to Plan and select Review and respond for the current version.':'Return to Itinerary and open Review and lock this itinerary to check your estimate and confirm your personal review.'}</p></div></li></ol></InPlacePanel>}
-  <Card className="help-map" title="Your Planzo journey" sub="Choose any step to open its guide.">
+  <Card className="help-map">
+   <div className="help-map-heading">
+    <h2>Your Planzo journey</h2>
+    {allowWalkthrough && <button type="button" className="context-help-link context-help-button" onClick={() => setWalkthrough(true)}>Three-step walkthrough</button>}
+   </div>
    <div className="help-starts">
     <div className={selected==='organise-trip'?'selected':''}><div className="help-branch-heading"><span className="help-icon-tile"><Icon name="map"/></span><span><strong>Organiser</strong><small>Set the shared starting point</small></span></div><div className="help-path"><button aria-pressed={selected==='organise-trip'} onClick={()=>select('organise-trip')}><Icon name="calendar"/>Create a trip</button><span aria-hidden="true">→</span><button aria-pressed={selected==='organise-trip'} onClick={()=>select('organise-trip')}><Icon name="people"/>Invite travellers</button></div></div>
     <div className={selected==='join-trip'?'selected':''}><div className="help-branch-heading"><span className="help-icon-tile sand"><Icon name="people"/></span><span><strong>Traveller</strong><small>Join as yourself</small></span></div><div className="help-path"><button aria-pressed={selected==='join-trip'} onClick={()=>select('join-trip')}><Icon name="link"/>Open the invite</button><span aria-hidden="true">→</span><button aria-pressed={selected==='join-trip'} onClick={()=>select('join-trip')}><Icon name="mail"/>Verify your email</button></div></div>
