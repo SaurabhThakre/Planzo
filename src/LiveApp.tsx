@@ -222,7 +222,10 @@ export default function LiveApp(){
 }
 
 function PublicFooter(){
-  return <footer className="app-footer">Planzo · private preferences, shared trips · <a href="#/privacy">Privacy policy</a></footer>;
+  return <footer className="app-footer">
+    <span>Planzo</span>
+    <a href="#/privacy">Privacy policy</a>
+  </footer>;
 }
 
 function SignInMethodShell({active,go,children}:{active:'signin'|'emailcode';go:(...parts:string[])=>void;children:ReactNode}){

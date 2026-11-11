@@ -190,6 +190,9 @@ main.public-shell{padding-top:32px;padding-bottom:32px}
 .final-journey>li>div{min-width:0;flex:1;overflow-wrap:anywhere}
 .history-event small{color:var(--muted);font-size:12px;line-height:20px}
 .app-footer{max-width:1200px;margin:0 auto;border-top:1px solid var(--border);padding:24px}
+.app-footer{display:flex;align-items:center;justify-content:center;gap:14px}
+.app-footer a{color:#3159c8;text-decoration:underline;text-underline-offset:.16em}
+.app-footer a:hover{color:#2446a4}
 @media(min-width:1000px){.trip-list-item{grid-template-columns:minmax(0,1fr) auto}.trip-card-actions{justify-content:flex-end}.trip-dashboard{grid-template-columns:minmax(0,2fr) minmax(260px,1fr)}}
 @media(max-width:760px){
  .live-header .topbar-inner{padding:12px 16px;gap:10px}
