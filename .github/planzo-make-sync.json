@@ -1,7 +1,7 @@
 {
   "make_file": "4tPr5AkQO1g0L1esRvGRjz",
   "site": "https://person-siren-40913121.figma.site",
-  "source_hash": "2eeca0b33c35e7a92c99b32cc12e73b12131b77216ffc69e80b0f98ddd000a7b",
+  "source_hash": "9ab0bc1b4ab7c32f825f6fa9030cdc69512d46e0574bcceb20a00409af2b32ca",
   "managed_files": [
     ".figma/make/analyze-routes",
     ".figma/make/deploy",
@@ -617,5 +617,5 @@
     "utils/supabase/info.tsx",
     "vite.config.ts"
   ],
-  "last_published_utc": "2026-11-11T14:45:07.477965+00:00"
+  "last_published_utc": "2026-11-11T14:53:22.527715+00:00"
 }

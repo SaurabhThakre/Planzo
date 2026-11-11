@@ -374,6 +374,7 @@ main.public-shell{padding-top:32px;padding-bottom:32px}
 .help-map-heading>button{align-self:center;min-height:44px}
 .privacy-policy{display:grid;gap:20px;overflow-wrap:anywhere}
 .privacy-policy .privacy-intro,.privacy-policy section{display:grid;gap:8px;max-width:76ch}
+@media(min-width:1024px){.privacy-policy .privacy-intro,.privacy-policy section{max-width:92ch}}
 .privacy-policy h2{font-size:21px;line-height:1.3}
 .privacy-policy p,.privacy-policy li{line-height:1.65}
 .privacy-policy .privacy-lede{margin-top:4px}
