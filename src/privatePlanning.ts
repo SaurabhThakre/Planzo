@@ -63,17 +63,20 @@ export const flowStamp=(s:string)=>new Date(instant(s)).toLocaleString('en-IN',{
 
 // Draft suggestions stay local. The owner edits and explicitly approves each shared request.
 export function suggestPlanningRequests(hard:string,soft:string):PlanningRequest[]{
- const result:PlanningRequest[]=[];
+ const result:PlanningRequest[]=[],seen=new Set<string>();
+ const guarded=/\b(no|not|avoid|without|only|unless|except|if)\b/i;
+ const clean=(text:string)=>text.trim().replace(/^\s*(?:[-*•]|\d+[.)])\s+/,'').replace(/^(?:(?:and|also)[,\s]+)+/i,'').replace(/^(?:I\s+(?:also\s+)?(?:want|prefer|need|would\s+like)(?:\s+to)?|please)\s+/i,'').replace(/^(?:do|go)\s+(?=(?:surfing|scuba|snorkell?ing|sailing|kayaking|hiking)\b)/i,'').replace(/^[,\s]+|[,;.!?\s]+$/g,'').trim();
  for(const [text,priority] of [[hard,'hard'],[soft,'soft']] as const){
-  const raw=text.replace(/TEST\s*FICTIONAL\s*:?/gi,'');
-  // Separate explicit positive requests; keep negations and conditional wording intact for owner review.
-  const parts=/\b(no|not|avoid|without|only|unless|except|if)\b/i.test(raw)?raw:raw.replace(/,\s*(?=(?:I\s+)?(?:also\s+)?(?:want|prefer|must|would like|need)\b)|\s+(?:and\s+)?I\s+(?:also\s+)?(?:want|prefer|must|would like|need)(?:\s+to)?\s+|\s+and\s+(?=(?:eat|visit|rent|do|stay)\b)/gi,'; ');
-  for(let title of parts.split(/[;\n]+/).map(x=>x.trim()).filter(x=>x&&!/^(none|no other preferences)[.!]?$/i.test(x))){
-   const kind:PlanningRequest['kind']=/meal|vegetarian|vegan|food|diet/i.test(title)?'food':/hotel|hostel|guesthouse|room|accommodation|stay/i.test(title)?'stay':/no overnight|avoid|accessib|wheelchair|step.free|\brent(?:al)?\b|\bhire\b/i.test(title)?'rule':'activity';
-   const named=kind==='activity'?title.match(/scuba diving|surfing|sailing|snorkell?ing|kayaking|hiking|relaxed beach day/gi):null;
-   // Only split a simple positive list; negation and extra conditions remain in full for owner review.
-   const names=named&&named.length>1&&!/\b(no|not|avoid|without|only|unless|except|if)\b/i.test(title)?named:[title];
-   for(const name of names)result.push({title:name.trim(),kind,priority});
+  const raw=text.replace(/TEST\s*FICTIONAL\s*:?/gi,'').replace(/[ \t]+/g,' ').replace(/([.!?])\s+(?=(?:Also\b|I\s+(?:also\s+)?(?:want|prefer|need|would)|Please\b))/gi,'; ')
+   .replace(/,?\s+(?:and\s+)?(?:also,?\s+)?I\s+(?:also\s+)?(?:want|prefer|need|would\s+like)(?:\s+to)?\s+/gi,'; ');
+  for(const sentence of raw.split(/[;\n]+/)){
+   const positive=guarded.test(sentence)?sentence:sentence.replace(/,?\s+and\s+(?=(?:eat|try|taste|visit|explore|rent|hire|do|stay|go|see|swim|snorkel|snorkelling|snorkeling|surf|surfing|scuba|sailing|kayak|kayaking|hiking)\b)/gi,'; ');
+   for(const part of positive.split(';')){
+    const title=clean(part);if(!title||/^(none|no other preferences|also)$/i.test(title))continue;
+    const stay=/\b(hotel|hostel|guesthouse|room|accommodation|stay)\b/i.test(title),food=/\b(meals?|vegetarian|vegan|food|seafood|diet|breakfast|lunch|dinner)\b/i.test(title);
+    const kind:PlanningRequest['kind']=/\b(avoid|no overnight|accessib\w*|wheelchair|step.free|rent(?:al)?|hire)\b/i.test(title)&&!food?'rule':stay&&(!food||/^(?:a |an |the )?(?:hotel|hostel|guesthouse|room|stay)\b/i.test(title))?'stay':food?'food':'activity';
+    const key=kind+':'+title.toLowerCase();if(!seen.has(key)){seen.add(key);result.push({title,kind,priority});}
+   }
   }
  }
  return result;

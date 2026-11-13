@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
-import { bookingOptionsForStep } from "../src/bookingOptions.ts";
+import { bookingOptionsForStep, bookingSearchName } from "../src/bookingOptions.ts";
 
 const now = Date.parse("2026-12-01T00:00:00Z");
 test("optional shopping spend does not turn a free market visit into a booking", () => {
@@ -22,6 +22,38 @@ const document = {
     ],
 };
 const step = { kind: "stay", ref: "stay", route_ref: "hotel", start: "2026-12-14T14:30:00Z", end: "2026-12-15T04:30:00Z", cost_paise: 300000 };
+
+test("stay comparisons include independent providers and avoid ambiguous Goa airport searches", () => {
+    const options=bookingOptionsForStep(step,document,"Goa",now);
+    assert.deepEqual(options.links.map(link=>new URL(link.href).hostname),["www.booking.com","www.expedia.co.in","www.google.com"]);
+    const comparison=new URL(options.links[1].href);
+    assert.equal(comparison.searchParams.get("destination"),"Calangute Residency, Calangute, Goa, India");
+    assert.equal(comparison.searchParams.get("startDate"),"2026-12-14");
+    assert.equal(comparison.searchParams.get("endDate"),"2026-12-15");
+    for(const name of ["Stay at Calangute Residency · day 2","Stay Calangute Residency — day 3","Calangute Residency - day 4"])assert.equal(bookingSearchName(name),"Calangute Residency");
+});
+
+test("major activities offer multiple catalogues and an encoded local-operator search",()=>{
+    const title="Kayaking & boat tour / café";
+    const doc={...document,refs:[{id:"kayak",title,route_item:{category:"visit"}}]};
+    const options=bookingOptionsForStep({...step,kind:"activity",ref:"kayak",route_ref:undefined},doc,"Udaipur",now);
+    assert.deepEqual(options.links.map(link=>new URL(link.href).hostname),["www.viator.com","www.getyourguide.com","www.klook.com","www.google.com"]);
+    assert.equal(new URL(options.links[0].href).searchParams.get("text"),title+" Udaipur");
+    const maps=new URL(options.links[3].href);
+    assert.equal(maps.searchParams.get("api"),"1");
+    assert.equal(maps.searchParams.get("query"),title+" Udaipur");
+});
+
+test("non-Goa transfers include direct operators and transport route information",()=>{
+    const taxi=bookingOptionsForStep({...step,kind:"activity",ref:"transfer"},document,"Udaipur",now);
+    assert.equal(new URL(taxi.links[0].href).hostname,"www.google.com");
+    assert.ok(new URL(taxi.links[0].href).searchParams.get("query").includes("Udaipur"));
+    const rail={...document,refs:document.refs.map(ref=>ref.id==="transfer"?{...ref,route_item:{...ref.route_item,title:"Reserved express train",mode:"rail"}}:ref)};
+    const options=bookingOptionsForStep({...step,kind:"activity",ref:"transfer"},rail,"India",now);
+    assert.equal(options.links.length,2);
+    assert.equal(new URL(options.links[1].href).hostname,"www.rome2rio.com");
+    assert.ok(options.links.every(link=>!link.href.includes("getyourguide")));
+});
 
 test("stay search uses the exact destination-local dates and changes the search for an alternative stay", () => {
     const option = bookingOptionsForStep(step, document, "Goa", now);

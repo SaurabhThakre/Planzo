@@ -1,0 +1,18 @@
+import {createElement} from 'react';
+import {renderToStaticMarkup} from 'react-dom/server';
+import {test} from 'node:test';import assert from 'node:assert/strict';
+import {FinalJourney} from '../src/FinalJourney';
+import {MyRequirements} from '../src/MyRequirements';
+import {PlanningRequestEditor} from '../src/PlanningRequestEditor';
+import {ItineraryStopRow} from '../src/ItineraryStopRow';
+import {BookingOptionsPanel} from '../src/BookingOptionsPanel';
+const refs=[{id:'visit',title:'TEST museum',kind:'activity',priority:'hard'},{id:'stay',title:'TEST hotel',kind:'stay',priority:'soft'},{id:'private_other',title:'OTHER TRAVELLER REQUEST',kind:'rule',priority:'hard'}];
+const steps=[{id:'s1',kind:'activity',ref:'visit',start:'2026-12-11T09:00:00+05:30',end:'2026-12-11T12:00:00+05:30',cost_paise:10000,alternatives:[]},{id:'s2',kind:'stay',ref:'stay',start:'2026-12-11T21:00:00+05:30',end:'2026-12-12T08:00:00+05:30',cost_paise:10000,alternatives:[]}];
+const document={start:steps[0].start,end:steps[1].end,refs,steps,unplaced:[],cost_paise:50000,basis:'gemini_estimate_v1',requirements_version:1};
+const checks=[{title:'My museum request',kind:'activity',priority:'hard',status:'included',reason:'scheduled',steps:['s1']},{title:'My rooftop pool',kind:'stay',priority:'soft',status:'excluded',reason:'unverified',steps:[]}];
+const render=(Component,props)=>renderToStaticMarkup(createElement(Component,props));
+test('final journey renders static itinerary rows, no per-step expanders, and estimate before own coverage',()=>{const html=render(FinalJourney,{document,total:50000,checks,onBookings:()=>{}});assert(html.includes('itinerary-static-row'));assert(!html.includes('<details'));assert(!html.includes('Stop details'));assert(html.indexOf('Planning estimate')<html.indexOf('My requests in this plan'));assert(html.includes('role="tablist"'));assert(html.includes('TEST museum'));});
+test('coverage renders only personal check titles, distinct outcomes and schedule wording',()=>{const html=render(MyRequirements,{document,checks,expected:2});assert(html.includes('My museum request'));assert(html.includes('Needs verification'));assert(html.includes('Day 1'));assert(!html.includes('OTHER TRAVELLER REQUEST'));assert(html.includes('Booking availability is unverified'));});
+test('owner corrections expose text, category and priority controls with bounded titles',()=>{const html=render(PlanningRequestEditor,{requests:[{title:'Local food',kind:'food',priority:'hard'}],disabled:false,onChange:()=>{}});assert.equal((html.match(/<select/g)||[]).length,2);assert(html.includes('maxLength="120"'));assert(html.includes('Remove request 1'));assert(html.includes('value="food" selected'));});
+test('same stop row presents the same label and time in interactive and final static views',()=>{const props={step:steps[0],index:0,document,refs};const interactive=render(ItineraryStopRow,{...props,onSelect:()=>{}}),final=render(ItineraryStopRow,props);for(const text of ['TEST museum','9:00 am','12:00 pm'])assert(interactive.includes(text)&&final.includes(text));assert(interactive.includes('<button'));assert(!final.includes('<button'));});
+test('booking provider is a direct link with one alternatives disclosure and no outer find-options disclosure',()=>{const html=render(BookingOptionsPanel,{document,destination:'Goa, India',workspace:{trip:{id:'test-trip'},members:[{id:'a',name:'QA A',included:true}]},planId:'test-plan',onPayments:()=>{}});assert(html.includes('booking-provider-link'));assert(html.includes('booking-more-providers'));assert(!html.includes('<details class="booking-provider-actions"'));assert(!html.includes('Find booking options'));assert(html.includes('Availability unverified'));});

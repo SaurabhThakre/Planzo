@@ -1,7 +1,7 @@
 import {useState} from 'react';
 import type {Workspace} from './backend';
 import {Button,Icon} from './ui';
-import {flowStamp} from './privatePlanning';
+import {compactTripDates} from './tripDates';
 import {planStage} from './planningBackend';
 
 export function TripWorkspaceNav({workspace:w,tab,busy,go,onRefresh}:{workspace:Workspace;tab:string;busy:boolean;go:(tab?:string)=>void;onRefresh:()=>void}){
@@ -14,7 +14,7 @@ export function TripWorkspaceNav({workspace:w,tab,busy,go,onRefresh}:{workspace:
   <nav aria-label="Trip navigation">
    <button aria-label="Overview" title={collapsed?"Overview":undefined} className={!tab?'active':''} aria-current={!tab?'page':undefined} onClick={()=>open()}><Icon name="home"/><span>Overview</span></button>
    <button aria-label="My private input" title={collapsed?"My private input":undefined} className={tab==='preferences'?'active':''} aria-current={tab==='preferences'?'page':undefined} onClick={()=>open('preferences')}><Icon name="lock"/><span>My private input</span></button>
-   {tabs.map(id=><button key={id} aria-label={label(id)} title={collapsed?label(id):undefined} className={tab===id||(id==='plan'&&(tab==='voting'||w.trip.workflow_version===2&&tab==='review'))||(w.trip.workflow_version!==2&&id==='bookings'&&tab==='journey')?'active':''} aria-current={tab===id||(id==='plan'&&(tab==='voting'||w.trip.workflow_version===2&&tab==='review'))?'page':undefined} onClick={()=>open(id)}><Icon name={id==='plan'?'map':id==='voting'?'people':id==='journey'?'plane':(id==='bookings'||id==='payments')?'wallet':'check'}/><span>{label(id)}</span></button>)}
+   {tabs.map(id=><button key={id} aria-label={label(id)} title={collapsed?label(id):undefined} className={tab===id||(id==='plan'&&(tab==='voting'||w.trip.workflow_version===2&&tab==='review'))||(w.trip.workflow_version!==2&&id==='bookings'&&tab==='journey')?'active':''} aria-current={tab===id||(id==='plan'&&(tab==='voting'||w.trip.workflow_version===2&&tab==='review'))?'page':undefined} onClick={()=>open(id)}><Icon name={id==='plan'?'map':id==='voting'?'people':id==='journey'?'plane':id==='bookings'?'ticket':id==='payments'?'payments':'check'}/><span>{label(id)}</span></button>)}
 
   </nav>
   <div className="workspace-nav-utilities">
@@ -36,7 +36,7 @@ export function TripWorkspaceHeader({workspace:w,instruction}:{workspace:Workspa
   <dl>
    <div>
     <dt>{w.windows.length>1?'Date options':'Trip dates'}</dt>
-    <dd>{w.windows.length?w.windows.map(window=><p key={window.id}>{flowStamp(window.start)} → {flowStamp(window.end)} IST</p>):'Dates pending'}</dd>
+    <dd>{w.windows.length?w.windows.map(window=><p key={window.id} className="trip-date-range" title={compactTripDates(window.start,window.end).full}><span>{compactTripDates(window.start,window.end).dates}</span><span className="trip-date-clock">{compactTripDates(window.start,window.end).times} IST</span></p>):'Dates pending'}</dd>
    </div>
    <div><dt>Stage</dt><dd>{stage}</dd></div>
   </dl>

@@ -1,8 +1,8 @@
-export function ItineraryDayTabs({ days, currentIndex, onSelect, panelId, label }: {
-  days: string[]; currentIndex: number; onSelect: (index: number) => void; panelId: string; label: string;
+export function ItineraryDayTabs({ days, currentIndex, onSelect, panelId, label,disabled=false }: {
+  days: string[]; currentIndex: number; onSelect: (index: number) => void; panelId: string; label: string;disabled?:boolean;
 }) {
   return <div className="day-tabs" role="tablist" aria-label={label}>
-    {days.map((day, index) => <button key={day} type="button" role="tab" id={panelId+'-tab-'+index}
+    {days.map((day, index) => <button key={day} disabled={disabled} type="button" role="tab" id={panelId+'-tab-'+index}
       aria-selected={currentIndex===index} aria-controls={panelId} tabIndex={currentIndex===index?0:-1}
       onClick={()=>{if(index!==currentIndex)onSelect(index);}} onKeyDown={event=>{
         const next=event.key==='ArrowRight'?(currentIndex+1)%days.length:event.key==='ArrowLeft'?(currentIndex+days.length-1)%days.length:event.key==='Home'?0:event.key==='End'?days.length-1:-1;

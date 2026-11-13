@@ -18,25 +18,58 @@ import {LiveBookings,LiveMilestones} from './LiveBookings';
 import {planStage} from './planningBackend';
 import {interpretPreferences} from './aiBackend';
 import {LivePrivatePlanning} from './LivePrivatePlanning';
-import {AppHeader} from './AppHeader';
+import {AppHeader,ProfileAvatar} from './AppHeader';
+import {LandingPage} from './LandingPage';
 import {InPlacePanel} from './InPlacePanel';
 import {DeadlineAlerts} from './DeadlineAlerts';
 import {TripPassport} from './TripPlanningProgress';
+import {TripProgressPanel} from './TripProgressPanel';
 import {TripWorkspaceHeader,TripWorkspaceNav} from './TripWorkspaceNav';
 import {ContextHelpLink,HelpPage,helpHref} from './Help';
 import {PrivacyPolicy} from './PrivacyPolicy';
+import {MilestoneProvider,useMilestone} from './MilestoneCelebration';
 
 const readRoute=()=>location.hash.replace(/^#\/?/,'').split('/');
 function RememberInvite(token:string){try{sessionStorage.setItem('planzo.pending-invite',token);}catch{}}
 function pendingInvite(){try{return sessionStorage.getItem('planzo.pending-invite')||'';}catch{return '';}}
 
+function ProfileSettings({person,email,onCancel,onSave}:{
+ person:Person;email?:string;onCancel:()=>void;onSave:(name:string)=>Promise<void>;
+}){
+ const [name,setName]=useState(person.name),[saving,setSaving]=useState(false),[error,setError]=useState('');
+ const inFlight=useRef(false);
+ const trimmed=name.trim();
+ async function submit(){
+  if(inFlight.current||!trimmed||trimmed===person.name)return;
+  inFlight.current=true;
+  setSaving(true);
+  setError('');
+  try{await onSave(trimmed);}
+  catch(error){setError(readableError(error));}
+  finally{inFlight.current=false;setSaving(false);}
+ }
+ return <Card className="profile-settings-card">
+  <form className="stack" onSubmit={event=>{event.preventDefault();void submit();}}>
+   <div className="profile-settings-preview"><ProfileAvatar name={trimmed||person.name}/><p className="muted">This is the name your trip group sees.</p></div>
+   <Field label="Display name"><input value={name} onChange={event=>setName(event.target.value)} required maxLength={50} autoComplete="name" disabled={saving}/></Field>
+   {email&&<Field label="Sign-in email"><input value={email} type="email" readOnly/></Field>}
+   {error&&<p className="form-error" role="alert">{error}</p>}
+   <Actions><Button type="submit" disabled={saving||!trimmed||trimmed===person.name}>{saving?'Saving…':'Save changes'}</Button><Button variant="secondary" onClick={onCancel} disabled={saving}>Cancel</Button></Actions>
+  </form>
+ </Card>;
+}
+
 export default function LiveApp(){
+  return <MilestoneProvider><LiveAppWorkspace/></MilestoneProvider>;
+}
+function LiveAppWorkspace(){
+  const celebrate=useMilestone(),priorStage=useRef<{id:string;stage:string;user:string}|null>(null);
   const [route,setRoute]=useState(readRoute),[session,setSession]=useState<Session|null>(null),[loadingAuth,setLoadingAuth]=useState(true);
   const [profile,setProfile]=useState<Person|null>(null),[trips,setTrips]=useState<TripSummary[]>([]),[workspace,setWorkspace]=useState<Workspace|null>(null);
   const [busy,setBusy]=useState(false),[notice,setNotice]=useState(''),[error,setError]=useState('');
   const [tripBucket,setTripBucket]=useState('active');
   const [authMode,setAuthMode]=useState(''),[invites,setInvites]=useState<Invite[]>([]),[freshInvite,setFreshInvite]=useState<Invite|null>(null),[shareOpen,setShareOpen]=useState(false);
-  const performing=useRef(false);
+  const performing=useRef(false),profileReturn=useRef<string[]>(['home']);
   const activeUser=useRef<string|null>(null),createId=useRef(crypto.randomUUID());
   const authReturn=useRef(readAuthReturn(location.search,location.hash)),recoveryVerified=useRef(false);
   const uid=session?.user.id||null;
@@ -67,26 +100,25 @@ export default function LiveApp(){
     if(!uid)return;
     let cancelled=false;
     (async()=>{
-      let data=await api<{profile:Person;trips:TripSummary[]}>('list');
-      if(data.profile.name==='Traveller'&&session?.user.user_metadata?.display_name){
-        await api('profile',{name:String(session.user.user_metadata.display_name).slice(0,50)});data=await api('list');
-      }
+      const data=await api<{profile:Person;trips:TripSummary[]}>('list');
       if(!cancelled){setProfile(data.profile);setTrips(data.trips);}
     })().catch(e=>{if(!cancelled)setError(readableError(e));});
     return()=>{cancelled=true;};
   },[uid]);
   const tripId=route[0]==='trip'?route[1]:'';
+  const activeTrip=useRef(tripId),workspaceRead=useRef(0);
+  activeTrip.current=tripId;
   async function refreshTrip(id=tripId){
-    const requestedUser=uid;
+    const requestedUser=uid,sequence=++workspaceRead.current;
     const data=await api<Workspace>('workspace',{trip_id:id});
-    if(activeUser.current===requestedUser)setWorkspace(data);
+    if(activeUser.current===requestedUser&&activeTrip.current===id&&sequence===workspaceRead.current)setWorkspace(data);
     return data;
   }
   useEffect(()=>{
     setWorkspace(null);setInvites([]);setFreshInvite(null);
     if(!uid||!tripId)return;
     let cancelled=false;
-    const refresh=()=>api<Workspace>('workspace',{trip_id:tripId}).then(data=>{if(!cancelled)setWorkspace(data);}).catch(e=>{if(!cancelled)setError(readableError(e));});
+    const refresh=()=>refreshTrip(tripId).catch(e=>{if(!cancelled)setError(readableError(e));});
     void refresh();
     // Focus/visibility refresh and periodic reads keep other devices current without private-data broadcast.
     const onFocus=()=>{if(document.visibilityState==='visible')void refresh();};
@@ -112,8 +144,15 @@ export default function LiveApp(){
   let view=route[0]||'home';
   const person=profile||(session?{id:session.user.id,name:'Traveller'}:null);
   const ownMember=workspace?.members.find(m=>m.id===uid);
+  useEffect(()=>{
+    if(!workspace||!uid)return;
+    const previous=priorStage.current;
+    if(previous?.id===workspace.trip.id&&previous.user===uid&&previous.stage!=='agreed'&&workspace.trip.stage==='agreed'&&ownMember?.included)
+      celebrate({kind:'locked',userId:uid,tripId:workspace.trip.id,version:workspace.trip.revision});
+    priorStage.current={id:workspace.trip.id,stage:workspace.trip.stage,user:uid};
+  },[workspace?.trip.id,workspace?.trip.stage,workspace?.trip.revision,uid]);
   const heading=authMode==='reset'?'Choose a new password.':view==='trip'?({preferences:'My private preferences',plan:'Your itinerary',voting:'Group votes',review:'Review the plan',bookings:'Bookings',payments:'Payments',journey:'Your travel journey',history:'Trip history'}[route[2]]||'Your trip overview'):
-    view==='setup'?'A good trip starts here.':view==='join'?'Your friends are planning a trip.':
+    view==='profile'?'Profile settings':view==='setup'?'A good trip starts here.':view==='join'?'Your friends are planning a trip.':
     view==='signup'?'A shared trip starts with you.':['signin','emailcode'].includes(view)?'Welcome back.':view==='recovery'?'Let’s get you back in.':'Make room for everyone.';
   const lockedTrip=workspace?.trip.stage==='agreed';
   const instruction=authMode==='reset'?'Choose and confirm your new password.':view==='trip'&&workspace?.trip.removal_kind?.startsWith('deleted_')?'This trip is deleted. Its saved details are read-only. The organiser can restore it from Deleted trips.':view==='trip'&&workspace?.trip.stage==='archived'?'This trip is archived. Read its saved details or History; the organiser can restore it from Archived trips.':view==='trip'&&workspace?.trip.stage==='postponed'?'This trip is postponed. Read the saved plan and decisions in History.':view==='trip'?({preferences:ownMember?.confirmed?'Review your saved private answers. Reopen them only if they need to change.':'Choose your dates, enter your limits and confirm only after checking them.',plan:lockedTrip?'':'Check the itinerary and its missing steps before sharing it for review.',voting:lockedTrip?'Read the saved step decisions. This itinerary is locked.':'Compare the feasible choices and submit your own vote.',review:'Review your complete estimate and respond to the current plan.',payments:'',bookings:workspace?.trip.workflow_version===2?(lockedTrip?'':'Finish the itinerary to open Bookings.'):'Assign responsibilities, check providers and update only your own tasks.',journey:'',history:''}[route[2]]??(lockedTrip?'':ownMember?.confirmed?'Check group progress and review the itinerary when everyone is ready.':'Check the dates and group progress, then add your private input.')):
@@ -134,6 +173,7 @@ export default function LiveApp(){
   const header = <AppHeader name={session ? profile?.name || 'Signed in' : undefined} busy={busy}
     reminder={showReminder ? <DeadlineAlerts key={uid} userId={uid} tripId={tripId} revision={workspace?.trip.revision}/> : undefined}
     onHome={() => go('home')} onHelp={() => openHelp()} onSignIn={() => go('signin')}
+    onProfile={() => {if(view!=='profile'){profileReturn.current=route[0]?[...route]:['home'];go('profile');}}}
     onSignOut={() => void perform(async () => {
       const {error} = await supabase.auth.signOut();
       if (error) throw error;
@@ -155,10 +195,19 @@ export default function LiveApp(){
   return <>
     {skipLink}
     {header}
-    <main id="main" tabIndex={-1} className={'public-shell live-shell' + (view === 'home' && !session ? ' welcome-shell' : '')}>{view!=='trip'&&<div className="page-heading"><h1>{heading}</h1>{instruction&&<p>{instruction}</p>}</div>}
+    <main id="main" tabIndex={-1} className={'public-shell live-shell' + (view === 'home' && !session ? ' welcome-shell' : '')}>{view!=='trip'&&!(view==='home'&&!session)&&<div className="page-heading"><h1>{heading}</h1>{instruction&&<p>{instruction}</p>}</div>}
       {error&&<div className="form-error" role="alert">{error}</div>}{notice&&<p className="notice" role="status">{notice}</p>}
       {loadingAuth?<Card title="Restoring your session…"><p>Please wait while Planzo checks your sign-in.</p></Card>:
       authMode==='reset'?<Auth mode="reset" onDone={()=>{recoveryVerified.current=false;setAuthMode('');go('home');setNotice('Your password is updated. You can sign out and sign in with your new password.');}} go={go}/>:
+      view==='profile'?(session?(profile?<ProfileSettings key={uid} person={profile} email={session.user.email}
+        onCancel={()=>go(...profileReturn.current)}
+        onSave={async name=>{
+          const saved=await api<Person>('profile',{name});
+          if(activeUser.current===uid){
+            setProfile(saved);
+            if(readRoute()[0]==='profile'){go(...profileReturn.current);setNotice('Display name updated.');}
+          }
+        }}/>:<p role="status">Loading your profile…</p>):<Card title="Sign in to open your profile"><Button onClick={()=>go('signin')}>Sign in</Button></Card>):
       view==='join'?<GuestJoin session={session} signedInName={profile?.name} initialToken={route[1]||pendingInvite()} onJoined={id=>{go('trip',id);void api<{profile:Person;trips:TripSummary[]}>('list').then(d=>{setProfile(d.profile);setTrips(d.trips);});}}/>:
       view==='recovery'?<Recovery onVerified={()=>{setError('');recoveryVerified.current=true;setAuthMode('reset');}} go={go}/>:
       view==='emailcode'?<SignInMethodShell active="emailcode" go={go}><EmailCodeSignIn onDone={()=>go('home')} go={go}/></SignInMethodShell>:view==='signup'?<Auth key={view} mode={view} go={go} onDone={()=>{const token=pendingInvite();token?go('join',token):go('home');}}/>:view==='signin'?<SignInMethodShell active="signin" go={go}><Auth key={view} mode={view} go={go} onDone={()=>{const token=pendingInvite();token?go('join',token):go('home');}}/></SignInMethodShell>:
@@ -176,7 +225,7 @@ export default function LiveApp(){
         route[2]==='preferences'?<Preferences key={tripId+uid} trip={asTrip(workspace,person)} personId={person.id} live readOnly={workspace.trip.stage==='archived'} savedRevision={workspace.own_brief?.revision||0} onSave={saveBrief} onInterpret={interpretPreferences} onDone={()=>go('trip',tripId)}/>:
         route[2]==='bookings'?<LiveBookings key={tripId+uid} workspace={workspace} userId={person.id} onRefresh={()=>refreshTrip()} go={tab=>go('trip',tripId,tab)}/>:
         ['plan','voting','review'].includes(route[2])?<LivePlanning key={tripId+uid} workspace={workspace} person={person} tab={route[2]} onRefresh={()=>refreshTrip()} go={tab=>go('trip',tripId,tab)}/>:
-        <div className="columns"><div><Card title="Your group" sub={workspace.members.length+' joined · minimum '+workspace.trip.minimum_group_size}>
+        <>{workspace.trip.workflow_version===2&&<TripProgressPanel key={tripId+uid} workspace={workspace} userId={person.id} go={tab=>go('trip',tripId,tab)}/>}<div className="columns"><div><Card title="Your group" sub={workspace.members.length+' joined · minimum '+workspace.trip.minimum_group_size}>
           <div className="trip-overview-meta small muted">
             <p>Response deadline: {new Date(workspace.trip.response_deadline).toLocaleString('en-IN',{timeZone:'Asia/Kolkata'})} IST</p>
             <p>Tentative duration: {workspace.trip.tentative_days??3} days</p>
@@ -194,34 +243,15 @@ export default function LiveApp(){
               {!i.revoked_at&&new Date(i.expires_at)>new Date()&&<Button variant="ghost" disabled={busy} onClick={()=>perform(async()=>{await api('revoke_invite',{trip_id:tripId,invite_id:i.id});if(freshInvite?.id===i.id)setFreshInvite(null);await loadInvites();})}>Revoke</Button>}</div>)}
           </Card></InPlacePanel>}</>:null}
           {workspace.trip.workflow_version===2?<TripPassport key={tripId+uid} workspace={workspace} userId={person.id} go={tab=>go('trip',tripId,tab)}/>:<LiveMilestones tripId={tripId} revision={workspace.trip.revision}/>}
-        </aside></div>}
+        </aside></div></>}
       </div></div>:<Card title="Opening your shared trip…"><p>If this takes longer than expected, use Home and reopen the trip.</p><Button onClick={()=>go('home')}>Home</Button></Card>):
       session?<div className="columns trip-dashboard"><Card className="trips-card" title="Your trips">
         <Button onClick={()=>go('setup')}>Create a trip</Button><div className="trip-buckets" role="group" aria-label="Trip lists">{[['active','Active'],['archived','Archived'],['deleted','Deleted trips']].map(([id,label])=><Button key={id} variant={tripBucket===id?'primary':'ghost'} aria-pressed={tripBucket===id} onClick={()=>setTripBucket(id)}>{label}</Button>)}</div>
         {trips.filter(t=>tripBucket==='active'?t.stage!=='archived':tripBucket==='deleted'?t.removal_kind?.startsWith('deleted_'):t.stage==='archived'&&!t.removal_kind?.startsWith('deleted_')).map(t=><div className="trip-list-item" key={t.id}><div className="trip-card-summary"><h3>{t.name}</h3><p className="small muted">{t.destination} · {t.role}{t.stage==='archived'?' · '+(t.removal_kind?.startsWith('deleted_')?'Deleted':'Archived'):''}</p></div><div className="trip-card-actions"><Button variant="secondary" onClick={()=>go('trip',t.id)}>Open trip</Button><TripControls compact trip={t} onDone={reloadTripList}/></div></div>)}
         {!trips.some(t=>tripBucket==='active'?t.stage!=='archived':tripBucket==='deleted'?t.removal_kind?.startsWith('deleted_'):t.stage==='archived'&&!t.removal_kind?.startsWith('deleted_'))&&<p>No trips in this list.</p>}
         <Button variant="ghost" onClick={()=>go('join')}>Join with an invitation</Button>
-      </Card><Card className="home-coast-card" title="Your group, your pace" titleIcon="people" tone="mint"><Coast/><Feature icon="lock" title="Your limits stay private"/><Feature icon="people" title="Everyone contributes as themselves"/></Card></div>:
-      <div className="columns welcome"><Card className="home-coast-card" title="Plan together. Travel together." tone="mint"><Coast variant="large"/><div className="benefits"><Feature icon="lock" title="Private limits"/><Feature icon="wallet" title="Full costs"/><Feature icon="people" title="Equal say"/></div></Card>
-        <aside>
-          <Card title="Your next good trip" titleIcon="map" className="home-start-card">
-            <Button onClick={()=>go('signup')}>Create a trip</Button>
-            <Button variant="secondary" onClick={()=>go('join')}>Join with an invite</Button>
-            <Button variant="secondary" onClick={()=>go('signin')}>I already have an account</Button>
-          </Card>
-          <Card className="home-next-steps">
-            <div className="home-next-heading">
-              <h2>What happens next?</h2>
-              <a className="context-help-link" href="#/help/walkthrough" onClick={rememberHelpReturn}>See how it works</a>
-            </div>
-            <ol>
-              <li>Invite your group</li>
-              <li>Share your preferences privately</li>
-              <li>Review one itinerary together</li>
-            </ol>
-          </Card>
-        </aside>
-      </div>}
+      </Card><Card className="home-coast-card" title="From first idea to getting away" titleIcon="people" tone="mint"><Coast/><Feature icon="lock" title="Your limits stay private"/><Feature icon="people" title="Everyone contributes as themselves"/></Card></div>:
+      <LandingPage onCreate={()=>go('signup')} onJoin={()=>go('join')} onSignIn={()=>go('signin')} onWalkthrough={()=>{rememberHelpReturn();go('help','walkthrough');}}/>}
       {busy&&<p role="status">Saving your request…</p>}
     </main><PublicFooter/>
   </>;
@@ -318,6 +348,7 @@ function EmailCodeSignIn({onDone,go}:{onDone:()=>void;go:(...parts:string[])=>vo
 }
 
 function GuestJoin({session,signedInName,initialToken,onJoined}:{session:Session|null;signedInName?:string;initialToken:string;onJoined:(id:string)=>void}){
+  const celebrate=useMilestone();
   const [inviteInput,setInviteInput]=useState(initialToken),[name,setName]=useState(''),[email,setEmail]=useState(''),[code,setCode]=useState('');
   const [sent,setSent]=useState(false),[busy,setBusy]=useState(false),[error,setError]=useState('');
   const [preview,setPreview]=useState<{name:string;destination:string}|null>(null);
@@ -326,7 +357,7 @@ function GuestJoin({session,signedInName,initialToken,onJoined}:{session:Session
     supabase.rpc('planzo_invite_preview',{p_token:token}).then(({data,error})=>{if(cancelled)return;if(error)setError(error.message);else{setError('');setPreview(data);RememberInvite(token);}});
     return()=>{cancelled=true;};
   },[token]);
-  async function join(){const result=await api<{trip_id:string}>('join',{token,name:session?(signedInName||session.user.user_metadata?.display_name||'Traveller'):name.trim()});try{sessionStorage.removeItem('planzo.pending-invite');}catch{}onJoined(result.trip_id);}
+  async function join(actorId=session?.user.id){const result=await api<{trip_id:string}>('join',{token,name:session?(signedInName||session.user.user_metadata?.display_name||'Traveller'):name.trim()});try{sessionStorage.removeItem('planzo.pending-invite');}catch{}if(actorId)celebrate({kind:'joined',userId:actorId,tripId:result.trip_id});onJoined(result.trip_id);}
   async function submit(e:React.SubmitEvent<HTMLFormElement>){e.preventDefault();setError('');setBusy(true);try{
     if(!token||!preview)throw Error('Open a valid invitation link first.');
     if(session&&!signedInName)throw Error('Wait for your account name to load, then try again.');
@@ -334,7 +365,7 @@ function GuestJoin({session,signedInName,initialToken,onJoined}:{session:Session
     RememberInvite(token);
     if(session){await join();}
     else if(sent){
-      const {error}=await supabase.auth.verifyOtp({email:email.trim(),token:code,type:'email'});if(error)throw error;await join();
+      const {data,error}=await supabase.auth.verifyOtp({email:email.trim(),token:code,type:'email'});if(error)throw error;await join(data.user?.id);
     }else{
       const {error}=await supabase.auth.signInWithOtp({email:email.trim(),options:{shouldCreateUser:true,data:{display_name:name.trim()},emailRedirectTo:callbackUrl('guest')}});if(error)throw error;setSent(true);
     }

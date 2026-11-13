@@ -100,12 +100,12 @@ export function BookingOptionsPanel({document,destination,workspace,planId,onPay
        const title = contextualStepLabel(step, document.refs);
        const overnight = destinationDay(step.end, timeZone) !== date;
        return (
-        <Card key={step.id} className="booking-step-card">
+        <Card key={step.id} className={'booking-step-card booking-state-'+(record?.status||'not_booked')}>
          <div className="booking-step-grid">
           <div className="booking-step-info">
            <div className="booking-badges">
             <ItineraryTypeBadge kind={category === 'Transfer' ? 'transport' : category === 'Stay' ? 'stay' : 'activity'}/>
-            <span className={'booking-status ' + (record?.status || 'not_booked')}>{BOOKING_STATUSES[record?.status || 'not_booked']}</span>
+            <span className={'booking-status ' + (record?.status || 'not_booked')}><span aria-hidden="true">{record?.status==='booked'?'✓':record?.status==='in_progress'?'◷':'○'}</span>{BOOKING_STATUSES[record?.status || 'not_booked']}</span>
            </div>
            <h4>{title}</h4>
            <p className="booking-time">
@@ -133,7 +133,7 @@ export function BookingOptionsPanel({document,destination,workspace,planId,onPay
           {primary && <div className="booking-provider-actions" role="group" aria-label={'Provider links for ' + title}>
            <BookingProviderLink link={primary} primary/>
            {secondary.length > 0 && <details className="booking-more-providers">
-            <summary>More provider links</summary>
+            <summary>Compare {secondary.length} other {secondary.length===1?'option':'options'} <span className="booking-chevron" aria-hidden="true"/></summary>
             <div>{secondary.map(link => <BookingProviderLink key={link.href} link={link}/>)}</div>
            </details>}
            <p className="caption">Availability unverified</p>
@@ -194,7 +194,7 @@ function BookingEditor({record,members,editable,onSave}:{record?:BookingRecord;m
     <label>Booking reference (optional)<input value={draft.reference} maxLength={120} disabled={busy} onChange={e=>set('reference',e.target.value)}/></label>
    </div>
    <label>Notes (optional)<textarea value={draft.notes} maxLength={500} disabled={busy} placeholder="What is covered, travellers included, payment or cancellation notes" onChange={e=>set('notes',e.target.value)}/></label>
-   <p className="caption">Paid bookings sync to Payments with the selected traveller as payer. Record a multi-night payment once; mention the covered dates here.</p>
+   <p className="caption">Booking details do not add an expense. Add any shared cost separately in Payments.</p>
    {error&&<p role="alert">{error}</p>}
    {stale&&<div role="status"><p>Another traveller updated this booking. Load their latest details before editing again.</p><Button variant="secondary" onClick={()=>{setDraft(bookingDraft(record));setBaseRevision(record?.revision||0);setError('');}}>Load latest details</Button></div>}
    <Button type="submit" disabled={busy||stale}>{busy?'Saving…':'Save booking details'}</Button>

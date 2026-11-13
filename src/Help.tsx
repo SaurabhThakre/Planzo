@@ -169,9 +169,9 @@ function Guide({topic,shell}:{topic:HelpTopic;shell:'shared'|'demo'}){
    </ol>
    <h3>Payments</h3>
    <ol>
-    <li>Open <strong>Payments</strong>. Paid bookings appear automatically. Choose <strong>Add expense</strong> for other costs or refunds, select the travellers sharing the cost, then split it equally or enter exact amounts.</li>
-    <li>For a booking, use <strong>Edit split</strong> in Payments. Update the amount or payer in Bookings. If a changed amount makes an exact split invalid, update the split before settling.</li>
-    <li>Send money outside Planzo, then use <strong>Settle up</strong> to record it. The recipient selects <strong>Confirm received</strong> once the money arrives. Pending payments leave balances unchanged.</li>
+    <li>Open <strong>Payments</strong>. Booking details stay separate. Choose <strong>Add expense</strong> for trip costs or refunds, select the travellers sharing the cost, then split it equally or enter exact amounts.</li>
+    <li>Use <strong>Edit expense</strong> to update its amount, payer or split. Editing a booking does not change these expenses.</li>
+    <li>Send money outside Planzo, then use <strong>Settle up</strong> to record it. Balances update immediately. Either person can use <strong>Remove record</strong> to undo a mistaken entry.</li>
    </ol>
    <details><summary><Question>Why is Final journey unavailable?</Question></summary><p>Resolve open decisions, confirm the current itinerary and have the organiser lock it after all included travellers confirm.</p></details>
    <details><summary><Question>Are the shown prices live quotes?</Question></summary><p>Planzo shows planning estimates. Check current prices and availability with the provider.</p></details>

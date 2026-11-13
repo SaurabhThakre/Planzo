@@ -139,6 +139,11 @@ h3{font-size:18px;line-height:26px;letter-spacing:-.2px}
 .live-header .header-actions>.button{flex-shrink:0;min-height:44px;padding:10px 16px;white-space:nowrap}
 .profile-chip{display:flex;align-items:center;gap:8px;min-width:0;max-width:240px;min-height:44px;padding:6px 12px 6px 6px;border:1px solid var(--border);border-radius:24px;background:var(--cream)}
 .profile-avatar{display:grid;place-items:center;flex:0 0 30px;width:30px;height:30px;border-radius:50%;background:var(--mint);color:var(--forest);font-size:11px;line-height:1;font-weight:700}
+.profile-chip:hover{background:var(--mint);border-color:#bcd3c5}
+.profile-settings-card{max-width:520px}
+.profile-settings-preview{display:flex;align-items:center;gap:14px}
+.profile-settings-preview .profile-avatar{width:48px;height:48px;flex-basis:48px;font-size:16px}
+.profile-settings-preview p{font-size:14px}
 .profile-name{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:13px;font-weight:600;line-height:20px}
 main.public-shell{padding-top:32px;padding-bottom:32px}
 .public-shell>.form-error,.public-shell>.notice{margin-bottom:20px}
@@ -253,10 +258,10 @@ main.public-shell{padding-top:32px;padding-bottom:32px}
 .neutral-destination-mark{display:grid;justify-items:center;gap:8px;max-width:100%;padding:12px;color:var(--forest);text-align:center;overflow-wrap:anywhere}
 .neutral-destination-mark>.icon{display:grid;place-items:center;width:42px;height:42px;border:1px solid #a8c6ba;border-radius:50%;background:white}
 .neutral-destination-mark>.icon img{width:22px;height:22px}
-.day-tabs{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,108px),1fr));gap:8px;padding:4px 2px}
-.day-tabs button{min-width:0;overflow-wrap:anywhere;display:grid;gap:3px;min-height:64px;padding:10px 14px;border:1px solid var(--border);border-radius:12px;background:var(--cream);text-align:left;font-weight:700}
-.day-tabs button small{font-size:11px;line-height:16px;color:var(--muted);font-weight:500}
-.day-tabs button[aria-selected=true]{border-color:var(--forest);background:var(--mint)}
+
+
+
+
 .day-panel{display:grid;gap:12px}
 .day-panel>.badge{justify-self:start}
 .stop-summary{list-style:none;display:grid;gap:8px;margin:4px 0;padding:0}
@@ -383,8 +388,8 @@ main.public-shell{padding-top:32px;padding-bottom:32px}
 @media (max-width: 600px) {
     .final-itinerary-journey .card { padding-inline: 14px; }
     .final-journey-toolbar { gap: 6px; }
-    .final-journey-toolbar .day-tabs { grid-template-columns: repeat(auto-fit, minmax(min(100%, 76px), 1fr)); }
-    .final-journey-toolbar .day-tabs > button { padding-inline: 8px; }
+
+
     .final-journey-toolbar > .button { padding-inline: 8px; font-size: 12px; }
 }
 
@@ -786,3 +791,17 @@ main.welcome-shell {
 .compact-vote .decision-comparison { gap: 8px; }
 .compact-vote .decision-option { padding: 8px 10px; }
 .planning-v2 .plan-day-edit { display: grid; gap: 8px; }
+
+/* One shared day control across itinerary, review, editing, final journey and bookings. */
+.day-tabs{display:flex;gap:7px;overflow-x:auto;min-width:0;margin:0;padding:4px 1px;scrollbar-width:thin}
+.day-tabs>button{flex:0 0 112px;display:grid;align-content:center;gap:2px;min-height:52px;min-width:112px;padding:7px 11px;border:1px solid var(--border);border-radius:9px;background:var(--cream);text-align:left;font:inherit;font-size:14px;font-weight:700;line-height:1.25;white-space:nowrap;cursor:pointer}
+.day-tabs>button small{font-size:11px;line-height:16px;color:var(--muted);font-weight:500}
+.day-tabs>button[aria-selected=true]{border-color:var(--forest);background:var(--mint);box-shadow:inset 0 -2px var(--forest)}
+.day-tabs>button:focus-visible{outline:3px solid #98b09b;outline-offset:1px}
+.day-tabs>button:disabled{cursor:wait;opacity:.6}
+.trip-workspace-header{grid-template-columns:minmax(0,1fr) max-content;gap:12px 18px}
+.trip-workspace-header dl>div{grid-template-columns:70px minmax(0,1fr)}
+.trip-workspace-header .trip-date-range{font-variant-numeric:tabular-nums;white-space:nowrap;font-size:12px;line-height:1.5}
+.trip-date-range>span{display:inline-block}.trip-date-range .trip-date-clock{color:#63796d;font-size:11px;font-weight:500;margin-left:8px}
+@media(max-width:1050px){.trip-workspace-header{grid-template-columns:minmax(0,1fr)}.trip-workspace-header dl{display:flex;flex-wrap:wrap;gap:7px 24px}.trip-workspace-header dl>div{display:flex;align-items:baseline;gap:8px}}
+@media(max-width:600px){.trip-workspace-header dl{display:grid}.trip-workspace-header .trip-date-range{white-space:normal}.trip-date-range>span{white-space:nowrap}.trip-date-range .trip-date-clock{margin-left:0;display:block}.trip-workspace-header dl>div{display:grid;grid-template-columns:65px minmax(0,1fr)}}

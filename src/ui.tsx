@@ -32,6 +32,12 @@ export function Icon({ name = "check", brand = false, }: {
     brand?: boolean;
 }) {
     const outline: Record<string, ReactNode> = {
+        car: <><path d="M3 16v-3l2-2 2-5h10l2 5 2 2v3H3Zm0 0v2h3v-2m12 0v2h3v-2M5 11h14M7 14h1m8 0h1"/></>,
+        utensils: <><path d="M4 3v5a2 2 0 0 0 4 0V3M6 3v18M20 3c-3 1-5 4-5 8h5M20 3v18"/></>,
+        'shopping-bag': <><path d="M5 8h14l1 12H4L5 8Zm4 1V6a3 3 0 0 1 6 0v3"/></>,
+        receipt: <><path d="M6 3h12v18l-3-2-3 2-3-2-3 2V3Zm3 5h6m-6 4h6m-6 4h3"/></>,
+        payments: <><circle cx="12" cy="12" r="9"/><path d="M8 7h8M8 10h8M9 7c5 0 5 6 0 6l6 5"/></>,
+        ticket: <><path d="M3 6h18v4a2 2 0 0 0 0 4v4H3v-4a2 2 0 0 0 0-4V6Z"/><path d="M15 6v2m0 3v2m0 3v2"/></>,
         help: <><circle cx="12" cy="12" r="9"/><path d="M9.7 9a2.45 2.45 0 1 1 3.86 2c-.9.65-1.56 1.08-1.56 2.25M12 17h.01"/></>,
         link: <><path d="M10 13a5 5 0 0 0 7.07.07l2-2a5 5 0 0 0-7.07-7.07l-1.15 1.15M14 11a5 5 0 0 0-7.07-.07l-2 2A5 5 0 0 0 12 20l1.15-1.15"/></>,
         mail: <><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m4 7 8 6 8-6"/></>,

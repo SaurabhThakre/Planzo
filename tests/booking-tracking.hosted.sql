@@ -3,7 +3,7 @@ begin;
 do $test$
 declare
  base jsonb:='{"trip_id":"791e21bb-b93e-470b-a22e-5dbad90b8863","plan_id":"93d9c27c-b9be-4799-8d26-7cbaf0e41eea","step_id":"step_13","expected_revision":0,"status":"booked","provider_name":"TEST QA direct hotel","amount_paise":420025,"booked_by":"18d569d2-5f3e-474d-9688-e5cf249e7527","reference":"TEST-NOT-A-RESERVATION","notes":"TEST transaction, rolled back"}';
- payload jsonb;bad jsonb;got jsonb;denied boolean;oldplan uuid;counttests int:=0;
+ payload jsonb;bad jsonb;got jsonb;denied boolean;oldplan uuid;counttests int:=0;conflict_detail text;
 begin
  if not exists(select 1 from public.planzo_trips where id=(base->>'trip_id')::uuid and name like 'TEST %Phase 3 booking QA 1fcb41f1' and created_by='8d80db6b-2cf2-4dc5-b0b5-16a7fa82f2b5') then raise exception 'Expected labelled QA fixture is missing';end if;
  -- Reset only this synthetic fixture inside the rollback-only transaction.
@@ -16,6 +16,8 @@ begin
  if jsonb_array_length(got->'records')<>1 or got#>>'{records,0,amount_paise}'<>'420025' or got#>>'{records,0,actor}'<>'8d80db6b-2cf2-4dc5-b0b5-16a7fa82f2b5' then raise exception 'save regression';end if;counttests:=counttests+1;
  got:=public.planzo_booking_tracker('save',payload);
  if jsonb_array_length(got->'history')<>1 then raise exception 'idempotency regression';end if;counttests:=counttests+1;
+ denied:=false;begin perform public.planzo_booking_tracker('save',base||jsonb_build_object('request_id',gen_random_uuid()));exception when sqlstate 'PGRST' then get stacked diagnostics conflict_detail=pg_exception_detail;denied:=(sqlerrm::jsonb->>'code'='40001' and conflict_detail::jsonb->>'status'='409');end;
+ if not denied then raise exception 'Stale booking did not expose HTTP 409';end if;counttests:=counttests+1;
  for bad in select value from jsonb_array_elements('[
   {"actor":"18d569d2-5f3e-474d-9688-e5cf249e7527"},{"step_id":"unknown"},{"step_id":"step_5"},{"step_id":"step_7"},
   {"booked_by":"00000000-0000-0000-0000-000000000001"},{"amount_paise":-1},{"amount_paise":0.5},{"amount_paise":10000000001},

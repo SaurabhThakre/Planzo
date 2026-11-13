@@ -1,6 +1,8 @@
 import{destinationDay,routeStamp,routeTimeLabel,routeBadge}from'./routePlanning';
 import {StepPrice,PricingSummary,RouteOverview} from './ContextualStepDetails';
-import {useEffect,useRef,useState} from 'react';
+import {useEffect,useId,useRef,useState} from 'react';
+import {useMilestone} from './MilestoneCelebration';
+import {ItineraryDayTabs} from './ItineraryDayTabs';
 import {readableError} from './backend';
 import type {Workspace} from './backend';
 import {flowApi,generateFlow,refineApi,remindVoters} from './flowBackend';
@@ -10,6 +12,9 @@ import {JourneyHistory} from './LiveJourney';
 import {LiveHistory} from './LiveHistory';
 import {MasterPlanEditor} from './MasterPlanEditor';
 import {FinalJourney} from './FinalJourney';
+import {ItineraryStopRow} from './ItineraryStopRow';
+import {MyRequirements} from './MyRequirements';
+import {afterInputDestination} from './tripProgress';
 import {BookingOptionsPanel} from './BookingOptionsPanel';
 import {PaymentsPanel} from './PaymentsPanel';
 import {RepriceStayForm} from './RepriceStayForm';
@@ -39,9 +44,10 @@ function focusPlanningTarget(id:string,onFocused?:()=>void){
 }
 
 export function LivePrivatePlanning({workspace:w,userId,tab,target,onRefresh,go}:{workspace:Workspace;userId:string;tab:string;target?:string;onRefresh:()=>Promise<unknown>;go:PlanningLink}){
+ const celebrate=useMilestone();
  const [state,setState]=useState<FlowState|null>(null),[busy,setBusy]=useState(false),[error,setError]=useState(''),[notice,setNotice]=useState(''),[reviewAck,setReviewAck]=useState(false);
  const [deadline,setDeadline]=useState(localDate(w.trip.response_deadline)),[dateEditing,setDateEditing]=useState(false),[deadlineAck,setDeadlineAck]=useState(false);
- const [editingPlan,setEditingPlan]=useState(false);useEffect(()=>setEditingPlan(tab==='plan'&&target==='edit'),[state?.plan?.id,target]);
+ const [editingPlan,setEditingPlan]=useState(false);useEffect(()=>setEditingPlan(tab==='plan'&&target==='edit'),[state?.plan?.id,target,tab]);
  const itineraryDay=useState('');
  const watchedVote=useRef(false);
  useEffect(()=>{
@@ -63,7 +69,9 @@ export function LivePrivatePlanning({workspace:w,userId,tab,target,onRefresh,go}
   const body={trip_id:w.trip.id,expected_revision:state.revision,expected_stamp:state.stamp,...payload},signature=JSON.stringify([action,body]);
   if(request.current?.signature!==signature)request.current={signature,id:crypto.randomUUID()};
   try{const result=(action==='edit_plan'||action==='reprice_step')?await refineApi(action,{...body,request_id:request.current.id}):await flowApi(action,{...body,request_id:request.current.id});request.current=null;if(mounted.current){setState(result);setReviewAck(false);setNotice(action==='lock'?'Itinerary locked.':action==='confirm_input'?'Your private summary is confirmed and saved.':'Saved. Showing the current planning state.');}await onRefresh();
-   if(mounted.current&&action==='lock')go('journey');
+   if(mounted.current&&action==='confirm_input')go(afterInputDestination(result.included,organiser));
+   if(mounted.current&&action==='review'&&payload.response==='ready')celebrate({kind:'confirmed',userId,tripId:w.trip.id,version:result.plan?.id});
+   if(mounted.current&&action==='lock'){celebrate({kind:'locked',userId,tripId:w.trip.id,version:result.revision});go('journey');}
    if(mounted.current&&['close_poll','resolve_personal'].includes(action)&&planningProgress(result).review)go('review');}
   catch(e){if(mounted.current)setError(readableError(e));throw e;}finally{inflight.current=false;if(mounted.current)setBusy(false);}
  }
@@ -95,9 +103,9 @@ export function LivePrivatePlanning({workspace:w,userId,tab,target,onRefresh,go}
  </details>;
  if(tab==='preferences')return <div className="stack planning-v2">{feedback}<PrivateConversation key={w.trip.id+userId+':'+(s.own?.revision||0)+':'+Boolean(s.own?.confirmed)} workspace={w} state={s} busy={busy} votingReadOnly={pending>0} onAct={act} onDone={()=>go('')}/></div>;
  if(tab==='history')return <PlanningHistoryTabs state={s} tripId={w.trip.id} workspace={w}/>;
- if(tab==='payments')return included?<PaymentsPanel tripId={w.trip.id} userId={userId} onBookings={()=>go('bookings')}/>:<Card title="Payments unavailable"><p>Only included travellers can access shared payments.</p></Card>;
+ if(tab==='payments')return !included?<Card title="Payments unavailable"><p>Only included travellers can access shared payments.</p></Card>:!p?.locked&&!s.history.some(version=>version.locked)?<Card title="Lock the itinerary to open Payments"><p>Finish the itinerary and personal reviews first. Add shared expenses and record payments between travellers here.</p><Button onClick={()=>go('plan')}>Open itinerary</Button></Card>:<PaymentsPanel tripId={w.trip.id} userId={userId} onBookings={()=>go('bookings')}/>;
  if(tab==='journey'||tab==='bookings')return <div className="stack planning-v2">{feedback}
-  {p?.locked?tab==='bookings'?(included?<BookingOptionsPanel key={'bookings:'+p.id} document={p.document} destination={w.trip.destination} workspace={w} planId={p.id} onPayments={()=>go('payments')}/>:<Card title="Booking options are unavailable"><p>Provider options are available to included travellers on locked trips.</p></Card>):<FinalJourney document={p.document} own={s.own?.content} total={p.own_total_paise} onBookings={()=>go('bookings')}/>:<Card title="Finalize your itinerary first"><p>Finish step decisions and personal reviews. Booking options open after the organiser locks the itinerary.</p><Button onClick={()=>go('plan')}>Open itinerary</Button></Card>}
+  {p?.locked?tab==='bookings'?(included?<BookingOptionsPanel key={'bookings:'+p.id} document={p.document} destination={w.trip.destination} workspace={w} planId={p.id} onPayments={()=>go('payments')}/>:<Card title="Booking options are unavailable"><p>Provider options are available to included travellers on locked trips.</p></Card>):<FinalJourney document={p.document} own={s.own?.content} total={p.own_total_paise} checks={p.own_requirement_checks} onBookings={()=>go('bookings')}/>:<Card title="Finalize your itinerary first"><p>Finish step decisions and personal reviews. Booking options open after the organiser locks the itinerary.</p><Button onClick={()=>go('plan')}>Open itinerary</Button></Card>}
   {p?.locked&&tab==='bookings'&&stayRepricing}
  </div>;
  if(!p)return <div className="stack planning-v2">{feedback}{navigation}<Card title="Private inputs">
@@ -108,6 +116,7 @@ export function LivePrivatePlanning({workspace:w,userId,tab,target,onRefresh,go}
   </Actions>
   {!frozen&&!s.blocker&&!s.ai_available&&<p className="caption">Each traveller must confirm the planning requests they want to share.</p>}
   {organiser&&!frozen&&extend}
+  {organiser&&!frozen&&<PlanReviewActions key={s.stamp} workspace={w} userId={userId} busy={busy} act={act}/>}
  </Card></div>;
  if(tab==='voting')return <div className="stack planning-v2">{feedback}{navigation}
   <FlowStepDecisions state={s} plan={p} target={target} go={go} name={name} busy={busy||frozen||p.locked} organiser={organiser} eligible={included} act={act}/>
@@ -125,7 +134,7 @@ export function LivePrivatePlanning({workspace:w,userId,tab,target,onRefresh,go}
  const timeline=<FlowTimeline document={p.document} refs={p.document.refs||refs} polls={s.polls}
   editable={tab!=='review'&&!busy&&!frozen&&!p.locked&&included}
   concern={async (id,replacement,hard,note,share)=>{await act('raise_concern',{step_id:id,replacement,hard,concern_note:note,share_concern:share});go('voting');}}
-  openVote={id=>go('voting',id)} targetStep={target} dayState={itineraryDay}/>;
+  openVote={id=>go('voting',id)} targetStep={target} dayState={itineraryDay} dayLabel={tab==='review'?'Review itinerary days':'Itinerary days'}/>;
  const reviewCard=<Card title="Personal review">
   {p.locked?<p>This itinerary is locked.</p>:!readyToReview?<p>Finish step decisions and any personal requirements first.</p>:<>
    {requirementSummary}
@@ -144,27 +153,28 @@ export function LivePrivatePlanning({workspace:w,userId,tab,target,onRefresh,go}
    <Button disabled={busy||!readyToReview||p.review_count!==s.included} onClick={()=>doAct('lock',{plan_id:p.id,acknowledged:true})}>Lock itinerary</Button>
    {(change>0||decline>0)&&<Button variant="secondary" onClick={revise}>Revise plan</Button>}
    {(change>0||decline>0)&&extend}
-   {(change>0||decline>0)&&<PlanReviewActions key={s.stamp} workspace={w} userId={userId} busy={busy} act={act}/>}
+   <PlanReviewActions key={s.stamp} workspace={w} userId={userId} busy={busy} act={act}/>
   </>}
  </Card>;
  return <div className="stack planning-v2">{feedback}{navigation}
   {pending>0&&<Note title={pending+' open step '+(pending===1?'decision':'decisions')} tone="cream"><Button onClick={()=>go('voting')}>Open step decisions</Button></Note>}
   {p.requirements_legacy&&!p.locked&&<Note title="This earlier plan needs fresh inputs" tone="cream"><Button variant="secondary" onClick={()=>go('preferences')}>Review my private input</Button></Note>}
-  {tab==='review'&&reviewCard}
-  <Card title={p.locked?'Locked itinerary':'Shared itinerary'} sub={(organiser?'Version '+p.version+' · ':'')+routeStamp(p.document.start,p.document)+' → '+routeStamp(p.document.end,p.document)+' '+routeTimeLabel(p.document)}>
+  <Card title={tab==='review'?'Review the itinerary day by day':p.locked?'Locked itinerary':'Shared itinerary'} sub={(organiser?'Version '+p.version+' · ':'')+routeStamp(p.document.start,p.document)+' → '+routeStamp(p.document.end,p.document)+' '+routeTimeLabel(p.document)}>
    {p.document.unplaced.length>0&&<p className="small">Still to resolve · {p.document.unplaced.map(name).join(', ')}</p>}
-   {editingPlan&&organiser&&!frozen?<MasterPlanEditor document={p.document} busy={busy} onSave={async steps=>{await act('edit_plan',{plan_id:p.id,steps,acknowledged:true});setEditingPlan(false);}} onCancel={()=>setEditingPlan(false)}/>:timeline}
-   {organiser&&!frozen&&!editingPlan&&<Button variant="secondary" onClick={revise}>Edit master plan</Button>}
+   {tab==='plan'&&editingPlan&&organiser&&!frozen?<MasterPlanEditor document={p.document} busy={busy} onSave={async steps=>{await act('edit_plan',{plan_id:p.id,steps,acknowledged:true});setEditingPlan(false);}} onCancel={()=>setEditingPlan(false)}/>:timeline}
+   {tab!=='review'&&organiser&&!frozen&&!editingPlan&&<Button variant="secondary" onClick={revise}>Edit master plan</Button>}
   </Card>
-  {tab==='plan'&&!editingPlan&&stayRepricing}
+  {tab==='review'&&reviewCard}
   {tab!=='review'&&<Card title="Planning estimate" sub="Estimated total per person">
    <p className="remaining-budget">{flowMoney(estimate)}</p>
    {s.own&&<p className="small">Remaining within your trip budget · {flowMoney(Math.max(0,s.own.content.ceiling_paise-estimate))}</p>}
-   {requirementSummary}
    {organiser&&!frozen&&!p.locked&&s.polls.some(poll=>poll.status==='unresolved')&&<Button variant="secondary" onClick={()=>go('plan','edit')}>Revise plan</Button>}
   {review&&<Button onClick={()=>go(p.locked?'journey':'review')}>{p.locked?'Open final journey':'Go to personal review'}</Button>}
   </Card>}
+  <MyRequirements checks={p.own_requirement_checks} document={p.document} expected={s.own?.content.requests?.length}/>
+  {tab==='plan'&&!editingPlan&&stayRepricing}
   <details><summary>How Planzo keeps it fair</summary><p className="small">Private limits still apply. Each traveller answers for themselves. A vote records a preference, and live choices stay private until it closes.</p></details>
+  {tab==='plan'&&organiser&&!frozen&&!p.locked&&<Card title="Manage travelling group"><PlanReviewActions key={s.stamp} workspace={w} userId={userId} busy={busy} act={act}/></Card>}
  </div>;
 }
 function PlanReviewActions({workspace,userId,busy,act}:{workspace:Workspace;userId:string;busy:boolean;act:(action:string,payload:Record<string,unknown>)=>Promise<void>}){
@@ -174,8 +184,8 @@ function PlanReviewActions({workspace,userId,busy,act}:{workspace:Workspace;user
  return <div className="stack">
   <details><summary>Change the travelling roster</summary>
    <p className="small">Keep at least {workspace.trip.minimum_group_size} travellers, including the organiser. Everyone in the new roster will confirm their inputs again.</p>
-   {workspace.members.map(member=><label className="check" key={member.id}><input type="checkbox" disabled={busy||member.id===userId} checked={roster.includes(member.id)}
-    onChange={e=>setRoster(previous=>e.target.checked?[...previous,member.id]:previous.filter(id=>id!==member.id))}/>{member.name}{member.id===userId?' · organiser':''}</label>)}
+   {workspace.members.map((member,index)=><label className="check" key={member.id}><input type="checkbox" disabled={busy||member.id===userId} checked={roster.includes(member.id)}
+    onChange={e=>setRoster(previous=>e.target.checked?[...previous,member.id]:previous.filter(id=>id!==member.id))}/>{member.name}{workspace.members.filter(other=>other.name===member.name).length>1?' · traveller '+(index+1):''}{member.id===userId?' · organiser':''}</label>)}
    <Button variant="secondary" disabled={busy||!changed||roster.length<workspace.trip.minimum_group_size} onClick={()=>void act('set_roster',{roster,acknowledged:true}).catch(()=>{})}>Use this roster</Button>
   </details>
   <details><summary>Postpone trip</summary>
@@ -224,11 +234,12 @@ function FlowStepDecisions({state,plan,target,go,name,busy,organiser,eligible,ac
  </Card>;
 }
 
-function FlowTimeline({document:d,refs,polls,editable,concern,openVote,targetStep,dayState,inlineDetails=false}:{
+function FlowTimeline({document:d,refs,polls,editable,concern,openVote,targetStep,dayState,inlineDetails=false,dayLabel='Itinerary days'}:{
  document:FlowDocument;refs:FlowRef[];polls:FlowPoll[];editable:boolean;
  concern:(step:string,replacement:string,hard:boolean,note:string,share:boolean)=>Promise<void>;openVote:(pollId:string)=>void;
- targetStep?:string;dayState?:[string,(day:string)=>void];inlineDetails?:boolean;
+ targetStep?:string;dayState?:[string,(day:string)=>void];inlineDetails?:boolean;dayLabel?:string;
 }){
+ const panelId=useId();
  const days=itineraryDays(d.steps,d.route?.time_zone);
  const entries=[...days],localDay=useState(''),[selectedStep,setSelectedStep]=useState<FlowStep|null>(null);
  const [selectedDay,setSelectedDay]=dayState||localDay;
@@ -246,7 +257,7 @@ function FlowTimeline({document:d,refs,polls,editable,concern,openVote,targetSte
  const detail=selectedStep&&d.steps.find(step=>step.id===selectedStep.id);
  const openDecision=(stepId:string)=>polls.find(poll=>poll.step_id===stepId&&pendingDecision(poll));
  const detailPoll=detail&&(openDecision(detail.id)||polls.find(poll=>poll.step_id===detail.id&&poll.status==='closed'));
- return <div className="flow-days"><div className="day-tabs" role="tablist" aria-label="Itinerary days">{entries.map(([day],index)=><button role="tab" aria-selected={activeIndex===index} key={day} onClick={()=>setSelectedDay(day)}>Day {index+1}<small>{new Date(day+'T12:00:00Z').toLocaleDateString('en-IN',{day:'numeric',month:'short',year:'numeric',timeZone:'UTC'})}</small></button>)}</div><section className="day-panel" role="tabpanel"><h3>{itineraryDayTitle(currentDay,activeIndex)}</h3><ol className="stop-summary">{active.map((step,index)=><li key={step.id}>{inlineDetails?<details><summary>{index+1}. {contextualStepLabel(step,refs)}</summary><p>{routeStamp(step.start,d)} → {routeStamp(step.end,d)} {routeTimeLabel(d)}</p><ContextualStepDetails step={step} refs={refs}/><StepPrice step={step} document={d}/></details>:<button id={'itinerary-step-'+step.id} onClick={()=>setSelectedStep(step)}><span className="stop-number">{index+1}</span><span className="stop-copy"><ItineraryTypeBadge kind={routeBadge(step,refs)}/><strong>{contextualStepLabel(step,refs)}{step.ref.endsWith('_alternative')?' · revised arrangement':''}</strong><small>{routeStamp(step.start,d)} → {routeStamp(step.end,d)} {routeTimeLabel(d)}</small>{openDecision(step.id)&&<Badge tone="pending">Decision pending</Badge>}</span><span aria-hidden="true">→</span></button>}</li>)}</ol></section>{detail&&<InPlacePanel title={contextualStepLabel(detail,refs)} onClose={()=>setSelectedStep(null)}>{({close})=><Card><div className="actions"><ItineraryTypeBadge kind={routeBadge(detail,refs)}/><Badge>Step {active.findIndex(step=>step.id===detail.id)+1}</Badge></div><p>{routeStamp(detail.start,d)} → {routeStamp(detail.end,d)} {routeTimeLabel(d)}</p><ContextualStepDetails step={detail} refs={refs}/>{d.requirements_version===1&&!d.contextual_version&&refs.filter(r=>r.kind===detail.kind&&detail.kind!=='activity').map(r=><p className="caption" key={r.id}>Requested: {r.title} · verify availability at booking</p>)}<StepPrice step={detail} document={d}/>{detailPoll&&<Button variant="secondary" onClick={()=>close(()=>openVote(detailPoll.id))}>{pendingDecision(detailPoll)?'View decision':'View decision outcome'}</Button>}{editable&&!detailPoll&&<StepConcern step={detail} refs={refs} save={(ref,hard,note,share)=>concern(detail.id,ref,hard,note,share)}/>}</Card>}</InPlacePanel>}</div>;
+ return <div className="flow-days"><ItineraryDayTabs days={entries.map(([day])=>day)} currentIndex={activeIndex} onSelect={index=>setSelectedDay(entries[index][0])} panelId={panelId} label={dayLabel}/><section className="day-panel" role="tabpanel" id={panelId} aria-labelledby={panelId+'-tab-'+activeIndex}><h3>{itineraryDayTitle(currentDay,activeIndex)}</h3><ol className="stop-summary">{active.map((step,index)=><li key={step.id}>{inlineDetails?<details><summary>{index+1}. {contextualStepLabel(step,refs)}</summary><p>{routeStamp(step.start,d)} → {routeStamp(step.end,d)} {routeTimeLabel(d)}</p><ContextualStepDetails step={step} refs={refs}/><StepPrice step={step} document={d}/></details>:<ItineraryStopRow step={step} index={index} document={d} refs={refs} pending={Boolean(openDecision(step.id))} onSelect={()=>setSelectedStep(step)}/>}</li>)}</ol></section>{detail&&<InPlacePanel title={contextualStepLabel(detail,refs)} onClose={()=>setSelectedStep(null)}>{({close})=><Card><div className="actions"><ItineraryTypeBadge kind={routeBadge(detail,refs)}/><Badge>Step {active.findIndex(step=>step.id===detail.id)+1}</Badge></div><p>{routeStamp(detail.start,d)} → {routeStamp(detail.end,d)} {routeTimeLabel(d)}</p><ContextualStepDetails step={detail} refs={refs}/>{d.requirements_version===1&&!d.contextual_version&&refs.filter(r=>r.kind===detail.kind&&detail.kind!=='activity').map(r=><p className="caption" key={r.id}>Requested: {r.title} · verify availability at booking</p>)}<StepPrice step={detail} document={d}/>{detailPoll&&<Button variant="secondary" onClick={()=>close(()=>openVote(detailPoll.id))}>{pendingDecision(detailPoll)?'View decision':'View decision outcome'}</Button>}{editable&&!detailPoll&&<StepConcern step={detail} refs={refs} save={(ref,hard,note,share)=>concern(detail.id,ref,hard,note,share)}/>}</Card>}</InPlacePanel>}</div>;
 }
 function StepConcern({step,refs,save}:{step:FlowStep;refs:FlowRef[];save:(ref:string,hard:boolean,note:string,share:boolean)=>Promise<void>}){
  const current=refs.find(r=>r.id===(step.kind==='activity'?step.ref:step.route_ref))?.route_item;

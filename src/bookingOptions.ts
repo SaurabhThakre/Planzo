@@ -7,6 +7,13 @@ type BookingOptions = { category: "Stay" | "Activity" | "Transfer"; links: Booki
 
 const searchUrl = (base: string, params: Record<string, string>) =>
     base + "?" + new URLSearchParams(params).toString();
+const mapsSearch = (query: string): BookingLink => ({label:"Find local operators / direct contact",href:searchUrl("https://www.google.com/maps/search/",{api:"1",query})});
+const activitySearch = (query: string): BookingLink[] => [
+    {label:"Compare on Viator",href:searchUrl("https://www.viator.com/searchResults/all",{text:query})},
+    {label:"Search activities on GetYourGuide",href:searchUrl("https://www.getyourguide.com/s/",{q:query})},
+    {label:"Compare on Klook",href:searchUrl("https://www.klook.com/en-IN/search/result/",{query})},
+];
+export const bookingSearchName = (title: string) => title.replace(/^stay(?:\s+at)?\s+/i,"").replace(/\s*[·—–-]\s*day\s*\d+\s*$/i,"").trim();
 
 export function bookingOptionsForStep(
     step: FlowStep, document: FlowDocument, destination: string, now = Date.now(),
@@ -22,7 +29,7 @@ export function bookingOptionsForStep(
     if (step.kind === "stay") {
         const area = item ? document.route?.zones.find(zone => zone.id === item.zone) : undefined;
         const place = area?.name || reference?.location || destination;
-        const property = step.ref.endsWith("_alternative") ? "" : reference?.title;
+        const property = step.ref.endsWith("_alternative") ? "" : reference?.title && bookingSearchName(reference.title);
         const query = [...new Set([property || place, destination])].join(", ");
         const checkin = destinationDay(step.start, document.route?.time_zone);
         const checkout = destinationDay(step.end, document.route?.time_zone);
@@ -30,7 +37,10 @@ export function bookingOptionsForStep(
         return { category: "Stay", links: [{
             label: "Search stays on Booking.com",
             href: searchUrl("https://www.booking.com/searchresults.html", { ss: query, checkin, checkout }),
-        }] };
+        },{
+            label:"Compare stays on Expedia",
+            href:searchUrl("https://www.expedia.co.in/Hotel-Search",{destination:[...new Set([property,place,goa?"Goa, India":destination].filter(Boolean))].join(", "),startDate:checkin,endDate:checkout}),
+        },{...mapsSearch(query+" accommodation"),label:"Find property & direct contact"}] };
     }
     if (step.kind !== "activity") return null;
 
@@ -50,10 +60,16 @@ export function bookingOptionsForStep(
                 { label: "GoaMiles passenger information", href: "https://www.goamiles.com/GoaCare/faqpassenger" },
                 { label: "Browse Goa transfers on Viator", href: "https://www.viator.com/Goa-tours/Transfers-and-Ground-Transport/d4594-g15" },
             );
-        } else {
-            links.push({ label: "Search transport on GetYourGuide", href: searchUrl("https://www.getyourguide.com/s/", {
-                q: [from && to ? `${from} to ${to}` : item.title, destination, item.mode, "transfer"].join(" "),
-            }) });
+        }
+        const routeQuery=[from && to ? `${from} to ${to}` : item.title,destination,item.mode,"transfer"].join(" ");
+        if(item.mode==="taxi"){
+            // Direct local contact remains useful where global tour catalogues have no inventory.
+            links.push(mapsSearch([item.mode+" service",from||to||item.location,destination].filter(Boolean).join(" ")));
+            if(!goa)links.push(...activitySearch(routeQuery));
+            else links.push({label:"Compare transfers on GetYourGuide",href:searchUrl("https://www.getyourguide.com/s/",{q:routeQuery})});
+        }else{
+            links.push(mapsSearch([item.mode+" operator",from,to,destination].filter(Boolean).join(" ")));
+            if(from&&to)links.push({label:"Compare the route on Rome2Rio",href:"https://www.rome2rio.com/map/"+encodeURIComponent(from+", "+destination)+"/"+encodeURIComponent(to+", "+destination)});
         }
         return { category: "Transfer", links };
     }
@@ -71,8 +87,11 @@ export function bookingOptionsForStep(
             href: "https://www.viator.com/en-GB/tours/Goa/Fontainhas-Heritage-Walk/d4594-117330P1",
         });
     }
-    links.push({ label: "Search activities on GetYourGuide", href: searchUrl("https://www.getyourguide.com/s/", {
-        q: `${title} ${destination}`,
-    }) });
+    const query=`${title} ${destination}`;
+    if(!majorActivity)links.push({...mapsSearch(query),label:"Find venue / ticket information"});
+    // Retain a known exact listing as primary, with independent provider alternatives.
+    const searches=activitySearch(query);
+    if(links.length)links.push(searches[1],searches[0],searches[2]);else links.push(...searches);
+    if(majorActivity)links.push(mapsSearch(query));
     return { category: "Activity", links };
 }

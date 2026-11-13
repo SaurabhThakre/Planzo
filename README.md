@@ -11,12 +11,12 @@ Group trips often stall because dates, costs and personal needs are scattered ac
 ## What the app covers
 
 - **Shared trip setup:** organiser accounts, trip creation, invitation links, member joining and saved trip workspaces.
-- **Private input:** individual availability, budget and preferences feed planning without displaying raw private briefs to the group.
-- **Planning and review:** itinerary proposals, estimated costs, feasibility checks, human review and item-level decisions.
+- **Private input:** travellers confirm their own dates, budget and preferences. They can review and edit individual requests before confirming. The trip overview shows who still needs to confirm.
+- **Planning and review:** itinerary proposals, estimated costs, feasibility checks and item-level decisions. Each traveller can see how the plan covers their own requests.
 - **Explicit agreement:** members respond to a specific plan version; material changes require fresh responses. Silence remains pending.
 - **Final journey** shows the locked itinerary by day in the destination time zone.
-- **Bookings** shows provider links by day, a trip-wide progress summary and shared booking reports. Travellers check availability and final prices with providers.
-- **Payments** combines reported booking costs, manual expenses and refunds, equal or exact splits, and a shared ledger for transfers made outside Planzo. The recipient confirms receipt before a transfer affects balances.
+- **Bookings** shows a direct provider link and expandable alternatives where available, alongside booking progress and shared reports. Travellers check availability and final prices with providers.
+- **Payments** tracks manual expenses and refunds independently of booking reports, with equal or exact splits. Travellers record settlements made outside Planzo, and the ledger updates balances when a settlement is recorded.
 
 The app uses Supabase Auth, a trip-scoped database and Edge Functions.
 

@@ -2,10 +2,11 @@ import { useEffect, useRef, useState } from 'react';
 import type { Workspace } from './backend';
 import type { FlowState } from './flowBackend';
 import { readableError } from './errors';
-import { Actions, Button, Card, Field, Note, PlanningRequestSummary } from './ui';
+import { Actions, Button, Card, Field, Note } from './ui';
 import { DateTimeField } from './DateTimeField';
 import { flowMoney, flowStamp, instant, localDate, suggestPlanningRequests, validatePersonal } from './privatePlanning';
-import type { PersonalInput } from './privatePlanning';
+import type { PersonalInput,PlanningRequest } from './privatePlanning';
+import {PlanningRequestEditor} from './PlanningRequestEditor';
 
 const labels = ['Destination times', 'Budget', 'Preferences', 'Review your summary'];
 const summary = labels.length - 1;
@@ -40,20 +41,22 @@ export function PrivateConversation({ workspace, state, onAct, busy, onDone, vot
   const [error, setError] = useState('');
   const [editingDates, setEditingDates] = useState<string[]>([]);
   const [ack, setAck] = useState(false);
+  const [requestEdits,setRequestEdits]=useState<PlanningRequest[]|null>(null);
   const [reopenAck, setReopenAck] = useState(false);
   const heading = useRef<HTMLHeadingElement>(null);
   const inactive = ['archived', 'postponed'].includes(state.stage);
   const frozen = busy || saved?.confirmed || inactive;
   const window = workspace.windows.find(option => option.id === input.window_id);
   const samePreferences = saved?.content.hard === input.hard && saved?.content.soft === input.soft;
-  const requests = samePreferences && saved?.content.requests
+  const requests = requestEdits ?? (samePreferences && saved?.content.requests
     ? saved.content.requests
-    : suggestPlanningRequests(input.hard, input.soft);
+    : suggestPlanningRequests(input.hard, input.soft));
 
   useEffect(() => { heading.current?.focus(); }, [step]);
 
   function update(patch: Partial<PersonalInput>) {
     setInput(previous => ({ ...previous, ...patch }));
+    if(patch.hard!==undefined||patch.soft!==undefined)setRequestEdits(null);
     setAck(false);
     setError('');
   }
@@ -160,13 +163,8 @@ export function PrivateConversation({ workspace, state, onAct, busy, onDone, vot
           <dt>Must-haves</dt><dd className="preserve-lines">{input.hard || 'Add your must-haves'}</dd>
           <dt>Flexible preferences</dt><dd className="preserve-lines">{input.soft || 'Add your preferences'}</dd>
         </dl>
-        <p className="small"><strong>Gemini planning is enabled for everyone.</strong> Google receives only the reviewed planning requests, destination, group size and shared dates. Your starting city, budget and private reasons stay private. Google's free service may use submitted material for improvement and human review.</p>
         {!saved?.confirmed && !inactive && <>
-          <details>
-            <summary>Review shared planning requests</summary>
-            <p className="small">Planzo uses the short requests below for group planning. Your city and budget stay private. Edit preferences to remove any detail you do not want shared.</p>
-            {requests.length > 0 && <PlanningRequestSummary requests={requests}/>}
-          </details>
+          <PlanningRequestEditor requests={requests} disabled={Boolean(frozen)} onChange={next=>{setRequestEdits(next);setAck(false);setError('');}}/>
           <label className="check"><input type="checkbox" checked={ack} disabled={busy} onChange={event => setAck(event.target.checked)}/>I reviewed my summary and agree to share the planning requests described above.</label>
           <Button disabled={!ack || busy} onClick={() => void confirm()}>{busy ? 'Saving…' : 'Confirm my private summary'}</Button>
         </>}

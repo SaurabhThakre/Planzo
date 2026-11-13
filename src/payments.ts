@@ -1,5 +1,6 @@
 export type Share={user_id:string;amount_paise:number};
-export type PaymentEntry={id:string;source:'booking'|'manual';title:string;amount_paise:number;payer_id:string;kind:'expense'|'refund';split_mode:'equal'|'exact';shares:Share[];paid_on:string;notes:string;voided:boolean;needs_review:boolean;plan_id?:string;plan_version?:number;step_id?:string;booking_revision?:number;booking_status?:string;provider_name?:string;reference?:string;revision:number;actor?:string;updated_at:string};
+export type ExpenseCategory='travel'|'food'|'stay'|'activities'|'shopping'|'other';
+export type PaymentEntry={id:string;category?:ExpenseCategory|null;booking_category?:string|null;source:'booking'|'manual';title:string;amount_paise:number;payer_id:string;kind:'expense'|'refund';split_mode:'equal'|'exact';shares:Share[];paid_on:string;notes:string;voided:boolean;needs_review:boolean;plan_id?:string;plan_version?:number;step_id?:string;booking_revision?:number;booking_status?:string;provider_name?:string;reference?:string;revision:number;actor?:string;updated_at:string};
 export type Settlement={id:string;from_id:string;to_id:string;amount_paise:number;method:string;paid_on:string;notes:string;status:'pending'|'confirmed'|'rejected'|'cancelled';created_at:string};
 export type PaymentMember={id:string;name:string;included:boolean};
 export type Balance={user_id:string;paid_paise:number;share_paise:number;settled_paise:number;balance_paise:number};
