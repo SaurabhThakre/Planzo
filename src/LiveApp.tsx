@@ -215,7 +215,12 @@ function LiveAppWorkspace(){
         const name=details.name?.trim();if(!name)throw Error('Enter a trip name.');
         const result=await api<{trip_id:string}>('create_trip',{request_id:createId.current,name,destination:details.destination,
           minimum:details.minimum,tentative_days:details.tentativeDays,deadline:details.deadline+'T23:59:00+05:30',windows:details.windows?.map(w=>({...w,start:w.start+':00+05:30',end:w.end+':00+05:30'}))});
-        createId.current=crypto.randomUUID();const data=await api<{profile:Person;trips:TripSummary[]}>('list');setTrips(data.trips);go('trip',result.trip_id);
+        if(activeUser.current!==person.id)return;
+        createId.current=crypto.randomUUID();
+        go('trip',result.trip_id);
+        celebrate({kind:'created',userId:person.id,tripId:result.trip_id});
+        const data=await api<{profile:Person;trips:TripSummary[]}>('list');
+        if(activeUser.current===person.id)setTrips(data.trips);
       });}}/>:
       view==='trip'&&session?(workspace&&person?<div className={'shared-trip-workspace '+(['preferences','review','journey'].includes(route[2])?'focused':'')}>
         <TripWorkspaceNav workspace={workspace} tab={route[2]||''} busy={busy} go={tab=>tab==='all-trips'?go('home'):tab?go('trip',tripId,tab):go('trip',tripId)} onRefresh={()=>void perform(async()=>{await refreshTrip();setNotice('Showing the latest saved trip.');})}/>

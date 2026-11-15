@@ -1,6 +1,7 @@
-export type MilestoneKind='joined'|'confirmed'|'locked';
+export type MilestoneKind='created'|'joined'|'confirmed'|'locked';
 export type Milestone={kind:MilestoneKind;userId:string;tripId:string;version?:string|number};
 export const milestoneCopy={
+ created:{title:'Trip created successfully',detail:'Your trip is ready to plan.'},
  joined:{title:"You're in!",detail:'Your next adventure starts with this group.'},
  confirmed:{title:'Your yes is in!',detail:'You confirmed this itinerary. One step closer to getting away.'},
  locked:{title:'This trip has a plan!',detail:'The itinerary is locked. Time to arrange the bookings together.'},
