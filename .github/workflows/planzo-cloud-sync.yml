@@ -11,10 +11,6 @@ on:
         options:
           - dry-run
           - publish
-  schedule:
-    # 10:00 AM Asia/Kolkata. Date gate below limits this to 2026.
-    - cron: "30 4 21-31 10 *"
-    - cron: "30 4 1-19 11 *"
 
 permissions:
   contents: write
